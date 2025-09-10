@@ -4,6 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/app-components/ui/button"
 import { Menu, X } from "lucide-react"
+import Image from "next/image"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -22,17 +23,23 @@ export function Header() {
   return (
     <header className="bg-background border-b border-border sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xl">I</span>
+              <div className="w-30 h-30 bg-none rounded-lg flex items-center">
+                <Image
+                    src="/Images/Logo/1.png" // update with your logo path
+                    alt="ICCD Logo"
+                    width={100}
+                    height={100}
+                    className="object-contain"
+                  />
               </div>
-              <div className="ml-3">
+              {/* <div className="ml-3">
                 <div className="text-xl font-bold text-primary">ICCD</div>
                 <div className="text-xs text-muted-foreground">International Centre for Compliance & Development</div>
-              </div>
+              </div> */}
             </Link>
           </div>
 
