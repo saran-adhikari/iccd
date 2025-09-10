@@ -78,7 +78,7 @@ export function IndustryTestimonials() {
                 {/* Quote */}
                 <div className="relative mb-8">
                   <Quote className="h-8 w-8 text-accent/20 absolute -top-2 -left-2" />
-                  <p className="text-muted-foreground leading-relaxed italic pl-6 text-lg">"{testimonial.quote}"</p>
+                  <p className="text-muted-foreground leading-relaxed italic pl-6 text-lg">&quot;{testimonial.quote}&quot;</p>
                 </div>
 
                 {/* Impact */}

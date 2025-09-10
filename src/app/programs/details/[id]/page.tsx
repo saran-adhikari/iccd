@@ -6,8 +6,30 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/app
 import { Badge } from "@/app-components/ui/badge"
 import { CheckCircle, Users, Target, BookOpen } from "lucide-react"
 
+type CurriculumDay = {
+  day: string
+  title: string
+  topics: string[]
+}
+
+interface Program {
+  title: string
+  description: string
+  category: string
+  duration: string
+  format: string
+  maxParticipants: number
+  level: string
+  price: string
+  nextSession: string
+  image: string
+  learningOutcomes: string[]
+  whoShouldAttend: string[]
+  curriculum: CurriculumDay[]
+}
+
 // This would typically come from a database or API
-const programData: { [key: string]: any } = {
+const programData: Record<string, Program> = {
   "aml-fundamentals": {
     title: "AML Fundamentals & Best Practices",
     description:
@@ -90,7 +112,7 @@ export default function ProgramDetailPage({ params }: { params: { id: string } }
                     <Target className="h-6 w-6 text-accent" />
                     <CardTitle className="text-2xl text-primary">Learning Outcomes</CardTitle>
                   </div>
-                  <CardDescription>What you'll achieve by completing this program</CardDescription>
+                  <CardDescription>What you&apos;ll achieve by completing this program</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
@@ -115,14 +137,14 @@ export default function ProgramDetailPage({ params }: { params: { id: string } }
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-6">
-                    {program.curriculum.map((day: any, index: number) => (
+                    {program.curriculum.map((day, index) => (
                       <div key={index} className="border-l-4 border-accent pl-6">
                         <div className="flex items-center gap-3 mb-2">
                           <Badge className="bg-accent/10 text-accent border-accent/20">{day.day}</Badge>
                           <h4 className="text-lg font-semibold text-primary">{day.title}</h4>
                         </div>
                         <div className="space-y-1">
-                          {day.topics.map((topic: string, topicIndex: number) => (
+                          {day.topics.map((topic, topicIndex) => (
                             <div key={topicIndex} className="text-muted-foreground">
                               • {topic}
                             </div>

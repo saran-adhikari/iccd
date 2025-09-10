@@ -57,7 +57,7 @@ export function Testimonials() {
 
                 <div className="relative mb-6">
                   <Quote className="h-8 w-8 text-accent/20 absolute -top-2 -left-2" />
-                  <p className="text-muted-foreground leading-relaxed italic pl-6">"{testimonial.quote}"</p>
+                  <p className="text-muted-foreground leading-relaxed italic pl-6">&quot;{testimonial.quote}&quot;</p>
                 </div>
 
                 <div className="flex items-center">
