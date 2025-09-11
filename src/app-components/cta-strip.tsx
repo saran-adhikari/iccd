@@ -6,7 +6,7 @@ export function CTAStrip() {
     <section className="py-20 w-[85%] mx-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-balance">
+          <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-balance text-primary">
             Build Your Brand <br /> Customize Training Solutions
           </h2>
           <p className="text-2xl mb-10 text-pretty max-w-3xl mx-auto text-muted-foreground">
