@@ -59,7 +59,7 @@ export function WhoWeAre() {
             </div>
 
             <Button
-              className="bg-primary hover:bg-primary/90 text-primary-foreground cursor-pointer"
+              className="bg-black hover:bg-primary/90 text-primary-foreground cursor-pointer"
               onClick={() => (window.location.href = "/about")}
             >
               READ MORE

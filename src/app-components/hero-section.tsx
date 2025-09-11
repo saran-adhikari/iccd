@@ -35,7 +35,7 @@ export function HeroSection() {
             <div className="space-y-4">
               <h1 className="text-4xl lg:text-5xl font-bold text-balance leading-tight">
                 <span className="text-primary">Empowering</span> Professionals,{" "}
-                <span className="text-accent">Elevating</span> Institutions
+                <span className="text-primary">Elevating</span> Institutions
               </h1>
               {/* <p className="text-xl text-muted-foreground text-pretty leading-relaxed">
                 Leading the way in AML, ESG, Risk Management, and Leadership training. Building stronger compliance
@@ -45,7 +45,7 @@ export function HeroSection() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground cursor-pointer">
+              <Button size="lg" className="bg-black hover:bg-primary/90 text-accent-foreground cursor-pointer">
                 Explore Programs
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>

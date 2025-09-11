@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Button } from "@/app-components/ui/button"
 import { Input } from "@/app-components/ui/input"
 import { Facebook, Twitter, Linkedin, Youtube, Mail } from "lucide-react"
+import Image from "next/image"
 
 export function Footer() {
   const quickLinks = [
@@ -27,7 +28,7 @@ export function Footer() {
   ]
 
   return (
-    <footer className="bg-primary text-primary-foreground">
+    <footer className="bg-black text-primary-foreground">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
         <div className="py-16">
@@ -35,13 +36,24 @@ export function Footer() {
             {/* Company Info */}
             <div className="lg:col-span-1">
               <div className="flex items-center mb-6">
-                <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center mr-3">
+                {/* <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center mr-3">
                   <span className="text-accent-foreground font-bold text-xl">I</span>
-                </div>
+                </div> */}
+
+                 {/* <div className="w-10 h-30 bg-none rounded-lg flex">
+                                <Image
+                                    src="/Images/Logo/5.png" // update with your logo path
+                                    alt="ICCD Logo"
+                                    width={100}
+                                    height={100}
+                                    className="object-contain"
+                                  />
+                    </div> */}
+
                 <div>
                   <div className="text-xl font-bold">ICCD</div>
                   <div className="text-xs text-primary-foreground/80">
-                    International Centre for Compliance & Development
+                    International Centre for Compliance<br/> & Development
                   </div>
                 </div>
               </div>
