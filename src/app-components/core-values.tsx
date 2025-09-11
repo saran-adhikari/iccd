@@ -22,9 +22,9 @@ export function CoreValues({ items = defaultItems }: { items?: ValueItem[] }) {
     <section className="py-24 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-16 items-center">
-          {/* LEFT side heading */}
+          {/* LEFT side heading */} 
           <div>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-black leading-tight">
+            <h2 className="text-4xl md:text-4xl font-extrabold text-black leading-tight">
               Building <span className="text-primary">long-term capacity</span> that{" "}
               <span className="text-primary">strengthens</span> organizations.
             </h2>

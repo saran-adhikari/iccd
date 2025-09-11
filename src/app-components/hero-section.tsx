@@ -67,7 +67,7 @@ export function HeroSection() {
             <div className="w-full mx-auto lg:w-[520px] xl:w-[560px]">
               <div className="rounded-2xl">
                 <img
-                  src="https://i.pinimg.com/1200x/82/75/ea/8275ea5e8c59e1f95401a6bd72566d41.jpg"
+                  src="https://i.pinimg.com/736x/68/ff/99/68ff994ce11ed575e0d0f9202e79d5a3.jpg"
                   alt="Professional financial training environment"
                   className="block w-full h-[300px] sm:h-[340px] md:h-[380px] lg:h-[420px] object-cover"
                 />
