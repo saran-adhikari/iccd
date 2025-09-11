@@ -36,6 +36,8 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
 
+
+
 ```
 iccd
 ├─ components.json
@@ -47,18 +49,77 @@ iccd
 ├─ public
 │  ├─ file.svg
 │  ├─ globe.svg
+│  ├─ Images
+│  │  ├─ Logo
+│  │  │  ├─ 1.png
+│  │  │  ├─ 2.png
+│  │  │  ├─ 5.png
+│  │  │  └─ 6.png
+│  │  └─ Partners
+│  │     ├─ hbl.jpg
+│  │     ├─ kbl.jpg
+│  │     ├─ mahalaxmi.png
+│  │     ├─ nabil.jpg
+│  │     ├─ nabil.png
+│  │     └─ siddharthalogo.png
 │  ├─ next.svg
 │  ├─ vercel.svg
 │  └─ window.svg
 ├─ README.md
 ├─ src
 │  ├─ app
+│  │  ├─ about
+│  │  │  └─ page.tsx
+│  │  ├─ contact
+│  │  │  └─ page.tsx
 │  │  ├─ favicon.ico
 │  │  ├─ globals.css
+│  │  ├─ impact
 │  │  ├─ layout.tsx
-│  │  └─ page.tsx
+│  │  ├─ page.tsx
+│  │  └─ programs
+│  │     ├─ page.tsx
+│  │     └─ [slug]
+│  │        └─ page.tsx
 │  ├─ app-components
+│  │  ├─ about-hero.tsx
+│  │  ├─ about-story.tsx
+│  │  ├─ accreditation.tsx
+│  │  ├─ case-studies.tsx
+│  │  ├─ contact-form.tsx
+│  │  ├─ contact-hero.tsx
+│  │  ├─ contact-info.tsx
+│  │  ├─ contact-map.tsx
+│  │  ├─ core-values.tsx
+│  │  ├─ cta-strip.tsx
+│  │  ├─ featured-program.tsx
+│  │  ├─ footer.tsx
+│  │  ├─ header.tsx
+│  │  ├─ hero-section.tsx
+│  │  ├─ impact-hero.tsx
+│  │  ├─ impact-infographic.tsx
+│  │  ├─ impact-metrics.tsx
+│  │  ├─ impact-numbers.tsx
+│  │  ├─ industry-testimonials.tsx
+│  │  ├─ leadership-team.tsx
+│  │  ├─ mission-vision.tsx
+│  │  ├─ program-card.tsx
+│  │  ├─ program-categories.tsx
+│  │  ├─ program-detail-hero.tsx
+│  │  ├─ program-filters.tsx
+│  │  ├─ programs-hero.tsx
+│  │  ├─ testimonials.tsx
+│  │  ├─ trusted-partners.tsx
+│  │  ├─ ui
+│  │  │  ├─ badge.tsx
+│  │  │  ├─ button.tsx
+│  │  │  ├─ card.tsx
+│  │  │  ├─ input.tsx
+│  │  │  ├─ select.tsx
+│  │  │  └─ textarea.tsx
+│  │  └─ who-we-are.tsx
 │  └─ lib
+│     ├─ programs.tsx
 │     └─ utils.ts
 └─ tsconfig.json
 

@@ -36,8 +36,8 @@ export function ImpactNumbers() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
-          <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-primary">
-            Our Impact in Numbers
+          <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-black">
+            Our Impact <span className="text-primary">in Numbers</span>
           </h2>
           {/* <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Measurable results that demonstrate our commitment to excellence

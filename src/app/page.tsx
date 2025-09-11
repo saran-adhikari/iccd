@@ -4,7 +4,7 @@ import { TrustedPartners } from "@/app-components/trusted-partners"
 import { CoreValues } from "@/app-components/core-values"
 import { WhoWeAre } from "@/app-components/who-we-are"
 import { ImpactNumbers } from "@/app-components/impact-numbers"
-import { FeaturedProgram } from "@/app-components/featured-program"
+import FeaturedProgram from "@/app-components/featured-program"
 import { CTAStrip } from "@/app-components/cta-strip"
 import { Footer } from "@/app-components/footer"
 

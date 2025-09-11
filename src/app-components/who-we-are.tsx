@@ -3,20 +3,24 @@
 import { Button } from "@/app-components/ui/button"
 import { ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
+import Link from "next/link"
+
+const fadeInRight = { hidden: { opacity: 0, x: 40 }, visible: { opacity: 1, x: 0, transition: { duration: 0.6, delay: 0.2 } } }
+const fadeInLeft  = { hidden: { opacity: 0, x: -40 }, visible: { opacity: 1, x: 0, transition: { duration: 0.6 } } }
 
 export function WhoWeAre() {
   return (
-    <section className="relative py-20 ">
+    <section className="relative py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          
+
           {/* Content */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
             className="space-y-6"
+            variants={fadeInRight}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
           >
             <div>
               <h2 className="text-4xl font-bold text-primary mb-4 relative inline-block">
@@ -42,27 +46,28 @@ export function WhoWeAre() {
               </div>
             </div>
 
-            <Button
-              className="bg-black hover:bg-primary/90 text-primary-foreground cursor-pointer"
-              onClick={() => (window.location.href = "/about")}
-            >
-              READ MORE
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+            <Link href="/about">
+              <Button className="bg-black hover:bg-primary/90 text-primary-foreground cursor-pointer">
+                READ MORE
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
           </motion.div>
 
           {/* Image */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            className="relative group rounded-2xl overflow-hidden shadow-xl"
+            variants={fadeInLeft}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
-            className="relative group"
+            whileHover={{ scale: 1.03 }}
           >
             <img
+              loading="lazy"
               src="https://i.pinimg.com/1200x/ab/80/69/ab8069647dc1033b87312b955db3b123.jpg"
               alt="ICCD team and training environment"
-              className="w-full h-full object-cover rounded-2xl shadow-xl transform transition-transform duration-500"
+              className="w-full h-full object-cover rounded-2xl"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent rounded-2xl"></div>
           </motion.div>

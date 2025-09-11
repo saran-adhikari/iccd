@@ -1,29 +1,10 @@
 "use client"
 
-import { useEffect, useState } from "react"
+
+import { motion } from "framer-motion"
 import { Button } from "@/app-components/ui/button"
-import { ArrowRight, Play } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 
-function CountUp({ end, duration = 2000 }: { end: number; duration?: number }) {
-  const [count, setCount] = useState(0)
-
-  useEffect(() => {
-    let start = 0
-    const increment = end / (duration / 16) // ~60fps
-    const step = () => {
-      start += increment
-      if (start < end) {
-        setCount(Math.floor(start))
-        requestAnimationFrame(step)
-      } else {
-        setCount(end)
-      }
-    }
-    requestAnimationFrame(step)
-  }, [end, duration])
-
-  return <span>{count}+</span>
-}
 
 export function HeroSection() {
   return (
@@ -31,8 +12,23 @@ export function HeroSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           {/* Content */}
-          <div className="space-y-6 max-w-2xl">
-            <div className="space-y-4">
+          <motion.div
+            className="space-y-6 max-w-2xl"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0, y: 40 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.8, staggerChildren: 0.2 },
+              },
+            }}
+          >
+            <motion.div
+              className="space-y-4"
+              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+            >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-balance">
                 <span className="text-primary">Empowering</span> Professionals,{" "}
                 <span className="text-primary">Elevating</span> Institutions
@@ -41,31 +37,34 @@ export function HeroSection() {
                 Leading the way in AML, ESG, Risk Management, and Leadership training. Building stronger compliance
                 frameworks for financial institutions worldwide.
               </p>
-            </div>
+            </motion.div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4"
+              variants={{
+                hidden: { opacity: 0, scale: 0.9 },
+                visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } },
+              }}
+            >
               <Button size="lg" className="bg-primary hover:bg-primary/90 text-accent-foreground cursor-pointer">
                 EXPLORE PROGRAMS
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              {/* <Button
-                size="lg"
-                variant="outline"
-                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent cursor-pointer"
-              >
-                <Play className="mr-2 h-5 w-5" />
-                Request Proposal
-              </Button> */}
-            </div>
+            </motion.div>
 
             
-          </div>
+          </motion.div>
 
           {/* Image */}
-          <div className="relative lg:justify-self-end">
+          <motion.div
+            className="relative lg:justify-self-end"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
+          >
             <div className="w-full mx-auto lg:w-[520px] xl:w-[560px]">
-              <div className="rounded-2xl">
+              <div className="rounded-2xl overflow-hidden">
                 <img
                   src="https://i.pinimg.com/736x/68/ff/99/68ff994ce11ed575e0d0f9202e79d5a3.jpg"
                   alt="Professional financial training environment"
@@ -73,7 +72,7 @@ export function HeroSection() {
                 />
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
