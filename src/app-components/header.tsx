@@ -27,16 +27,16 @@ export function Header() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
-              <div className="w-30 h-30 bg-none rounded-lg flex items-center">
+              <div className="w-40 h-30 bg-none rounded-lg flex items-center">
                 <Image
-                    src="/Images/Logo/1.png" // update with your logo path
+                    src="/Images/Logo/2.png" // update with your logo path
                     alt="ICCD Logo"
                     width={100}
                     height={100}
                     className="object-contain"
                   />
               </div>
-              {/* <div className="ml-3">
+              {/* <div className="ml">
                 <div className="text-xl font-bold text-primary">ICCD</div>
                 <div className="text-xs text-muted-foreground">International Centre for Compliance & Development</div>
               </div> */}
