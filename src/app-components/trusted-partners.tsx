@@ -12,34 +12,36 @@ export function TrustedPartners() {
   ]
 
   return (
-    <section className="py-16 bg-muted/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-primary mb-4">
+    <section className="py-8 md:py-4">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-6">
+          <h2 className="text-xl sm:text-2xl font-light text-primary mb-2">
             Trusted by Leading Financial Institutions
           </h2>
-          <p className="text-muted-foreground text-lg">
+          {/* <p className="text-muted-foreground text-sm sm:text-base">
             Partnering with banks and institutions worldwide to strengthen compliance frameworks
-          </p>
+          </p> */}
         </div>
 
-        {/* Marquee container */}
-        <div className="overflow-hidden relative">
-          <div className="flex space-x-8 animate-marquee">
-            {[...partners, ...partners].map((partner, i) => (
-              <div
-                key={partner.name + i}
-                className="flex items-center justify-center p-2 flex-shrink-0"
-              >
-                <Image
-                  src={partner.logo || "/placeholder.svg"}
-                  alt={`${partner.name} logo`}
-                  width={150}
-                  height={80}
-                  className="object-contain opacity-70 hover:opacity-100 transition duration-200 cursor-pointer"
-                />
-              </div>
-            ))}
+        {/* Compact marquee container */}
+        <div className="overflow-hidden relative h-14 sm:h-16 md:h-20">
+          <div className="absolute inset-0 flex items-center">
+            <div className="flex items-center gap-6 md:gap-8 animate-marquee">
+              {[...partners, ...partners].map((partner, i) => (
+                <div
+                  key={partner.name + i}
+                  className="flex items-center justify-center px-2 flex-shrink-0"
+                >
+                  <Image
+                    src={partner.logo || "/placeholder.svg"}
+                    alt={`${partner.name} logo`}
+                    width={160}
+                    height={80}
+                    className="object-contain w-auto h-8 sm:h-10 md:h-12 opacity-70 hover:opacity-100 transition duration-200 cursor-pointer"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

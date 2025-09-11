@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 
 export function WhoWeAre() {
   return (
-    <section className="relative py-20 bg-gradient-to-r from-background via-background to-primary/5">
+    <section className="relative py-20 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           

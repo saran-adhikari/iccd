@@ -4,9 +4,9 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* ICCD Color System */
+  /* Bank Institute Color System */
   --background: oklch(1 0 0); /* White */
-  --foreground: oklch(0.2 0.03 30); /* Neutral dark brown/gray */
+  --foreground: oklch(0.2 0.03 30); /* Neutral dark gray */
 
   --card: oklch(0.98 0.01 30);
   --card-foreground: oklch(0.2 0.03 30);
@@ -14,41 +14,41 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.2 0.03 30);
 
-  --primary: #9D2C2C; /* Deep ICCD Red */
+  --primary: #004047; /* Deep Institutional Teal */
   --primary-foreground: #ffffff;
 
-  --secondary: #B37B3A; /* Warm earthy orange/brown */
+  --secondary: #556B73; /* Muted gray-blue */
   --secondary-foreground: #ffffff;
 
   --muted: oklch(0.95 0.01 30);
   --muted-foreground: oklch(0.45 0.02 30);
 
-  --accent: #6E6B45; /* Olive Green */
+  --accent: #7AA5A9; /* Subtle teal accent */
   --accent-foreground: #ffffff;
 
-  --destructive: #B9472C; /* Bright red/orange */
+  --destructive: #B9472C; /* Professional muted red */
   --destructive-foreground: #ffffff;
 
   --border: oklch(0.88 0.01 30);
   --input: oklch(0.96 0.01 30);
-  --ring: #9D2C2C;
+  --ring: #004047;
 
-  --chart-1: #9D2C2C;
-  --chart-2: #B37B3A;
-  --chart-3: #6E6B45;
-  --chart-4: #DDAA50;
-  --chart-5: #5A4032;
+  --chart-1: #004047;
+  --chart-2: #556B73;
+  --chart-3: #7AA5A9;
+  --chart-4: #99B9BC;
+  --chart-5: #2C5D63;
 
   --radius: 0.625rem;
 
   --sidebar: oklch(0.98 0.01 30);
   --sidebar-foreground: oklch(0.2 0.03 30);
-  --sidebar-primary: #9D2C2C;
+  --sidebar-primary: #004047;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #6E6B45;
+  --sidebar-accent: #7AA5A9;
   --sidebar-accent-foreground: #ffffff;
   --sidebar-border: oklch(0.88 0.01 30);
-  --sidebar-ring: #9D2C2C;
+  --sidebar-ring: #004047;
 }
 
 .dark {
@@ -61,16 +61,16 @@
   --popover: oklch(0.15 0.02 30);
   --popover-foreground: oklch(0.95 0.01 95);
 
-  --primary: #E05B5B; /* Brighter red for dark mode */
-  --primary-foreground: #150707;
+  --primary: #007080; /* Brighter teal for dark mode */
+  --primary-foreground: #ffffff;
 
-  --secondary: #C8925A;
+  --secondary: #6A8289; 
   --secondary-foreground: #150707;
 
   --muted: oklch(0.25 0.01 30);
   --muted-foreground: oklch(0.75 0.02 95);
 
-  --accent: #8A865C; /* Softer olive in dark */
+  --accent: #88B8BB; /* Softer teal in dark */
   --accent-foreground: #150707;
 
   --destructive: #D36A4A;
@@ -78,22 +78,22 @@
 
   --border: oklch(0.25 0.01 30);
   --input: oklch(0.25 0.01 30);
-  --ring: #E05B5B;
+  --ring: #007080;
 
-  --chart-1: #E05B5B;
-  --chart-2: #C8925A;
-  --chart-3: #8A865C;
-  --chart-4: #E5B970;
-  --chart-5: #9C7C6A;
+  --chart-1: #007080;
+  --chart-2: #6A8289;
+  --chart-3: #88B8BB;
+  --chart-4: #A4CACC;
+  --chart-5: #3C7075;
 
   --sidebar: oklch(0.2 0.01 30);
   --sidebar-foreground: oklch(0.95 0.01 95);
-  --sidebar-primary: #E05B5B;
-  --sidebar-primary-foreground: #150707;
-  --sidebar-accent: #8A865C;
+  --sidebar-primary: #007080;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #88B8BB;
   --sidebar-accent-foreground: #150707;
   --sidebar-border: oklch(0.25 0.01 30);
-  --sidebar-ring: #E05B5B;
+  --sidebar-ring: #007080;
 }
 
 @theme inline {
@@ -153,4 +153,12 @@
   display: flex;
   width: max-content;
   animation: marquee 20s linear infinite;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
 }

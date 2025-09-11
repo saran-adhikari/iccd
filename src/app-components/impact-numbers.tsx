@@ -14,7 +14,7 @@ export function ImpactNumbers() {
           observer.disconnect() // Trigger only once
         }
       },
-      { threshold: 0.3 } // Trigger when 30% is visible
+      { threshold: 0.3 }
     )
 
     if (sectionRef.current) observer.observe(sectionRef.current)
@@ -32,27 +32,31 @@ export function ImpactNumbers() {
   return (
     <section
       ref={sectionRef}
-      className="py-20 bg-black  text-primary-foreground"
+      className="py-24 "
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4">Our Impact in Numbers</h2>
-          <p className="text-xl text-primary-foreground/80 text-pretty">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-primary">
+            Our Impact in Numbers
+          </h2>
+          <p className="text-2xl text-muted-foreground max-w-2xl mx-auto">
             Measurable results that demonstrate our commitment to excellence
           </p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
           {stats.map((stat) => (
             <div key={stat.label} className="text-center">
-              <div className="text-5xl lg:text-6xl font-bold mb-2">
+              <div className="text-6xl lg:text-7xl font-extrabold mb-4 text-primary">
                 {isVisible ? (
                   <CountUp end={stat.number} suffix={stat.suffix} />
                 ) : (
                   "0"
                 )}
               </div>
-              <div className="text-lg text-primary-foreground/80">{stat.label}</div>
+              <div className="text-lg lg:text-xl text-muted-foreground font-medium">
+                {stat.label}
+              </div>
             </div>
           ))}
         </div>
