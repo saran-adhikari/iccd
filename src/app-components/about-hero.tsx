@@ -7,11 +7,11 @@ export function AboutHero() {
         <div className="text-center max-w-4xl mx-auto">
           <Badge className="mb-6 bg-accent/10 text-accent border-accent/20">About ICCD</Badge>
           <h1 className="text-4xl lg:text-6xl font-bold text-balance leading-tight mb-6">
-            <span className="text-primary">Uniting Stakeholders</span> to Build a{" "}
-            <span className="text-accent">Stronger AML/CFT Regime</span>
+            <span className="text-black">Uniting Stakeholders</span> to Build a{" "}
+            <span className="text-primary">Stronger AML/CFT Regime</span>
           </h1>
           <p className="text-xl text-muted-foreground text-pretty leading-relaxed">
-            For over a decade, ICCD has been at the forefront of compliance training, bringing together industry
+            ICCD has been at the forefront of compliance training, bringing together industry
             experts, regulatory specialists, and thought leaders to strengthen financial institutions worldwide.
           </p>
         </div>

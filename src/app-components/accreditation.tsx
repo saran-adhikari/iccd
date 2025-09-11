@@ -40,8 +40,8 @@ export function Accreditation() {
     <section className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-primary mb-4">Accreditations & Partnerships</h2>
-          <p className="text-xl text-muted-foreground text-pretty">
+          <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-primary">Accreditations</h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Recognized by leading international bodies and regulatory organizations
           </p>
         </div>
@@ -51,7 +51,7 @@ export function Accreditation() {
           {accreditations.map((item, index) => (
             <div
               key={item.title}
-              className="text-center p-6 rounded-2xl bg-card hover:shadow-md transition-shadow duration-300"
+              className="text-center p-6 rounded-2xl hover:shadow-md transition-shadow duration-300"
             >
               <div className="inline-flex items-center justify-center w-16 h-16 bg-accent/10 rounded-full mb-4">
                 <item.icon className="h-8 w-8 text-accent" />
@@ -63,24 +63,6 @@ export function Accreditation() {
           ))}
         </div>
 
-        {/* International Partnerships */}
-        <div className="text-center">
-          <h3 className="text-2xl font-bold text-primary mb-8">International Partnerships</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {partnerships.map((partner, index) => (
-              <div
-                key={partner.name}
-                className="flex items-center justify-center p-6 bg-card rounded-lg hover:shadow-md transition-shadow duration-300"
-              >
-                <img
-                  src={partner.logo || "/placeholder.svg"}
-                  alt={`${partner.name} logo`}
-                  className="max-h-16 w-auto opacity-70 hover:opacity-100 transition-opacity duration-200"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   )

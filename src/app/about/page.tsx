@@ -13,7 +13,7 @@ export default function AboutPage() {
     <main className="min-h-screen">
       <Header />
       <AboutHero />
-      <AboutStory />
+      {/* <AboutStory /> */}
       <MissionVision />
       <LeadershipTeam />
       <Testimonials />

@@ -10,7 +10,7 @@ export function Testimonials() {
       role: "Chief Compliance Officer",
       company: "Global Banking Corp",
       rating: 5,
-      image: "/placeholder.svg?key=testimonial1",
+      image: "https://i.pinimg.com/736x/a9/67/27/a96727d343d319c458c757cef37a1379.jpg",
     },
     {
       quote:
@@ -19,27 +19,27 @@ export function Testimonials() {
       role: "Risk Management Director",
       company: "International Finance Ltd",
       rating: 5,
-      image: "/placeholder.svg?key=testimonial2",
+      image: "https://i.pinimg.com/736x/6c/c5/19/6cc519f013abcf2ad6168a126ee877db.jpg",
     },
     {
       quote:
         "Outstanding training delivery and content. ICCD's programs are now an integral part of our staff development initiatives.",
-      author: "Dr. Fatima Al-Rashid",
+      author: "Dr. Fatim Al-Rashid",
       role: "Head of Learning & Development",
       company: "Middle East Banking Group",
       rating: 5,
-      image: "/placeholder.svg?key=testimonial3",
+      image: "https://i.pinimg.com/1200x/11/64/93/116493296260208f256202748cbbccc2.jpg",
     },
   ]
 
   return (
-    <section className="py-20 bg-muted/30">
+    <section className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-primary mb-4">What Our Partners Say</h2>
-          <p className="text-xl text-muted-foreground text-pretty">
+          <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-primary">What Our Partners Say</h2>
+          {/* <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Trusted by compliance professionals and institutions worldwide
-          </p>
+          </p> */}
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
@@ -64,7 +64,7 @@ export function Testimonials() {
                   <img
                     src={testimonial.image || "/placeholder.svg"}
                     alt={testimonial.author}
-                    className="w-12 h-12 rounded-full object-cover mr-4"
+                    className="w-12 h-12 rounded-full object-contain mr-4"
                   />
                   <div>
                     <div className="font-semibold text-primary">{testimonial.author}</div>

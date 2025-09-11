@@ -39,9 +39,9 @@ export function ImpactNumbers() {
           <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-primary">
             Our Impact in Numbers
           </h2>
-          <p className="text-2xl text-muted-foreground max-w-2xl mx-auto">
+          {/* <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Measurable results that demonstrate our commitment to excellence
-          </p>
+          </p> */}
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">

@@ -9,7 +9,7 @@ export function CTAStrip() {
           <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-balance text-primary">
             Build Your Brand <br /> Customize Training Solutions
           </h2>
-          <p className="text-2xl mb-10 text-pretty max-w-3xl mx-auto text-muted-foreground">
+          <p className="text-xl mb-10 text-pretty max-w-3xl mx-auto text-muted-foreground">
             Partner with ICCD to develop tailored training programs that align with your
             institution&apos;s specific needs and regulatory requirements.
           </p>
