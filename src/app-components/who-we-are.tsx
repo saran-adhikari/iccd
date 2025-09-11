@@ -10,22 +10,6 @@ export function WhoWeAre() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           
-          {/* Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="relative group"
-          >
-            <img
-              src="https://i.pinimg.com/1200x/ab/80/69/ab8069647dc1033b87312b955db3b123.jpg"
-              alt="ICCD team and training environment"
-              className="w-full h-full object-cover rounded-2xl shadow-xl transform transition-transform duration-500 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent rounded-2xl"></div>
-          </motion.div>
-
           {/* Content */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
@@ -66,6 +50,23 @@ export function WhoWeAre() {
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </motion.div>
+
+          {/* Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="relative group"
+          >
+            <img
+              src="https://i.pinimg.com/1200x/ab/80/69/ab8069647dc1033b87312b955db3b123.jpg"
+              alt="ICCD team and training environment"
+              className="w-full h-full object-cover rounded-2xl shadow-xl transform transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent rounded-2xl"></div>
+          </motion.div>
+
         </div>
       </div>
     </section>
