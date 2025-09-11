@@ -38,6 +38,61 @@ function getFeaturedPrograms() {
       ],
     },
     {
+      badge: "Featured Program",
+      title: "ESG & Sustainability Training",
+      subtitle: "Comprehensive ESG Training",
+      description:
+        "Master Environmental, Social, and Governance frameworks with our comprehensive training program designed for modern financial institutions.",
+      stats: [
+        { icon: Clock, label: "Duration", value: "5 Days" },
+        { icon: Users, label: "Max Participants", value: "20" },
+        { icon: Award, label: "Certification", value: "Certified" },
+      ],
+      outcomes: [
+        "ESG risk assessment and management frameworks",
+        "Sustainable finance regulations and compliance",
+        "ESG reporting and disclosure requirements",
+        "Integration of ESG factors in investment decisions",
+      ],
+      cta: { label: "Request Program Details", href: "/contact" },
+      image: {
+        src: "https://i.pinimg.com/736x/76/aa/9a/76aa9ab4c6455e367f512e6fb57f4e63.jpg",
+        alt: "ESG Training Workshop",
+      },
+      orbitDots: [
+        "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=150&q=60",
+        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=150&q=60",
+        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=150&q=60",
+      ],
+    },
+    {
+      badge: "New Arrival",
+      title: "AI in Finance Bootcamp",
+      subtitle: "AI-Driven Financial Innovation",
+      description:
+        "Explore machine learning and generative AI for risk management, fraud detection and predictive analytics.",
+      stats: [
+        { icon: Clock, label: "Duration", value: "4 Days" },
+        { icon: Users, label: "Max Participants", value: "25" },
+        { icon: BookOpen, label: "Projects", value: "3 Live" },
+      ],
+      outcomes: [
+        "Build ML models for credit scoring",
+        "Automate compliance with AI",
+        "Integrate LLMs into risk monitoring",
+      ],
+      cta: { label: "Reserve Seat", href: "/ai-bootcamp" },
+      image: {
+        src: "https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=900&q=65",
+        alt: "AI Finance Bootcamp",
+      },
+      orbitDots: [
+        "https://images.unsplash.com/photo-1581093588401-2fe9b3c1517d?auto=format&fit=crop&w=150&q=60",
+        "https://images.unsplash.com/photo-1612197527219-11b629c83274?auto=format&fit=crop&w=150&q=60",
+        "https://images.unsplash.com/photo-1604079628042-bec98ec2cb52?auto=format&fit=crop&w=150&q=60",
+      ],
+    },
+    {
       badge: "New Arrival",
       title: "AI in Finance Bootcamp",
       subtitle: "AI-Driven Financial Innovation",
