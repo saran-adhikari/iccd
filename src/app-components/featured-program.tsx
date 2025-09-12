@@ -17,6 +17,7 @@ import {
   GraduationCap,
   Globe2,
   Building2,
+  Handshake,
 } from "lucide-react"
 import { programData, type Program } from "../lib/programs"
 
@@ -40,9 +41,9 @@ function iconForProgram(p: MinimalProgram, i: number): IconType {
     "ESG & Sustainability": Leaf,
     "Risk & Compliance": ShieldCheck,
     "Fraud & Forensics": BarChart3,
-    "Service Excellence": GraduationCap,
+    "Service Excellence": Handshake,
     "Global": Globe2,
-    "Risk & Finance": Building2,
+    "Risk & Finance": ShieldCheck,
   }
   const fallbacks: IconType[] = [Leaf, ShieldCheck, BarChart3, GraduationCap, Globe2, Building2]
   return byCategory[p.category] ?? fallbacks[i % fallbacks.length]
