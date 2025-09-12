@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import { motion } from "framer-motion"
 
 export function TrustedPartners() {
   const partners = [
@@ -14,17 +15,36 @@ export function TrustedPartners() {
   return (
     <section className="py-8 md:py-4">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-6">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 0.8,      // how long the pop lasts
+            delay: 1,         // delay (seconds) before pop starts
+            ease: "easeOut",
+          }}
+          className="text-center mb-6"
+        >
           <h2 className="text-xl sm:text-2xl font-light text-primary mb-2">
             Trusted by Leading Financial Institutions
           </h2>
+          {/* optional sub-text if needed */}
           {/* <p className="text-muted-foreground text-sm sm:text-base">
             Partnering with banks and institutions worldwide to strengthen compliance frameworks
           </p> */}
-        </div>
+        </motion.div>
 
         {/* Compact marquee container */}
-        <div className="overflow-hidden relative h-14 sm:h-16 md:h-20">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 0.8,
+            delay: 2.5,    // matches the heading delay so the whole block “pops up” together
+            ease: "easeOut",
+          }}
+          className="overflow-hidden relative h-14 sm:h-16 md:h-20"
+        >
           <div className="absolute inset-0 flex items-center">
             <div className="flex items-center gap-6 md:gap-8 animate-marquee">
               {[...partners, ...partners].map((partner, i) => (
@@ -43,7 +63,7 @@ export function TrustedPartners() {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

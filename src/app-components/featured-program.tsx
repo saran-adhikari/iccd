@@ -1,8 +1,8 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { useMemo, useState, useEffect } from "react"
 import Link from "next/link"
-import { motion } from "framer-motion"
+import { motion, useMotionValue, useTransform, useSpring } from "framer-motion"
 import { Button } from "@/app-components/ui/button"
 import { Badge } from "@/app-components/ui/badge"
 import { Clock, Users, Award, ChevronLeft, ChevronRight } from "lucide-react"
@@ -21,163 +21,176 @@ type MinimalProgram = {
   outcomes: string[]
 }
 
-export default function FeaturedProgram() {
-  const programs = useMemo<MinimalProgram[]>(() =>
-    programData.map((p: Program) => ({
-      id: p.id,
-      slug: p.slug,
-      title: p.title,
-      summary: p.summary,
-      category: p.category,
-      durationDays: p.durationDays,
-      maxParticipants: p.maxParticipants,
-      certification: p.certification,
-      cover: p.images.cover,
-      outcomes: p.learningOutcomes.slice(0, 3),
-    }))
-  , [])
+/** Mouse-driven parallax background (safe, no overflow) */
+function ParallaxImage({ src, alt }: { src: string; alt: string }) {
+  const mx = useMotionValue(0)
+  const my = useMotionValue(0)
 
-  const [index, setIndex] = useState(0)
-  if (!programs.length) return null
+  // Subtle pixel offsets; springs keep it smooth
+  const x = useSpring(useTransform(mx, [-1, 1], [-24, 24]), { stiffness: 120, damping: 18, mass: 0.4 })
+  const y = useSpring(useTransform(my, [-1, 1], [-14, 14]), { stiffness: 120, damping: 18, mass: 0.4 })
+  // Slight overscale so edges never show even at max offset
+  const scale = useSpring(1.12, { stiffness: 120, damping: 20, mass: 0.45 })
 
-  const program = programs[index]
-  const detailsHref = `/programs/${program.slug}`
-
-  const box = 520
-  const main = 460
-  const radius = box / 2 - 10
-  const cx = box / 2
-  const cy = box / 2
-  const planetSize = 64
-
-  const orbitItems = programs
-    .map((p, i) => ({ src: p.cover, alt: p.title, target: i, slug: p.slug }))
-    .filter((o) => o.target !== index)
-    .slice(0, 4)
-
-  const stats = [
-    { icon: Clock, value: `${program.durationDays} day${program.durationDays > 1 ? "s" : ""}` },
-    { icon: Users, value: `${program.maxParticipants} max` },
-    { icon: Award, value: program.certification },
-  ]
+  useEffect(() => {
+    const onMove = (e: MouseEvent) => {
+      const w = window.innerWidth || 1
+      const h = window.innerHeight || 1
+      // normalize to [-1, 1]
+      const nx = (e.clientX / w) * 2 - 1
+      const ny = (e.clientY / h) * 2 - 1
+      mx.set(nx)
+      my.set(ny)
+    }
+    window.addEventListener("mousemove", onMove, { passive: true })
+    return () => window.removeEventListener("mousemove", onMove)
+  }, [mx, my])
 
   return (
-    <section className="relative overflow-hidden py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left content */}
-          <div className="space-y-8">
-            <Badge className="bg-accent/10 text-accent border-accent/20">{program.category}</Badge>
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <motion.img
+        src={src}
+        alt={alt}
+        className="w-[110%] h-[110%] object-cover will-change-transform"
+        style={{ x, y, scale }}
+        initial={{ opacity: 0.85 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.35 }}
+      />
+    </div>
+  )
+}
 
-            <Link href={detailsHref} className="block group">
-              <h2 className="text-4xl font-bold text-primary group-hover:underline">{program.title}</h2>
-            </Link>
+export default function FeaturedProgram() {
+  const [index, setIndex] = useState(0)
 
-            <p className="text-xl text-muted-foreground max-w-xl">{program.summary}</p>
+  const programs = useMemo<MinimalProgram[]>(
+    () =>
+      programData.slice(0, 3).map((p: Program) => ({
+        id: p.id,
+        slug: p.slug,
+        title: p.title,
+        summary: p.summary,
+        category: p.category,
+        durationDays: p.durationDays,
+        maxParticipants: p.maxParticipants,
+        certification: p.certification,
+        cover: p.images.cover,
+        outcomes: p.learningOutcomes.slice(0, 3),
+      })),
+    []
+  )
 
-            <div className="grid grid-cols-3 gap-4 pt-2">
-              {stats.map((s, i) => {
-                const Icon = s.icon
-                return (
-                  <div key={i} className="flex items-center gap-2">
-                    <Icon className="h-6 w-6 text-accent" />
-                    <span className="text-sm">{s.value}</span>
+  const len = programs.length
+  const next = () => setIndex((i) => (i + 1) % len)
+  const prev = () => setIndex((i) => (i - 1 + len) % len)
+  if (!len) return null
+
+  return (
+    <section className="w-full max-w-[100vw] overflow-x-hidden bg-black/90">
+      <div className="relative w-full h-[90svh] overflow-hidden">
+        {/* Slides rail (full width, no overflow) */}
+        <div
+          className="flex w-full h-full"
+          style={{
+            transform: `translateX(-${index * 100}%)`,
+            transition: "transform 500ms ease",
+          }}
+        >
+          {programs.map((program) => {
+            const detailsHref = `/programs/${program.slug}`
+            const stats = [
+              { icon: Clock, value: `${program.durationDays} day${program.durationDays > 1 ? "s" : ""}` },
+              { icon: Users, value: `${program.maxParticipants} max` },
+              { icon: Award, value: program.certification },
+            ]
+
+            return (
+              <div
+                key={program.id}
+                className="basis-full shrink-0 grow-0 h-[90svh] relative flex items-center justify-center"
+              >
+                {/* Parallax background (wrapped to avoid horizontal overflow) */}
+                <ParallaxImage src={program.cover} alt={program.title} />
+                <div className="absolute inset-0 bg-black/60" />
+
+                {/* Centered foreground */}
+                <motion.div
+                  key={program.id + "-fg"}
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45 }}
+                  className="relative z-10 text-center text-white px-6 max-w-4xl mx-auto"
+                >
+                  <Badge className="bg-accent/20 text-accent border-accent/30">
+                    {program.category}
+                  </Badge>
+
+                  <h2 className="mt-6 text-4xl md:text-5xl font-bold">{program.title}</h2>
+
+                  <p className="mt-4 text-lg text-gray-200">{program.summary}</p>
+
+                  <div className="mt-6 flex justify-center gap-8">
+                    {stats.map((s, i) => {
+                      const Icon = s.icon
+                      return (
+                        <div key={i} className="flex items-center gap-2">
+                          <Icon className="h-6 w-6 text-accent" />
+                          <span className="text-sm">{s.value}</span>
+                        </div>
+                      )
+                    })}
                   </div>
-                )
-              })}
-            </div>
 
-            {program.outcomes.length > 0 && (
-              <div>
-                <h4 className="font-semibold text-primary mb-3">Key learning outcomes</h4>
-                <ul className="space-y-2 text-muted-foreground">
-                  {program.outcomes.map((item, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <div className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                 {program.outcomes.length > 0 && (
+                    <ul className="mt-6 space-y-3 text-gray-300 text-sm max-w-xl mx-auto text-center list-none">
+                      {program.outcomes.map((item, i) => (
+                        <li key={i}>{item}</li>
+                      ))}
+                    </ul>
+                  )}
+
+
+                  <Button asChild className="mt-6 bg-primary hover:bg-primary/90 text-accent-foreground">
+                    <Link href={detailsHref}>View details</Link>
+                  </Button>
+                </motion.div>
               </div>
-            )}
+            )
+          })}
+        </div>
 
-            <Button asChild className="bg-primary hover:bg-primary/90 text-accent-foreground">
-              <Link href={detailsHref}>View details</Link>
-            </Button>
-          </div>
+        {/* Navigation buttons */}
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-between px-4">
+          <button
+            aria-label="Previous program"
+            onClick={prev}
+            className="pointer-events-auto inline-flex items-center justify-center rounded-full bg-black/50 hover:bg-black/70 backdrop-blur px-4 py-4 ring-1 ring-white/20 transition"
+          >
+            <ChevronLeft className="h-6 w-6 text-white cursor-pointer" />
+          </button>
 
-          {/* Orbit cluster */}
-          <div className="relative flex justify-end">
-            <div className="relative" style={{ width: box, height: box }}>
-              {/* rotating border */}
-              <motion.div
-                className="absolute inset-0 rounded-full border-2 border-accent/30"
-                animate={{ rotate: 360 }}
-                transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
-              />
+          <button
+            aria-label="Next program"
+            onClick={next}
+            className="pointer-events-auto inline-flex items-center justify-center rounded-full bg-black/50 hover:bg-black/70 backdrop-blur px-4 py-4 ring-1 ring-white/20 transition"
+          >
+            <ChevronRight className="h-6 w-6 text-white cursor-pointer" />
+          </button>
+        </div>
 
-              {/* main image */}
-              <Link href={detailsHref} className="absolute inset-0 flex items-center justify-center">
-                <motion.img
-                  key={program.cover}
-                  src={program.cover}
-                  alt={program.title}
-                  className="rounded-full shadow-2xl border-4 border-background object-cover cursor-pointer"
-                  style={{ width: main, height: main }}
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 0.95, opacity: 1 }}
-                  transition={{ type: "spring", stiffness: 70, damping: 16 }}
-                />
-              </Link>
-
-              {/* orbiting thumbs */}
-                {orbitItems.map((item, i) => {
-                  const angle = (i / orbitItems.length) * 2 * Math.PI
-                  const x = cx + radius * Math.cos(angle)
-                  const y = cy + radius * Math.sin(angle)
-                  
-                  return (
-                    <motion.img
-                      key={item.src}
-                      src={item.src}
-                      alt={item.alt}
-                      className="absolute rounded-full border-2 border-background shadow-md object-cover cursor-pointer hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent transition-transform"
-                      style={{
-                        left: x - planetSize / 2,
-                        top: y - planetSize / 2,
-                        width: planetSize,
-                        height: planetSize,
-                      }}
-                      initial={{ scale: 0.8, opacity: 0 }}
-                      animate={{ scale: 0.95, opacity: 1, y: [0, -6, 0] }}
-                      transition={{
-                        type: "tween",
-                        repeat: Infinity,
-                        repeatType: "loop",
-                        duration: 3 + i,
-                      }}
-                      onClick={() => setIndex(item.target)} // <--- update index on click
-                    />
-                  )
-                })}
-
-              {/* navigation arrows */}
-              <button
-                onClick={() => setIndex((index - 1 + programs.length) % programs.length)}
-                className="absolute left-[-70px] top-1/2 -translate-y-1/2 p-3 rounded-full bg-accent/10 hover:bg-accent/20 transition"
-                aria-label="Previous program"
-              >
-                <ChevronLeft className="w-6 h-6 text-accent" />
-              </button>
-              <button
-                onClick={() => setIndex((index + 1) % programs.length)}
-                className="absolute right-[-70px] top-1/2 -translate-y-1/2 p-3 rounded-full bg-accent/10 hover:bg-accent/20 transition"
-                aria-label="Next program"
-              >
-                <ChevronRight className="w-6 h-6 text-accent" />
-              </button>
-            </div>
-          </div>
+        {/* Dots */}
+        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2">
+          {programs.map((_, i) => (
+            <button
+              key={i}
+              aria-label={`Go to slide ${i + 1}`}
+              onClick={() => setIndex(i)}
+              className={`h-3 w-3 rounded-full transition ${
+                i === index ? "bg-white" : "bg-white/40 hover:bg-white/70"
+              }`}
+            />
+          ))}
         </div>
       </div>
     </section>

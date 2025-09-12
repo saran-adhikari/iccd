@@ -68,7 +68,7 @@ export const programData: Program[] = [
       lastUpdated: "2025-09-11",
       tags: ["ESG", "Green Taxonomy", "Nepal", "Sustainability"],
       images: {
-        cover: "https://i.pinimg.com/736x/dd/45/cb/dd45cb565575ea3808cdb3d68a02aade.jpg",
+        cover: "https://i.pinimg.com/736x/96/2d/6e/962d6ef4668975e166236d12e6891e17.jpg",
         icon: "leaf",
       },
       language: "English",
@@ -101,7 +101,7 @@ export const programData: Program[] = [
       location: "Kathmandu or Virtual",
       lastUpdated: "2025-09-11",
       tags: ["AML", "CFT", "NRB", "FATF"],
-      images: { cover: "https://i.pinimg.com/736x/dd/45/cb/dd45cb565575ea3808cdb3d68a02aade.jpg", icon: "shield" },
+      images: { cover: "https://i.pinimg.com/736x/0d/b0/40/0db0407dfa36df50e776823a31405763.jpg", icon: "shield" },
       language: "English",
     },
     {
@@ -135,7 +135,7 @@ export const programData: Program[] = [
       location: "Onsite at Bank / Kathmandu",
       lastUpdated: "2025-09-11",
       tags: ["Fraud", "Forensics", "Operations"],
-      images: { cover: "https://i.pinimg.com/736x/dd/45/cb/dd45cb565575ea3808cdb3d68a02aade.jpg", icon: "scan-line" },
+      images: { cover: "https://i.pinimg.com/736x/a4/92/36/a49236c47100f56228606d878cf47f50.jpg", icon: "scan-line" },
       language: "English",
     },
     {
@@ -166,7 +166,7 @@ export const programData: Program[] = [
       location: "Kathmandu or Virtual",
       lastUpdated: "2025-09-11",
       tags: ["Customer Service", "CX", "Hospitality"],
-      images: { cover: "https://i.pinimg.com/736x/dd/45/cb/dd45cb565575ea3808cdb3d68a02aade.jpg", icon: "smile" },
+      images: { cover: "https://i.pinimg.com/736x/c0/d0/fa/c0d0fa2b1a2b46e67ad0153ad2cca4fa.jpg", icon: "smile" },
       language: "English",
     },
     {
@@ -196,7 +196,7 @@ export const programData: Program[] = [
       location: "Kathmandu or Virtual",
       lastUpdated: "2025-09-11",
       tags: ["ESG", "Climate Finance", "Disclosure"],
-      images: { cover: "https://i.pinimg.com/736x/dd/45/cb/dd45cb565575ea3808cdb3d68a02aade.jpg", icon: "globe" },
+      images: { cover: "https://i.pinimg.com/736x/be/27/13/be271365d3b69e2ffb0fc0c12280c2a7.jpg", icon: "globe" },
       language: "English",
     },
     {
@@ -227,7 +227,7 @@ export const programData: Program[] = [
       location: "Kathmandu or Virtual",
       lastUpdated: "2025-09-11",
       tags: ["Risk", "IFRS 9", "ECL", "NRB"],
-      images: { cover: "https://i.pinimg.com/736x/dd/45/cb/dd45cb565575ea3808cdb3d68a02aade.jpg", icon: "trending-up" },
+      images: { cover: "https://i.pinimg.com/1200x/4f/ee/b9/4feeb93f025c0ed9b200e5cc02f16b8d.jpg", icon: "trending-up" },
       language: "English",
     },
   ]
