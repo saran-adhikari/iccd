@@ -43,7 +43,7 @@ function iconForProgram(p: MinimalProgram, i: number): IconType {
     "Fraud & Forensics": BarChart3,
     "Service Excellence": Handshake,
     "Global": Globe2,
-    "Risk & Finance": ShieldCheck,
+    "Risk & Finance": Building2,
   }
   const fallbacks: IconType[] = [Leaf, ShieldCheck, BarChart3, GraduationCap, Globe2, Building2]
   return byCategory[p.category] ?? fallbacks[i % fallbacks.length]
