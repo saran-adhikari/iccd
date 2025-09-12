@@ -91,7 +91,7 @@ export function CoreValues({ items = defaultItems }: { items?: ValueItem[] }) {
                   </motion.div>
 
                   <div>
-                    <h3 className="text-xl font-semibold text-primary">{item.title}</h3>
+                    <h3 className="text-2xl font-semibold text-primary">{item.title}</h3>
                     <p className="text-base text-muted-foreground mt-2">{item.description}</p>
                   </div>
                 </motion.div>

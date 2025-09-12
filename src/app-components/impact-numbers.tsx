@@ -26,7 +26,7 @@ export function ImpactNumbers() {
     { number: 2500, label: "Trained Professionals", suffix: "+" },
     { number: 85, label: "Partner Institutions", suffix: "+" },
     { number: 25, label: "Training Programs", suffix: "+" },
-    { number: 15, label: "Countries Served", suffix: "+" },
+    // { number: 15, label: "Countries Served", suffix: "+" },
   ]
 
   return (
@@ -37,14 +37,14 @@ export function ImpactNumbers() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
           <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-black">
-            Our Impact <span className="text-accent">in Numbers</span>
+            Our <span className="text-primary">Impact</span>
           </h2>
           {/* <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Measurable results that demonstrate our commitment to excellence
           </p> */}
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-12">
           {stats.map((stat) => (
             <div key={stat.label} className="text-center">
               <div className="text-6xl lg:text-7xl font-extrabold mb-4 text-primary">

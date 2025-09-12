@@ -7,6 +7,7 @@ import { ImpactNumbers } from "@/app-components/impact-numbers"
 import FeaturedProgram from "@/app-components/featured-program"
 import { CTAStrip } from "@/app-components/cta-strip"
 import { Footer } from "@/app-components/footer"
+import WhyICCD from "@/app-components/why-iccd"
 
 export default function HomePage() {
   return (
@@ -16,6 +17,7 @@ export default function HomePage() {
       <TrustedPartners />
       <CoreValues  />
       <WhoWeAre />
+      <WhyICCD/>
       <ImpactNumbers />
       <FeaturedProgram />
       <CTAStrip />
