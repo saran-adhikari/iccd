@@ -1,10 +1,10 @@
 "use client"
 
-
 import { motion } from "framer-motion"
 import { Button } from "@/app-components/ui/button"
 import { ArrowRight } from "lucide-react"
-
+import Image from "next/image"
+import { ReactTyped } from "react-typed"
 
 export function HeroSection() {
   return (
@@ -30,13 +30,18 @@ export function HeroSection() {
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-balance">
-                <span className="text-primary">Empowering</span> Professionals,{" "}
+                <span className="text-primary">
+                  <ReactTyped
+                    strings={["Empowering"]}
+                    typeSpeed={80}
+                    backSpeed={40}
+                    showCursor={true}
+                    loop={false}
+                  />
+                </span>{" "}<br/>
+                Professionals,{" "}
                 <span className="text-primary">Elevating</span> Institutions
               </h1>
-              <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                Leading the way in AML, ESG, Risk Management, and Leadership training. Building stronger compliance
-                frameworks for financial institutions worldwide.
-              </p>
             </motion.div>
 
             {/* CTA Buttons */}
@@ -52,8 +57,6 @@ export function HeroSection() {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </motion.div>
-
-            
           </motion.div>
 
           {/* Image */}
@@ -64,10 +67,12 @@ export function HeroSection() {
             transition={{ duration: 0.9, ease: "easeOut" }}
           >
             <div className="w-full mx-auto lg:w-[520px] xl:w-[560px]">
-              <div className="rounded-2xl overflow-hidden">
-                <img
-                  src="https://i.pinimg.com/736x/68/ff/99/68ff994ce11ed575e0d0f9202e79d5a3.jpg"
+              <div className="overflow-hidden">
+                <Image
+                  src="/Images/puzzle.png"
                   alt="Professional financial training environment"
+                  width={560}
+                  height={420}
                   className="block w-full h-[300px] sm:h-[340px] md:h-[380px] lg:h-[420px] object-cover"
                 />
               </div>

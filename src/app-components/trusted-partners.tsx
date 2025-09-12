@@ -40,7 +40,7 @@ export function TrustedPartners() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{
             duration: 0.8,
-            delay: 2.5,    // matches the heading delay so the whole block “pops up” together
+            delay: 1,    // matches the heading delay so the whole block “pops up” together
             ease: "easeOut",
           }}
           className="overflow-hidden relative h-14 sm:h-16 md:h-20"
