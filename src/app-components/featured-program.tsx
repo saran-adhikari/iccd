@@ -3,7 +3,7 @@
 import { useMemo, useRef, useState } from 'react'
 import type { ComponentType, SVGProps, KeyboardEvent } from 'react'
 import Link from 'next/link'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, type Variants } from 'framer-motion'
 import { Button } from '@/app-components/ui/button'
 import { Badge } from '@/app-components/ui/badge'
 import {
@@ -16,10 +16,6 @@ import {
   Handshake,
 } from 'lucide-react'
 import { programData, type Program } from '../lib/programs'
-
-// -----------------------------
-// Types and icon mapping
-// -----------------------------
 
 type MinimalProgram = {
   id: string
@@ -49,28 +45,18 @@ function iconForProgram(p: MinimalProgram, i: number): IconType {
   return byCategory[p.category] ?? fallbacks[i % fallbacks.length]
 }
 
-// Small helper to decide shortest spin direction on a circular list
+// Decide shortest spin direction on a circular list
 function getDirection(prev: number, next: number, len: number) {
-  const forward = (next - prev + len) % len // steps going forward
-  const backward = (prev - next + len) % len // steps going backward
-  return forward <= backward ? 1 : -1
+  const fwd = (next - prev + len) % len
+  const back = (prev - next + len) % len
+  return fwd <= back ? 1 : -1
 }
 
 export default function FeaturedProgram() {
   const [index, _setIndex] = useState(0)
   const prevIndexRef = useRef(0)
   const [direction, setDirection] = useState<1 | -1>(1)
-  const [ringAngle, setRingAngle] = useState(0) // for the background ring spin
-
-  const setIndex = (nextIdx: number, explicitDir?: 1 | -1) => {
-    setDirection((d) => {
-      const dir = explicitDir ?? (getDirection(prevIndexRef.current, nextIdx, len) as 1 | -1)
-      setRingAngle((a) => a + (dir === 1 ? 40 : -40))
-      prevIndexRef.current = nextIdx
-      _setIndex(nextIdx)
-      return dir
-    })
-  }
+  const [ringAngle, setRingAngle] = useState(0)
 
   const programs = useMemo<MinimalProgram[]>(
     () =>
@@ -92,26 +78,29 @@ export default function FeaturedProgram() {
   const len = programs.length
   if (!len) return null
 
+  const setIndex = (nextIdx: number, explicitDir?: 1 | -1) => {
+    const dir = explicitDir ?? (getDirection(prevIndexRef.current, nextIdx, len) as 1 | -1)
+    setDirection(dir)
+    setRingAngle(a => a + (dir === 1 ? 40 : -40))
+    prevIndexRef.current = nextIdx
+    _setIndex(nextIdx)
+  }
+
   const next = () => setIndex((index + 1) % len, 1)
   const prev = () => setIndex((index - 1 + len) % len, -1)
 
   const onRailKey = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === 'ArrowDown') {
-      e.preventDefault()
-      next()
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault()
-      prev()
-    }
+    if (e.key === 'ArrowDown') { e.preventDefault(); next() }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); prev() }
   }
 
   const current = programs[index]
   const IconBadge = iconForProgram(current, index)
 
-  // 3D flip/revolve variants for the central image circle
-  const revolveVariants = {
-    enter: (dir: 1 | -1) => ({
-      rotateY: dir * 70,
+  // FIX: Strongly type variants and use numeric `custom`
+  const revolveVariants: Variants = {
+    enter: (custom: number = 1) => ({
+      rotateY: custom * 70,
       opacity: 0,
       filter: 'blur(8px)',
       scale: 0.96,
@@ -123,8 +112,8 @@ export default function FeaturedProgram() {
       scale: 1,
       transition: { type: 'spring', stiffness: 260, damping: 24, mass: 0.9 },
     },
-    exit: (dir: 1 | -1) => ({
-      rotateY: -dir * 70,
+    exit: (custom: number = 1) => ({
+      rotateY: -custom * 70,
       opacity: 0,
       filter: 'blur(8px)',
       scale: 0.96,
@@ -132,22 +121,19 @@ export default function FeaturedProgram() {
     }),
   }
 
-  // slight counter-rotation of the image for parallax feel while parent rotates
-  const innerTiltVariants = {
+  const innerTiltVariants: Variants = {
     rest: { rotateZ: 0, scale: 1 },
     hover: { rotateZ: -2, scale: 1.02, transition: { type: 'spring', stiffness: 200, damping: 18 } },
   }
 
   return (
     <section className="w-full mx-auto">
-      {/* Title */}
       <div className="px-6 pt-8">
         <h2 className="text-4xl text-center lg:text-5xl font-extrabold mb-6 leading-tight text-black">
           Our <span className="text-primary">Featured Programs</span>
         </h2>
       </div>
 
-      {/* Layout (full width within container) */}
       <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-2">
         <div className="relative">
           {/* Left icon rail (desktop) */}
@@ -229,18 +215,17 @@ export default function FeaturedProgram() {
                           animate={{ rotate: ringAngle }}
                           transition={{ type: 'spring', stiffness: 80, damping: 20 }}
                         >
-                          {/* four dots around the ring */}
                           <div className="absolute -top-1 left-1/2 -translate-x-1/2 h-2 w-2 rounded-full bg-slate-300" />
                           <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 h-2 w-2 rounded-full bg-slate-300" />
                           <div className="absolute -left-1 top-1/2 -translate-y-1/2 h-2 w-2 rounded-full bg-slate-300" />
                           <div className="absolute -right-1 top-1/2 -translate-y-1/2 h-2 w-2 rounded-full bg-slate-300" />
                         </motion.div>
 
-                        {/* Flash/glare sweep during transitions */}
+                        {/* Flash/glare sweep + revolve */}
                         <AnimatePresence mode="popLayout" initial={false} custom={direction}>
                           <motion.div
                             key={current.id}
-                            className="absolute inset-0 flex items-center justify-center [transform-style:preserve-3d]"
+                            className="absolute inset-0 flex items-center justify-center [transform-style:preserve-3d] transform-gpu"
                             variants={revolveVariants}
                             initial="enter"
                             animate="center"
@@ -250,8 +235,9 @@ export default function FeaturedProgram() {
                             <motion.div
                               variants={innerTiltVariants}
                               initial="rest"
+                              animate="rest"
                               whileHover="hover"
-                              className="relative w-[80%] h-[80%] rounded-full overflow-hidden shadow-2xl transition-all duration-700 ease-in-out border-4 border-white"
+                              className="relative w-[80%] h-[80%] rounded-full overflow-hidden shadow-2xl transition-all duration-700 ease-in-out border-4 border-white transform-gpu [backface-visibility:hidden] [-webkit-backface-visibility:hidden]"
                             >
                               <img
                                 src={current.cover}
@@ -268,7 +254,7 @@ export default function FeaturedProgram() {
                                 aria-hidden
                                 className="pointer-events-none absolute inset-0"
                                 initial={{ opacity: 0 }}
-                                animate={{ opacity: 0.0 }}
+                                animate={{ opacity: 0 }}
                                 exit={{ opacity: 0 }}
                               >
                                 <motion.div
