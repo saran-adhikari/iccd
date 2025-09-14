@@ -7,6 +7,7 @@ import { Testimonials } from "@/app-components/testimonials"
 import { Accreditation } from "@/app-components/accreditation"
 import { CTAStrip } from "@/app-components/cta-strip"
 import { Footer } from "@/app-components/footer"
+import { ImpactNumbers } from "@/app-components/impact-numbers"
 
 export default function AboutPage() {
   return (
@@ -15,6 +16,7 @@ export default function AboutPage() {
       <AboutHero />
       {/* <AboutStory /> */}
       <MissionVision />
+      <ImpactNumbers/>
       <LeadershipTeam />
       <Testimonials />
       <Accreditation />

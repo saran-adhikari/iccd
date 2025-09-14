@@ -18,7 +18,7 @@ export default function HomePage() {
       <CoreValues  />
       <WhoWeAre />
       <WhyICCD/>
-      <ImpactNumbers />
+      {/* <ImpactNumbers /> */}
       <FeaturedProgram />
       <CTAStrip />
       <Footer />

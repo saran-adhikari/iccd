@@ -1,10 +1,31 @@
 "use client"
-
+import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/app-components/ui/button"
 import { ArrowRight } from "lucide-react"
 import Image from "next/image"
 import { ReactTyped } from "react-typed"
+
+function CountUp({ end, duration = 2000 }: { end: number; duration?: number }) {
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    let start = 0
+    const increment = end / (duration / 16) // ~60fps
+    const step = () => {
+      start += increment
+      if (start < end) {
+        setCount(Math.floor(start))
+        requestAnimationFrame(step)
+      } else {
+        setCount(end)
+      }
+    }
+    requestAnimationFrame(step)
+  }, [end, duration])
+
+  return <span>{count}+</span>
+}
 
 export function HeroSection() {
   return (
@@ -57,7 +78,30 @@ export function HeroSection() {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </motion.div>
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-8 pt-8 border-t border-border">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary">
+                  <CountUp end={500} />
+                </div>
+                <div className="text-sm text-muted-foreground">Professionals Trained</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary">
+                  <CountUp end={50} />
+                </div>
+                <div className="text-sm text-muted-foreground">Partner Institutions</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary">
+                  <CountUp end={15} />
+                </div>
+                <div className="text-sm text-muted-foreground">Training Programs</div>
+              </div>
+            </div>
           </motion.div>
+          
+          
 
           {/* Image */}
           <motion.div
