@@ -15,7 +15,7 @@ export function WhoWeAre() {
 
   return (
     <motion.section
-      className="relative py-28 overflow-hidden"
+      className="relative py-8 overflow-hidden mb-24"
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
@@ -28,7 +28,7 @@ export function WhoWeAre() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 items-center">
           {/* LEFT: Big heading + arrow */}
           <motion.div
             initial={{ opacity: 0, x: -24 }}
@@ -45,7 +45,7 @@ export function WhoWeAre() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.7, ease: "easeOut", delay: 0.05 }}
                 >
-                  Who <span className="whitespace-nowrap">We Are</span>
+                  Who <span className="whitespace-nowrap text-black">We Are</span>
                 </motion.h2>
 
                 

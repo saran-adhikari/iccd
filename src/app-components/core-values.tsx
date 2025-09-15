@@ -11,7 +11,7 @@ type ValueItem = {
 }
 
 const defaultItems: ValueItem[] = [
-  { icon: Shield,     title: "Empowering workforce", description: "Developing people who deliver results or Unlocking true power of your people." },
+  { icon: Shield,     title: "Empowering workforce", description: "Developing people who deliver results & true power of your people." },
   { icon: Lightbulb,  title: "Innovative training",  description: "Learning that makes an impact" },
   { icon: TrendingUp, title: "Driving change",       description: "Transforming knowledge into action that shapes lasting growth." },
 ]
@@ -21,9 +21,9 @@ export function CoreValues({ items = defaultItems }: { items?: ValueItem[] }) {
 
   return (
     <section className="py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-2">
         <motion.div
-          className="grid md:grid-cols-2 gap-16 items-center"
+          className="grid md:grid-cols-2 gap-10 items-center"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}

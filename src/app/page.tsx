@@ -20,7 +20,6 @@ export default function HomePage() {
       <WhoWeAre />
       <HeroTrainMyTeam/>
       <WhyICCD/>
-      
       {/* <ImpactNumbers /> */}
       <FeaturedProgram />
       <CTAStrip />
