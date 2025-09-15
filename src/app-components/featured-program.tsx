@@ -131,7 +131,7 @@ export default function FeaturedProgram() {
           Our <span className="text-primary">Featured Programs</span>
         </motion.h2>
         <motion.p
-          className="text-xl text-muted-foreground max-w-2xl mx-auto text-center"
+          className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8 text-center"
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45, ease: 'easeOut', delay: 0.12 }}
