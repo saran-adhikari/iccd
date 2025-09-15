@@ -11,9 +11,9 @@ type ValueItem = {
 }
 
 const defaultItems: ValueItem[] = [
-  { icon: Shield,     title: "Empowering workforce", description: "All our upcoming events!" },
-  { icon: Lightbulb,  title: "Innovative training",  description: "Recommended courses, curated just for you!" },
-  { icon: TrendingUp, title: "Driving change",       description: "How we distinguish from the others to make learning fun!" },
+  { icon: Shield,     title: "Empowering workforce", description: "Developing people who deliver results or Unlocking true power of your people." },
+  { icon: Lightbulb,  title: "Innovative training",  description: "Learning that makes an impact" },
+  { icon: TrendingUp, title: "Driving change",       description: "Transforming knowledge into action that shapes lasting growth." },
 ]
 
 export function CoreValues({ items = defaultItems }: { items?: ValueItem[] }) {
@@ -47,7 +47,7 @@ export function CoreValues({ items = defaultItems }: { items?: ValueItem[] }) {
           </motion.div>
 
           {/* RIGHT side values */}
-          <motion.div className="space-y-8">
+          <motion.div className="space-y-6">
             {items.map((item, i) => {
               const Icon = item.icon
               const dim = hovered !== null && hovered !== i
