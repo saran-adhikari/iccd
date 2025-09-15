@@ -8,6 +8,7 @@ import FeaturedProgram from "@/app-components/featured-program"
 import { CTAStrip } from "@/app-components/cta-strip"
 import { Footer } from "@/app-components/footer"
 import WhyICCD from "@/app-components/why-iccd"
+import HeroTrainMyTeam from "@/app-components/herotrainmyteam"
 
 export default function HomePage() {
   return (
@@ -17,7 +18,9 @@ export default function HomePage() {
       <TrustedPartners />
       <CoreValues  />
       <WhoWeAre />
+      <HeroTrainMyTeam/>
       <WhyICCD/>
+      
       {/* <ImpactNumbers /> */}
       <FeaturedProgram />
       <CTAStrip />
