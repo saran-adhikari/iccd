@@ -8,6 +8,7 @@ import { Accreditation } from "@/app-components/accreditation"
 import { CTAStrip } from "@/app-components/cta-strip"
 import { Footer } from "@/app-components/footer"
 import { ImpactNumbers } from "@/app-components/impact-numbers"
+import CompanyInfo from "@/app-components/company-info"
 
 export default function AboutPage() {
   return (
@@ -19,6 +20,7 @@ export default function AboutPage() {
       <ImpactNumbers/>
       <LeadershipTeam />
       <Testimonials />
+      <CompanyInfo/>
       <Accreditation />
       <CTAStrip />
       <Footer />

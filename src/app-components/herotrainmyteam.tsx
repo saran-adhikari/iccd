@@ -23,7 +23,7 @@ export default function HeroTrainMyTeam() {
 
   return (
     <section
-  className="relative isolate max-w-[80%] mx-auto rounded-3xl overflow-hidden p-8 bg-[url('/Images/bg.png')] bg-cover bg-center bg-no-repeat bg-fixed"
+  className="relative isolate max-w-[80%] mx-auto rounded-3xl overflow-hidden p-8 bg-[url('/Images/Stocks/bg.png')] bg-cover bg-center bg-no-repeat bg-fixed"
   aria-labelledby="hero-title"
 >
   {/* Content */}
@@ -44,7 +44,7 @@ export default function HeroTrainMyTeam() {
           Scale Training Across Your Institution
         </h1>
 
-        <p className=" mt-2 max-w-2xl text-pretty text-base text-white sm:text-lg">
+        <p className="mt-2 max-w-2xl text-pretty text-base text-white sm:text-lg">
           Unlock the full potential of your teams with a comprehensive
           learning program built for compliance, capability and culture.
         </p>

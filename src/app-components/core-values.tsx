@@ -11,8 +11,8 @@ type ValueItem = {
 }
 
 const defaultItems: ValueItem[] = [
-  { icon: Shield,     title: "Empowering workforce", description: "Developing people who deliver results & true power of your people." },
-  { icon: Lightbulb,  title: "Innovative training",  description: "Learning that makes an impact" },
+  { icon: Shield,     title: "Empowering workforce", description: "Developing people who deliver results." },
+  { icon: Lightbulb,  title: "Innovative training",  description: "Learning that makes an impact." },
   { icon: TrendingUp, title: "Driving change",       description: "Transforming knowledge into action that shapes lasting growth." },
 ]
 
