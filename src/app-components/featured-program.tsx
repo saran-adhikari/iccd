@@ -3,7 +3,7 @@
 import { useMemo, useRef, useState } from 'react'
 import type { ComponentType, SVGProps, KeyboardEvent } from 'react'
 import Link from 'next/link'
-import { motion, AnimatePresence, type Variants } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/app-components/ui/button'
 import { Badge } from '@/app-components/ui/badge'
 import {
@@ -16,6 +16,10 @@ import {
   Handshake,
 } from 'lucide-react'
 import { programData, type Program } from '../lib/programs'
+
+// -----------------------------
+// Types and icon mapping
+// -----------------------------
 
 type MinimalProgram = {
   id: string
@@ -57,6 +61,7 @@ export default function FeaturedProgram() {
   const prevIndexRef = useRef(0)
   const [direction, setDirection] = useState<1 | -1>(1)
   const [ringAngle, setRingAngle] = useState(0)
+  const [tilt, setTilt] = useState({ rx: 0, ry: 0 }) // whole-card tilt
 
   const programs = useMemo<MinimalProgram[]>(
     () =>
@@ -81,7 +86,7 @@ export default function FeaturedProgram() {
   const setIndex = (nextIdx: number, explicitDir?: 1 | -1) => {
     const dir = explicitDir ?? (getDirection(prevIndexRef.current, nextIdx, len) as 1 | -1)
     setDirection(dir)
-    setRingAngle(a => a + (dir === 1 ? 40 : -40))
+    setRingAngle((a) => a + (dir === 1 ? 40 : -40))
     prevIndexRef.current = nextIdx
     _setIndex(nextIdx)
   }
@@ -97,41 +102,42 @@ export default function FeaturedProgram() {
   const current = programs[index]
   const IconBadge = iconForProgram(current, index)
 
-  // FIX: Strongly type variants and use numeric `custom`
-  const revolveVariants: Variants = {
-    enter: (custom: number = 1) => ({
-      rotateY: custom * 70,
-      opacity: 0,
-      filter: 'blur(8px)',
-      scale: 0.96,
-    }),
-    center: {
-      rotateY: 0,
-      opacity: 1,
-      filter: 'blur(0px)',
-      scale: 1,
-      transition: { type: 'spring', stiffness: 260, damping: 24, mass: 0.9 },
-    },
-    exit: (custom: number = 1) => ({
-      rotateY: -custom * 70,
-      opacity: 0,
-      filter: 'blur(8px)',
-      scale: 0.96,
-      transition: { duration: 0.28, ease: 'easeIn' },
-    }),
+  // pointer tilt for the entire right visual
+  const handleMouseMove: React.MouseEventHandler<HTMLDivElement> = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    const px = (e.clientX - rect.left) / rect.width // 0..1
+    const py = (e.clientY - rect.top) / rect.height // 0..1
+    const ry = (px - 0.5) * 16 // left/right
+    const rx = -(py - 0.5) * 12 // up/down
+    setTilt({ rx, ry })
   }
 
-  const innerTiltVariants: Variants = {
-    rest: { rotateZ: 0, scale: 1 },
-    hover: { rotateZ: -2, scale: 1.02, transition: { type: 'spring', stiffness: 200, damping: 18 } },
-  }
+  const handleMouseLeave = () => setTilt({ rx: 0, ry: 0 })
 
   return (
-    <section className="w-full mx-auto">
+    <motion.section
+      className="w-full mx-auto"
+      initial={{ opacity: 0, y: 24 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+    >
       <div className="px-6 pt-8">
-        <h2 className="text-4xl text-center lg:text-5xl font-extrabold mb-6 leading-tight text-black">
+        <motion.h2
+          className="text-4xl text-center lg:text-5xl font-extrabold mb-4 leading-tight text-black"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: 'easeOut', delay: 0.05 }}
+        >
           Our <span className="text-primary">Featured Programs</span>
-        </h2>
+        </motion.h2>
+        <motion.p
+          className="text-xl text-muted-foreground max-w-2xl mx-auto text-center"
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, ease: 'easeOut', delay: 0.12 }}
+        >
+          Explore our curated selection of programs designed to empower professionals with the skills and knowledge
+        </motion.p>
       </div>
 
       <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-2">
@@ -161,6 +167,9 @@ export default function FeaturedProgram() {
                       ? 'bg-emerald-600 text-white border-emerald-600 ring-emerald-300'
                       : 'bg-white/70 text-slate-700 border-slate-200 hover:bg-white',
                   ].join(' ')}
+                  initial={{ y: 8, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.35, ease: 'easeOut', delay: i * 0.03 }}
                   whileHover={{ scale: 1.06 }}
                   whileTap={{ scale: 0.96 }}
                 >
@@ -170,14 +179,46 @@ export default function FeaturedProgram() {
             })}
           </div>
 
-          {/* Single panel view */}
-          <div className="w-full overflow-hidden rounded-2xl">
-            <div className="flex w-full">
+          {/* Card shell with subtle breathing & gradient aura */}
+          <motion.div
+            className="w-full overflow-hidden rounded-2xl relative"
+            initial={{ boxShadow: '0 10px 30px rgba(0,0,0,0.06)', scale: 0.995 }}
+            animate={{
+              scale: [0.995, 1, 0.995],
+              boxShadow: [
+                '0 10px 30px rgba(0,0,0,0.06)',
+                '0 14px 40px rgba(16,185,129,0.15)',
+                '0 10px 30px rgba(0,0,0,0.06)'
+              ],
+            }}
+            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+          >
+            <motion.div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 bg-[radial-gradient(1200px_600px_at_80%_20%,rgba(16,185,129,0.08),transparent),radial-gradient(800px_400px_at_10%_80%,rgba(59,130,246,0.06),transparent)]"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
+            />
+
+            <div className="flex w-full relative">
               <div id={`program-panel-${index}`} role="tabpanel" aria-labelledby={current.id} className="basis-full shrink-0 grow-0">
-                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35, ease: 'easeOut' }} className="relative z-10 px-0 py-8 sm:py-0">
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35, ease: 'easeOut' }}
+                  className="relative z-10 px-0 py-8 sm:py-0"
+                >
                   <div className="grid md:grid-cols-2 gap-8 lg:gap-10 items-stretch">
                     {/* LEFT CONTENT */}
-                    <div className="flex flex-col justify-center px-4 sm:px-2 md:pl-20 lg:pl-24">
+                    <motion.div
+                      key={`text-${current.id}`}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.35, ease: 'easeOut' }}
+                      className="flex flex-col justify-center px-4 sm:px-2 md:pl-20 lg:pl-24"
+                    >
                       <Badge variant="secondary" className="bg-emerald-50 text-emerald-700 border border-emerald-100 w-fit">
                         {current.category}
                       </Badge>
@@ -194,12 +235,14 @@ export default function FeaturedProgram() {
                         </ul>
                       )}
 
-                      <Button asChild className="mt-10 w-fit">
-                        <Link href={`/programs/${current.slug}`}>View details</Link>
-                      </Button>
-                    </div>
+                      <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35, ease: 'easeOut', delay: 0.05 }}>
+                        <Button asChild className="mt-10 w-fit">
+                          <Link href={`/programs/${current.slug}`}>View details</Link>
+                        </Button>
+                      </motion.div>
+                    </motion.div>
 
-                    {/* RIGHT: ORBIT IMAGE with REVOLVE TRANSITION */}
+                    {/* RIGHT: ORBIT IMAGE with REVOLVE TRANSITION (no variants) */}
                     <motion.div
                       initial={{ opacity: 0, scale: 0.98 }}
                       animate={{ opacity: 1, scale: 1 }}
@@ -207,13 +250,21 @@ export default function FeaturedProgram() {
                       className="w-full h-full flex items-center justify-center"
                     >
                       {/* Perspective wrapper for 3D effect */}
-                      <div className="group relative w-full aspect-square [perspective:1200px]">
+                      <motion.div
+                        className="group relative w-full aspect-square [perspective:1200px]"
+                        onMouseMove={handleMouseMove}
+                        onMouseLeave={handleMouseLeave}
+                        animate={{ rotateX: tilt.rx, rotateY: tilt.ry }}
+                        transition={{ type: 'spring', stiffness: 120, damping: 18, mass: 0.4 }}
+                        style={{ transformStyle: 'preserve-3d' }}
+                      >
                         {/* Rotating background ring + decorative dots */}
                         <motion.div
                           aria-hidden
                           className="absolute inset-[8%] rounded-full border border-slate-200/70"
-                          animate={{ rotate: ringAngle }}
-                          transition={{ type: 'spring', stiffness: 80, damping: 20 }}
+                          animate={{ rotate: ringAngle, scale: [1, 1.02, 1] }}
+                          transition={{ rotate: { type: 'spring', stiffness: 80, damping: 20 }, scale: { duration: 4, repeat: Infinity, ease: 'easeInOut' } }}
+                          style={{ transformStyle: 'preserve-3d' }}
                         >
                           <div className="absolute -top-1 left-1/2 -translate-x-1/2 h-2 w-2 rounded-full bg-slate-300" />
                           <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 h-2 w-2 rounded-full bg-slate-300" />
@@ -222,21 +273,24 @@ export default function FeaturedProgram() {
                         </motion.div>
 
                         {/* Flash/glare sweep + revolve */}
-                        <AnimatePresence mode="popLayout" initial={false} custom={direction}>
+                        <AnimatePresence mode="popLayout" initial={false}>
                           <motion.div
                             key={current.id}
                             className="absolute inset-0 flex items-center justify-center [transform-style:preserve-3d] transform-gpu"
-                            variants={revolveVariants}
-                            initial="enter"
-                            animate="center"
-                            exit="exit"
-                            custom={direction}
+                            initial={{ rotateY: direction * 70, opacity: 0, filter: 'blur(8px)', scale: 0.96 }}
+                            animate={{ rotateY: 0, opacity: 1, filter: 'blur(0px)', scale: 1 }}
+                            exit={{ rotateY: -direction * 70, opacity: 0, filter: 'blur(8px)', scale: 0.96 }}
+                            transition={{
+                              rotateY: { type: 'spring', stiffness: 260, damping: 24, mass: 0.9 },
+                              opacity: { duration: 0.28, ease: 'easeOut' },
+                              scale: { duration: 0.28, ease: 'easeOut' },
+                              filter: { duration: 0.28, ease: 'easeOut' },
+                            }}
                           >
                             <motion.div
-                              variants={innerTiltVariants}
-                              initial="rest"
-                              animate="rest"
-                              whileHover="hover"
+                              initial={{ rotateZ: 0, scale: 1 }}
+                              whileHover={{ rotateZ: -2, scale: 1.02 }}
+                              transition={{ type: 'spring', stiffness: 200, damping: 18 }}
                               className="relative w-[80%] h-[80%] rounded-full overflow-hidden shadow-2xl transition-all duration-700 ease-in-out border-4 border-white transform-gpu [backface-visibility:hidden] [-webkit-backface-visibility:hidden]"
                             >
                               <img
@@ -279,13 +333,13 @@ export default function FeaturedProgram() {
                         <div className="absolute bottom-[12%] left-[15%] w-1 h-1 bg-gray-300 rounded-full" />
                         <div className="absolute bottom-[18%] right-[18%] w-0.5 h-0.5 bg-gray-400 rounded-full" />
                         <div className="absolute top-[18%] left-[18%] w-0.5 h-0.5 bg-gray-400 rounded-full" />
-                      </div>
+                      </motion.div>
                     </motion.div>
                   </div>
                 </motion.div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Mobile dots */}
           <div className="md:hidden flex justify-center gap-2 pb-4">
@@ -300,6 +354,6 @@ export default function FeaturedProgram() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }
