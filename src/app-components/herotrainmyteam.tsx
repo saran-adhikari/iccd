@@ -27,7 +27,7 @@ export default function HeroTrainMyTeam() {
   aria-labelledby="hero-title"
 >
   {/* Content */}
-  <div className="mx-auto max-w-6xl px-6 sm:px-0">
+  <div className="mx-auto max-w-6xl px-6 sm:px-6">
     <div className="relative flex min-h-[30vh] items-start justify-start py-12 sm:py-16">
       <div className="relative z-10 text-start">
         <Badge
