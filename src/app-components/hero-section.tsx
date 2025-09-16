@@ -82,7 +82,7 @@ export function HeroSection() {
               </Link>
             </motion.div>
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-8 pt-8 border-t border-border">
+            {/* <div className="grid grid-cols-3 gap-8 pt-8 border-t border-border">
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary">
                   <CountUp end={500} />
@@ -101,7 +101,7 @@ export function HeroSection() {
                 </div>
                 <div className="text-sm text-muted-foreground">Training Programs</div>
               </div>
-            </div>
+            </div> */}
           </motion.div>
           
           

@@ -449,7 +449,7 @@ export default function FeaturedProgram() {
 
   return (
     <motion.section
-      className="w-full mx-auto"
+      className="w-full mx-auto my-16 mb-20"
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
@@ -462,7 +462,7 @@ export default function FeaturedProgram() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: 'easeOut', delay: 0.05 }}
         >
-          Our <span className="text-primary">Featured Programs</span>
+          Our <span className="text-primary"> Programs</span>
         </motion.h2>
         <motion.p
           className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-6 text-center"
@@ -522,13 +522,14 @@ export default function FeaturedProgram() {
           </div>
 
           {/* RIGHT card remains same as previous optimized version */}
+          {/* RIGHT (fits viewport) */}
           <motion.div
             className="relative rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden max-h-[82vh] md:max-h-[86vh] flex flex-col"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35, ease: 'easeOut' }}
           >
-            {/* background aura */}
+            {/* background aura (unchanged) */}
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0 -z-10 [mask-image:radial-gradient(60%_60%_at_50%_0%,black,transparent)]"
@@ -536,73 +537,85 @@ export default function FeaturedProgram() {
               <div className="absolute inset-0 bg-[radial-gradient(900px_420px_at_60%_-80px,theme(colors.primary/10),transparent_60%)]" />
             </div>
 
-            {/* header */}
-            <div className="px-5 pt-4 pb-3 shrink-0">
-              <div className="flex items-center gap-2">
-                <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
-                  <IconBadge className="h-4 w-4" />
-                </span>
-                <h3 className="text-base font-semibold text-slate-900">{current.title}</h3>
-              </div>
-              <p className="mt-1 text-xs text-slate-500">{current.category}</p>
-            </div>
-
-            {/* image and content unchanged (still constrained) */}
-            <AnimatePresence mode="popLayout" initial={false}>
+            {/* swap just the inner body */}
+            <AnimatePresence mode="wait" initial={false}>
               <motion.div
-                key={current.id}
-                className="px-5 shrink-0"
-                initial={{ opacity: 0, y: 8, scale: 0.98, filter: 'blur(6px)' }}
-                animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-                exit={{ opacity: 0, y: -8, scale: 0.98, filter: 'blur(6px)' }}
-                transition={{ duration: 0.3, ease: 'easeOut' }}
+                key={current.id} // IMPORTANT: drives the swap
+                className="flex flex-col min-h-0" // keep height stable
+                variants={{
+                  enter:  { opacity: 0, y: 24 },   // new content starts slightly below
+                  center: { opacity: 1, y: 0 },
+                  exit:   { opacity: 0, y: -24 },  // old content slides up and away
+                }}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{
+                  y: { type: 'spring', stiffness: 300, damping: 28, mass: 0.9 },
+                  opacity: { duration: 0.2, ease: 'easeOut' },
+                }}
               >
-                <div className="rounded-xl border border-slate-200 overflow-hidden bg-slate-50">
-                  <div className="flex items-center justify-between px-3.5 py-2 border-b border-slate-200">
-                    <span className="text-xs font-medium text-slate-700">Statistics</span>
-                    <div className="flex items-center gap-1.5 text-[10px] text-slate-500">
-                      <span className="px-1.5 py-0.5 rounded-md bg-white border">1H</span>
-                      <span className="px-1.5 py-0.5 rounded-md hover:bg-white border">1D</span>
-                      <span className="px-1.5 py-0.5 rounded-md hover:bg-white border">1W</span>
-                      <span className="px-1.5 py-0.5 rounded-md hover:bg-white border">1M</span>
+                {/* header */}
+                <div className="px-5 pt-4 pb-3 shrink-0">
+                    {/* <div className="flex items-center gap-2">
+                      <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
+                        <IconBadge className="h-4 w-4" />
+                      </span>
+                      <h3 className="text-base font-semibold text-slate-900">{current.title}</h3>
+                    </div>
+                    <p className="mt-1 text-xs text-slate-500">{current.category}</p> */}
+                </div>
+
+                {/* image block */}
+                <div className="px-5 shrink-0">
+                  <div className="rounded-xl border border-slate-200 overflow-hidden bg-slate-50">
+                    {/* <div className="flex items-center justify-between px-3.5 py-2 border-b border-slate-200">
+                      <span className="text-xs font-medium text-slate-700">Statistics</span>
+                      <div className="flex items-center gap-1.5 text-[10px] text-slate-500">
+                        <span className="px-1.5 py-0.5 rounded-md bg-white border">1H</span>
+                        <span className="px-1.5 py-0.5 rounded-md hover:bg-white border">1D</span>
+                        <span className="px-1.5 py-0.5 rounded-md hover:bg-white border">1W</span>
+                        <span className="px-1.5 py-0.5 rounded-md hover:bg-white border">1M</span>
+                      </div>
+                    </div> */}
+                    <div className="relative w-full bg-white">
+                      <img
+                        src={current.cover}
+                        alt={current.title}
+                        className="h-[36vh] md:h-[40vh] w-full object-cover"
+                        onError={(e) => {
+                          const fb = `https://via.placeholder.com/1200x675/EEF2F7/475569?text=${encodeURIComponent(current.category || 'Program')}`
+                          if ((e.currentTarget as HTMLImageElement).src !== fb) (e.currentTarget as HTMLImageElement).src = fb
+                        }}
+                      />
                     </div>
                   </div>
-                  <div className="relative w-full bg-white">
-                    <img
-                      src={current.cover}
-                      alt={current.title}
-                      className="h-[36vh] md:h-[40vh] w-full object-cover"
-                      onError={(e) => {
-                        const fb = `https://via.placeholder.com/1200x675/EEF2F7/475569?text=${encodeURIComponent(current.category || 'Program')}`
-                        if ((e.currentTarget as HTMLImageElement).src !== fb) (e.currentTarget as HTMLImageElement).src = fb
-                      }}
-                    />
+                </div>
+
+                {/* content (scrolls if long) */}
+                <div className="px-5 pt-4 pb-5 overflow-auto">
+                  <Badge variant="secondary" className="bg-emerald-50 text-emerald-700 border border-emerald-100">
+                    {current.title || current.category}
+                  </Badge>
+
+                  <p className="mt-3 text-sm text-slate-600">{current.summary}</p>
+
+                  {current.outcomes.length > 0 && (
+                    <ul className="mt-3 space-y-1.5 text-slate-600 text-sm list-disc pl-5">
+                      {current.outcomes.map((item, k) => (
+                        <li key={k}>{item}</li>
+                      ))}
+                    </ul>
+                  )}
+
+                  <div className="mt-5">
+                    <Button asChild size="sm">
+                      <Link href={`/programs/${current.slug}`}>View details</Link>
+                    </Button>
                   </div>
                 </div>
               </motion.div>
             </AnimatePresence>
-
-            <div className="px-5 pt-4 pb-5 overflow-auto">
-              <Badge variant="secondary" className="bg-emerald-50 text-emerald-700 border border-emerald-100">
-                {current.certification || current.category}
-              </Badge>
-
-              <p className="mt-3 text-sm text-slate-600">{current.summary}</p>
-
-              {current.outcomes.length > 0 && (
-                <ul className="mt-3 space-y-1.5 text-slate-600 text-sm list-disc pl-5">
-                  {current.outcomes.map((item, k) => (
-                    <li key={k}>{item}</li>
-                  ))}
-                </ul>
-              )}
-
-              <div className="mt-5">
-                <Button asChild size="sm">
-                  <Link href={`/programs/${current.slug}`}>View details</Link>
-                </Button>
-              </div>
-            </div>
           </motion.div>
         </div>
 

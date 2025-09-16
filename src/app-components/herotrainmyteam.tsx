@@ -23,7 +23,7 @@ export default function HeroTrainMyTeam() {
 
   return (
     <section
-  className="relative isolate max-w-[80%] mx-auto rounded-3xl overflow-hidden p-8 bg-[url('/Images/Stocks/bg.png')] bg-cover bg-center bg-no-repeat bg-fixed"
+  className="relative isolate max-w-[80%] mx-auto rounded-3xl overflow-hidden p-8 bg-[url('/Images/Stocks/bg.png')] bg-cover bg-center bg-no-repeat bg-fixed my-16"
   aria-labelledby="hero-title"
 >
   {/* Content */}

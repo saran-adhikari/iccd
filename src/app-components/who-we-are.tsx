@@ -15,7 +15,7 @@ export function WhoWeAre() {
 
   return (
     <motion.section
-      className="relative py-8 overflow-hidden mb-24"
+      className="relative py-8 overflow-hidden mb-8"
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}

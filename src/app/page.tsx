@@ -19,12 +19,13 @@ export default function HomePage() {
       <TrustedPartners />
       <CoreValues  />
       <WhoWeAre />
-      <HeroTrainMyTeam/>
+      <ImpactNumbers />
       <WhyICCD/>
       {/* <CompanyInfo/> */}
-      {/* <ImpactNumbers /> */}
+      
       <FeaturedProgram />
-      <CTAStrip />
+      <HeroTrainMyTeam/>
+      {/* <CTAStrip /> */}
       <Footer />
     </main>
   )
