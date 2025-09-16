@@ -122,6 +122,7 @@ export function HeroSection() {
                   height={420}
                   className="block w-full h-[300px] sm:h-[340px] md:h-[380px] lg:h-[420px] object-cover"
                 />
+                
               </div>
             </div>
           </motion.div>

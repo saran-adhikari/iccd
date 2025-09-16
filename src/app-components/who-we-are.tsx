@@ -15,7 +15,7 @@ export function WhoWeAre() {
 
   return (
     <motion.section
-      className="relative py-8 overflow-hidden mb-8"
+      className="relative overflow-hidden"
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
@@ -45,7 +45,7 @@ export function WhoWeAre() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.7, ease: "easeOut", delay: 0.05 }}
                 >
-                  Who <span className="whitespace-nowrap text-black">We Are</span>
+                  Who <span className="whitespace-nowrap text-black"> <span className="text-primary">We</span> Are</span>
                 </motion.h2>
 
                 

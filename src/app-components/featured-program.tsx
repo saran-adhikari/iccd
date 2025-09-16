@@ -449,7 +449,7 @@ export default function FeaturedProgram() {
 
   return (
     <motion.section
-      className="w-full mx-auto my-16 mb-20"
+      className="w-full mx-auto my-20"
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
@@ -457,21 +457,14 @@ export default function FeaturedProgram() {
       {/* header */}
       <div className="px-6 pt-6">
         <motion.h2
-          className="text-3xl text-center lg:text-4xl font-extrabold mb-2 leading-tight text-black"
+          className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-black text-center"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: 'easeOut', delay: 0.05 }}
         >
           Our <span className="text-primary"> Programs</span>
         </motion.h2>
-        <motion.p
-          className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-6 text-center"
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45, ease: 'easeOut', delay: 0.12 }}
-        >
-          Explore a curated selection built to empower your team.
-        </motion.p>
+       
       </div>
 
       {/* reduced two-column layout */}

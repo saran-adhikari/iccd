@@ -25,7 +25,7 @@ export function TrustedPartners() {
           }}
           className="text-center mb-6"
         >
-          <h2 className="text-xl sm:text-2xl font-light text-secondary mb-2">
+          <h2 className="text-2xl sm:text-2 xl font-light text-secondary mb-2">
             Trusted by Leading Financial Institutions
           </h2>
           {/* optional sub-text if needed */}

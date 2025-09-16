@@ -23,7 +23,7 @@ export default function WhyICCD_Toggle() {
 
   return (
     <motion.section
-      className="relative overflow-hidden"
+      className="relative overflow-hidden "
       initial={{ opacity: 0, y: 12, scale: 0.995 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, amount: 0.2 }}
@@ -35,7 +35,7 @@ export default function WhyICCD_Toggle() {
         <div className="absolute -inset-x-10 -bottom-10 h-44 bg-gradient-to-t from-muted/40 to-transparent" />
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 lg:py-4">
         {/* Title on top */}
         <div className="text-center max-w-2xl mx-auto">
           <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-black">

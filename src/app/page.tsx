@@ -22,7 +22,6 @@ export default function HomePage() {
       <ImpactNumbers />
       <WhyICCD/>
       {/* <CompanyInfo/> */}
-      
       <FeaturedProgram />
       <HeroTrainMyTeam/>
       {/* <CTAStrip /> */}
