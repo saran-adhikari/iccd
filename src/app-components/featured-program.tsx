@@ -454,7 +454,6 @@ export default function FeaturedProgram() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
     >
-      {/* header */}
       <div className="px-6 pt-6">
         <motion.h2
           className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-black text-center"
@@ -464,22 +463,21 @@ export default function FeaturedProgram() {
         >
           Our <span className="text-primary"> Programs</span>
         </motion.h2>
-       
       </div>
 
-      {/* reduced two-column layout */}
+      {/* widened left column to allow full titles; titles now wrap instead of truncating */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-[180px_minmax(0,1fr)] lg:grid-cols-[200px_minmax(0,1fr)] gap-4 lg:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-[240px_minmax(0,1fr)] lg:grid-cols-[280px_minmax(0,1fr)] gap-4 lg:gap-6">
           
-          {/* LEFT: slimmer nav with reduced overflow */}
+          {/* LEFT rail */}
           <div
-            className=" bg-white/70  py-2 md:py-3  overflow-y-auto"
+            className="bg-white/70 py-2 md:py-3 overflow-y-auto"
             role="tablist"
             aria-label="Programs"
             tabIndex={0}
             onKeyDown={onRailKey}
           >
-            <ul className="space-y-1">
+            <ul className="space-y-1.5">
               {programs.map((p, i) => {
                 const Icon = iconForProgram(p, i)
                 const active = i === index
@@ -492,37 +490,43 @@ export default function FeaturedProgram() {
                       onClick={() => setIndex(i)}
                       title={p.title}
                       className={[
-                        'flex w-full items-center gap-2 px-2.5 py-1.5 rounded-md text-left text-sm transition',
+                        // use items-center so the icon is vertically centered with the first text line
+                        'flex w-full items-center gap-2.5 px-2.5 py-2 rounded-md text-left text-sm transition',
                         active
                           ? 'text-emerald-700'
                           : 'hover:bg-white focus-visible:ring-2 focus-visible:ring-emerald-300'
                       ].join(' ')}
                     >
-                      <span
-                        className={[
-                          'inline-flex h-7 w-7 items-center justify-center rounded-full border flex-none',
-                          active ? 'bg-emerald-600 text-white border-emerald-600' : 'bg-white text-slate-700 border-slate-200'
-                        ].join(' ')}
-                      >
-                        <Icon className="h-4 w-4" />
-                      </span>
-                      <span className="truncate">{p.title}</span>
-                    </button>
-                  </li>
+                    <span
+                      className={[
+                        'inline-flex h-7 w-7 flex-none items-center justify-center rounded-full border',
+                        active
+                          ? 'bg-emerald-600 text-white border-emerald-600'
+                          : 'bg-white text-slate-700 border-slate-200'
+                      ].join(' ')}
+                    >
+                      <Icon className="h-4 w-4" />
+                    </span>
+
+                    {/* allow wrapping but keep left alignment with the icon */}
+                    <span className="flex-1 whitespace-normal break-words leading-snug">
+                      {p.title}
+                    </span>
+                  </button>
+                </li>
+
                 )
               })}
             </ul>
           </div>
 
-          {/* RIGHT card remains same as previous optimized version */}
-          {/* RIGHT (fits viewport) */}
+          {/* RIGHT card unchanged */}
           <motion.div
             className="relative rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden max-h-[82vh] md:max-h-[86vh] flex flex-col"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35, ease: 'easeOut' }}
           >
-            {/* background aura (unchanged) */}
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0 -z-10 [mask-image:radial-gradient(60%_60%_at_50%_0%,black,transparent)]"
@@ -530,15 +534,14 @@ export default function FeaturedProgram() {
               <div className="absolute inset-0 bg-[radial-gradient(900px_420px_at_60%_-80px,theme(colors.primary/10),transparent_60%)]" />
             </div>
 
-            {/* swap just the inner body */}
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
-                key={current.id} // IMPORTANT: drives the swap
-                className="flex flex-col min-h-0" // keep height stable
+                key={current.id}
+                className="flex flex-col min-h-0"
                 variants={{
-                  enter:  { opacity: 0, y: 24 },   // new content starts slightly below
+                  enter:  { opacity: 0, y: 24 },
                   center: { opacity: 1, y: 0 },
-                  exit:   { opacity: 0, y: -24 },  // old content slides up and away
+                  exit:   { opacity: 0, y: -24 },
                 }}
                 initial="enter"
                 animate="center"
@@ -548,29 +551,10 @@ export default function FeaturedProgram() {
                   opacity: { duration: 0.2, ease: 'easeOut' },
                 }}
               >
-                {/* header */}
-                <div className="px-5 pt-4 pb-3 shrink-0">
-                    {/* <div className="flex items-center gap-2">
-                      <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
-                        <IconBadge className="h-4 w-4" />
-                      </span>
-                      <h3 className="text-base font-semibold text-slate-900">{current.title}</h3>
-                    </div>
-                    <p className="mt-1 text-xs text-slate-500">{current.category}</p> */}
-                </div>
+                <div className="px-5 pt-4 pb-3 shrink-0" />
 
-                {/* image block */}
                 <div className="px-5 shrink-0">
                   <div className="rounded-xl border border-slate-200 overflow-hidden bg-slate-50">
-                    {/* <div className="flex items-center justify-between px-3.5 py-2 border-b border-slate-200">
-                      <span className="text-xs font-medium text-slate-700">Statistics</span>
-                      <div className="flex items-center gap-1.5 text-[10px] text-slate-500">
-                        <span className="px-1.5 py-0.5 rounded-md bg-white border">1H</span>
-                        <span className="px-1.5 py-0.5 rounded-md hover:bg-white border">1D</span>
-                        <span className="px-1.5 py-0.5 rounded-md hover:bg-white border">1W</span>
-                        <span className="px-1.5 py-0.5 rounded-md hover:bg-white border">1M</span>
-                      </div>
-                    </div> */}
                     <div className="relative w-full bg-white">
                       <img
                         src={current.cover}
@@ -585,7 +569,6 @@ export default function FeaturedProgram() {
                   </div>
                 </div>
 
-                {/* content (scrolls if long) */}
                 <div className="px-5 pt-4 pb-5 overflow-auto">
                   <Badge variant="secondary" className="bg-emerald-50 text-emerald-700 border border-emerald-100">
                     {current.title || current.category}
@@ -627,3 +610,4 @@ export default function FeaturedProgram() {
     </motion.section>
   )
 }
+

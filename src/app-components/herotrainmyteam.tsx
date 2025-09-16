@@ -23,7 +23,7 @@ export default function HeroTrainMyTeam() {
 
   return (
     <section
-  className="relative isolate max-w-[80%] mx-auto rounded-3xl overflow-hidden p-8 bg-[url('/Images/Stocks/bg.png')] bg-cover bg-center bg-no-repeat bg-fixed my-16"
+  className="relative isolate max-w-[80%] mx-auto rounded-3xl overflow-hidden p-4 bg-[url('/Images/Stocks/bg.png')] bg-cover bg-center bg-no-repeat bg-fixed my-16"
   aria-labelledby="hero-title"
 >
   {/* Content */}
@@ -32,7 +32,7 @@ export default function HeroTrainMyTeam() {
       <div className="relative z-10 text-start">
         <Badge
           variant="secondary"
-          className="bg-emerald-50 text-emerald-700 border border-emerald-100 w-fit"
+          className="bg-emerald-50 text-emerald-700 border border-emerald-100 w-fit py-1 px-6 text-2sm"
         >
           For HR leaders
         </Badge>
@@ -49,7 +49,7 @@ export default function HeroTrainMyTeam() {
           learning program built for compliance, capability and culture.
         </p>
 
-        <div className="mt-8 flex items-center justify-start">
+        <div className="mt-8 flex items-center justify-end">
           <Link
             href="/programs"
             className="group relative inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-medium text-foreground transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"

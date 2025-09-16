@@ -29,7 +29,7 @@ export function Header() {
             <Link href="/" className="flex items-center">
               <div className="w-40 h-30 bg-none rounded-lg flex items-center">
                 <Image
-                    src="/Images/Logo/2.png" // update with your logo path
+                    src="/Images/Logo/1.png" // update with your logo path
                     alt="ICCD Logo"
                     width={100}
                     height={100}

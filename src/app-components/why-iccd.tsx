@@ -39,7 +39,7 @@ export default function WhyICCD_Toggle() {
         {/* Title on top */}
         <div className="text-center max-w-2xl mx-auto">
           <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-black">
-            Why <span className="text-primary">ICCD</span> ?
+            Why <span className="text-primary">ICCD</span> 
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Tap each heading to show or hide the description instantly.

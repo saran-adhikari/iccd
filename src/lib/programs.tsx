@@ -170,7 +170,7 @@ export const programData: Program[] = [
     {
       id: "5",
       slug: "delight-customers-excellent-service",
-      title: "Delight Your Customers with Excellent Customer Service",
+      title: "Excellent Customer Service",
       category: "Service Excellence",
       summary:
         "Hospitality-driven customer service skills tailored for banking to elevate interactions and build long-term trust.",

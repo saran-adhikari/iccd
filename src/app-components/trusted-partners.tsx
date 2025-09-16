@@ -5,11 +5,14 @@ import { motion } from "framer-motion"
 
 export function TrustedPartners() {
   const partners = [
-    { name: "Mahalaxmi Bank", logo: "/Images/Partners/mahalaxmi.png" },
-    { name: "Nabil Bank", logo: "/Images/Partners/nabil.png" },
+    { name: "Mahalaxmi Bank", logo: "/Images/Partners/mahalaxmi.jpg" },
+    { name: "Nepal Investment Mega Bank", logo: "/Images/Partners/nimb.jpg" },
+    { name: "Citizens Bank", logo: "/Images/Partners/citizensbank.jpg" },
     { name: "Kumari Bank", logo: "/Images/Partners/kbl.jpg" },
+    { name: "Prime Bank", logo: "/Images/Partners/pbl.jpg" },
     { name: "Himalayan Bank", logo: "/Images/Partners/hbl.jpg" },
-    { name: "Siddhartha Capital Ltd.", logo: "/Images/Partners/siddharthalogo.png" },
+    { name: "Siddhartha Capital Ltd.", logo: "/Images/Partners/sbl.jpg" },
+    { name: "Machapucchre Bank Ltd.", logo: "/Images/Partners/mbl.jpg" },
   ]
 
   return (
