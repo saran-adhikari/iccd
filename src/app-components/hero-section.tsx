@@ -5,6 +5,7 @@ import { Button } from "@/app-components/ui/button"
 import { ArrowRight } from "lucide-react"
 import Image from "next/image"
 import { ReactTyped } from "react-typed"
+import Link from "next/link"
 
 function CountUp({ end, duration = 2000 }: { end: number; duration?: number }) {
   const [count, setCount] = useState(0)
@@ -73,10 +74,12 @@ export function HeroSection() {
                 visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } },
               }}
             >
+              <Link href="/programs">
               <Button size="lg" className="bg-primary hover:bg-primary/90 text-accent-foreground cursor-pointer">
                 EXPLORE PROGRAMS
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
+              </Link>
             </motion.div>
             {/* Stats */}
             <div className="grid grid-cols-3 gap-8 pt-8 border-t border-border">
@@ -113,7 +116,7 @@ export function HeroSection() {
             <div className="w-full mx-auto lg:w-[520px] xl:w-[560px]">
               <div className="overflow-hidden">
                 <Image
-                  src="/Images/puzzle.png"
+                  src="/Images/Stocks/puzzle.png"
                   alt="Professional financial training environment"
                   width={560}
                   height={420}

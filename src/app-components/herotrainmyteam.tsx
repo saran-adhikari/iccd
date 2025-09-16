@@ -51,7 +51,7 @@ export default function HeroTrainMyTeam() {
 
         <div className="mt-8 flex items-center justify-start">
           <Link
-            href="#train-my-team"
+            href="/programs"
             className="group relative inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-medium text-foreground transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
           >
             <span className="absolute inset-0 -z-10 rounded-xl opacity-0 blur-md transition-opacity duration-200 group-hover:opacity-40 bg-[radial-gradient(45%_60%_at_50%_50%,theme(colors.primary/40),transparent_70%)]" />

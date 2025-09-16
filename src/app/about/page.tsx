@@ -20,8 +20,8 @@ export default function AboutPage() {
       <ImpactNumbers/>
       <LeadershipTeam />
       <Testimonials />
-      <CompanyInfo/>
       <Accreditation />
+      <CompanyInfo/>
       <CTAStrip />
       <Footer />
     </main>
