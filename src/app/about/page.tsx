@@ -17,11 +17,13 @@ export default function AboutPage() {
       <AboutHero />
       {/* <AboutStory /> */}
       <MissionVision />
-      <ImpactNumbers/>
+      {/* <CompanyInfo/> */}
       <LeadershipTeam />
+      <ImpactNumbers/>
+      
       <Testimonials />
       <Accreditation />
-      <CompanyInfo/>
+      
       <CTAStrip />
       <Footer />
     </main>

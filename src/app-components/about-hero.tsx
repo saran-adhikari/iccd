@@ -2,7 +2,7 @@ import { Badge } from "@/app-components/ui/badge"
 
 export function AboutHero() {
   return (
-    <section className="relative py-20 lg:py-32">
+    <section className="relative py-20 lg:py-40">
       {/* Background image */}
       <div
         className="absolute inset-0 -z-10 bg-cover bg-center"

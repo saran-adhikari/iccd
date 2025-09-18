@@ -2,7 +2,7 @@
 
 import { useRef, useState, type KeyboardEvent } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Target, Eye } from 'lucide-react'
+import { Target, Eye, Compass } from 'lucide-react'
 import { Button } from '@/app-components/ui/button'
 import { Badge } from '@/app-components/ui/badge'
 
@@ -26,7 +26,7 @@ const items: MVItem[] = [
     Our mission goes beyond technical training, we foster a culture of integrity, critical thinking, and proactive risk awareness. By combining deep regulatory expertise with real-world case studies, collaborative learning, and ongoing advisory support, we help organisations anticipate emerging threats, strengthen governance structures, and embed ethical decision-making into everyday operations.`,
 
     image: 'https://i.pinimg.com/736x/c2/d3/2b/c2d32b36c16281863fc4620b040d2e3c.jpg',
-    icon: Target,
+    icon: Compass,
   },
   {
     key: 'vision',
@@ -36,7 +36,7 @@ const items: MVItem[] = [
       `To be the most trusted hub for compliance and risk capability, setting the benchmark for impact, accessibility, and measurable outcomes for teams across the globe. We envision an industry where every organisation, regardless of size or geography, can build and sustain a culture of integrity and accountability. 
       
       Through continuous innovation, international collaboration, and evidence-based best practice, we strive to inspire lasting confidence in financial systems, protect consumers, and strengthen global economic resilience for generations to come.`,
-      
+
     image: 'https://i.pinimg.com/1200x/c3/d0/36/c3d036d1e34690f227d8e6f8578168dc.jpg',
     icon: Eye,
   },
