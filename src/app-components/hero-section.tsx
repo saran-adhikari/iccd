@@ -59,7 +59,7 @@ export function HeroSection() {
             variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-white">
-              <span className="text-primary">
+              <span className="text-white">
                 <ReactTyped
                   strings={["Empowering"]}
                   typeSpeed={80}
@@ -69,7 +69,7 @@ export function HeroSection() {
                 />
               </span>{" "}
               <br />
-              Professionals, <span className="text-primary">Elevating</span> Institutions
+              Professionals, <span className="text-white">Elevating</span> Institutions
             </h1>
           </motion.div>
 
