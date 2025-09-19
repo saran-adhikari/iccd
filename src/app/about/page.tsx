@@ -17,8 +17,8 @@ export default function AboutPage() {
       <AboutHero />
       {/* <AboutStory /> */}
       <MissionVision />
-      {/* <CompanyInfo/> */}
-      <LeadershipTeam />
+      <CompanyInfo/>
+      {/* <LeadershipTeam /> */}
       <ImpactNumbers/>
       
       <Testimonials />
