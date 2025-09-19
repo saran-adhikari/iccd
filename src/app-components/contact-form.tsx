@@ -56,7 +56,7 @@ export function ContactForm() {
 
   return (
     <section className="relative py-14 md:py-20 bg-primary/5">
-      <div className="max-w-7xl mx-auto w-[80%] px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto w-[80%] px-4 sm:px-6 lg:px-6">
         {/* Outer white card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -92,8 +92,8 @@ export function ContactForm() {
                       <li className="flex gap-3">
                         <Mail className="h-5 w-5 mt-0.5 opacity-90" />
                         <div>
-                          <p>info@iccd.org</p>
-                          <p>training@iccd.org</p>
+                          <p>iccdnepal@gmail.com</p>
+                          {/* <p>training@iccd.org</p> */}
                         </div>
                       </li>
                       <li className="flex gap-3">
@@ -106,7 +106,7 @@ export function ContactForm() {
                       <li className="flex gap-3">
                         <Clock className="h-5 w-5 mt-0.5 opacity-90" />
                         <div>
-                          <p>Mon–Fri: 9:00–18:00 (GMT)</p>
+                          <p>Mon–Fri: 9:00–18:00 (NPT)</p>
                         </div>
                       </li>
                     </ul>
@@ -121,7 +121,7 @@ export function ContactForm() {
 
             {/* RIGHT — compact form so left looks like a popup */}
             <div className="pt-1">
-              <div className="max-w-xl">
+              <div className="max-w-xl ">
                 <h2 className="text-3xl font-semibold text-primary mb-2">Get in Touch</h2>
                 <p className="text-sm text-muted-foreground mb-7">
                   Feel free to drop us a line below!
