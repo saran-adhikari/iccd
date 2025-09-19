@@ -14,12 +14,12 @@ export function AboutHero() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center max-w-4xl mx-auto">
-          <Badge className="mb-6 bg-accent/10 text-accent border-accent/20">
+          <Badge className="mb-6 bg-white/10 text-white border-white/20">
             About ICCD
           </Badge>
           <h1 className="text-4xl lg:text-6xl font-bold text-balance leading-tight mb-6 text-white">
-            <span className="text-white">Uniting Stakeholders</span> to Build a{" "}
-            <span className="text-primary">Stronger AML/CFT Regime</span>
+            Uniting <span className="text-white">Stakeholders</span> to Build a{" "}
+            Stronger <span className="text-white">AML/CFT </span> Regime
           </h1>
           <p className="text-xl text-gray-200 text-pretty leading-relaxed">
             ICCD has been at the forefront of compliance training, bringing
