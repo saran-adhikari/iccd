@@ -12,40 +12,47 @@ import { Footer } from "@/app-components/footer"
 export default function ProgramsPage() {
   return (
     <>
-    <Header/>
-    <ProgramsHero/>
-    <section className="max-w-7xl mx-auto px-6 py-12">
-      
-      <h1 className="text-3xl font-bold mb-8">Our Programs</h1>
+      <Header />
+      <ProgramsHero />
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {programData.map((program: Program) => (
-          <Link key={program.id} href={`/programs/${program.slug}`}>
-            <Card className="cursor-pointer hover:shadow-lg transition-shadow duration-200">
-              <CardHeader>
-                <img
-                  src={program.images.cover}
-                  alt={program.title}
-                  className="w-full h-40 object-cover rounded-lg"
-                />
-                <CardTitle className="mt-4 text-xl">{program.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-3 line-clamp-3">
-                  {program.summary}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  <Badge>{program.level}</Badge>
-                  <Badge variant="secondary">{program.category}</Badge>
-                </div>
-              </CardContent>
-            </Card>
-          </Link>
-        ))}
-      </div>
-    </section>
-    <CTAStrip/>
-    <Footer/>
+      <section className="max-w-7xl mx-auto px-6 py-12">
+        <h1 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-black text-center">
+          Our <span className="text-primary">Programs</span>
+        </h1>
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {programData.map((program: Program) => (
+            <Link key={program.id} href={`/programs/${program.slug}`}>
+              <Card
+                className="cursor-pointer hover:shadow-lg transition-shadow duration-200 h-full flex flex-col bg-gray-50" // light neutral background
+              >
+                <CardHeader>
+                  <img
+                    src={program.images.cover}
+                    alt={program.title}
+                    className="w-full h-40 object-cover rounded-lg"
+                  />
+                  <CardTitle className="mt-4 text-xl">{program.title}</CardTitle>
+                </CardHeader>
+
+                {/* flex-1 ensures the content area stretches evenly */}
+                <CardContent className="flex-1 flex flex-col justify-between">
+                  <p className="text-sm text-muted-foreground mb-3 line-clamp-3">
+                    {program.summary}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mt-auto">
+                    <Badge>{program.level}</Badge>
+                    <Badge variant="secondary">{program.category}</Badge>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <CTAStrip />
+      <Footer />
     </>
   )
 }

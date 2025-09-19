@@ -25,7 +25,7 @@ export function ContactMap() {
         <div className="absolute left-6 bottom-6 bg-background/95 backdrop-blur-md rounded-xl p-5 shadow-lg border">
           <h4 className="font-semibold text-primary text-lg">ICCD Headquarters</h4>
           <p className="text-sm text-muted-foreground mt-1">
-            123 Financial District, London, UK EC2V 8RF
+            123 Financial District, Kathmandu, BA 44600 NPL
           </p>
           <p className="text-xs text-muted-foreground mt-1">
             Nearest stations: Bank, Liverpool Street, Moorgate

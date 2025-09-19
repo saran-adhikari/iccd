@@ -86,7 +86,7 @@ export function ContactForm() {
                         <MapPin className="h-5 w-5 mt-0.5 opacity-90" />
                         <div>
                           <p>123 Financial District</p>
-                          <p>London, UK EC2V 8RF</p>
+                          <p>Kathmandu, BA 44600 NPL</p>
                         </div>
                       </li>
                       <li className="flex gap-3">
