@@ -3,6 +3,7 @@
 import { CTAStrip } from "@/app-components/cta-strip"
 import {Footer} from "@/app-components/footer"
 import { Header } from "@/app-components/header"
+import HeroTrainMyTeam from "@/app-components/herotrainmyteam"
 import { ImpactHero } from "@/app-components/impact-hero"
 
 import { ImpactMetrics } from "@/app-components/impact-metrics"
@@ -17,6 +18,7 @@ export default function ImpactPage() {
             <ImpactHero />
             <ImpactMetrics />
             <IndustryTestimonials />
+            <HeroTrainMyTeam />
             {/* <Testimonials /> */}
             <CTAStrip />
             <Footer />
