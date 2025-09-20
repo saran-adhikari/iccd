@@ -220,7 +220,7 @@ export function ContactForm() {
                   <p className="text-muted-foreground text-sm max-w-md mx-auto">
                     Our team will get back to you within 1 business day. For urgent matters, email{" "}
                     <a href="mailto:training@iccd.org" className="underline underline-offset-4">
-                      training@iccd.org
+                      iccdnepal@gmail.com
                     </a>.
                   </p>
                   <Button variant="outline" onClick={() => setIsSubmitted(false)}>

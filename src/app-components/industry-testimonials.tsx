@@ -11,7 +11,7 @@ export function IndustryTestimonials() {
       role: "Chief Compliance Officer",
       company: "Global Banking Corporation",
       industry: "International Banking",
-      image: "/placeholder.svg?key=testimonial-leader1",
+      image: "https://i.pinimg.com/736x/a9/67/27/a96727d343d319c458c757cef37a1379.jpg",
       rating: 5,
       impact: "85% improvement in compliance scores",
     },
@@ -22,7 +22,7 @@ export function IndustryTestimonials() {
       role: "Head of Sustainable Finance",
       company: "Regional Development Bank",
       industry: "Development Banking",
-      image: "/placeholder.svg?key=testimonial-leader2",
+      image: "https://i.pinimg.com/736x/6c/c5/19/6cc519f013abcf2ad6168a126ee877db.jpg",
       rating: 5,
       impact: "Launched 5 new green finance products",
     },
@@ -33,7 +33,7 @@ export function IndustryTestimonials() {
       role: "Director of Risk Management",
       company: "Middle East Banking Group",
       industry: "Regional Banking",
-      image: "/placeholder.svg?key=testimonial-leader3",
+      image: "https://i.pinimg.com/1200x/11/64/93/116493296260208f256202748cbbccc2.jpg",
       rating: 5,
       impact: "60% reduction in operational risk incidents",
     },
@@ -44,7 +44,7 @@ export function IndustryTestimonials() {
       role: "CEO",
       company: "Community Financial Services",
       industry: "Community Banking",
-      image: "/placeholder.svg?key=testimonial-leader4",
+      image: "https://i.pinimg.com/1200x/11/64/93/116493296260208f256202748cbbccc2.jpg",
       rating: 5,
       impact: "92% increase in leadership effectiveness scores",
     },
@@ -54,8 +54,8 @@ export function IndustryTestimonials() {
     <section className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-primary mb-4">Industry Leaders Speak</h2>
-          <p className="text-xl text-muted-foreground text-pretty">
+          <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-black">Industry <span className="text-primary">Leaders Speak</span></h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Testimonials from senior executives and compliance professionals worldwide
           </p>
         </div>
@@ -93,7 +93,7 @@ export function IndustryTestimonials() {
                     <img
                       src={testimonial.image || "/placeholder.svg"}
                       alt={testimonial.author}
-                      className="w-16 h-16 rounded-full object-cover mr-4"
+                      className="w-16 h-16 rounded-full object-contain mr-4"
                     />
                     <div>
                       <div className="font-bold text-primary text-lg">{testimonial.author}</div>
@@ -101,9 +101,9 @@ export function IndustryTestimonials() {
                       <div className="text-sm text-accent font-semibold">{testimonial.company}</div>
                     </div>
                   </div>
-                  <button className="p-2 text-muted-foreground hover:text-primary transition-colors">
+                  {/* <button className="p-2 text-muted-foreground hover:text-primary transition-colors">
                     <Linkedin className="h-5 w-5" />
-                  </button>
+                  </button> */}
                 </div>
               </CardContent>
             </Card>

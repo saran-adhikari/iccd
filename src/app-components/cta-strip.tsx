@@ -3,6 +3,7 @@
 import { Button } from "@/app-components/ui/button"
 import { ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
+import Link from "next/link"
 
 const fadeInUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }
 const scaleUp = { hidden: { opacity: 0, scale: 0.9 }, visible: { opacity: 1, scale: 1 } }
@@ -39,15 +40,18 @@ export function CTAStrip() {
             transition={{ type: "spring", stiffness: 200, damping: 15 }}
           >
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link href="/contact">
               <Button
                 size="lg"
                 variant="secondary"
                 className="bg-primary text-lg font-semibold px-8 py-6 text-white hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary/50 cursor-pointer"
                 aria-label="Schedule a consultation with ICCD"
+                
               >
                 SCHEDULE CONSULTATION
                 <ArrowRight className="ml-2 h-6 w-6" />
               </Button>
+              </Link>
             </motion.div>
           </motion.div>
         </motion.div>

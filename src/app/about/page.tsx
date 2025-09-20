@@ -9,6 +9,8 @@ import { CTAStrip } from "@/app-components/cta-strip"
 import { Footer } from "@/app-components/footer"
 import { ImpactNumbers } from "@/app-components/impact-numbers"
 import CompanyInfo from "@/app-components/company-info"
+import WhyICCD_Toggle from "@/app-components/why-iccd"
+import { CaseStudies } from "@/app-components/case-studies"
 
 export default function AboutPage() {
   return (
@@ -17,10 +19,10 @@ export default function AboutPage() {
       <AboutHero />
       {/* <AboutStory /> */}
       <MissionVision />
+      <WhyICCD_Toggle/>
       <CompanyInfo/>
       {/* <LeadershipTeam /> */}
       <ImpactNumbers/>
-      
       <Testimonials />
       <Accreditation />
       

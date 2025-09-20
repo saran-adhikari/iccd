@@ -23,9 +23,9 @@ export function ImpactNumbers() {
   }, [])
 
   const stats = [
-    { number: 2500, label: "Trained Professionals", suffix: "+" },
-    { number: 85, label: "Partner Institutions", suffix: "+" },
-    { number: 25, label: "Training Programs", suffix: "+" },
+    { number: 500, label: "Trained Professionals", suffix: "+" },
+    { number: 15, label: "Partner Institutions", suffix: "+" },
+    { number: 30, label: "Training Programs", suffix: "+" },
     // { number: 15, label: "Countries Served", suffix: "+" },
   ]
 

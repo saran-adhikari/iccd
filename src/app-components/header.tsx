@@ -15,7 +15,7 @@ export function Header() {
     { name: "Programs", href: "/programs" },
     // { name: "Why Choose ICCD", href: "/why-choose" },
     // { name: "Events", href: "/events" },
-    // { name: "Impact", href: "/impact" },
+    { name: "Our Impact", href: "/impact" },
     // { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" },
   ]

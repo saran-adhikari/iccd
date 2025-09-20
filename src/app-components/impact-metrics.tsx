@@ -14,7 +14,7 @@ export function ImpactMetrics() {
   const metrics = [
     {
       icon: Users,
-      number: 2500,
+      number: 500,
       suffix: "+",
       label: "Professionals Trained",
       description: "Compliance experts certified across global institutions",
@@ -23,7 +23,7 @@ export function ImpactMetrics() {
     },
     {
       icon: Shield,
-      number: 85,
+      number: 15,
       suffix: "+",
       label: "Partner Institutions",
       description: "Banks and financial organizations strengthened",
@@ -32,16 +32,16 @@ export function ImpactMetrics() {
     },
     {
       icon: Globe,
-      number: 15,
+      number: 30,
       suffix: "+",
-      label: "Countries Served",
-      description: "Global reach across major financial markets",
+      label: "Projects Delivered",
+      description: "Successful compliance initiatives completed",
       color: "text-blue-600",
       bgColor: "bg-blue-100",
     },
     {
       icon: Award,
-      number: 25,
+      number: 30,
       suffix: "+",
       label: "Training Programs",
       description: "Specialized courses covering all compliance areas",
@@ -72,13 +72,13 @@ export function ImpactMetrics() {
     <section className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-primary mb-4">Impact by the Numbers</h2>
-          <p className="text-xl text-muted-foreground text-pretty">
+          <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-black">Impact by <span className="text-primary">the Numbers</span></h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Quantifiable results that demonstrate our commitment to excellence
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 align-center justify-center">
           {metrics.map((metric, index) => (
             <Card key={metric.label} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
               <CardContent className="p-8 text-center">
@@ -88,12 +88,12 @@ export function ImpactMetrics() {
                   <metric.icon className={`h-8 w-8 ${metric.color}`} />
                 </div>
 
-                <div className="text-4xl lg:text-5xl font-bold mb-2">
+                <div className="text-4xl lg:text-5xl font-bold mb-2 text-primary">
                   {isVisible ? <CountUp end={metric.number} suffix={metric.suffix} /> : "0"}
                 </div>
 
-                <h3 className={`text-xl font-bold mb-2 ${metric.color}`}>{metric.label}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{metric.description}</p>
+                <h3 className={`text-xl font-bold mb-2 text-primary`}>{metric.label}</h3>
+                <p className="text-foreground text-sm leading-relaxed">{metric.description}</p>
               </CardContent>
             </Card>
           ))}

@@ -23,7 +23,7 @@ export default function WhyICCD_Toggle() {
 
   return (
     <motion.section
-      className="relative overflow-hidden "
+      className="relative overflow-hidden py-15"
       initial={{ opacity: 0, y: 12, scale: 0.995 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, amount: 0.2 }}
