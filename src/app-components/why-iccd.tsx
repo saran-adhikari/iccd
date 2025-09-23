@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { BriefcaseBusiness, Cog, UserRound, HandHeart, ChevronDown } from "lucide-react"
 import clsx from "clsx"
 
@@ -12,10 +12,26 @@ type WhyItem = {
 }
 
 const items: WhyItem[] = [
-  { title: "Experienced Industry Leaders", description: "Over two decades of commitment to AML/CFT education and awareness", icon: BriefcaseBusiness },
-  { title: "Industry Expert", description: "Over two decades of commitment to AML/CFT education and awareness", icon: Cog },
-  { title: "Personalized Service", description: "Over two decades of commitment to AML/CFT education and awareness", icon: UserRound },
-  { title: "Rapid Value Creation", description: "Over two decades of commitment to AML/CFT education and awareness", icon: HandHeart },
+  { 
+    title: "Experienced Industry Leaders", 
+    description: "ICCD is a trusted authority in AML/CFT education and awareness. Our leadership has guided institutions and regulators with proven strategies that blend expertise and innovation. We not only deliver training but also help shape ethical and sustainable compliance standards.", 
+    icon: BriefcaseBusiness 
+  },
+  { 
+    title: "Industry Expert", 
+    description: "Our experts combine academic knowledge with real-world experience across industries such as banking and fintech. This ensures our programs are practical, relevant, and adaptable to today’s compliance challenges. By anticipating trends, we empower professionals to stay ahead of complex regulatory requirements.", 
+    icon: Cog 
+  },
+  { 
+    title: "Personalized Service", 
+    description: "Every organization is unique, and so are its compliance needs. We work closely with clients to create tailored solutions that match their goals and challenges. From one-on-one mentoring to customized training, we ensure measurable value for both individuals and organizations.", 
+    icon: UserRound 
+  },
+  { 
+    title: "Rapid Value Creation", 
+    description: "Our approach delivers quick, measurable results. Using case studies, interactive learning, and proven frameworks, organizations can see cultural and operational improvements within weeks. From better decision-making to stronger risk management, we focus on impact that lasts.", 
+    icon: HandHeart 
+  },
 ]
 
 export default function WhyICCD_Toggle() {
@@ -42,11 +58,11 @@ export default function WhyICCD_Toggle() {
             Why <span className="text-primary">ICCD</span> 
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Tap each heading to show or hide the description instantly.
+            Tap each heading to show or hide the description smoothly.
           </p>
         </div>
 
-        {/* Grid: two per row on sm+ */}
+        {/* Grid */}
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
           {items.map((item, idx) => (
             <motion.div
@@ -102,12 +118,21 @@ function AccordionCard({
         <ChevronDown className={clsx("h-5 w-5 transition-transform", isOpen ? "rotate-180" : "")} />
       </button>
 
-      {/* content — instant show/hide (no variants, no motion) */}
-      {isOpen && (
-        <div className="overflow-hidden px-6 pb-6">
-          <p className="text-sm text-muted-foreground">{item.description}</p>
-        </div>
-      )}
+      {/* content — smoother toggle via max-height */}
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            key="content"
+            initial={{ maxHeight: 0, opacity: 0 }}
+            animate={{ maxHeight: 500, opacity: 1 }}
+            exit={{ maxHeight: 0, opacity: 0 }}
+            transition={{ duration: 0.35, ease: "easeInOut" }}
+            className="overflow-hidden px-6 pb-6"
+          >
+            <p className="text-sm text-muted-foreground">{item.description}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
