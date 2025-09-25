@@ -491,7 +491,7 @@ export default function FeaturedProgram() {
                       title={p.title}
                       className={[
                         // use items-center so the icon is vertically centered with the first text line
-                        'flex w-full items-center gap-2.5 px-2.5 py-2 rounded-md text-left text-sm transition',
+                        'flex w-full items-center gap-2.5 px-2.5 py-2 rounded-md text-left text-sm transition cursor-pointer',
                         active
                           ? 'text-emerald-700'
                           : 'hover:bg-white focus-visible:ring-2 focus-visible:ring-emerald-300'
