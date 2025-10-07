@@ -3,22 +3,27 @@ import { Button } from "@/app-components/ui/button"
 import { Input } from "@/app-components/ui/input"
 import { Facebook, Twitter, Linkedin, Youtube, Mail } from "lucide-react"
 import Image from "next/image"
+import { getAllProgramSlugs, getProgramBySlug } from "@/lib/programs"
+import { notFound } from "next/navigation"
 
 export function Footer() {
   const quickLinks = [
     { name: "About Us", href: "/about" },
     { name: "Programs", href: "/programs" },
-    { name: "Why Choose ICCD", href: "/why-choose" },
+    // { name: "Why Choose ICCD", href: "/why-choose" },
     { name: "Impact", href: "/impact" },
     { name: "Contact", href: "/contact" },
   ]
 
-  const programs = [
-    { name: "AML & Compliance", href: "/programs/aml-compliance" },
-    { name: "ESG & Sustainability", href: "/programs/esg-sustainability" },
-    { name: "Risk Management", href: "/programs/risk-management" },
-    { name: "Leadership Training", href: "/programs/leadership" },
-  ]
+  // generate programs dynamically from lib/programs
+  const programSlugs = getAllProgramSlugs()
+  const programs = programSlugs.map((slug) => {
+    const program = getProgramBySlug(slug)
+    return {
+      name: program?.title ?? slug, // fallback to slug if no title
+      href: `/programs/${slug}`,
+    }
+  })
 
   const policies = [
     { name: "Privacy Policy", href: "/privacy" },
@@ -97,8 +102,8 @@ export function Footer() {
             <div>
               <h4 className="text-lg font-semibold mb-6">Training Programs</h4>
               <ul className="space-y-3">
-                {programs.map((program) => (
-                  <li key={program.name}>
+                {programs.slice(0, 4).map((program) => (
+                  <li key={program.href}>
                     <Link
                       href={program.href}
                       className="text-primary-foreground/80 hover:text-accent transition-colors text-sm"
@@ -138,7 +143,7 @@ export function Footer() {
         <div className="border-t border-primary-foreground/20 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-sm text-primary-foreground/80">
-              © 2024 International Centre for Compliance and Development. All rights reserved.
+              ©  International Centre for Compliance and Development,  {new Date().getFullYear()}. All rights reserved.
             </div>
             <div className="flex flex-wrap gap-6">
               {policies.map((policy) => (

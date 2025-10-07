@@ -16,7 +16,7 @@ export function TrustedPartners() {
   ]
 
   return (
-    <section className="py-8 md:py-4">
+    <section className="py-8 md:py-6">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -60,7 +60,7 @@ export function TrustedPartners() {
                     alt={`${partner.name} logo`}
                     width={160}
                     height={80}
-                    className="object-contain w-auto h-8 sm:h-10 md:h-12 opacity-70 hover:opacity-100 transition duration-200 cursor-pointer"
+                    className="object-contain w-auto h-8 sm:h-10 md:h-12 opacity-70 hover:opacity-100 transition duration-200 cursor-pointer grayscale hover:grayscale-0"
                   />
                 </div>
               ))}

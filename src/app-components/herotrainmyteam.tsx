@@ -23,16 +23,16 @@ export default function HeroTrainMyTeam() {
 
   return (
     <section
-  className="relative isolate max-w-[80%] mx-auto rounded-3xl overflow-hidden p-4 bg-[url('/Images/Stocks/bg.png')] bg-cover bg-center bg-no-repeat bg-fixed my-16"
+  className="relative isolate max-w-[80%] mx-auto rounded-3xl overflow-hidden p-2 bg-[url('/Images/Stocks/bg.png')] bg-cover bg-center bg-no-repeat bg-fixed my-16"
   aria-labelledby="hero-title"
->
+> 
   {/* Content */}
   <div className="mx-auto max-w-6xl px-6 sm:px-6">
     <div className="relative flex min-h-[30vh] items-start justify-start py-12 sm:py-6">
       <div className="relative z-10 text-start">
         <Badge
           variant="secondary"
-          className="bg-emerald-50 text-emerald-700 border border-emerald-100 w-fit py-1 px-6 text-2sm"
+          className="bg-emerald-50 text-emerald-700 border border-emerald-100 w-fit py-0.5 px-4 text-2sm"
         >
           For HR leaders
         </Badge>
