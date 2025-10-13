@@ -58,7 +58,7 @@ export function Header() {
 
           {/* CTA Button */}
           <div className="hidden md:flex">
-            <Button className="bg-primary hover:bg-primary/90 text-accent-foreground cursor-pointer">Request Proposal</Button>
+            <Button className="bg-primary hover:bg-primary/90 text-accent-foreground cursor-pointer">REQUEST PROPOSAL</Button>
           </div>
 
           {/* Mobile menu button */}
@@ -84,7 +84,7 @@ export function Header() {
                 </Link>
               ))}
               <div className="px-3 py-2">
-                <Button className="w-full bg-primary hover:bg-primary/90 text-accent-foreground">Request Proposal</Button>
+                <Button className="w-full bg-secondary hover:bg-secondary/90 text-accent-foreground">Request Proposal</Button>
               </div>
             </div>
           </div>

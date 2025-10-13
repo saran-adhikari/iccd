@@ -21,11 +21,11 @@ const items: MVItem[] = [
     key: 'mission',
     title: 'Our Mission',
     kicker: 'Why we exist',
-    summary: `To empower financial institutions and professionals with the knowledge, skills, and tools to build robust compliance frameworks, manage risks effectively, and contribute to safer, more transparent financial systems.
+    summary: `We empower financial institutions and professionals with the skills and tools to build strong compliance frameworks, manage risks, and support safer, more transparent financial systems. 
+    
+    Beyond technical training, we foster integrity, critical thinking, and proactive risk awareness. Through regulatory expertise, real-world case studies, and ongoing advisory support, we help organisations anticipate threats, strengthen governance, and embed ethical decision-making in daily operations.`,
 
-    Our mission goes beyond technical training, we foster a culture of integrity, critical thinking, and proactive risk awareness. By combining deep regulatory expertise with real-world case studies, collaborative learning, and ongoing advisory support, we help organisations anticipate emerging threats, strengthen governance structures, and embed ethical decision-making into everyday operations.`,
-
-    image: 'https://i.pinimg.com/736x/c2/d3/2b/c2d32b36c16281863fc4620b040d2e3c.jpg',
+    image: 'https://i.pinimg.com/1200x/ab/e7/83/abe783ad28e688b6c529c301881b6540.jpg',
     icon: Compass,
   },
   {
@@ -33,11 +33,11 @@ const items: MVItem[] = [
     title: 'Our Vision',
     kicker: 'Where we’re headed',
     summary:
-      `To be the most trusted hub for compliance and risk capability, setting the benchmark for impact, accessibility, and measurable outcomes for teams across the globe. We envision an industry where every organisation, regardless of size or geography, can build and sustain a culture of integrity and accountability. 
-      
-      Through continuous innovation, international collaboration, and evidence-based best practice, we strive to inspire lasting confidence in financial systems, protect consumers, and strengthen global economic resilience for generations to come.`,
+      `Our vision is to be the most trusted hub for compliance and risk capability, setting the standard for impact, accessibility, and measurable outcomes worldwide.
 
-    image: 'https://i.pinimg.com/1200x/c3/d0/36/c3d036d1e34690f227d8e6f8578168dc.jpg',
+      We envision a future where every organisation can foster integrity and accountability. Through innovation, collaboration, and evidence-based practices, we aim to inspire confidence in financial systems, protect consumers, and strengthen global economic resilience.`,
+
+    image: 'https://i.pinimg.com/736x/bd/82/d0/bd82d0b7fcd8ba12836be0e70b3f5664.jpg',
     icon: Eye,
   },
 ]

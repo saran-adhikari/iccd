@@ -28,7 +28,7 @@ export function TrustedPartners() {
           }}
           className="text-center mb-6"
         >
-          <h2 className="text-2xl sm:text-2 xl font-light text-secondary mb-2">
+          <h2 className="text-2xl sm:text-2 xl font-light text-gray mb-2">
             Trusted by Leading Financial Institutions
           </h2>
           {/* optional sub-text if needed */}
@@ -53,14 +53,14 @@ export function TrustedPartners() {
               {[...partners, ...partners].map((partner, i) => (
                 <div
                   key={partner.name + i}
-                  className="flex items-center justify-center px-2 flex-shrink-0"
+                  className="flex items-center justify-center px-4 flex-shrink-0"
                 >
                   <Image
                     src={partner.logo || "/placeholder.svg"}
                     alt={`${partner.name} logo`}
-                    width={160}
+                    width={120}
                     height={80}
-                    className="object-contain w-auto h-8 sm:h-10 md:h-12 opacity-70 hover:opacity-100 transition duration-200 cursor-pointer grayscale hover:grayscale-0"
+                    className="object-cover w-auto h-8 sm:h-10 md:h-12 opacity-70 hover:opacity-100 transition duration-200 cursor-pointer grayscale hover:grayscale-0"
                   />
                 </div>
               ))}
@@ -71,3 +71,4 @@ export function TrustedPartners() {
     </section>
   )
 }
+

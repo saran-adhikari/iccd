@@ -20,9 +20,9 @@ export default function AboutPage() {
       {/* <AboutStory /> */}
       <MissionVision />
       <WhyICCD_Toggle/>
-      <CompanyInfo/>
+      {/* <CompanyInfo/> */}
       {/* <LeadershipTeam /> */}
-      <ImpactNumbers/>
+      {/* <ImpactNumbers/> */}
       <Testimonials />
       <Accreditation />
       

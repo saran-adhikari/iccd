@@ -94,7 +94,7 @@ export const programData: Program[] = [
       location: "Kathmandu or Virtual",
       lastUpdated: "2025-09-11",
       tags: ["AML", "CFT", "NRB", "FATF"],
-      images: { cover: "https://i.pinimg.com/736x/0d/b0/40/0db0407dfa36df50e776823a31405763.jpg", icon: "shield" },
+      images: { cover: "https://i.pinimg.com/1200x/6c/6c/d1/6c6cd162982d2450b1537374a6d0674b.jpg", icon: "shield" },
       language: "English",
     },
 
