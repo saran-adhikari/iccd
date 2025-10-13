@@ -26,7 +26,6 @@ export default function HomePage() {
       <FeaturedProgram />
       <ECLCalculator/>
       <HeroTrainMyTeam/>
-      
       {/* <CTAStrip /> */}
       <Footer />
     </main>

@@ -161,7 +161,7 @@ export default function ECLCalculator() {
       className="w-[80%] mx-auto my-12 p-8 bg-white border border-gray-100 rounded-2xl"
     >
       <h2 className="text-center text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-black">
-        <span className="text-primary">Expected Credit Loss (ECL) Calculator</span>
+        Expected Credit Loss <span className="text-primary">(ECL) Calculator</span>
       </h2>
 
       {/* Input Section */}
