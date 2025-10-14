@@ -233,7 +233,7 @@ export const programData: Program[] = [
       id: "6",
       slug: "seecure-banking-training",
       title: "Secure Banking Training",
-      category: "ESG & Sustainability",
+      category: "Fraud & Forensics",
       summary:
         "Our Smart Teller Secure Bank Training Program is designed to enhance security, efficiency, and professionalism in teller operations across Nepal’s banking institutions. As digital banking expands, ensuring skilled and security-aware teller staff has become essential for maintaining trust and compliance.",
       keyPoints: [
