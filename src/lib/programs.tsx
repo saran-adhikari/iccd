@@ -23,6 +23,7 @@ export type Program = {
     icon?: string | null
   }
   language: string
+  longDescription: string
 }
 
 // keep slug generation consistent everywhere (same as Seasons)
@@ -42,7 +43,7 @@ export const programData: Program[] = [
       title: "ESG & Climate Finance (CF) Training",
       category: "ESG & Sustainability",
       summary:
-        "Integrate ESG risks, reporting, and Nepal’s Green Taxonomy into financial decision-making with practical KPIs and case studies.",
+        "The ESG and Environmental & Social Risk Management (ESRM) Training Program aims to build the capacity of bank staff to identify, assess, and manage environmental and social risks while promoting responsible and sustainable financing practices.",
       keyPoints: [
         "ESG risks, disclosure frameworks, and global standards",
         "Nepal’s ESRM guidelines and ESDD processes",
@@ -65,6 +66,11 @@ export const programData: Program[] = [
       tags: ["ESG", "Climate Finance", "Disclosure"],
       images: { cover: "https://i.pinimg.com/736x/be/27/13/be271365d3b69e2ffb0fc0c12280c2a7.jpg", icon: "globe" },
       language: "English",
+      longDescription: `The program provides practical knowledge of ESG standards, Nepal Rastra Bank’s sustainable banking guidelines, and international frameworks such as the IFC Performance Standards. It focuses on how banks can incorporate ESG and ESRM principles into credit appraisal, project evaluation, and decision-making to ensure long-term sustainability and regulatory compliance.
+
+        The training enhances participants’ understanding of ESG and ESRM concepts, equipping them to identify and manage environmental and social risks in lending and investment activities. It builds analytical and decision-making skills necessary for promoting responsible banking and aligning operations with national and global sustainability standards.
+        For banks, the program strengthens compliance with regulatory and international sustainability requirements, reduces credit and reputational risks, and promotes responsible lending practices. It helps institutions contribute to national goals on sustainable development and climate resilience while enhancing their reputation as forward-thinking and socially responsible financial institutions.
+        `,
     },
     {
       id: "2",
@@ -72,7 +78,7 @@ export const programData: Program[] = [
       title: "AML/CFT Compliance in Nepal",
       category: "Compliance", 
       summary:
-        "Tools to strengthen AML/CFT programs aligned with NRB directives and global standards; addresses FATF grey list implications.",
+        "AML/CFT and Risk Management Training Program is designed to equip banking professionals with the knowledge and tools to identify, assess, and mitigate financial crime risks while ensuring full compliance with national and international regulations.",
       keyPoints: [
         "AML/CFT fundamentals and NRB Directive No. 19",
         "CDD/EDD and risk-based compliance",
@@ -96,6 +102,12 @@ export const programData: Program[] = [
       tags: ["AML", "CFT", "NRB", "FATF"],
       images: { cover: "https://i.pinimg.com/1200x/6c/6c/d1/6c6cd162982d2450b1537374a6d0674b.jpg", icon: "shield" },
       language: "English",
+      longDescription: `The program focuses on key provisions of Nepal Rastra Bank’s AML/CFT directives, the Money Laundering Prevention Act, and global FATF standards. It covers customer due diligence (CDD), suspicious transaction reporting (STR), risk-based approaches, and effective internal control measures. Participants also gain practical insights into implementing sound risk management frameworks within their institutions.
+
+      The training helps participants understand AML/CFT requirements, risk indicators, and reporting obligations. It builds their ability to detect and prevent suspicious activities, apply risk-based controls, and ensure compliance in daily banking operations. This enhances their professional competence and accountability in safeguarding the integrity of the financial system.
+
+      For banks, the program strengthens institutional compliance, minimizes reputational and regulatory risks, and promotes a culture of vigilance and transparency. It supports the development of robust internal control systems, ensures adherence to NRB and FATF standards, and helps protect the institution from potential penalties, fraud, and financial crime threats.
+      `,
     },
 
     {
@@ -104,7 +116,7 @@ export const programData: Program[] = [
       title: "Risk Management and Expected Credit Loss (ECL)",
       category: "Risk & Finance",
       summary:
-        "Deep-dive into banking risks and IFRS 9 ECL modeling (EAD, PD, LGD) with NRB alignment and portfolio impact analysis.",
+        "The Expected Credit Loss (ECL) and NFRS 9 Training Program is designed to help banking professionals understand and apply these standards effectively to ensure accurate financial reporting, sound risk management, and regulatory compliance.",
       keyPoints: [
         "Risks in the banking industry and mitigations",
         "Shift from incurred loss to expected credit loss",
@@ -128,6 +140,12 @@ export const programData: Program[] = [
       tags: ["Risk", "IFRS 9", "ECL", "NRB"],
       images: { cover: "https://i.pinimg.com/1200x/4f/ee/b9/4feeb93f025c0ed9b200e5cc02f16b8d.jpg", icon: "trending-up" },
       language: "English",
+      longDescription: `This program provides comprehensive knowledge of NFRS 9 principles, including classification and measurement of financial assets, expected credit loss modeling, staging criteria, and disclosures. It focuses on both theoretical understanding and practical application of ECL frameworks in line with Nepal Rastra Bank (NRB) directives and international best practices.
+
+        The training enhances participants’ ability to interpret and apply NFRS 9 requirements in day-to-day banking operations. It strengthens analytical skills for credit risk assessment, data interpretation, and ECL model understanding, enabling them to contribute effectively to accurate provisioning and financial reporting processes.
+
+        For banks, this program ensures compliance with NFRS 9 and NRB guidelines, leading to more transparent and reliable financial statements. It improves risk management practices, enhances accuracy in loan loss provisioning, and supports informed decision-making. Ultimately, it helps institutions maintain financial stability and investor confidence in an increasingly regulated environment.
+        `,
     },
 
     {
@@ -136,7 +154,7 @@ export const programData: Program[] = [
       title: "Mastering Cash Security",
       category: "Fraud & Forensics",
       summary:
-        "Hands-on training to authenticate IDs, signatures, and currency; reduce fraud and enhance teller efficiency.",
+        "The Mastering Cash Security Training Program equips banking staff with the skills and knowledge to handle cash accurately, securely, and efficiently, minimizing operational risks while ensuring customer trust.",
       keyPoints: [
         "ID and document authentication techniques",
         "Forgery detection in negotiable instruments",
@@ -163,6 +181,12 @@ export const programData: Program[] = [
       tags: ["Fraud", "Forensics", "Operations"],
       images: { cover: "https://i.pinimg.com/736x/a4/92/36/a49236c47100f56228606d878cf47f50.jpg", icon: "scan-line" },
       language: "English",
+      longDescription: `The program covers all aspects of secure cash handling, including counting, reconciliation, storage, and transportation of cash. It emphasizes detection and verification of counterfeit notes, identification of forged or damaged currency, and implementation of best practices to prevent cash fraud. Participants also learn about internal control mechanisms, compliance with Nepal Rastra Bank guidelines, and strategies to mitigate operational risks in daily banking transactions.
+
+        The training strengthens participants’ technical skills in secure cash handling, counterfeit detection, and fraud prevention. It enhances their ability to manage cash operations confidently, reduce errors, and apply regulatory and internal controls effectively, ensuring safe and reliable cash management.
+
+        For banks, this program reduces the risk of cash losses, fraud, and counterfeit circulation. It reinforces internal control systems, ensures compliance with NRB regulations, and promotes operational efficiency. By training staff in best practices and counterfeit detection, the bank safeguards its assets and strengthens customer confidence in its reliability and security.
+`,
     },
     
     
@@ -173,7 +197,7 @@ export const programData: Program[] = [
       title: "Excellent Customer Service",
       category: "Service Excellence",
       summary:
-        "Hospitality-driven customer service skills tailored for banking to elevate interactions and build long-term trust.",
+        "The Delight Your Customers with Excellent Customer Service program is designed to help banking staff develop the right attitude, communication skills, and service approach to create lasting positive impressions on customers.",
       keyPoints: [
         "Hospitality mindset beyond basic service",
         "Handling diverse customer personalities",
@@ -197,15 +221,21 @@ export const programData: Program[] = [
       tags: ["Customer Service", "CX", "Hospitality"],
       images: { cover: "https://i.pinimg.com/736x/c0/d0/fa/c0d0fa2b1a2b46e67ad0153ad2cca4fa.jpg", icon: "smile" },
       language: "English",
+      longDescription: `The program focuses on understanding customer expectations, effective communication, complaint handling, and service delivery standards relevant to Nepalese context. Through interactive sessions and real-life banking examples, participants learn how to respond professionally, manage challenges, and enhance overall customer satisfaction.
+
+      The training helps participants improve communication, empathy, and problem-solving skills to deliver professional and courteous service. It builds confidence in dealing with diverse customers, managing complaints, and maintaining long-term relationships that reflect the bank’s values and credibility.
+
+      For banks, this program enhances customer satisfaction, loyalty, and institutional reputation. It reduces service-related grievances, promotes a customer-centric culture, and supports sustainable business growth in a highly competitive and trust-driven financial environment.
+      `,
     },
 
      {
       id: "6",
-      slug: "green-finance-taxonomy-nepal",
-      title: "Green Finance Taxonomy in Nepal",
+      slug: "seecure-banking-training",
+      title: "Secure Banking Training",
       category: "ESG & Sustainability",
       summary:
-        "Strategic, regulatory, and operational framework to classify and implement green investments across Nepal’s banking sector.",
+        "Our Smart Teller Secure Bank Training Program is designed to enhance security, efficiency, and professionalism in teller operations across Nepal’s banking institutions. As digital banking expands, ensuring skilled and security-aware teller staff has become essential for maintaining trust and compliance.",
       keyPoints: [
         "Defines green finance taxonomy and strategic relevance",
         "Introduces DNSH principles and environmental safeguards",
@@ -235,6 +265,11 @@ export const programData: Program[] = [
         icon: "leaf",
       },
       language: "English",
+      longDescription: `The program focuses on practical teller operations, secure transaction handling, fraud prevention, compliance with Nepal Rastra Bank (NRB) guidelines, and customer service excellence. It combines technical skills with ethical and procedural awareness to build a secure and efficient banking environment.
+      The program enhances participants’ technical and operational skills in teller functions, digital transaction security, and customer service. It builds confidence, promotes compliance with NRB regulations, and equips staff with the practical knowledge needed to perform efficiently and professionally in daily banking operations.
+
+      For banks, the training reduces operational risks, transaction errors, and fraud incidents while improving service quality and customer trust. It ensures compliance with regulatory standards, strengthens internal controls, and fosters a skilled, security-conscious, and efficient workforce that upholds the bank’s reputation and reliability.
+    `,
     },
   ]
 

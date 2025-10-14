@@ -41,6 +41,7 @@ interface ProgramView {
   learningOutcomes?: string[]
   whoShouldAttend?: string[]
   curriculum?: CurriculumDay[]
+  longDescription?: string
 }
 
 /** map Program -> this page's view model with safe fallbacks */
@@ -54,10 +55,12 @@ function toProgramView(program: Program): ProgramView {
     maxParticipants: program.maxParticipants,
     level: program.level,
     price: "Request a quote",
-    nextSession: "TBA",
     image: program.images.cover ?? "/globe.svg",
     learningOutcomes: program.learningOutcomes ?? program.keyPoints ?? [],
     whoShouldAttend: program.audience ?? [],
+    longDescription: program.longDescription ??
+    program.summary ??
+      "Detailed program information will be available soon.",
   }
 }
 
@@ -95,32 +98,28 @@ export default async function ProgramDetailPage({
         }}
       />
 
-      <section className="py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-0 bg-background ">
+        <div className="w-[80%] mx-auto px-0 sm:px-6 lg:px-0">
           <div className="grid lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2 space-y-12">
-              {program.learningOutcomes && program.learningOutcomes.length > 0 && (
+              {program.longDescription && (
                 <Card>
                   <CardHeader>
                     <div className="flex items-center gap-3">
-                      <Target className="h-6 w-6 text-accent" />
-                      <CardTitle className="text-2xl text-primary">Learning Outcomes</CardTitle>
+                      <BookOpen className="h-6 w-6 text-accent" />
+                      <CardTitle className="text-2xl text-primary">Program Overview</CardTitle>
                     </div>
-                    <CardDescription>What you&apos;ll achieve by completing this program</CardDescription>
+                    <CardDescription>In-depth description of the program content and objectives</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-3">
-                      {program.learningOutcomes.map((outcome, index) => (
-                        <div key={index} className="flex items-start gap-3">
-                          <CheckCircle className="h-5 w-5 text-accent mt-0.5 flex-shrink-0" />
-                          <span className="text-muted-foreground">{outcome}</span>
-                        </div>
-                      ))}
-                    </div>
+                    <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
+                      {program.longDescription}
+                    </p>
                   </CardContent>
                 </Card>
               )}
-
+              
+              
               {program.curriculum && program.curriculum.length > 0 && (
                 <Card>
                   <CardHeader>
@@ -174,8 +173,30 @@ export default async function ProgramDetailPage({
                   </CardContent>
                 </Card>
               )}
+              
+              {program.learningOutcomes && program.learningOutcomes.length > 0 && (
+                <Card>
+                  <CardHeader>
+                    <div className="flex items-center gap-3">
+                      <Target className="h-6 w-6 text-accent" />
+                      <CardTitle className="text-2xl text-primary">Learning Outcomes</CardTitle>
+                    </div>
+                    <CardDescription>What you&apos;ll achieve by completing this program</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3">
+                      {program.learningOutcomes.map((outcome, index) => (
+                        <div key={index} className="flex items-start gap-3">
+                          <CheckCircle className="h-5 w-5 text-accent mt-0.5 flex-shrink-0" />
+                          <span className="text-muted-foreground">{outcome}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
 
-              {(program.price || program.nextSession) && (
+              {/* {(program.price || program.nextSession) && (
                 <Card className="bg-accent/5 border-accent/20">
                   <CardHeader>
                     <CardTitle className="text-xl text-primary">Program Information</CardTitle>
@@ -200,7 +221,7 @@ export default async function ProgramDetailPage({
                     </div>
                   </CardContent>
                 </Card>
-              )}
+              )} */}
             </div>
           </div>
         </div>
