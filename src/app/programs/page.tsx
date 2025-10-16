@@ -1,7 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import { Card, CardContent, CardHeader, CardTitle } from "@/app-components/ui/card"
+import { motion } from "framer-motion"
+import { Card, CardContent } from "@/app-components/ui/card"
 import { Badge } from "@/app-components/ui/badge"
 import { programData, type Program } from "../../lib/programs"
 import { ProgramsHero } from "@/app-components/programs-hero"
@@ -15,38 +16,54 @@ export default function ProgramsPage() {
       <Header />
       <ProgramsHero />
 
-      <section className="max-w-7xl mx-auto px-6 py-12">
-        <h1 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-black text-center">
-          Our <span className="text-primary">Programs</span>
+      <section className="max-w-7xl mx-auto px-6 py-16">
+        <h1 className="text-4xl lg:text-5xl font-extrabold mb-12 leading-tight text-center text-gray-900">
+          Explore Our <span className="text-primary">Programs</span>
         </h1>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {programData.map((program: Program) => (
-            <Link key={program.id} href={`/programs/${program.slug}`}>
-              <Card
-                className="cursor-pointer hover:shadow-lg transition-shadow duration-200 h-full flex flex-col bg-gray-50" // light neutral background
-              >
-                <CardHeader>
-                  <img
-                    src={program.images.cover}
-                    alt={program.title}
-                    className="w-full h-40 object-cover rounded-lg"
-                  />
-                  <CardTitle className="mt-4 text-xl">{program.title}</CardTitle>
-                </CardHeader>
-
-                {/* flex-1 ensures the content area stretches evenly */}
-                <CardContent className="flex-1 flex flex-col justify-between">
-                  <p className="text-sm text-muted-foreground mb-3 line-clamp-3">
-                    {program.summary}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mt-auto">
-                    <Badge>{program.level}</Badge>
-                    <Badge variant="secondary">{program.category}</Badge>
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+          {programData.map((program: Program, i) => (
+            <motion.div
+              key={program.id}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              whileHover={{ scale: 1.02 }}
+            >
+              <Link href={`/programs/${program.slug}`}>
+                <Card className="group relative overflow-hidden hover:shadow-xl transition-all duration-300 !border-none rounded-3xl bg-white h-full flex flex-col">
+                  <div className="relative h-64 overflow-hidden rounded-t-3xl">
+                    <img
+                      src={program.images.cover}
+                      alt={program.title}
+                      className="object-cover w-full h-full transform transition-transform duration-500 group-hover:scale-110"
+                    />
                   </div>
-                </CardContent>
-              </Card>
-            </Link>
+
+                  <CardContent className="p-6 flex flex-col justify-between flex-grow">
+                    <div>
+                      <div className="flex flex-wrap gap-2 pt-2 mb-2">
+                        <Badge>{program.level}</Badge>
+                        <Badge variant="secondary">{program.category}</Badge>
+                      </div>
+                      <h3 className="text-xl font-semibold text-gray-900 group-hover:text-primary transition-colors min-h-[60px]">
+                        {program.title}
+                      </h3>
+                      <p className="text-sm text-gray-600 line-clamp-3">
+                        {program.summary}
+                      </p>
+                    </div>
+
+                    {/* CTA Button at Bottom */}
+                    {/* <div className="mt-4">
+                      <span className="text-primary font-medium group-hover:underline">
+                        View Details →
+                      </span>
+                    </div> */}
+                  </CardContent>
+                </Card>
+              </Link>
+            </motion.div>
           ))}
         </div>
       </section>
