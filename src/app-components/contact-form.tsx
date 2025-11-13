@@ -7,8 +7,9 @@ import { Button } from "@/app-components/ui/button"
 import { Input } from "@/app-components/ui/input"
 import { Textarea } from "@/app-components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/app-components/ui/select"
+import emailjs from "@emailjs/browser"
+import { toast, ToastContainer } from "react-toastify"
 
-// Keep the same exported name
 export function ContactForm() {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -44,20 +45,42 @@ export function ContactForm() {
     return Object.keys(next).length === 0
   }
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     if (!validate()) return
     setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
+
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        { name, email, org, role, interest, message },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      )
+
+
+      // Reset form fields
+      setName("")
+      setEmail("")
+      setOrg("")
+      setRole(undefined)
+      setInterest(undefined)
+      setMessage("")
+
       setIsSubmitted(true)
-    }, 1100)
+      toast.success("Message sent successfully! We'll reply soon.")
+
+    } catch (err) {
+      console.error("EmailJS Error:", err)
+      toast.error("Something went wrong. Please try again later.")
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
     <section className="relative py-14 md:py-20 bg-primary/5">
       <div className="max-w-6xl mx-auto w-[80%] px-4 sm:px-6 lg:px-6">
-        {/* Outer white card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -65,61 +88,39 @@ export function ContactForm() {
           transition={{ duration: 0.6 }}
           className="relative rounded-3xl bg-background shadow-xl border border-border/40 p-6 sm:p-4 md:p-10 mx-auto"
         >
-          {/* Two columns but with a NARROWER right side to make left pop */}
           <div className="grid gap-8 lg:grid-cols-[420px_minmax(0,1fr)]">
-            {/* LEFT — popup-like info card */}
+            {/* LEFT INFO */}
             <div className="relative">
-              
-              <div
-                className={[
-                  "relative rounded-2xl bg-primary text-primary-foreground",
-                  "p-7 sm:p-8 md:p-10 shadow-2xl",
-                  "lg:-ml-24 lg:mt-4 lg:mb-2 z-10"
-                ].join(" ")}
-              >
-                {/* Flex to vertically justify content nicely */}
-                <div className="flex  flex-col justify-between gap-8">
-                  <div>
-                    <h3 className="text-2xl font-semibold mb-6">Contact Us</h3>
-                    <ul className="space-y-6 text-sm leading-6">
-                      <li className="flex gap-3">
-                        <MapPin className="h-5 w-5 mt-0.5 opacity-90" />
-                        <div>
-                          <p>123 Financial District</p>
-                          <p>Kathmandu, BA 44600 NPL</p>
-                        </div>
-                      </li>
-                      <li className="flex gap-3">
-                        <Mail className="h-5 w-5 mt-0.5 opacity-90" />
-                        <div>
-                          <p>iccdnepal@gmail.com</p>
-                          {/* <p>training@iccd.org</p> */}
-                        </div>
-                      </li>
-                      <li className="flex gap-3">
-                        <Phone className="h-5 w-5 mt-0.5 opacity-90" />
-                        <div>
-                          <p>+1 (555) 123-4567</p>
-                          <p>+44 20 7123 4567</p>
-                        </div>
-                      </li>
-                      <li className="flex gap-3">
-                        <Clock className="h-5 w-5 mt-0.5 opacity-90" />
-                        <div>
-                          <p>Mon–Fri: 9:00–18:00 (NPT)</p>
-                        </div>
-                      </li>
-                    </ul>
-                    
-                  </div>
-                  
-
-                  
-                </div>
+              <div className="relative rounded-2xl bg-primary text-primary-foreground p-7 sm:p-8 md:p-10 shadow-2xl lg:-ml-24 lg:mt-4 lg:mb-2 z-10">
+                <h3 className="text-2xl font-semibold mb-6">Contact Us</h3>
+                <ul className="space-y-6 text-sm leading-6">
+                  <li className="flex gap-3">
+                    <MapPin className="h-5 w-5 mt-0.5 opacity-90" />
+                    <div>
+                      <p>123 Financial District</p>
+                      <p>Kathmandu, BA 44600 NPL</p>
+                    </div>
+                  </li>
+                  <li className="flex gap-3">
+                    <Mail className="h-5 w-5 mt-0.5 opacity-90" />
+                    <p>iccdnepal@gmail.com</p>
+                  </li>
+                  <li className="flex gap-3">
+                    <Phone className="h-5 w-5 mt-0.5 opacity-90" />
+                    <div>
+                      <p>+1 (555) 123-4567</p>
+                      <p>+44 20 7123 4567</p>
+                    </div>
+                  </li>
+                  <li className="flex gap-3">
+                    <Clock className="h-5 w-5 mt-0.5 opacity-90" />
+                    <p>Mon–Fri: 9:00–18:00 (NPT)</p>
+                  </li>
+                </ul>
               </div>
             </div>
 
-            {/* RIGHT — compact form so left looks like a popup */}
+            {/* RIGHT FORM */}
             <div className="pt-1">
               <div className="max-w-xl ">
                 <h2 className="text-3xl font-semibold text-primary mb-2">Get in Touch</h2>
@@ -130,29 +131,13 @@ export function ContactForm() {
 
               {!isSubmitted ? (
                 <form className="space-y-4 max-w-xl" onSubmit={handleSubmit} noValidate>
-                  <Input
-                    placeholder="Your Name *"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    className="h-11"
-                  />
+                  <Input placeholder="Your Name *" value={name} onChange={(e) => setName(e.target.value)} className="h-11" />
                   {errors.name && <p className="text-xs text-destructive">{errors.name}</p>}
 
-                  <Input
-                    type="email"
-                    placeholder="Your Email *"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="h-11"
-                  />
+                  <Input type="email" placeholder="Your Email *" value={email} onChange={(e) => setEmail(e.target.value)} className="h-11" />
                   {errors.email && <p className="text-xs text-destructive">{errors.email}</p>}
 
-                  <Input
-                    placeholder="Organisation *"
-                    value={org}
-                    onChange={(e) => setOrg(e.target.value)}
-                    className="h-11"
-                  />
+                  <Input placeholder="Organisation *" value={org} onChange={(e) => setOrg(e.target.value)} className="h-11" />
                   {errors.org && <p className="text-xs text-destructive">{errors.org}</p>}
 
                   <div className="grid sm:grid-cols-4 gap-4">
@@ -186,27 +171,12 @@ export function ContactForm() {
                   {errors.role && <p className="text-xs text-destructive">{errors.role}</p>}
                   {errors.interest && <p className="text-xs text-destructive">{errors.interest}</p>}
 
-                  <Textarea
-                    rows={5}
-                    placeholder="Type your message here… (min 20 chars) *"
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    className="min-h-[160px]"
-                  />
+                  <Textarea rows={5} placeholder="Type your message here… (min 20 chars) *" value={message} onChange={(e) => setMessage(e.target.value)} className="min-h-[160px]" />
                   {errors.message && <p className="text-xs text-destructive">{errors.message}</p>}
 
                   <div className="flex justify-center pt-2">
-                    <Button
-                      type="submit"
-                      size="lg"
-                      disabled={loading || !canSubmit}
-                      className="px-10 rounded-full bg-primary text-white hover:bg-primary/90 shadow-md cursor-pointer"
-                    >
-                      {loading ? (
-                        <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                      ) : (
-                        <Send className="mr-0 h-5 w-5" />
-                      )}
+                    <Button type="submit" size="lg" disabled={loading || !canSubmit} className="px-10 rounded-full bg-primary text-white hover:bg-primary/90 shadow-md cursor-pointer">
+                      {loading ? <Loader2 className="mr-2 h-5 w-5 animate-spin" /> : <Send className="mr-0 h-5 w-5" />}
                       {loading ? "Sending…" : "SEND"}
                     </Button>
                   </div>
@@ -219,7 +189,7 @@ export function ContactForm() {
                   <h3 className="text-2xl font-semibold text-primary">Thanks, we got your message!</h3>
                   <p className="text-muted-foreground text-sm max-w-md mx-auto">
                     Our team will get back to you within 1 business day. For urgent matters, email{" "}
-                    <a href="mailto:training@iccd.org" className="underline underline-offset-4">
+                    <a href="mailto:iccdnepal@gmail.com" className="underline underline-offset-4">
                       iccdnepal@gmail.com
                     </a>.
                   </p>
@@ -232,6 +202,9 @@ export function ContactForm() {
           </div>
         </motion.div>
       </div>
+
+      {/* Toastify container */}
+      <ToastContainer position="top-right" autoClose={4000} hideProgressBar={false} newestOnTop />
     </section>
   )
 }

@@ -28,8 +28,8 @@ export function Footer() {
   const policies = [
     { name: "Privacy Policy", href: "/privacy" },
     { name: "Terms of Service", href: "/terms" },
-    { name: "Disclaimer", href: "/disclaimer" },
-    { name: "Cookie Policy", href: "/cookies" },
+    // { name: "Disclaimer", href: "/disclaimer" },
+    // { name: "Cookie Policy", href: "/cookies" },
   ]
 
   return (
@@ -115,27 +115,31 @@ export function Footer() {
               </ul>
             </div>
 
-            {/* Newsletter */}
+            {/* Stay Connected */}
             <div>
-              <h4 className="text-lg font-semibold mb-6">Stay Updated</h4>
+              <h4 className="text-lg font-semibold mb-6">Stay Connected</h4>
               <p className="text-primary-foreground/80 text-sm mb-4">
-                Subscribe to our newsletter for the latest insights on compliance and training.
+                Send us an email and stay connected with ICCD for insights and updates.
               </p>
               <div className="space-y-3">
                 <div className="flex gap-2">
-                  <Input
-                    placeholder="Enter your email"
-                    className="bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/60"
-                  />
-                  <Button className="bg-accent hover:bg-accent/90 text-accent-foreground">
-                    <Mail className="h-4 w-4" />
-                  </Button>
+                  <a
+                      href="https://mail.google.com/mail/?view=cm&fs=1&to=iccdnepal@gmail.com&su=Stay%20Connected%20with%20ICCD&body=Hello%20ICCD%20Team,"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center bg-accent hover:bg-accent/90 text-accent-foreground rounded-md px-4 py-2"
+                    >
+                      <Mail className="h-4 w-4 mr-2" />
+                      Send Email
+                    </a>
+
                 </div>
                 <p className="text-xs text-primary-foreground/60">
-                  By subscribing, you agree to our Privacy Policy and consent to receive updates from ICCD.
+                  By reaching out, you agree to our Privacy Policy and consent to receive responses from ICCD.
                 </p>
               </div>
             </div>
+
           </div>
         </div>
 
