@@ -15,7 +15,7 @@ export function WhoWeAre() {
 
   return (
     <motion.section
-      className="relative overflow-hidden"
+      className="relative overflow-hidden relative overflow-hidden py-16 lg:py-24"
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
@@ -28,6 +28,7 @@ export function WhoWeAre() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           {/* LEFT: Big heading + arrow */}
           <motion.div
@@ -39,13 +40,9 @@ export function WhoWeAre() {
             <div className="flex items-start justify-between">
               <div className="relative">
                 <motion.h2
-                  className="text-2xl sm:text-7xl lg:text-9xl font-bold leading-tight tracking-tight text-black"
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.7, ease: "easeOut", delay: 0.05 }}
+                  className="text-5xl sm:text-6xl lg:text-8xl xl:text-9xl font-bold leading-tight tracking-tight text-white"
                 >
-                  Who <span className="whitespace-nowrap text-black"> <span className="text-primary">We</span> Are</span>
+                  Who<br/> <span className="block sm:inline"><span className="text-primary">We</span> Are</span>
                 </motion.h2>
 
                 
@@ -98,12 +95,12 @@ export function WhoWeAre() {
             </p>
 
             {/* CTA */}
-            <Link href="/about" className="inline-block group">
+            <Link href="/about" className="inline-block group ">
               {/* motion(Button) without variants */}
               <motion.div whileHover={{ y: -1 }} whileTap={{ scale: 0.98 }}>
                 <Button
                   variant="outline"
-                  className="border-2 border-primary text-primary hover:bg-primary hover:text-white hover:border-primary transition-colors cursor-pointer"
+                  className="border-2 border-primary text-primary hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/25 cursor-pointer"
                 >
                   LEARN MORE
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />

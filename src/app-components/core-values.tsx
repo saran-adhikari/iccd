@@ -21,6 +21,8 @@ export function CoreValues({ items = defaultItems }: { items?: ValueItem[] }) {
 
   return (
     <section className="py-24 bg-background">
+      
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-2">
         <motion.div
           className="grid md:grid-cols-2 gap-10 items-center"
@@ -40,7 +42,7 @@ export function CoreValues({ items = defaultItems }: { items?: ValueItem[] }) {
           <motion.div
             variants={{ hidden: { opacity: 0, x: -40 }, visible: { opacity: 1, x: 0 } }}
           >
-            <h2 className="text-4xl md:text-4xl font-extrabold text-black leading-tight">
+            <h2 className="text-4xl md:text-4xl font-extrabold text-white leading-tight">
               Building <span className="text-primary">long-term capacity</span> that{" "}
               <span className="text-primary">strengthens</span> organizations.
             </h2>

@@ -52,7 +52,7 @@ export default function HeroTrainMyTeam() {
         <div className="mt-8 flex items-center justify-end">
           <Link
             href="/programs"
-            className="group relative inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-medium text-foreground transition-transform duration-200 hover:-translate-y-0.5 hover:bg-secondary hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+            className="group relative inline-flex items-center justify-center rounded-xl bg-secondary/90 px-6 py-3 text-sm font-medium text-white transition-transform duration-200 hover:-translate-y-0.5 hover:bg-secondary hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
           >
             <span className="absolute inset-0 -z-10 rounded-xl opacity-0 blur-md transition-opacity duration-200 group-hover:opacity-40 bg-[radial-gradient(45%_60%_at_50%_50%,theme(colors.primary/40),transparent_70%)]" />
             Train My Team

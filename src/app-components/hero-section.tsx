@@ -82,7 +82,7 @@ export function HeroSection() {
             }}
           >
             <Link href="/programs">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-accent-foreground cursor-pointer">
+              <Button size="lg" className="border-2 border-primary bg-primary/70 text-white hover:bg-secondary hover:text-white hover:border-secondary transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/25 cursor-pointer">
                 EXPLORE PROGRAMS
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>

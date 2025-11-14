@@ -19,7 +19,7 @@ const items: WhyItem[] = [
   },
   { 
     title: "Industry Expert", 
-    description: "Our experts combine academic knowledge with real-world experience across industries such as banking and fintech. This ensures our programs are practical, relevant, and adaptable to today’s compliance challenges. By anticipating trends, we empower professionals to stay ahead of complex regulatory requirements.", 
+    description: "Our experts combine academic knowledge with real-world experience across industries such as banking and fintech. This ensures our programs are practical, relevant, and adaptable to today's compliance challenges. By anticipating trends, we empower professionals to stay ahead of complex regulatory requirements.", 
     icon: Cog 
   },
   { 
@@ -45,21 +45,15 @@ export default function WhyICCD_Toggle() {
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
-      {/* background */}
-      <div className="pointer-events-none absolute inset-0 -z-10 [mask-image:radial-gradient(60%_50%_at_50%_0%,black,transparent)]">
-        <div className="absolute inset-0 bg-[radial-gradient(1200px_600px_at_50%_-100px,theme(colors.primary/10),transparent_60%)]" />
-        <div className="absolute -inset-x-10 -bottom-10 h-44 bg-gradient-to-t from-muted/40 to-transparent" />
-      </div>
+      
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 lg:py-4">
         {/* Title on top */}
         <div className="text-center max-w-2xl mx-auto">
-          <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-black">
+          <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-white">
             Why <span className="text-primary">ICCD</span> 
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Tap each heading to show or hide the description smoothly.
-          </p>
+          
         </div>
 
         {/* Grid */}

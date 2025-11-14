@@ -224,9 +224,9 @@ export default function ECLCalculator() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="w-[80%] mx-auto my-12 p-8 bg-white border border-gray-100 rounded-2xl"
+      className="w-[80%] mx-auto my-12 p-8 bg-none  rounded-2xl"
     >
-      <h2 className="text-center text-4xl lg:text-5xl font-extrabold mb-10 leading-tight text-black">
+      <h2 className="text-center text-4xl lg:text-5xl font-extrabold mb-10 leading-tight text-white">
         Expected Credit Loss <span className="text-primary">(ECL) Calculator</span>
       </h2>
 
@@ -237,7 +237,7 @@ export default function ECLCalculator() {
         <div className="flex-1 w-full space-y-6">
           {/* PD */}
           <div>
-            <label className="block font-medium text-gray-700 mb-2">
+            <label className="block font-medium text-white-700 mb-2">
               Probability of Default (PD): {pd}%
             </label>
             <Slider
@@ -251,7 +251,7 @@ export default function ECLCalculator() {
 
           {/* LGD */}
           <div>
-            <label className="block font-medium text-gray-700 mb-2">
+            <label className="block font-medium text-white-700 mb-2">
               Loss Given Default (LGD): {lgd}%
             </label>
             <Slider
@@ -265,7 +265,7 @@ export default function ECLCalculator() {
 
           {/* EAD */}
           <div>
-            <label className="block font-medium text-gray-700 mb-2">
+            <label className="block font-medium text-white-700 mb-2">
               Exposure at Default (EAD, NPR)
             </label>
             <input
@@ -278,7 +278,7 @@ export default function ECLCalculator() {
 
           {/* EIR */}
           <div>
-            <label className="block font-medium text-gray-700 mb-2">
+            <label className="block font-medium text-white-700 mb-2">
               Effective Interest Rate (EIR): {eir}%
             </label>
             <Slider

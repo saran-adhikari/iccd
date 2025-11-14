@@ -373,6 +373,7 @@ import {
   Globe2,
   Building2,
   Handshake,
+  ArrowRight,
 } from 'lucide-react'
 import { programData, type Program } from '../lib/programs'
 
@@ -456,7 +457,7 @@ export default function FeaturedProgram() {
     >
       <div className="px-6 pt-6">
         <motion.h2
-          className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-black text-center"
+          className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-white text-center"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: 'easeOut', delay: 0.05 }}
@@ -471,7 +472,7 @@ export default function FeaturedProgram() {
           
           {/* LEFT rail */}
           <div
-            className="bg-white/70 py-2 md:py-3 overflow-y-auto"
+            className=" py-2 md:py-3 overflow-y-auto"
             role="tablist"
             aria-label="Programs"
             tabIndex={0}
@@ -494,7 +495,7 @@ export default function FeaturedProgram() {
                         'flex w-full items-center gap-2.5 px-2.5 py-2 rounded-md text-left text-sm transition cursor-pointer',
                         active
                           ? 'text-emerald-700'
-                          : 'hover:bg-white focus-visible:ring-2 focus-visible:ring-emerald-300'
+                          : 'hover:bg-accent/70 focus-visible:ring-2 focus-visible:ring-emerald-300'
                       ].join(' ')}
                     >
                     <span
@@ -522,7 +523,7 @@ export default function FeaturedProgram() {
 
           {/* RIGHT card unchanged */}
           <motion.div
-            className="relative rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden max-h-[82vh] md:max-h-[86vh] flex flex-col"
+            className="relative rounded-2xl border border-slate-200 bg-none shadow-sm overflow-hidden max-h-[82vh] md:max-h-[86vh] flex flex-col"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35, ease: 'easeOut' }}
@@ -554,7 +555,7 @@ export default function FeaturedProgram() {
                 <div className="px-5 pt-4 pb-3 shrink-0" />
 
                 <div className="px-5 shrink-0">
-                  <div className="rounded-xl border border-slate-200 overflow-hidden bg-slate-50">
+                  <div className="rounded-xl border-slate-200 overflow-hidden bg-slate-50">
                     <div className="relative w-full bg-white">
                       <img
                         src={current.cover}
@@ -574,10 +575,10 @@ export default function FeaturedProgram() {
                     {current.title || current.category}
                   </Badge>
 
-                  <p className="mt-3 text-sm text-slate-600">{current.summary}</p>
+                  <p className="mt-3 text-sm text-white-600">{current.summary}</p>
 
                   {current.outcomes.length > 0 && (
-                    <ul className="mt-3 space-y-1.5 text-slate-600 text-sm list-disc pl-5">
+                    <ul className="mt-3 space-y-1.5 text-white-600 text-sm list-disc pl-5">
                       {current.outcomes.map((item, k) => (
                         <li key={k}>{item}</li>
                       ))}
@@ -586,7 +587,8 @@ export default function FeaturedProgram() {
 
                   <div className="mt-5">
                     <Button asChild size="sm">
-                      <Link href={`/programs/${current.slug}`}>View details</Link>
+                      <Link href={`/programs/${current.slug}`} className='border-2 bg-primary border-primary text-primary hover:bg-secondary hover:text-white hover:border-secondary transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/25 cursor-pointer'>View Details 
+                      </Link>
                     </Button>
                   </div>
                 </div>

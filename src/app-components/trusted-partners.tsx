@@ -26,19 +26,16 @@ export function TrustedPartners() {
             delay: 1,         // delay (seconds) before pop starts
             ease: "easeOut",
           }}
-          className="text-center mb-6"
+          className="text-center mb-0"
         >
-          <h2 className="text-2xl sm:text-2 xl font-light text-gray mb-2">
+          <h2 className="text-xl sm:text-2 xl font-light text-gray mt-2" >
             Trusted by Leading Financial Institutions
           </h2>
-          {/* optional sub-text if needed */}
-          {/* <p className="text-muted-foreground text-sm sm:text-base">
-            Partnering with banks and institutions worldwide to strengthen compliance frameworks
-          </p> */}
+          
         </motion.div>
 
         {/* Compact marquee container */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{
@@ -62,6 +59,32 @@ export function TrustedPartners() {
                     height={80}
                     className="object-cover w-auto h-8 sm:h-10 md:h-12 opacity-70 hover:opacity-100 transition duration-200 cursor-pointer grayscale hover:grayscale-0"
                   />
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div> */}
+         {/* Compact marquee container with text */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 0.8,
+            delay: 1,
+            ease: "easeOut",
+          }}
+          className="overflow-hidden relative h-16 sm:h-20 md:h-24"
+        >
+          <div className="absolute inset-0 flex items-center">
+            <div className="flex items-center gap-8 md:gap-12 animate-marquee">
+              {[...partners, ...partners].map((partner, i) => (
+                <div
+                  key={partner.name + i}
+                  className="flex items-center justify-center px-6 flex-shrink-0"
+                >
+                  <span className="text-xl sm:text-2xl md:text-2xl font-light text-white-600 hover:text-white-900 tracking-wide hover:scale-110 transition-all duration-300 cursor-pointer whitespace-nowrap" style={{ fontFamily: "'Playfair Display', 'Georgia', serif" }}>
+                    {partner.name}
+                  </span>
                 </div>
               ))}
             </div>
