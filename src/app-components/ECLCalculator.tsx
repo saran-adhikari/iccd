@@ -29,7 +29,7 @@ export default function ECLCalculator() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="w-[90%] mx-auto my-10 p-4"
+      className="w-[80%] mx-auto my-10 py-4"
     >
       <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-white text-center">
         Expected Credit Loss <span className="text-white">(ECL) Calculator</span>
