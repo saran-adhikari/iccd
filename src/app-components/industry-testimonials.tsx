@@ -54,7 +54,7 @@ export function IndustryTestimonials() {
     <section className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-black">Industry <span className="text-primary">Leaders Speak</span></h2>
+          <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-white">Industry <span className="text-white">Leaders Speak</span></h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Testimonials from senior executives and compliance professionals worldwide
           </p>

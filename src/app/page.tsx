@@ -11,6 +11,8 @@ import WhyICCD from "@/app-components/why-iccd"
 import HeroTrainMyTeam from "@/app-components/herotrainmyteam"
 import CompanyInfo from "@/app-components/company-info"
 import ECLCalculator from "@/app-components/ECLCalculator"
+import { IndustryTestimonials } from "@/app-components/industry-testimonials"
+import { Testimonials } from "@/app-components/testimonials"
 
 export default function HomePage() {
   return (
@@ -21,10 +23,12 @@ export default function HomePage() {
       <CoreValues  />
       <WhoWeAre />
       <ImpactNumbers />
-      <WhyICCD/>
+      {/* <WhyICCD/> */}
       {/* <CompanyInfo/> */}
       <FeaturedProgram />
       <ECLCalculator/>
+      <Testimonials />
+      {/* <IndustryTestimonials /> */}
       <HeroTrainMyTeam/>
       {/* <CTAStrip /> */}
       <Footer />

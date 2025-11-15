@@ -95,12 +95,12 @@ export function MissionVision() {
     >
       <div className="px-6 pt-8">
         <motion.h2
-          className="text-4xl text-center lg:text-5xl font-extrabold mb-4 leading-tight text-black"
+          className="text-4xl text-center lg:text-5xl font-extrabold mb-4 leading-tight text-white"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: 'easeOut', delay: 0.05 }}
         >
-          Mission & <span className="text-primary">Vision</span>
+          Mission & <span className="text-white">Vision</span>
         </motion.h2>
         
       </div>
@@ -160,14 +160,14 @@ export function MissionVision() {
             />
 
             <div className="flex w-full relative">
-              <div id={`mv-panel-${index}`} role="tabpanel" className="basis-full shrink-0 grow-0">
+              <div id={`mv-panel-${index}`} role="tabpanel" className="basis-full shrink-0 grow-0 bg-background">
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.35, ease: 'easeOut' }}
                   className="relative z-10 px-0 py-8 sm:py-0"
                 >
-                  <div className="grid md:grid-cols-2 gap-8 lg:gap-10 items-stretch">
+                  <div className="grid md:grid-cols-2 gap-8 lg:gap-10 items-stretch ">
                     {/* LEFT CONTENT (same structure as Featured) */}
                     <motion.div
                       key={`text-${current.key}`}
@@ -184,11 +184,11 @@ export function MissionVision() {
                         {current.kicker}
                       </Badge>
 
-                      <h3 className="mt-8 text-3xl md:text-4xl font-bold text-slate-900">
+                      <h3 className="mt-8 text-3xl md:text-4xl font-bold text-white-900">
                         {current.title}
                       </h3>
 
-                      <p className="mt-6 text-base md:text-lg text-slate-600 whitespace-pre-line">{current.summary}</p>
+                      <p className="mt-6 text-base md:text-lg text-white-600 whitespace-pre-line">{current.summary}</p>
                       
 
                     </motion.div>

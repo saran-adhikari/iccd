@@ -17,8 +17,8 @@ export default function ProgramsPage() {
       <ProgramsHero />
 
       <section className="max-w-7xl mx-auto px-6 py-16">
-        <h1 className="text-4xl lg:text-5xl font-extrabold mb-12 leading-tight text-center text-gray-900">
-          Explore Our <span className="text-primary">Programs</span>
+        <h1 className="text-4xl lg:text-5xl font-extrabold mb-12 leading-tight text-center text-white">
+          Explore Our <span className="text-white">Programs</span>
         </h1>
 
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
@@ -31,8 +31,8 @@ export default function ProgramsPage() {
               whileHover={{ scale: 1.02 }}
             >
               <Link href={`/programs/${program.slug}`}>
-                <Card className="group relative overflow-hidden hover:shadow-xl transition-all duration-300 !border-none rounded-3xl bg-white h-full flex flex-col">
-                  <div className="relative h-64 overflow-hidden rounded-t-3xl">
+                <Card className="group relative overflow-hidden hover:shadow-xl transition-all duration-300 !border-none rounded-4xl bg-white h-full flex flex-col">
+                  <div className="relative h-64 overflow-hidden">
                     <img
                       src={program.images.cover}
                       alt={program.title}

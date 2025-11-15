@@ -40,7 +40,7 @@ export function ImpactNumbers() {
 
         <div className="text-center mb-20">
           <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-white">
-            Our <span className="text-primary">Impact</span>
+            Our <span className="text-white">Impact</span>
           </h2>
           
         </div>

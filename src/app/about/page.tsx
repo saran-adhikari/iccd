@@ -11,6 +11,7 @@ import { ImpactNumbers } from "@/app-components/impact-numbers"
 import CompanyInfo from "@/app-components/company-info"
 import WhyICCD_Toggle from "@/app-components/why-iccd"
 import { CaseStudies } from "@/app-components/case-studies"
+import { IndustryTestimonials } from "@/app-components/industry-testimonials"
 
 export default function AboutPage() {
   return (
@@ -23,7 +24,8 @@ export default function AboutPage() {
       {/* <CompanyInfo/> */}
       {/* <LeadershipTeam /> */}
       {/* <ImpactNumbers/> */}
-      <Testimonials />
+      {/* <Testimonials /> */}
+      <IndustryTestimonials />
       <Accreditation />
       
       <CTAStrip />

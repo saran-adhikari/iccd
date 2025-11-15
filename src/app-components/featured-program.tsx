@@ -462,7 +462,7 @@ export default function FeaturedProgram() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: 'easeOut', delay: 0.05 }}
         >
-          Our <span className="text-primary"> Programs</span>
+          Our <span className="text-white"> Programs</span>
         </motion.h2>
       </div>
 
@@ -494,15 +494,15 @@ export default function FeaturedProgram() {
                         // use items-center so the icon is vertically centered with the first text line
                         'flex w-full items-center gap-2.5 px-2.5 py-2 rounded-md text-left text-sm transition cursor-pointer',
                         active
-                          ? 'text-emerald-700'
-                          : 'hover:bg-accent/70 focus-visible:ring-2 focus-visible:ring-emerald-300'
+                          ? 'text-secondary'
+                          : 'hover:bg-secondary/70 focus-visible:ring-2 focus-visible:ring-emerald-300'
                       ].join(' ')}
                     >
                     <span
                       className={[
                         'inline-flex h-7 w-7 flex-none items-center justify-center rounded-full border',
                         active
-                          ? 'bg-emerald-600 text-white border-emerald-600'
+                          ? 'bg-secondary text-white border-secondary'
                           : 'bg-white text-slate-700 border-slate-200'
                       ].join(' ')}
                     >
@@ -523,7 +523,7 @@ export default function FeaturedProgram() {
 
           {/* RIGHT card unchanged */}
           <motion.div
-            className="relative rounded-2xl border border-slate-200 bg-none shadow-sm overflow-hidden max-h-[82vh] md:max-h-[86vh] flex flex-col"
+            className="relative rounded-2xl border border-secondary-200 bg-none shadow-sm overflow-hidden max-h-[82vh] md:max-h-[86vh] flex flex-col"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35, ease: 'easeOut' }}

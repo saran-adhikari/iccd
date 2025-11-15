@@ -26,7 +26,7 @@ export function ProgramDetailHero({ program }: ProgramDetailHeroProps) {
   }
 
   return (
-    <section className="relative bg-white pt-16 pb-16">
+    <section className="relative bg-background pt-16 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4">
         
         {/* Breadcrumb Route Section */}

@@ -4,9 +4,9 @@ export function ContactMap() {
     <div className="w-[80%] mx-auto space-y-10 py-20">
       {/* Title and subtitle */}
       <div className="text-center">
-        <h3 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-black">Visit our <span className="text-primary">office</span></h3>
+        <h3 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-white">Visit our <span className="text-white">office</span></h3>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">In the heart of Kathmandu&apos;s financial district</p>
-      </div>
+      </div>  
 
       {/* Map section */}
       <div className="relative rounded-2xl overflow-hidden border bg-card shadow-md">
