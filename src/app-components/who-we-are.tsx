@@ -85,7 +85,7 @@ export function WhoWeAre() {
               frameworks across financial institutions worldwide.
             </p>
             <p>
-              With over a decade of experience, we bring together industry experts,
+              With experience, we bring together industry experts,
               regulatory specialists, and thought leaders to deliver world-class training
               programs that meet international standards and address real-world challenges.
             </p>

@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import { Button } from "@/app-components/ui/button"
 import { Input } from "@/app-components/ui/input"
@@ -5,7 +7,7 @@ import { Facebook, Twitter, Linkedin, Youtube, Mail } from "lucide-react"
 import Image from "next/image"
 import { getAllProgramSlugs, getProgramBySlug } from "@/lib/programs"
 import { notFound } from "next/navigation"
-
+import { ArrowRight } from "lucide-react"
 export function Footer() {
   const quickLinks = [
     { name: "About Us", href: "/about" },
@@ -66,16 +68,16 @@ export function Footer() {
                 Uniting Stakeholders to Build a Stronger AML/CFT Regime
               </p>
               <div className="flex space-x-4">
-                <button className="w-10 h-10 bg-primary-foreground/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors">
+                <button className="w-10 h-10 bg-primary-foreground/10 rounded-full flex items-center justify-center hover:bg-secondary cursor-pointer transition-colors">
                   <Facebook className="h-5 w-5" />
                 </button>
-                <button className="w-10 h-10 bg-primary-foreground/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors">
+                <button className="w-10 h-10 bg-primary-foreground/10 rounded-full flex items-center justify-center hover:bg-secondary cursor-pointer transition-colors">
                   <Twitter className="h-5 w-5" />
                 </button>
-                <button className="w-10 h-10 bg-primary-foreground/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors">
+                <button className="w-10 h-10 bg-primary-foreground/10 rounded-full flex items-center justify-center hover:bg-secondary cursor-pointer transition-colors">
                   <Linkedin className="h-5 w-5" />
                 </button>
-                <button className="w-10 h-10 bg-primary-foreground/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors">
+                <button className="w-10 h-10 bg-primary-foreground/10 rounded-full flex items-center justify-center hover:bg-secondary cursor-pointer transition-colors">
                   <Youtube className="h-5 w-5" />
                 </button>
               </div>
@@ -83,13 +85,13 @@ export function Footer() {
 
             {/* Quick Links */}
             <div>
-              <h4 className="text-lg font-semibold mb-6">Quick Links</h4>
+              <h4 className="text-lg font-semibold mb-6 text-primary">Quick Links</h4>
               <ul className="space-y-3">
                 {quickLinks.map((link) => (
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-primary-foreground/80 hover:text-accent transition-colors text-sm"
+                      className="text-white hover:text-secondary transition-colors text-sm"
                     >
                       {link.name}
                     </Link>
@@ -100,13 +102,13 @@ export function Footer() {
 
             {/* Programs */}
             <div>
-              <h4 className="text-lg font-semibold mb-6">Training Programs</h4>
+              <h4 className="text-lg font-semibold mb-6 text-primary">Training Programs</h4>
               <ul className="space-y-3">
                 {programs.slice(0, 4).map((program) => (
                   <li key={program.href}>
                     <Link
                       href={program.href}
-                      className="text-primary-foreground/80 hover:text-accent transition-colors text-sm"
+                      className="text-primary-foreground/80 hover:text-secondary transition-colors text-sm"
                     >
                       {program.name}
                     </Link>
@@ -117,7 +119,7 @@ export function Footer() {
 
             {/* Stay Connected */}
             <div>
-              <h4 className="text-lg font-semibold mb-6">Stay Connected</h4>
+              <h4 className="text-lg font-semibold mb-6 text-primary">Stay Connected</h4>
               <p className="text-primary-foreground/80 text-sm mb-4">
                 Send us an email and stay connected with ICCD for insights and updates.
               </p>
@@ -127,10 +129,11 @@ export function Footer() {
                       href="https://mail.google.com/mail/?view=cm&fs=1&to=iccdnepal@gmail.com&su=Stay%20Connected%20with%20ICCD&body=Hello%20ICCD%20Team,"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center bg-accent hover:bg-accent/90 text-accent-foreground rounded-md px-4 py-2"
+                      className="flex items-center justify-center bg-primary hover:bg-secondary text-white-foreground rounded-md px-4 py-2"
                     >
-                      <Mail className="h-4 w-4 mr-2" />
+                      
                       Send Email
+                      
                     </a>
 
                 </div>
@@ -154,7 +157,7 @@ export function Footer() {
                 <Link
                   key={policy.name}
                   href={policy.href}
-                  className="text-sm text-primary-foreground/80 hover:text-accent transition-colors"
+                  className="text-sm text-primary-foreground/80 hover:text-secondary transition-colors"
                 >
                   {policy.name}
                 </Link>
@@ -163,6 +166,26 @@ export function Footer() {
           </div>
         </div>
       </div>
+      {/* Back to top button */}
+        <div className="fixed bottom-6 right-6 z-50">
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="bg-primary text-white-foreground p-3 rounded-full shadow-lg hover:bg-secondary transition-colors duration-300 flex items-center justify-center cursor-pointer"
+            aria-label="Back to top"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+            </svg>
+          </button>
+        </div>
+
     </footer>
   )
 }
