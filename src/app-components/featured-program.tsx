@@ -472,12 +472,12 @@ export default function FeaturedProgram() {
           
           {/* LEFT rail */}
           <div
-            className=" py-2 md:py-3 overflow-y-auto"
-            role="tablist"
-            aria-label="Programs"
-            tabIndex={0}
-            onKeyDown={onRailKey}
-          >
+              className="flex flex-col items-center justify-center h-full py-2 md:py-3 overflow-y-auto"
+              role="tablist"
+              aria-label="Programs"
+              tabIndex={0}
+              onKeyDown={onRailKey}
+            >
             <ul className="space-y-1.5">
               {programs.map((p, i) => {
                 const Icon = iconForProgram(p, i)
@@ -492,7 +492,7 @@ export default function FeaturedProgram() {
                       title={p.title}
                       className={[
                         // use items-center so the icon is vertically centered with the first text line
-                        'flex w-full items-center gap-2.5 px-2.5 py-2 rounded-md text-left text-sm transition cursor-pointer',
+                        'flex w-full items-center gap-2.5 px-2.5 py-2 rounded-md text-left text-sm transition cursor-pointer ',
                         active
                           ? 'text-secondary'
                           : 'hover:bg-secondary/70 focus-visible:ring-2 focus-visible:ring-emerald-300'
@@ -500,7 +500,7 @@ export default function FeaturedProgram() {
                     >
                     <span
                       className={[
-                        'inline-flex h-7 w-7 flex-none items-center justify-center rounded-full border',
+                        'inline-flex h-7 w-7 flex-none items-center justify-center rounded-full border ',
                         active
                           ? 'bg-secondary text-white border-secondary'
                           : 'bg-white text-slate-700 border-slate-200'
@@ -510,7 +510,7 @@ export default function FeaturedProgram() {
                     </span>
 
                     {/* allow wrapping but keep left alignment with the icon */}
-                    <span className="flex-1 whitespace-normal break-words leading-snug">
+                    <span className="flex-1 whitespace-normal break-words leading-snug uppercase">
                       {p.title}
                     </span>
                   </button>
