@@ -150,7 +150,12 @@ export default function ECLCalculator() {
 /* ------------------------------------------------------------------
    SIMPLE ACCORDION COMPONENT
 -------------------------------------------------------------------*/
-function Accordion({ title, children }) {
+interface AccordionProps {
+  title: string;
+  children: React.ReactNode;
+}
+
+function Accordion({ title, children }: AccordionProps) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -167,3 +172,4 @@ function Accordion({ title, children }) {
     </div>
   );
 }
+
