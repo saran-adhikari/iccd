@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Document, Page } from "react-pdf";
 import { pdfjs } from "react-pdf";
 import { ChevronRight, X, Download } from "lucide-react";
@@ -9,13 +9,21 @@ import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
 
 // More reliable worker configuration for Next.js
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+if (typeof window !== 'undefined') {
+  pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+}
 
 export default function LegalDocs() {
   const [selectedPdf, setSelectedPdf] = useState<string | null>(null);
   const [numPages, setNumPages] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  // Ensure component only renders on client
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // List your PDF files here
   const pdfFiles = [
@@ -79,6 +87,30 @@ export default function LegalDocs() {
     setLoading(false);
   };
 
+  // Show loading state during SSR/hydration
+  if (!mounted) {
+    return (
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <nav className="flex items-center gap-2 text-sm text-gray-400 mb-8">
+          <Link href="/" className="hover:text-white transition-colors">
+            Home
+          </Link>
+          <ChevronRight className="w-4 h-4" />
+          <Link href="/legal" className="hover:text-white transition-colors">
+            Legal
+          </Link>
+        </nav>
+        <h1 className="text-4xl lg:text-5xl font-extrabold mb-10 leading-tight text-white text-center">
+          Legal Documents
+        </h1>
+        <div className="text-center py-8">
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+          <p className="mt-4 text-white">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Breadcrumb Route Section */}
@@ -107,7 +139,6 @@ export default function LegalDocs() {
             <h2 className="text-xl font-semibold text-white">
               {extractName(file)}
             </h2>
-            {/* <p className="text-sm text-gray-400 mt-2">Click to Preview</p> */}
           </div>
         ))}
       </div>
