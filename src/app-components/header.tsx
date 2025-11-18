@@ -17,6 +17,7 @@ export function Header() {
     // { name: "Events", href: "/events" },
     // { name: "Our Impact", href: "/impact" },
     // { name: "Blog", href: "/blog" },
+    { name: "Legal Docs", href: "/legal" },
     { name: "Contact", href: "/contact" },
   ]
 
