@@ -27,21 +27,78 @@ export default function LegalDocs() {
 
   // List your PDF files here
   const pdfFiles = [
-    "/Docs/१४.कम्पनी-ऐन-२०६३.pdf",
-    "/Docs/१८.औद्योगिक-व्यवसाय-ऐन-२०७६.pdf",
-    "/Docs/१९.विद्यूतीय-इलेक्ट्रोनिक-कारोबार-ऐन-२०६३.pdf",
-    "/Docs/२५.श्रम-ऐन-२०७४.pdf",
-    "/Docs/२७.सामाजिक-सुरक्षा-ऐन-२०७५.pdf",
-    "/Docs/नेपाल-राष्ट्र-बैङ्क-ऐन-२०५८.pdf",
-    "/Docs/बैङ्क-तथा-वित्तीय-संस्था-सम्बन्धी-ऐन-२०७३.pdf",
-    "/Docs/बैङ्किङ्ग-कसूर-तथा-सजाय-ऐन-२०६४.pdf",
-    "/Docs/भुक्तानी-तथा-फर्स्यौट-ऐन-२०७५.pdf",
-    "/Docs/विदेशी-विनिमय-नियमित-गर्ने-ऐन-२०१९.pdf",
-    "/Docs/विनिमेय-अधिकारपत्र-ऐन-२०३४.pdf",
-    "/Docs/सम्पत्ति-शुद्धीकरण-मनी-लाउन्डरिङ्ग-निवारण-ऐन-२०६४.pdf",
-    "/Docs/सार्वजनिक-खरिद-ऐन-२०६४.pdf",
-    "/Docs/सूचनाको-हक-सम्बन्धी-ऐन-२०६४.pdf",
-  ];
+  {
+    path: "/Docs/कम्पनी-ऐन-२०६३.pdf",
+    np: "कम्पनी ऐन २०६३",
+    en: "Companies Act 2063"
+  },
+  {
+    path: "/Docs/औद्योगिक-व्यवसाय-ऐन-२०७६.pdf",
+    np: "औद्योगिक व्यवसाय ऐन २०७६",
+    en: "Industrial Enterprises Act 2076"
+  },
+  {
+    path: "/Docs/विद्यूतीय-इलेक्ट्रोनिक-कारोबार-ऐन-२०६३.pdf",
+    np: "विद्यूतीय इलेक्ट्रोनिक कारोवार ऐन २०६३",
+    en: "Electronic Transactions Act 2063"
+  },
+  {
+    path: "/Docs/श्रम-ऐन-२०७४.pdf",
+    np: "श्रम ऐन २०७४",
+    en: "Labor Act 2074"
+  },
+  {
+    path: "/Docs/सामाजिक-सुरक्षा-ऐन-२०७५.pdf",
+    np: "सामाजिक सुरक्षा ऐन २०७५",
+    en: "Social Security Act 2075"
+  },
+  {
+    path: "/Docs/नेपाल-राष्ट्र-बैङ्क-ऐन-२०५८.pdf",
+    np: "नेपाल राष्ट्र बैंक ऐन २०५८",
+    en: "Nepal Rastra Bank Act 2058"
+  },
+  {
+    path: "/Docs/बैङ्क-तथा-वित्तीय-संस्था-सम्बन्धी-ऐन-२०७३.pdf",
+    np: "बैङ्क तथा वित्तीय संस्था सम्बन्धी ऐन २०७३",
+    en: "BFI Act 2073"
+  },
+  {
+    path: "/Docs/बैङ्किङ्ग-कसूर-तथा-सजाय-ऐन-२०६४.pdf",
+    np: "बैङ्किङ्ग कसूर तथा सजाय ऐन २०६४",
+    en: "Banking Offence & Punishment Act 2064"
+  },
+  {
+    path: "/Docs/भुक्तानी-तथा-फर्स्यौट-ऐन-२०७५.pdf",
+    np: "भुक्तानी तथा फर्स्यौट ऐन २०७५",
+    en: "Payment & Settlement Act 2075"
+  },
+  {
+    path: "/Docs/विदेशी-विनिमय-नियमित-गर्ने-ऐन-२०१९.pdf",
+    np: "विदेशी विनिमय नियमित गर्ने ऐन २०१९",
+    en: "Foreign Exchange Regulation Act 2019"
+  },
+  {
+    path: "/Docs/विनिमेय-अधिकारपत्र-ऐन-२०३४.pdf",
+    np: "विनिमेय अधिकारपत्र ऐन २०३४",
+    en: "Negotiable Instruments Act 2034"
+  },
+  {
+    path: "/Docs/सम्पत्ति-शुद्धीकरण-मनी-लाउन्डरिङ्ग-निवारण-ऐन-२०६४.pdf",
+    np: "सम्पत्ति शुद्धीकरण (मनि लाउन्डरिङ्ग) निवारण ऐन २०६४",
+    en: "Anti-Money Laundering Act 2064"
+  },
+  {
+    path: "/Docs/सार्वजनिक-खरिद-ऐन-२०६४.pdf",
+    np: "सार्वजनिक खरिद ऐन २०६४",
+    en: "Public Procurement Act 2064"
+  },
+  {
+    path: "/Docs/सूचनाको-हक-सम्बन्धी-ऐन-२०६४.pdf",
+    np: "सूचनाको हक सम्बन्धी ऐन २०६४",
+    en: "Right to Information Act 2064"
+  }
+];
+
 
   // Extract readable Nepali title from file name
   const extractName = (filePath: string) => {
@@ -134,13 +191,17 @@ export default function LegalDocs() {
           <div
             key={index}
             className="p-6 bg-none border border-gray-700 shadow rounded-xl cursor-pointer hover:shadow-lg transition hover:border-secondary"
-            onClick={() => openPreview(file)}
+            onClick={() => openPreview(file.path)}
           >
             <h2 className="text-xl font-semibold text-white">
-              {extractName(file)}
+              {file.np}
             </h2>
+            <p className="text-sm text-gray-400 mt-1">
+              {file.en}
+            </p>
           </div>
         ))}
+
       </div>
 
       {/* Modal Preview */}
@@ -150,7 +211,12 @@ export default function LegalDocs() {
             {/* Header with Download and Close Button */}
             <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center z-10">
               <h3 className="text-lg font-semibold text-gray-800">
-                {extractName(selectedPdf)}
+                {pdfFiles.find(f => f.path === selectedPdf)?.np}
+                  <br />
+                  <span className="text-sm text-gray-500">
+                    {pdfFiles.find(f => f.path === selectedPdf)?.en}
+                  </span>
+
               </h3>
               <div className="flex items-center gap-2">
                 <button
