@@ -1,0 +1,114 @@
+
+> iccd@0.1.0 build
+> next build --turbopack
+
+   ▲ Next.js 15.5.2 (Turbopack)
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+ ✓ Finished writing to disk in 30ms
+ ✓ Compiled successfully in 3.7s
+   Linting and checking validity of types ...
+
+./src/app/about/page.tsx
+3:10  Warning: 'AboutStory' is defined but never used.  @typescript-eslint/no-unused-vars
+5:10  Warning: 'LeadershipTeam' is defined but never used.  @typescript-eslint/no-unused-vars
+6:10  Warning: 'Testimonials' is defined but never used.  @typescript-eslint/no-unused-vars
+10:10  Warning: 'ImpactNumbers' is defined but never used.  @typescript-eslint/no-unused-vars
+11:8  Warning: 'CompanyInfo' is defined but never used.  @typescript-eslint/no-unused-vars
+13:10  Warning: 'CaseStudies' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/app/impact/page.tsx
+10:10  Warning: 'ImpactNumbers' is defined but never used.  @typescript-eslint/no-unused-vars
+12:10  Warning: 'Testimonials' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/app/page.tsx
+8:10  Warning: 'CTAStrip' is defined but never used.  @typescript-eslint/no-unused-vars
+10:8  Warning: 'WhyICCD' is defined but never used.  @typescript-eslint/no-unused-vars
+12:8  Warning: 'CompanyInfo' is defined but never used.  @typescript-eslint/no-unused-vars
+14:10  Warning: 'IndustryTestimonials' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/app/programs/page.tsx
+43:23  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/app-components/accreditation.tsx
+32:9  Warning: 'partnerships' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+51:38  Warning: 'index' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/app-components/case-studies.tsx
+81:36  Warning: 'index' is defined but never used.  @typescript-eslint/no-unused-vars
+86:19  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/app-components/company-info.tsx
+4:8  Warning: 'Link' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/app-components/featured-program.tsx
+54:10  Warning: 'direction' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+89:9  Warning: 'IconBadge' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+215:23  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/app-components/footer.tsx
+4:10  Warning: 'Button' is defined but never used.  @typescript-eslint/no-unused-vars
+5:10  Warning: 'Input' is defined but never used.  @typescript-eslint/no-unused-vars
+6:48  Warning: 'Mail' is defined but never used.  @typescript-eslint/no-unused-vars
+7:8  Warning: 'Image' is defined but never used.  @typescript-eslint/no-unused-vars
+9:10  Warning: 'notFound' is defined but never used.  @typescript-eslint/no-unused-vars
+10:10  Warning: 'ArrowRight' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/app-components/hero-section.tsx
+9:10  Warning: 'CountUp' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/app-components/impact-metrics.tsx
+82:33  Warning: 'index' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/app-components/impact-numbers.tsx
+73:11  Warning: 'start' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/app-components/industry-testimonials.tsx
+3:23  Warning: 'Linkedin' is defined but never used.  @typescript-eslint/no-unused-vars
+93:21  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/app-components/leadership-team.tsx
+51:33  Warning: 'index' is defined but never used.  @typescript-eslint/no-unused-vars
+61:19  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/app-components/mission-vision.tsx
+6:10  Warning: 'Button' is defined but never used.  @typescript-eslint/no-unused-vars
+251:33  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/app-components/program-detail-hero.tsx
+4:39  Warning: 'Calendar' is defined but never used.  @typescript-eslint/no-unused-vars
+125:13  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/app-components/testimonials.tsx
+64:19  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/app-components/trusted-partners.tsx
+3:8  Warning: 'Image' is defined but never used.  @typescript-eslint/no-unused-vars
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules
+Failed to compile.
+
+./src/app-components/featured-program.tsx:231:21
+Type error: Type '{ hidden: { opacity: number; y: number; }; visible: (i: number) => { opacity: number; y: number; transition: { delay: number; duration: number; ease: string; }; }; }' is not assignable to type 'Variants'.
+  Property 'visible' is incompatible with index signature.
+    Type '(i: number) => { opacity: number; y: number; transition: { delay: number; duration: number; ease: string; }; }' is not assignable to type 'Variant'.
+      Type '(i: number) => { opacity: number; y: number; transition: { delay: number; duration: number; ease: string; }; }' is not assignable to type 'TargetResolver'.
+        Type '{ opacity: number; y: number; transition: { delay: number; duration: number; ease: string; }; }' is not assignable to type 'string | TargetAndTransition'.
+          Type '{ opacity: number; y: number; transition: { delay: number; duration: number; ease: string; }; }' is not assignable to type 'TargetAndTransition'.
+            Type '{ opacity: number; y: number; transition: { delay: number; duration: number; ease: string; }; }' is not assignable to type '{ transition?: Transition<any> | undefined; transitionEnd?: ResolvedValues | undefined; }'.
+              Types of property 'transition' are incompatible.
+                Type '{ delay: number; duration: number; ease: string; }' is not assignable to type 'Transition<any> | undefined'.
+                  Type '{ delay: number; duration: number; ease: string; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+                    Type '{ delay: number; duration: number; ease: string; }' is not assignable to type 'ValueAnimationTransition<any>'.
+                      Types of property 'ease' are incompatible.
+                        Type 'string' is not assignable to type 'Easing | Easing[] | undefined'.
+
+[0m [90m 229 |[39m                 [33m<[39m[33mdiv[39m className[33m=[39m[32m"px-5 pt-6 pb-8 overflow-auto flex-1 flex flex-col"[39m[33m>[39m
+ [90m 230 |[39m                   [33m<[39m[33mmotion[39m[33m.[39mdiv
+[31m[1m>[22m[39m[90m 231 |[39m                     variants[33m=[39m{itemVariants}
+ [90m     |[39m                     [31m[1m^[22m[39m
+ [90m 232 |[39m                     initial[33m=[39m[32m"hidden"[39m
+ [90m 233 |[39m                     animate[33m=[39m[32m"visible"[39m
+ [90m 234 |[39m                     custom[33m=[39m{[35m0[39m}[0m
+Next.js build worker exited with code: 1 and signal: null

@@ -48,7 +48,7 @@ export function ImpactNumbers() {
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-12">
           {stats.map((stat) => (
             <div key={stat.label} className="text-center">
-              <div className="text-6xl lg:text-7xl font-extrabold mb-4 text-primary/80">
+              <div className="text-6xl lg:text-7xl font-extrabold mb-4 text-primary">
                 {isVisible ? (
                   <CountUp end={stat.number} suffix={stat.suffix} />
                 ) : (

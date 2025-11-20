@@ -1,0 +1,122 @@
+
+> iccd@0.1.0 build
+> next build --turbopack
+
+   ▲ Next.js 15.5.2 (Turbopack)
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+ ✓ Finished writing to disk in 31ms
+ ✓ Compiled successfully in 3.6s
+   Linting and checking validity of types ...
+
+./src/app/about/page.tsx
+3:10  Warning: 'AboutStory' is defined but never used.  @typescript-eslint/no-unused-vars
+5:10  Warning: 'LeadershipTeam' is defined but never used.  @typescript-eslint/no-unused-vars
+6:10  Warning: 'Testimonials' is defined but never used.  @typescript-eslint/no-unused-vars
+10:10  Warning: 'ImpactNumbers' is defined but never used.  @typescript-eslint/no-unused-vars
+11:8  Warning: 'CompanyInfo' is defined but never used.  @typescript-eslint/no-unused-vars
+13:10  Warning: 'CaseStudies' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/app/impact/page.tsx
+10:10  Warning: 'ImpactNumbers' is defined but never used.  @typescript-eslint/no-unused-vars
+12:10  Warning: 'Testimonials' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/app/page.tsx
+8:10  Warning: 'CTAStrip' is defined but never used.  @typescript-eslint/no-unused-vars
+10:8  Warning: 'WhyICCD' is defined but never used.  @typescript-eslint/no-unused-vars
+12:8  Warning: 'CompanyInfo' is defined but never used.  @typescript-eslint/no-unused-vars
+14:10  Warning: 'IndustryTestimonials' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/app/programs/page.tsx
+43:23  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/app-components/accreditation.tsx
+32:9  Warning: 'partnerships' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+51:38  Warning: 'index' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/app-components/case-studies.tsx
+81:36  Warning: 'index' is defined but never used.  @typescript-eslint/no-unused-vars
+86:19  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/app-components/company-info.tsx
+4:8  Warning: 'Link' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/app-components/featured-program.tsx
+54:10  Warning: 'direction' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+89:9  Warning: 'IconBadge' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+215:23  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/app-components/footer.tsx
+4:10  Warning: 'Button' is defined but never used.  @typescript-eslint/no-unused-vars
+5:10  Warning: 'Input' is defined but never used.  @typescript-eslint/no-unused-vars
+6:48  Warning: 'Mail' is defined but never used.  @typescript-eslint/no-unused-vars
+7:8  Warning: 'Image' is defined but never used.  @typescript-eslint/no-unused-vars
+9:10  Warning: 'notFound' is defined but never used.  @typescript-eslint/no-unused-vars
+10:10  Warning: 'ArrowRight' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/app-components/hero-section.tsx
+9:10  Warning: 'CountUp' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/app-components/impact-metrics.tsx
+82:33  Warning: 'index' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/app-components/impact-numbers.tsx
+73:11  Warning: 'start' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/app-components/industry-testimonials.tsx
+3:23  Warning: 'Linkedin' is defined but never used.  @typescript-eslint/no-unused-vars
+93:21  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/app-components/leadership-team.tsx
+51:33  Warning: 'index' is defined but never used.  @typescript-eslint/no-unused-vars
+61:19  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/app-components/mission-vision.tsx
+6:10  Warning: 'Button' is defined but never used.  @typescript-eslint/no-unused-vars
+251:33  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/app-components/program-detail-hero.tsx
+4:39  Warning: 'Calendar' is defined but never used.  @typescript-eslint/no-unused-vars
+125:13  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/app-components/testimonials.tsx
+64:19  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/app-components/trusted-partners.tsx
+3:8  Warning: 'Image' is defined but never used.  @typescript-eslint/no-unused-vars
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules
+   Collecting page data ...
+   Generating static pages (0/16) ...
+   Generating static pages (4/16) 
+   Generating static pages (8/16) 
+   Generating static pages (12/16) 
+ ✓ Generating static pages (16/16)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                   Size  First Load JS
+┌ ○ /                                      21.1 kB         194 kB
+├ ○ /_not-found                                0 B         114 kB
+├ ○ /about                                 11.5 kB         185 kB
+├ ○ /contact                               43.5 kB         217 kB
+├ ○ /impact                                31.4 kB         183 kB
+├ ○ /legal                                 27.2 kB         141 kB
+├ ○ /programs                              28.4 kB         180 kB
+└ ● /programs/[slug]                       5.04 kB         178 kB
+    ├ /programs/esg-climate-finance
+    ├ /programs/aml-cft-nepal
+    ├ /programs/risk-management-ecl-ifrs9
+    └ [+3 more paths]
++ First Load JS shared by all               129 kB
+  ├ chunks/35a86e6441a8155d.js             24.1 kB
+  ├ chunks/c19da6693934fea1.js             59.2 kB
+  ├ chunks/f0380d005ebc03eb.js             17.2 kB
+  ├ chunks/b39511f46625e59f.css            15.3 kB
+  └ other shared chunks (total)            13.6 kB
+
+
+○  (Static)  prerendered as static content
+●  (SSG)     prerendered as static HTML (uses generateStaticParams)
+

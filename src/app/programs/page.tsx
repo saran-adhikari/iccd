@@ -16,55 +16,70 @@ export default function ProgramsPage() {
       <Header />
       <ProgramsHero />
 
-      <section className="max-w-7xl mx-auto px-6 py-16">
-        <h1 className="text-4xl lg:text-5xl font-extrabold mb-12 leading-tight text-center text-white">
-          Explore Our <span className="text-white">Programs</span>
-        </h1>
+      <section className="relative bg-background py-20 lg:py-28">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-white">
+              Explore Our <span className="text-white">Programs</span>
+            </h2>
+            <p className="text-lg text-slate-600">
+              Elevate your expertise with our industry-leading curriculums designed for modern financial professionals.
+            </p>
+          </div>
 
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-          {programData.map((program: Program, i) => (
-            <motion.div
-              key={program.id}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
-              whileHover={{ scale: 1.02 }}
-            >
-              <Link href={`/programs/${program.slug}`}>
-                <Card className="group relative overflow-hidden hover:shadow-xl transition-all duration-300 !border-none rounded-4xl bg-white h-full flex flex-col">
-                  <div className="relative h-64 overflow-hidden">
-                    <img
-                      src={program.images.cover}
-                      alt={program.title}
-                      className="object-cover w-full h-full transform transition-transform duration-500 group-hover:scale-110"
-                    />
-                  </div>
-
-                  <CardContent className="p-6 flex flex-col justify-between flex-grow">
-                    <div>
-                      <div className="flex flex-wrap gap-2 pt-2 mb-2">
-                        <Badge>{program.level}</Badge>
-                        <Badge variant="secondary">{program.category}</Badge>
-                      </div>
-                      <h3 className="text-xl font-semibold text-gray-900 group-hover:text-primary transition-colors min-h-[60px]">
-                        {program.title}
-                      </h3>
-                      <p className="text-sm text-gray-600 line-clamp-3">
-                        {program.summary}
-                      </p>
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {programData.map((program: Program, i) => (
+              <motion.div
+                key={program.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+              >
+                <Link href={`/programs/${program.slug}`} className="block h-full">
+                  <Card className="group relative h-[500px] flex flex-col overflow-hidden border-none bg-slate-900 shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 rounded-3xl">
+                    {/* Full Background Image */}
+                    <div className="absolute inset-0 z-0">
+                      <img
+                        src={program.images.cover}
+                        alt={program.title}
+                        className="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100"
+                      />
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10 transition-opacity duration-300" />
                     </div>
 
-                    {/* CTA Button at Bottom */}
-                    {/* <div className="mt-4">
-                      <span className="text-primary font-medium group-hover:underline">
-                        View Details →
-                      </span>
-                    </div> */}
-                  </CardContent>
-                </Card>
-              </Link>
-            </motion.div>
-          ))}
+                    {/* Content Overlay */}
+                    <CardContent className="relative z-20 flex flex-col justify-end h-full p-6 text-white">
+                      <div className="transform transition-transform duration-300 group-hover:-translate-y-2">
+                        <div className="flex flex-wrap gap-2 mb-3">
+                          <Badge className="bg-secondary/20 hover:bg-white/30 text-white backdrop-blur-md border-none">
+                            {program.level}
+                          </Badge>
+                          <Badge variant="secondary" className="bg-primary/80 hover:bg-primary text-white border-none">
+                            {program.category}
+                          </Badge>
+                        </div>
+
+                        <h3 className="text-2xl font-bold text-white mb-3 leading-tight">
+                          {program.title}
+                        </h3>
+
+                        <p className="text-gray-200 text-sm leading-relaxed line-clamp-2 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 h-0 group-hover:h-auto">
+                          {program.summary}
+                        </p>
+
+                        <div className="flex items-center text-primary-foreground font-semibold text-sm mt-2">
+                          Explore Program
+                          <svg className="w-4 h-4 ml-2 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
