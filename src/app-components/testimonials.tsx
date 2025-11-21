@@ -46,17 +46,17 @@ export function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <Card
               key={index}
-              className="bg-background border-2 border-transparent hover:border-accent/20 transition-colors duration-300"
+              className="bg-background border-2 border-transparent hover:border-primary/20 transition-colors duration-300"
             >
               <CardContent className="p-8">
                 <div className="flex items-center mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 text-accent fill-current" />
+                    <Star key={i} className="h-5 w-5 text-secondary fill-current" />
                   ))}
                 </div>
 
                 <div className="relative mb-6">
-                  <Quote className="h-8 w-8 text-accent/20 absolute -top-2 -left-2" />
+                  <Quote className="h-8 w-8 text-primary/20 absolute -top-2 -left-2" />
                   <p className="text-muted-foreground leading-relaxed italic pl-6">&quot;{testimonial.quote}&quot;</p>
                 </div>
 
@@ -69,7 +69,7 @@ export function Testimonials() {
                   <div>
                     <div className="font-semibold text-primary">{testimonial.author}</div>
                     <div className="text-sm text-muted-foreground">{testimonial.role}</div>
-                    <div className="text-sm text-accent">{testimonial.company}</div>
+                    <div className="text-sm text-secondary/70">{testimonial.company}</div>
                   </div>
                 </div>
               </CardContent>

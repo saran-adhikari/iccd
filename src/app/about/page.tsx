@@ -26,7 +26,7 @@ export default function AboutPage() {
       {/* <ImpactNumbers/> */}
       {/* <Testimonials /> */}
       <IndustryTestimonials />
-      <Accreditation />
+      {/* <Accreditation /> */}
       
       <CTAStrip />
       <Footer />

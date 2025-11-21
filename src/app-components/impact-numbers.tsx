@@ -55,7 +55,7 @@ export function ImpactNumbers() {
                   "0"
                 )}
               </div>
-              <div className="text-lg lg:text-xl text-secondary text-center">
+              <div className="text-lg lg:text-xl text-muted-foreground/70 text-center">
                 {stat.label}
               </div>
             </div>
