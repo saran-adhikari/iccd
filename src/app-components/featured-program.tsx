@@ -300,7 +300,7 @@ export default function FeaturedProgram() {
                     custom={4}
                   >
                     <Button asChild size="sm" className="w-full sm:w-auto">
-                      <Link href={`/programs/${current.slug}`} className='border border-primary bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300 group cursor-pointer flex items-center justify-center gap-2'>
+                      <Link href={`/programs/${current.slug}`} className='border border-secondary/40 bg-secondary/20 text-primary hover:bg-secondary hover:text-white transition-all duration-300 group cursor-pointer flex items-center justify-center gap-2'>
                         View Program Details
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                       </Link>

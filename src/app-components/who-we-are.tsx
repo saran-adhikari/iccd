@@ -42,7 +42,7 @@ export function WhoWeAre() {
                 <motion.h2
                   className="text-5xl sm:text-6xl lg:text-8xl xl:text-9xl font-bold leading-tight tracking-tight text-white"
                 >
-                  Who<br/> <span className="block sm:inline"><span className="text-primary">We</span> Are</span>
+                  Who<br/> <span className="block sm:inline"><span className="text-secondary">We</span> Are</span>
                 </motion.h2>
 
                 
@@ -50,7 +50,7 @@ export function WhoWeAre() {
 
               {/* corner arrow */}
               <motion.div
-                className="ml-6 text-primary"
+                className="ml-6 text-secondary"
                 initial={{ opacity: 0, scale: 0.9, rotate: -10 }}
                 whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                 viewport={{ once: true }}
@@ -100,9 +100,9 @@ export function WhoWeAre() {
               <motion.div whileHover={{ y: -1 }} whileTap={{ scale: 0.98 }}>
                 <Button
                   variant="outline"
-                  className="border-2 border-primary text-primary hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/25 cursor-pointer"
+                  className="border-2 border-white text-white hover:bg-secondary hover:text-white hover:border-secondary transition-all duration-300 group-hover:shadow-lg group-hover:shadow-secondary/25 cursor-pointer"
                 >
-                  LEARN MORE
+                  READ MORE
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
               </motion.div>

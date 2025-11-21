@@ -48,14 +48,14 @@ export function ImpactNumbers() {
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-12">
           {stats.map((stat) => (
             <div key={stat.label} className="text-center">
-              <div className="text-6xl lg:text-7xl font-extrabold mb-4 text-primary">
+              <div className="text-6xl lg:text-7xl font-extrabold mb-4 text-white">
                 {isVisible ? (
                   <CountUp end={stat.number} suffix={stat.suffix} />
                 ) : (
                   "0"
                 )}
               </div>
-              <div className="text-lg lg:text-xl text-muted-foreground/70 text-center">
+              <div className="text-lg lg:text-xl text-secondary text-center">
                 {stat.label}
               </div>
             </div>

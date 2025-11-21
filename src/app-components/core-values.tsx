@@ -43,8 +43,8 @@ export function CoreValues({ items = defaultItems }: { items?: ValueItem[] }) {
             variants={{ hidden: { opacity: 0, x: -40 }, visible: { opacity: 1, x: 0 } }}
           >
             <h2 className="text-4xl md:text-4xl font-extrabold text-white leading-tight">
-              Building <span className="text-primary">long-term capacity</span> that{" "}
-              <span className="text-primary">strengthens</span> organizations.
+              Building <span className="text-secondary">long-term capacity</span> that{" "}
+              <span className="text-secondary">strengthens</span> organizations.
             </h2>
           </motion.div>
 
@@ -69,12 +69,12 @@ export function CoreValues({ items = defaultItems }: { items?: ValueItem[] }) {
                     visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
                   }}
                   whileHover={{ scale: 1.03 }}
-                  className={`flex items-start gap-6 p-4 rounded-xl cursor-pointer transition-all duration-200 hover:bg-accent/5 ${
+                  className={`flex items-start gap-6 p-4 rounded-xl cursor-pointer transition-all duration-200 hover:bg-secondary/5 ${
                     dim ? "opacity-60" : "opacity-100"
                   }`}
                 >
                   <motion.div
-                    className="flex-shrink-0 w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center"
+                    className="flex-shrink-0 w-14 h-14 rounded-full bg-secondary/10 flex items-center justify-center"
                     animate={{
                       y: [0, -4, 0], // subtle floating
                     }}
@@ -89,11 +89,11 @@ export function CoreValues({ items = defaultItems }: { items?: ValueItem[] }) {
                       boxShadow: "0px 6px 15px rgba(0,0,0,0.12)",
                     }}
                   >
-                    <Icon className="h-7 w-7 text-accent" />
+                    <Icon className="h-7 w-7 text-secondary" />
                   </motion.div>
 
-                  <div>
-                    <h3 className="text-2xl font-semibold text-primary">{item.title}</h3>
+                  <div className="group">
+                    <h3 className="text-2xl font-semibold text-white">{item.title}</h3>
                     <p className="text-base text-muted-foreground mt-2">{item.description}</p>
                   </div>
                 </motion.div>

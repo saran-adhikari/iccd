@@ -16,11 +16,15 @@ export function Header() {
       const currentScrollY = window.scrollY
 
       // Show header if scrolling up or at the top
-      if (currentScrollY < lastScrollY || currentScrollY < 10) {
+      if (currentScrollY < 10) {
         setIsVisible(true)
-      } else if (currentScrollY > lastScrollY && currentScrollY > 10) {
-        // Hide header if scrolling down and not at the top
-        setIsVisible(false)
+      } else if (Math.abs(currentScrollY - lastScrollY) > 10) {
+        // Only update if scroll difference is significant
+        if (currentScrollY < lastScrollY) {
+          setIsVisible(true)
+        } else {
+          setIsVisible(false)
+        }
       }
 
       setLastScrollY(currentScrollY)
@@ -44,7 +48,7 @@ export function Header() {
 
   return (
     <header
-      className={`bg-background border-b border-border sticky top-0 z-50 shadow-md transition-transform duration-300 ${isVisible ? "translate-y-0" : "-translate-y-full"
+      className={`bg-background border-b border-border sticky top-0 z-50 shadow-md transition-transform duration-500 ease-in-out ${isVisible ? "translate-y-0" : "-translate-y-full"
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -74,7 +78,7 @@ export function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
+                className="text-foreground hover:text-secondary transition-colors duration-200 font-medium"
               >
                 {item.name}
               </Link>
@@ -83,12 +87,12 @@ export function Header() {
 
           {/* CTA Button */}
           <div className="hidden md:flex">
-            <Button className="bg-primary hover:bg-secondary text-white cursor-pointer">REQUEST PROPOSAL</Button>
+            <Button className="bg-secondary/20 border-secondary/40 hover:bg-secondary text-white cursor-pointer">REQUEST PROPOSAL</Button>
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <Button variant="ghost" size="sm" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <Button variant="ghost" size="sm" onClick={() => setIsMenuOpen(!isMenuOpen)} className="cursor-pointer hover:bg-secondary hover:text-white">
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
           </div>
@@ -102,14 +106,14 @@ export function Header() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="block px-3 py-2 text-foreground hover:text-primary transition-colors duration-200"
+                  className="block px-3 py-2 text-foreground hover:text-secondary transition-colors duration-200"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
                 </Link>
               ))}
               <div className="px-3 py-2">
-                <Button className="w-full bg-primary hover:bg-secondary text-white">Request Proposal</Button>
+                <Button className="w-full bg-secondary/20 border-secondary/40 hover:bg-secondary text-white cursor-pointer"> REQUEST PROPOSAL</Button>
               </div>
             </div>
           </div>
