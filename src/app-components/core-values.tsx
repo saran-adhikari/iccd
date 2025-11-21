@@ -43,8 +43,8 @@ export function CoreValues({ items = defaultItems }: { items?: ValueItem[] }) {
             variants={{ hidden: { opacity: 0, x: -40 }, visible: { opacity: 1, x: 0 } }}
           >
             <h2 className="text-4xl md:text-4xl font-extrabold text-white leading-tight">
-              Building <span className="text-secondary">long-term capacity</span> that{" "}
-              <span className="text-secondary">strengthens</span> organizations.
+              Building <span className="text-primary">long-term capacity</span> that{" "}
+              <span className="text-primary">strengthens</span> organizations.
             </h2>
           </motion.div>
 

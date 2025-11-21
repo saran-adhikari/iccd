@@ -244,7 +244,7 @@ export default function FeaturedProgram() {
                     animate="visible"
                     custom={0}
                   >
-                    <Badge variant="secondary" className="bg-secondary/10 text-secondary border-secondary/20 mb-3">
+                    <Badge variant="secondary" className="bg-primary/20 text-white border-primary/20 mb-3">
                       {current.category}
                     </Badge>
                   </motion.div>

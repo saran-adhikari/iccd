@@ -42,7 +42,7 @@ export function WhoWeAre() {
                 <motion.h2
                   className="text-5xl sm:text-6xl lg:text-8xl xl:text-9xl font-bold leading-tight tracking-tight text-white"
                 >
-                  Who<br/> <span className="block sm:inline"><span className="text-secondary">We</span> Are</span>
+                  Who<br/> <span className="block sm:inline"><span className="text-primary">We</span> Are</span>
                 </motion.h2>
 
                 
@@ -50,7 +50,7 @@ export function WhoWeAre() {
 
               {/* corner arrow */}
               <motion.div
-                className="ml-6 text-secondary"
+                className="ml-6 text-primary"
                 initial={{ opacity: 0, scale: 0.9, rotate: -10 }}
                 whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                 viewport={{ once: true }}
