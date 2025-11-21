@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "@/app-components/ui/button"
 import { Menu, X } from "lucide-react"
@@ -8,6 +8,27 @@ import Image from "next/image"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+
+      // Show header if scrolling up or at the top
+      if (currentScrollY < lastScrollY || currentScrollY < 10) {
+        setIsVisible(true)
+      } else if (currentScrollY > lastScrollY && currentScrollY > 10) {
+        // Hide header if scrolling down and not at the top
+        setIsVisible(false)
+      }
+
+      setLastScrollY(currentScrollY)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [lastScrollY])
 
   const navigation = [
     // { name: "Home", href: "/" },
@@ -22,7 +43,10 @@ export function Header() {
   ]
 
   return (
-    <header className="bg-background border-b border-border sticky top-0 z-50 shadow-md">
+    <header
+      className={`bg-background border-b border-border sticky top-0 z-50 shadow-md transition-transform duration-300 ${isVisible ? "translate-y-0" : "-translate-y-full"
+        }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
@@ -30,12 +54,12 @@ export function Header() {
             <Link href="/" className="flex items-center">
               <div className="w-40 h-30 bg-none rounded-lg flex items-center">
                 <Image
-                    src="/Images/Logo/1.png" // update with your logo path
-                    alt="ICCD Logo"
-                    width={100}
-                    height={100}
-                    className="object-contain"
-                  />
+                  src="/Images/Logo/1.png" // update with your logo path
+                  alt="ICCD Logo"
+                  width={100}
+                  height={100}
+                  className="object-contain"
+                />
               </div>
               {/* <div className="ml">
                 <div className="text-xl font-bold text-primary">ICCD</div>
