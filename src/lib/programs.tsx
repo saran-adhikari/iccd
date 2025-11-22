@@ -64,7 +64,7 @@ export const programData: Program[] = [
       location: "Kathmandu or Virtual",
       lastUpdated: "2025-09-11",
       tags: ["ESG", "Climate Finance", "Disclosure"],
-      images: { cover: "https://i.pinimg.com/736x/be/27/13/be271365d3b69e2ffb0fc0c12280c2a7.jpg", icon: "globe" },
+      images: { cover: "https://i.pinimg.com/1200x/6a/60/f7/6a60f798de6c00f08e0fe7a168459077.jpg", icon: "globe" },
       language: "English",
       longDescription: `The program provides practical knowledge of ESG standards, Nepal Rastra Bank’s sustainable banking guidelines, and international frameworks such as the IFC Performance Standards. It focuses on how banks can incorporate ESG and ESRM principles into credit appraisal, project evaluation, and decision-making to ensure long-term sustainability and regulatory compliance.
 
@@ -261,7 +261,7 @@ export const programData: Program[] = [
       lastUpdated: "2025-09-11",
       tags: ["ESG", "Green Taxonomy", "Nepal", "Sustainability"],
       images: {
-        cover: "https://i.pinimg.com/736x/96/2d/6e/962d6ef4668975e166236d12e6891e17.jpg",
+        cover: "https://i.pinimg.com/1200x/11/25/19/112519173a978616f3cd65e474cf4b57.jpg",
         icon: "leaf",
       },
       language: "English",

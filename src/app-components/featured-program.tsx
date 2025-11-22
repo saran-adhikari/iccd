@@ -182,7 +182,7 @@ export default function FeaturedProgram() {
 
           {/* RIGHT card unchanged */}
           <motion.div
-            className="relative rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm shadow-2xl overflow-hidden max-h-[75vh] md:max-h-[86vh] flex flex-col"
+            className="relative rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm shadow-2xl overflow-hidden h-[540px] md:h-[640px] flex flex-col"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35, ease: 'easeOut' }}
@@ -226,7 +226,7 @@ export default function FeaturedProgram() {
                       <img
                         src={current.cover}
                         alt={current.title}
-                        className="h-[25vh] md:h-[40vh] w-full object-cover opacity-90"
+                        className="h-[180px] md:h-[240px] w-full object-cover opacity-90"
                         onError={(e) => {
                           const fb = `https://via.placeholder.com/1200x675/1e293b/94a3b8?text=${encodeURIComponent(current.category || 'Program')}`
                           if ((e.currentTarget as HTMLImageElement).src !== fb) (e.currentTarget as HTMLImageElement).src = fb
@@ -237,7 +237,7 @@ export default function FeaturedProgram() {
                   </div>
                 </div>
 
-                <div className="px-5 pt-6 pb-8 overflow-hidden flex-1 flex flex-col">
+                <div className="px-5 pt-5 pb-6 overflow-hidden flex-1 flex flex-col">
                   <motion.div
                     variants={itemVariants}
                     initial="hidden"
@@ -250,7 +250,7 @@ export default function FeaturedProgram() {
                   </motion.div>
 
                   <motion.h3
-                    className="text-2xl font-bold text-white mb-3"
+                    className="text-2xl font-bold text-white mb-3 line-clamp-2"
                     variants={itemVariants}
                     initial="hidden"
                     animate="visible"
@@ -260,7 +260,7 @@ export default function FeaturedProgram() {
                   </motion.h3>
 
                   <motion.p
-                    className="text-gray-300 text-sm leading-relaxed mb-4"
+                    className="text-gray-300 text-sm leading-relaxed mb-4 line-clamp-3"
                     variants={itemVariants}
                     initial="hidden"
                     animate="visible"
