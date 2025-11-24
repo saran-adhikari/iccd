@@ -18,13 +18,13 @@ export function AboutHero() {
             About ICCD
           </Badge>
           <h1 className="text-4xl lg:text-6xl font-bold text-balance leading-tight mb-6 text-white">
-            Uniting <span className="text-white">Stakeholders</span> to Build a{" "}
-            Stronger <span className="text-white">AML/CFT </span> Regime
+            Unveiling <span className="text-white">Our Identity,</span> {" "}
+            <span className="text-white">Vision & </span> Values
+            
+
           </h1>
           <p className="text-xl text-gray-200 text-pretty leading-relaxed">
-            ICCD has been at the forefront of compliance training, bringing
-            together industry experts, regulatory specialists, and thought
-            leaders to strengthen financial institutions worldwide.
+            With a commitment to excellence and forward-thinking learning, ICCD aims to be a trusted partner in developing stronger, smarter, and more resilient financial institutions across Nepal and beyond.
           </p>
         </div>
       </div>

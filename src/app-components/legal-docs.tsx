@@ -85,7 +85,7 @@ export default function LegalDocs() {
     {
       path: "/Docs/सम्पत्ति-शुद्धीकरण-मनी-लाउन्डरिङ्ग-निवारण-ऐन-२०६४.pdf",
       np: "सम्पत्ति शुद्धीकरण (मनि लाउन्डरिङ्ग) निवारण ऐन २०६४",
-      en: "Anti-Money Laundering Act 2064"
+      en: "Money Laundering Act 2064"
     },
     {
       path: "/Docs/सार्वजनिक-खरिद-ऐन-२०६४.pdf",

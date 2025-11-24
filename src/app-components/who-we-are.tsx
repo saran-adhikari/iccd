@@ -94,7 +94,7 @@ export function WhoWeAre() {
                   variant="outline"
                   className="border-2 border-white text-white hover:bg-secondary hover:text-white hover:border-secondary transition-all duration-300 group-hover:shadow-lg group-hover:shadow-secondary/25 cursor-pointer"
                 >
-                  READ MORE
+                   READ MORE
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
               </motion.div>
