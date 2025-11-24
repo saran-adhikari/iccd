@@ -59,7 +59,7 @@ function toProgramView(program: Program): ProgramView {
     learningOutcomes: program.learningOutcomes ?? program.keyPoints ?? [],
     whoShouldAttend: program.audience ?? [],
     longDescription: program.longDescription ??
-    program.summary ??
+      program.summary ??
       "Detailed program information will be available soon.",
   }
 }
@@ -99,17 +99,17 @@ export default async function ProgramDetailPage({
       />
 
       <section className="py-0 bg-background ">
-        <div className="w-[80%] mx-auto px-0 sm:px-6 lg:px-0">
-          <div className="grid lg:grid-cols-3 gap-12">
+        <div className="w-[80%] mx-auto px-0 sm:px-0 lg:px-0">
+          <div className="grid lg:grid-cols-3 gap-5">
             <div className="lg:col-span-2 space-y-12">
               {program.longDescription && (
                 <Card>
                   <CardHeader>
                     <div className="flex items-center gap-3">
-                      <BookOpen className="h-6 w-6 text-accent" />
+                      <BookOpen className="h-8 w-8 text-primary" />
                       <CardTitle className="text-2xl text-primary">Program Overview</CardTitle>
                     </div>
-                    <CardDescription>In-depth description of the program content and objectives</CardDescription>
+                    
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
@@ -118,13 +118,13 @@ export default async function ProgramDetailPage({
                   </CardContent>
                 </Card>
               )}
-              
-              
+
+
               {program.curriculum && program.curriculum.length > 0 && (
                 <Card>
                   <CardHeader>
                     <div className="flex items-center gap-3">
-                      <BookOpen className="h-6 w-6 text-accent" />
+                      <BookOpen className="h-6 w-6 text-primary" />
                       <CardTitle className="text-2xl text-primary">Curriculum</CardTitle>
                     </div>
                     <CardDescription>Detailed breakdown of the training program</CardDescription>
@@ -152,12 +152,12 @@ export default async function ProgramDetailPage({
               )}
             </div>
 
-            <div className="space-y-8">
+            <div className="space-y-4">
               {program.whoShouldAttend && program.whoShouldAttend.length > 0 && (
                 <Card>
                   <CardHeader>
                     <div className="flex items-center gap-3">
-                      <Users className="h-6 w-6 text-accent" />
+                      {/* <Users className="h-6 w-6 text-primary" /> */}
                       <CardTitle className="text-xl text-primary">Who Should Attend</CardTitle>
                     </div>
                   </CardHeader>
@@ -165,7 +165,7 @@ export default async function ProgramDetailPage({
                     <div className="space-y-2">
                       {program.whoShouldAttend.map((role, index) => (
                         <div key={index} className="flex items-center gap-2">
-                          <div className="w-2 h-2 bg-accent rounded-full"></div>
+                          <div className="w-2 h-2 bg-primary rounded-full"></div>
                           <span className="text-muted-foreground">{role}</span>
                         </div>
                       ))}
@@ -173,12 +173,12 @@ export default async function ProgramDetailPage({
                   </CardContent>
                 </Card>
               )}
-              
+
               {program.learningOutcomes && program.learningOutcomes.length > 0 && (
                 <Card>
                   <CardHeader>
                     <div className="flex items-center gap-3">
-                      <Target className="h-6 w-6 text-accent" />
+                      {/* <Target className="h-6 w-6 text-primary" /> */}
                       <CardTitle className="text-2xl text-primary">Learning Outcomes</CardTitle>
                     </div>
                     <CardDescription>What you&apos;ll achieve by completing this program</CardDescription>
@@ -187,7 +187,7 @@ export default async function ProgramDetailPage({
                     <div className="space-y-3">
                       {program.learningOutcomes.map((outcome, index) => (
                         <div key={index} className="flex items-start gap-3">
-                          <CheckCircle className="h-5 w-5 text-accent mt-0.5 flex-shrink-0" />
+                          <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                           <span className="text-muted-foreground">{outcome}</span>
                         </div>
                       ))}

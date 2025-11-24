@@ -5,39 +5,43 @@ export function Testimonials() {
   const testimonials = [
     {
       quote:
-        "The customer service training for our team staff made a noticeable difference in our approach towards enhancing customer satisfaction. We learned how to communicate with empathy, handle challenging guests, and create memorable service experiences. ICCD’s approach was interactive and practical, exactly what frontline teams need.",
-      author: "Maria Santos",
-      role: "Chief Compliance Officer",
-      company: "Global Banking Corp",
+        "The customer service training for our team staff made a noticeable difference in our approach towards enhancing customer satisfaction. We learned how to communicate with empathy, handle challenging guests, and create memorable service experiences. ",
       rating: 5,
-      image: "https://i.pinimg.com/736x/a9/67/27/a96727d343d319c458c757cef37a1379.jpg",
+      
+    },
+    {
+      quote:
+        "ICCD’s approach was interactive and practical, exactly what frontline teams need.   ",
+      rating: 5,
+      
     },
     {
       quote:
         "This training has enhanced our internal reporting and decision-making. With evolving reporting standards, we would benefit greatly from regular advanced refreshers in the future.",
-      author: "David Kim",
-      role: "Risk Management Director",
-      company: "International Finance Ltd",
+    
       rating: 5,
-      image: "https://i.pinimg.com/736x/6c/c5/19/6cc519f013abcf2ad6168a126ee877db.jpg",
+      
     },
     {
       quote:
         "ECL training simplified a complex topic, gave us much needed clarity regarding various things and gave us tools we could apply immediately. A must-have program for all credit and risk teams",
-      author: "Dr. Fatim Al-Rashid",
-      role: "Head of Learning & Development",
-      company: "Middle East Banking Group",
+     
       rating: 5,
-      image: "https://i.pinimg.com/1200x/11/64/93/116493296260208f256202748cbbccc2.jpg",
+      
     },
     {
       quote:
         "The learning was impactful, and ongoing refresher programs would help sustain and build on this momentum.",
-      author: "Dr. Fatim Al-Rashid",
-      role: "Head of Learning & Development",
-      company: "Middle East Banking Group",
+      
       rating: 5,
-      image: "https://i.pinimg.com/1200x/11/64/93/116493296260208f256202748cbbccc2.jpg",
+      
+    },
+    {
+      quote:
+        "Comprehensive session, more sessions should be organized which would be very helpful.",
+      
+      rating: 5,
+     
     },
   ]
 
@@ -55,7 +59,7 @@ export function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <Card
               key={index}
-              className="bg-background border-2 border-transparent hover:border-primary/20 transition-colors duration-300"
+              className="bg-background border-2 border-transparent transition-colors duration-300"
             >
               <CardContent className="p-8">
                 <div className="flex items-center mb-4">

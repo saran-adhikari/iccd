@@ -20,14 +20,14 @@ export function CTAStrip() {
           variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.3 } } }}
         >
           <motion.h2
-            className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-balance text-white"
+            className="text-4xl lg:text-5xl font-extrabold mb-4 leading-tight text-balance text-white"
             variants={fadeInUp}
           >
             Build Your Brand <br /> Customize Training Solutions
           </motion.h2>
 
           <motion.p
-            className="text-xl mb-10 max-w-3xl mx-auto text-muted-foreground/70"
+            className="text-xl mb-10 max-w-3xl mx-auto text-foreground/70"
             variants={fadeInUp}
           >
             Partner with ICCD to develop tailored training programs that align with your
@@ -44,7 +44,7 @@ export function CTAStrip() {
               <Button
                 size="lg"
                 variant="secondary"
-                className="bg-secondary border border-secondary/40 text-lg font-semibold px-8 py-6 text-white hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary/50 cursor-pointer"
+                className="bg-secondary/20 border border-secondary/40 text-lg font-semibold px-8 py-6 text-white hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-primary/50 cursor-pointer rounded-full"
                 aria-label="Schedule a consultation with ICCD"
                 
               >

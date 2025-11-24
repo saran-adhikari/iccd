@@ -64,9 +64,9 @@ export function Footer() {
                   </div>
                 </div>
               </div>
-              <p className="text-primary-foreground/80 text-sm leading-relaxed mb-6">
+              {/* <p className="text-primary-foreground/80 text-sm leading-relaxed mb-6">
                 Uniting Stakeholders to Build a Stronger AML/CFT Regime
-              </p>
+              </p> */}
               <div className="flex space-x-4">
                 <button className="w-10 h-10 bg-primary-foreground/10 rounded-full flex items-center justify-center hover:bg-secondary cursor-pointer transition-colors">
                   <Facebook className="h-5 w-5" />
@@ -129,7 +129,7 @@ export function Footer() {
                       href="https://mail.google.com/mail/?view=cm&fs=1&to=iccdnepal@gmail.com&su=Stay%20Connected%20with%20ICCD&body=Hello%20ICCD%20Team,"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center bg-primary hover:bg-secondary text-white-foreground rounded-md px-4 py-2"
+                      className="flex items-center justify-center bg-secondary/20 hover:bg-primary text-white border border-secondary/20 rounded-md px-6 py-1 uppercase"
                     >
                       
                       Send Email
@@ -150,7 +150,7 @@ export function Footer() {
         <div className="border-t border-primary-foreground/20 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-sm text-primary-foreground/80">
-              ©  International Centre for Compliance and Development,  {new Date().getFullYear()}. All rights reserved.
+              ©  International Centre for Compliance and Development,  {new Date().getFullYear()}. 
             </div>
             <div className="flex flex-wrap gap-6">
               {policies.map((policy) => (
@@ -170,7 +170,7 @@ export function Footer() {
         <div className="fixed bottom-6 right-6 z-50">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="bg-secondary/70 border-secondary/40 text-white-foreground p-3 rounded-full shadow-lg hover:bg-secondary hover:border-secondary transition-colors duration-300 flex items-center justify-center cursor-pointer"
+            className="bg-primary border-secondary/40 text-white-foreground p-3 rounded-full shadow-lg hover:bg-secondary hover:border-secondary transition-colors duration-300 flex items-center justify-center cursor-pointer"
             aria-label="Back to top"
           >
             <svg

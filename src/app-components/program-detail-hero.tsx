@@ -26,98 +26,85 @@ export function ProgramDetailHero({ program }: ProgramDetailHeroProps) {
   }
 
   return (
-    <section className="relative bg-background pt-16 pb-16">
+    <section className="relative bg-background pt-20 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4">
-        
+
         {/* Breadcrumb Route Section */}
         <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
-          <Link href="/" className="hover:text-primary transition-colors">
+          <Link href="/" className="hover:text-secondary transition-colors">
             Home
           </Link>
           <ChevronRight className="w-4 h-4 text-border" />
-          <Link href="/programs" className="hover:text-primary transition-colors">
+          <Link href="/programs" className="hover:text-secondary transition-colors">
             Programs
           </Link>
           <ChevronRight className="w-4 h-4 text-border" />
-          <span className="hover:text-primary cursor-pointer font-medium">{program.title}</span>
+          <span className="text-secondary cursor-pointer font-medium ">{program.title}</span>
         </nav>
 
-          {/* Content */}
+        {/* Content */}
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          
-          
+
+
           <div className="space-y-6">
-            
+
 
             <h1 className="text-4xl lg:text-5xl font-bold text-balance leading-tight text-primary">{program.title}</h1>
-            <div className="flex items-center gap-3">
-              <Badge variant="outline">{program.category}</Badge>
-              <Badge className={formatColors[program.format as keyof typeof formatColors]}>{program.format}</Badge>
-              <Badge variant="secondary">{program.level}</Badge>
-            </div>
-            <p className="text-sm text-muted-foreground leading-relaxed">{program.description}</p>
+
+            <p className="text-m text-muted-foreground leading-relaxed max-w-2xl">{program.description}</p>
 
             {/* Program Details */}
-            <div className="grid grid-cols-2 gap-6 py-6 border-y border-border">
-              <div className="flex items-center gap-3">
-                <Clock className="h-5 w-5 text-accent" />
+            <div className="grid grid-cols-2 gap-y-8 gap-x-6 py-8 border-y border-border/60">
+              <div className="flex items-start gap-4">
+                <div className="p-2 rounded-lg bg-secondary/10 text-secondary">
+                  <Clock className="h-5 w-5 text-secondary" />
+                </div>
                 <div>
-                  <div className="text-sm text-muted-foreground">Duration</div>
-                  <div className="font-semibold">{program.duration}</div>
+                  <div className="text-sm font-medium text-muted-foreground mb-0.5">Duration</div>
+                  <div className="font-semibold text-foreground">{program.duration}</div>
                 </div>
               </div>
-              <div className="flex items-center gap-3">
-                <Users className="h-5 w-5 text-accent" />
+              <div className="flex items-start gap-4">
+                <div className="p-2 rounded-lg bg-secondary/10 text-secondary">
+                  <Users className="h-5 w-5 text-secondary" />
+                </div>
                 <div>
-                  <div className="text-sm text-muted-foreground">Max Participants</div>
-                  <div className="font-semibold">{program.maxParticipants} people</div>
+                  <div className="text-sm font-medium text-muted-foreground mb-0.5">Max Participants</div>
+                  <div className="font-semibold text-foreground">{program.maxParticipants} people</div>
                 </div>
               </div>
-              <div className="flex items-center gap-3">
-                <MapPin className="h-5 w-5 text-accent" />
+              <div className="flex items-start gap-4">
+                <div className="p-2 rounded-lg bg-secondary/10 text-secondary">
+                  <MapPin className="h-5 w-5 text-secondary" />
+                </div>
                 <div>
-                  <div className="text-sm text-muted-foreground">Format</div>
-                  <div className="font-semibold">{program.format}</div>
+                  <div className="text-sm font-medium text-muted-foreground mb-0.5">Format</div>
+                  <div className="font-semibold text-foreground">{program.format}</div>
                 </div>
               </div>
-              <div className="flex items-center gap-3">
-                <Award className="h-5 w-5 text-accent" />
+              <div className="flex items-start gap-4">
+                <div className="p-2 rounded-lg bg-secondary/10 text-secondary">
+                  <Award className="h-5 w-5 text-secondary" />
+                </div>
                 <div>
-                  <div className="text-sm text-muted-foreground">Certification</div>
-                  <div className="font-semibold">Included</div>
+                  <div className="text-sm font-medium text-muted-foreground mb-0.5">Certification</div>
+                  <div className="font-semibold text-foreground">Included</div>
                 </div>
               </div>
             </div>
 
-            {/* Pricing and CTA */}
-            <div className="flex items-center justify-between">
-              {/* <div>
-                <div className="text-sm text-muted-foreground">Starting from</div>
-                <div className="text-3xl font-bold text-accent">{program.price}</div>
-                <div className="text-sm text-muted-foreground">per participant</div>
-              </div> */}
-              <div className="flex gap-3">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
-                >
-                  Download Brochure
-                </Button>
-                <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
-                  Request Proposal
-                </Button>
-              </div>
+            {/* Tags/Badges */}
+            <div className="flex flex-wrap gap-3 pt-2">
+              <Badge variant="outline" className="px-4 py-1.5 text-sm font-medium border-primary/10 text-white bg-primary/20 transition-colors rounded-full uppercase">
+                {program.category}
+              </Badge>
+              <Badge className={`px-4 py-1.5 text-sm font-medium rounded-full uppercase ${formatColors[program.format as keyof typeof formatColors] || 'bg-secondary/20 text-white border-secondary/10'}`}>
+                {program.format}
+              </Badge>
+              <Badge variant="secondary" className="px-4 py-1.5 text-sm font-medium border-accent/10 text-white bg-accent/70 transition-colors rounded-full uppercase">
+                {program.level}
+              </Badge>
             </div>
-
-            {/* Next Session */}
-            {/* <div className="flex items-center gap-3 p-4 bg-accent/5 rounded-lg border border-accent/20">
-              <Calendar className="h-5 w-5 text-accent" />
-              <div>
-                <div className="text-sm text-muted-foreground">Next Session</div>
-                <div className="font-semibold text-accent">{program.nextSession}</div>
-              </div>
-            </div> */}
           </div>
 
           {/* Image */}

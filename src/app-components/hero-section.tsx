@@ -3,29 +3,9 @@ import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/app-components/ui/button"
 import { ArrowRight } from "lucide-react"
-import { ReactTyped } from "react-typed"
 import Link from "next/link"
 
-function CountUp({ end, duration = 2000 }: { end: number; duration?: number }) {
-  const [count, setCount] = useState(0)
 
-  useEffect(() => {
-    let start = 0
-    const increment = end / (duration / 16) // ~60fps
-    const step = () => {
-      start += increment
-      if (start < end) {
-        setCount(Math.floor(start))
-        requestAnimationFrame(step)
-      } else {
-        setCount(end)
-      }
-    }
-    requestAnimationFrame(step)
-  }, [end, duration])
-
-  return <span>{count}+</span>
-}
 
 export function HeroSection() {
   return (
@@ -60,16 +40,10 @@ export function HeroSection() {
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-white">
               <span className="text-white">
-                <ReactTyped
-                  strings={["Empowering"]}
-                  typeSpeed={80}
-                  backSpeed={40}
-                  showCursor={true}
-                  loop={false}
-                />
+                Empowering
               </span>{" "}
               <br />
-              Professionals, <span className="text-white">Elevating</span> Institutions
+              Professionals, <span className="text-white">Enabling</span> Progress
             </h1>
           </motion.div>
 

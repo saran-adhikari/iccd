@@ -28,7 +28,7 @@ export function WhoWeAre() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        
+
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           {/* LEFT: Big heading + arrow */}
           <motion.div
@@ -42,10 +42,10 @@ export function WhoWeAre() {
                 <motion.h2
                   className="text-5xl sm:text-6xl lg:text-8xl xl:text-9xl font-bold leading-tight tracking-tight text-white"
                 >
-                  Who<br/> <span className="block sm:inline"><span className="text-primary">We</span> Are</span>
+                  Who<br /> <span className="block sm:inline"><span className="text-primary">We</span> Are</span>
                 </motion.h2>
 
-                
+
               </div>
 
               {/* corner arrow */}
@@ -58,7 +58,7 @@ export function WhoWeAre() {
                 animate={
                   prefersReduced
                     ? undefined
-                    : { y: [0, -4, 0] } 
+                    : { y: [0, -4, 0] }
                 }
                 style={{ originX: 0.5, originY: 0.5 }}
                 {...(!prefersReduced && {
@@ -80,19 +80,11 @@ export function WhoWeAre() {
             transition={inViewTransition}
           >
             <p>
-              The International Centre for Compliance and Development (ICCD) is a premier
-              training institution dedicated to strengthening AML/CFT regimes and compliance
-              frameworks across financial institutions worldwide.
-            </p>
-            <p>
-              With experience, we bring together industry experts,
-              regulatory specialists, and thought leaders to deliver world-class training
-              programs that meet international standards and address real-world challenges.
-            </p>
-            <p>
-              Our mission is to unite stakeholders in building stronger, more resilient
-              financial systems through comprehensive education and practical solutions.
-            </p>
+              International Center for Capacity Development (ICCD) stands as a leading corporate training institute in Nepal, dedicated to elevating professional excellence and organizational potential across the region. ICCD is committed to strengthening professional excellence across the financial sector. </p>
+
+            <p> As a trusted learning partner for banks, insurance companies, and financial institutions, we are your strategic partner in growth, committed to fostering a culture of continuous learning and high-impact skill development.</p>
+            
+            {/* <p>Through industry-aligned training programs, expert-led workshops, and customized learning solutions, ICCD empowers professionals to stay ahead in an evolving financial landscape. </p> */}
 
             {/* CTA */}
             <Link href="/about" className="inline-block group ">
