@@ -5,7 +5,7 @@ import { CoreValues } from "@/app-components/core-values"
 import { WhoWeAre } from "@/app-components/who-we-are"
 import { ImpactNumbers } from "@/app-components/impact-numbers"
 import FeaturedProgram from "@/app-components/featured-program"
-import { CTAStrip } from "@/app-components/cta-strip"
+import  CTAStrip  from "@/app-components/cta-strip"
 import { Footer } from "@/app-components/footer"
 import WhyICCD from "@/app-components/why-iccd"
 import HeroTrainMyTeam from "@/app-components/herotrainmyteam"
@@ -20,16 +20,16 @@ export default function HomePage() {
       <Header />
       <HeroSection />
       <TrustedPartners />
-      <CoreValues  />
+      <CoreValues />
       <WhoWeAre />
       <ImpactNumbers />
       {/* <WhyICCD/> */}
       {/* <CompanyInfo/> */}
       <FeaturedProgram />
-      <ECLCalculator/>
+      <ECLCalculator />
       <Testimonials />
       {/* <IndustryTestimonials /> */}
-      <HeroTrainMyTeam/>
+      <HeroTrainMyTeam />
       {/* <CTAStrip /> */}
       <Footer />
     </main>

@@ -5,7 +5,7 @@ import { MissionVision } from "@/app-components/mission-vision"
 import { LeadershipTeam } from "@/app-components/leadership-team"
 import { Testimonials } from "@/app-components/testimonials"
 import { Accreditation } from "@/app-components/accreditation"
-import { CTAStrip } from "@/app-components/cta-strip"
+import CTAStrip  from "@/app-components/cta-strip"
 import { Footer } from "@/app-components/footer"
 import { ImpactNumbers } from "@/app-components/impact-numbers"
 import CompanyInfo from "@/app-components/company-info"
@@ -24,8 +24,8 @@ export default function AboutPage() {
       {/* <CompanyInfo/> */}
       {/* <LeadershipTeam /> */}
       {/* <ImpactNumbers/> */}
-      {/* <Testimonials /> */}
-      <IndustryTestimonials />
+      <Testimonials />
+      {/* <IndustryTestimonials /> */}
       {/* <Accreditation /> */}
       
       <CTAStrip />

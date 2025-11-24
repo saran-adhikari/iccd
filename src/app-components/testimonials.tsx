@@ -5,7 +5,7 @@ export function Testimonials() {
   const testimonials = [
     {
       quote:
-        "ICCD's AML training program transformed our compliance framework. The practical approach and real-world case studies made all the difference.",
+        "The customer service training for our team staff made a noticeable difference in our approach towards enhancing customer satisfaction. We learned how to communicate with empathy, handle challenging guests, and create memorable service experiences. ICCD’s approach was interactive and practical, exactly what frontline teams need.",
       author: "Maria Santos",
       role: "Chief Compliance Officer",
       company: "Global Banking Corp",
@@ -14,7 +14,7 @@ export function Testimonials() {
     },
     {
       quote:
-        "The ESG training provided by ICCD helped us integrate sustainability into our core business strategy. Exceptional quality and expertise.",
+        "This training has enhanced our internal reporting and decision-making. With evolving reporting standards, we would benefit greatly from regular advanced refreshers in the future.",
       author: "David Kim",
       role: "Risk Management Director",
       company: "International Finance Ltd",
@@ -23,7 +23,16 @@ export function Testimonials() {
     },
     {
       quote:
-        "Outstanding training delivery and content. ICCD's programs are now an integral part of our staff development initiatives.",
+        "ECL training simplified a complex topic, gave us much needed clarity regarding various things and gave us tools we could apply immediately. A must-have program for all credit and risk teams",
+      author: "Dr. Fatim Al-Rashid",
+      role: "Head of Learning & Development",
+      company: "Middle East Banking Group",
+      rating: 5,
+      image: "https://i.pinimg.com/1200x/11/64/93/116493296260208f256202748cbbccc2.jpg",
+    },
+    {
+      quote:
+        "The learning was impactful, and ongoing refresher programs would help sustain and build on this momentum.",
       author: "Dr. Fatim Al-Rashid",
       role: "Head of Learning & Development",
       company: "Middle East Banking Group",
@@ -60,7 +69,7 @@ export function Testimonials() {
                   <p className="text-muted-foreground leading-relaxed italic pl-6">&quot;{testimonial.quote}&quot;</p>
                 </div>
 
-                <div className="flex items-center">
+                {/* <div className="flex items-center">
                   <img
                     src={testimonial.image || "/placeholder.svg"}
                     alt={testimonial.author}
@@ -69,9 +78,9 @@ export function Testimonials() {
                   <div>
                     <div className="font-semibold text-primary">{testimonial.author}</div>
                     <div className="text-sm text-muted-foreground">{testimonial.role}</div>
-                    <div className="text-sm text-secondary/70">{testimonial.company}</div>
+                    <div className="text-sm text-muted-foreground/70">{testimonial.company}</div>
                   </div>
-                </div>
+                </div> */}
               </CardContent>
             </Card>
           ))}
