@@ -79,14 +79,14 @@ export function ContactForm() {
   }
 
   return (
-    <section className="relative py-14 md:py-20 bg-primary/5">
+    <section className="relative py-14 md:py-20">
       <div className="max-w-6xl mx-auto w-[80%] px-4 sm:px-6 lg:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative rounded-3xl bg-background shadow-xl border border-border/40 p-6 sm:p-4 md:p-10 mx-auto"
+          className="relative rounded-3xl bg-secondary/5 shadow-xl border border-primary/40 p-6 sm:p-4 md:p-10 mx-auto"
         >
           <div className="grid gap-8 lg:grid-cols-[420px_minmax(0,1fr)]">
             {/* LEFT INFO */}
@@ -97,8 +97,8 @@ export function ContactForm() {
                   <li className="flex gap-3">
                     <MapPin className="h-5 w-5 mt-0.5 opacity-90" />
                     <div>
-                      <p>123 Financial District</p>
-                      <p>Kathmandu, BA 44600 NPL</p>
+                      <p>Baluwatar-04</p>
+                      <p>Kathmandu, BA 4600 NPL</p>
                     </div>
                   </li>
                   <li className="flex gap-3">
@@ -114,7 +114,7 @@ export function ContactForm() {
                   </li>
                   <li className="flex gap-3">
                     <Clock className="h-5 w-5 mt-0.5 opacity-90" />
-                    <p>Mon–Fri: 9:00–18:00 (NPT)</p>
+                    <p>Mon–Fri: 9:00–17:00 (NPT)</p>
                   </li>
                 </ul>
               </div>

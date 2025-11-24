@@ -6,7 +6,7 @@ export function ContactHero() {
       {/* Background image */}
       <div
         className="absolute inset-0 -z-10 bg-cover bg-center"
-        style={{ backgroundImage: "url('https://i.pinimg.com/1200x/dc/8e/73/dc8e73ae9bf603c4782f2976951f971f.jpg')" }} // replace with your image
+        style={{ backgroundImage: "url('https://i.pinimg.com/1200x/43/5e/b6/435eb64e7d4d427a7266c2abdf61c72a.jpg')" }} // replace with your image
       />
 
       {/* Gradient overlay */}

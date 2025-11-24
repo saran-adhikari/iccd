@@ -12,7 +12,7 @@ export function Footer() {
   const quickLinks = [
     { name: "About Us", href: "/about" },
     { name: "Programs", href: "/programs" },
-    // { name: "Why Choose ICCD", href: "/why-choose" },
+    { name: "Legal", href: "/legal" },
     { name: "Impact", href: "/impact" },
     { name: "Contact", href: "/contact" },
   ]
@@ -27,12 +27,7 @@ export function Footer() {
     }
   })
 
-  const policies = [
-    { name: "Privacy Policy", href: "/privacy" },
-    { name: "Terms of Service", href: "/terms" },
-    // { name: "Disclaimer", href: "/disclaimer" },
-    // { name: "Cookie Policy", href: "/cookies" },
-  ]
+  
 
   return (
     <footer className="bg-black text-primary-foreground">
@@ -58,16 +53,16 @@ export function Footer() {
                     </div> */}
 
                 <div>
-                  <div className="text-xl font-bold">ICCD</div>
+                  <div className="text-3xl font-bold">ICCD</div>
                   <div className="text-xs text-primary-foreground/80">
-                    International Centre for Compliance<br/> & Development
+                    International Centre for Capacity<br/> Development
                   </div>
                 </div>
               </div>
               {/* <p className="text-primary-foreground/80 text-sm leading-relaxed mb-6">
                 Uniting Stakeholders to Build a Stronger AML/CFT Regime
               </p> */}
-              <div className="flex space-x-4">
+              {/* <div className="flex space-x-4">
                 <button className="w-10 h-10 bg-primary-foreground/10 rounded-full flex items-center justify-center hover:bg-secondary cursor-pointer transition-colors">
                   <Facebook className="h-5 w-5" />
                 </button>
@@ -80,7 +75,7 @@ export function Footer() {
                 <button className="w-10 h-10 bg-primary-foreground/10 rounded-full flex items-center justify-center hover:bg-secondary cursor-pointer transition-colors">
                   <Youtube className="h-5 w-5" />
                 </button>
-              </div>
+              </div> */}
             </div>
 
             {/* Quick Links */}
@@ -138,7 +133,7 @@ export function Footer() {
 
                 </div>
                 <p className="text-xs text-primary-foreground/60">
-                  By reaching out, you agree to our Privacy Policy and consent to receive responses from ICCD.
+                  By reaching out, you consent to receive responses from ICCD.
                 </p>
               </div>
             </div>
@@ -150,19 +145,9 @@ export function Footer() {
         <div className="border-t border-primary-foreground/20 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-sm text-primary-foreground/80">
-              ©  International Centre for Compliance and Development,  {new Date().getFullYear()}. 
+              © ICCD - International Centre for Capacity Development,  {new Date().getFullYear()}. 
             </div>
-            <div className="flex flex-wrap gap-6">
-              {policies.map((policy) => (
-                <Link
-                  key={policy.name}
-                  href={policy.href}
-                  className="text-sm text-primary-foreground/80 hover:text-secondary transition-colors"
-                >
-                  {policy.name}
-                </Link>
-              ))}
-            </div>
+            
           </div>
         </div>
       </div>

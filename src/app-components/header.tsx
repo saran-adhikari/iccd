@@ -40,9 +40,9 @@ export function Header() {
     { name: "Programs", href: "/programs" },
     // { name: "Why Choose ICCD", href: "/why-choose" },
     // { name: "Events", href: "/events" },
-    // { name: "Our Impact", href: "/impact" },
+    { name: "Impact", href: "/impact" },
     // { name: "Blog", href: "/blog" },
-    { name: "Legal Docs", href: "/legal" },
+    { name: "Legal", href: "/legal" },
     { name: "Contact", href: "/contact" },
   ]
 

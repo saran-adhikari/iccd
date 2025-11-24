@@ -7,13 +7,13 @@ import { motion } from "framer-motion"
 export default function CompanyInfo() {
   return (
     <motion.section
-      className="relative bg-white py-4"
+      className="relative bg-background py-4"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      <div className="mx-auto max-w-7xl px-6 lg:px-0">
+      <div className="mx-auto max-w-6xl px-6 lg:px-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-center">
           {/* Left Content Section */}
           <motion.div
@@ -22,8 +22,8 @@ export default function CompanyInfo() {
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            <h2 className="text-4xl md:text-4xl font-extrabold text-black leading-tight">
-              Be a part of Nepal&apos;s<span className="text-primary"> fastest</span>   growing{" "}
+            <h2 className="text-4xl md:text-4xl font-extrabold text-white leading-tight">
+              Be a part of <span className="text-primary"> Nepal&apos;s fastest</span>   growing{" "}
               training institute
             </h2>
 
@@ -39,7 +39,7 @@ export default function CompanyInfo() {
             transition={{ duration: 0.7, delay: 0.3 }}
           >
             <Image
-              src="/Images/Stocks/nepalmap-green.png"
+              src="/Images/Stocks/nepalmap-bg.png"
               alt="Map of Nepal"
               fill
               className="object-contain"

@@ -14,22 +14,22 @@ type WhyItem = {
 const items: WhyItem[] = [
   {
     title: "Experienced Industry Leaders",
-    description: "ICCD is a trusted authority in AML/CFT education and awareness. Our leadership has guided institutions and regulators with proven strategies that blend expertise and innovation. We not only deliver training but also help shape ethical and sustainable compliance standards.",
+    description: "Our team has members with over 10 years of experience in Training Nepal's BFI's",
     icon: BriefcaseBusiness
   },
   {
     title: "Industry Expert",
-    description: "Our experts combine academic knowledge with real-world experience across industries such as banking and fintech. This ensures our programs are practical, relevant, and adaptable to today's compliance challenges. By anticipating trends, we empower professionals to stay ahead of complex regulatory requirements.",
+    description: "Our experts combine academic knowledge with real-world experience across the banking industry. This ensures our programs are practical, relevant, and adaptable to today's compliance challenges. By anticipating trends, we empower professionals to stay ahead of complex regulatory requirements.",
     icon: Cog
   },
   {
     title: "Personalized Service",
-    description: "Every organization is unique, and so are its compliance needs. We work closely with clients to create tailored solutions that match their goals and challenges. From one-on-one mentoring to customized training, we ensure measurable value for both individuals and organizations.",
+    description: "Every organization is unique, and so are its compliance needs. We work closely with clients to create tailored solutions that match their goals and challenges.",
     icon: UserRound
   },
   {
     title: "Rapid Value Creation",
-    description: "Our approach delivers quick, measurable results. Using case studies, interactive learning, and proven frameworks, organizations can see cultural and operational improvements within weeks. From better decision-making to stronger risk management, we focus on impact that lasts.",
+    description: "Our approach delivers quick, measurable results. Using case studies, interactive learning, and proven frameworks, we are committed to create value for your organization. From better decision-making to stronger risk management, we focus on impact that lasts.",
     icon: HandHeart
   },
 ]
