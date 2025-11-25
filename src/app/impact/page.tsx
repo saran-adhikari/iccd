@@ -1,6 +1,7 @@
 "use client"
 
 import { CTAStrip } from "@/app-components/cta-strip"
+import ECLCalculator from "@/app-components/ECLCalculator"
 import {Footer} from "@/app-components/footer"
 import { Header } from "@/app-components/header"
 import HeroTrainMyTeam from "@/app-components/herotrainmyteam"
@@ -17,6 +18,7 @@ export default function ImpactPage() {
             <Header />
             <ImpactHero />
             <ImpactMetrics />
+            <ECLCalculator />
             {/* <ImpactNumbers/> */}
             {/* <IndustryTestimonials /> */}
             {/* <HeroTrainMyTeam /> */}

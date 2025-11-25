@@ -18,8 +18,8 @@ export function ImpactMetrics() {
       suffix: "+",
       label: "Professionals Trained",
       description: "Compliance experts certified across global institutions",
-      color: "text-primary",
-      bgColor: "bg-primary/10",
+      color: "text-secondary",
+      bgColor: "bg-secondary/10",
     },
     {
       icon: Shield,
@@ -27,8 +27,8 @@ export function ImpactMetrics() {
       suffix: "+",
       label: "Partner Institutions",
       description: "Banks and financial organizations strengthened",
-      color: "text-accent",
-      bgColor: "bg-accent/10",
+      color: "text-secondary",
+      bgColor: "bg-secondary/10",
     },
     {
       icon: Globe,
@@ -36,8 +36,8 @@ export function ImpactMetrics() {
       suffix: "+",
       label: "Projects Delivered",
       description: "Successful compliance initiatives completed",
-      color: "text-blue-600",
-      bgColor: "bg-blue-100",
+      color: "text-secondary",
+      bgColor: "bg-secondary/10",
     },
     {
       icon: Award,
@@ -45,8 +45,8 @@ export function ImpactMetrics() {
       suffix: "+",
       label: "Training Programs",
       description: "Specialized courses covering all compliance areas",
-      color: "text-orange-600",
-      bgColor: "bg-orange-100",
+      color: "text-secondary",
+      bgColor: "bg-secondary/10",
     },
     {
       icon: TrendingUp,
@@ -54,8 +54,8 @@ export function ImpactMetrics() {
       suffix: "%",
       label: "Client Satisfaction",
       description: "Consistently high ratings from participants",
-      color: "text-green-600",
-      bgColor: "bg-green-100",
+      color: "text-secondary",
+      bgColor: "bg-secondary/10",
     },
     {
       icon: Target,
@@ -63,8 +63,8 @@ export function ImpactMetrics() {
       suffix: "%",
       label: "Compliance Improvement",
       description: "Average improvement in compliance scores",
-      color: "text-purple-600",
-      bgColor: "bg-purple-100",
+      color: "text-secondary",
+      bgColor: "bg-secondary/10",
     },
   ]
 
@@ -72,7 +72,7 @@ export function ImpactMetrics() {
     <section className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-black">Impact by <span className="text-primary">the Numbers</span></h2>
+          <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-white">Impact by <span className="text-white">the Numbers</span></h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Quantifiable results that demonstrate our commitment to excellence
           </p>
@@ -80,7 +80,7 @@ export function ImpactMetrics() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 align-center justify-center">
           {metrics.map((metric, index) => (
-            <Card key={metric.label} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+            <Card key={metric.label} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-secondary/10 border border-secondary/10">
               <CardContent className="p-8 text-center">
                 <div
                   className={`inline-flex items-center justify-center w-16 h-16 rounded-full mb-6 ${metric.bgColor}`}
@@ -92,8 +92,8 @@ export function ImpactMetrics() {
                   {isVisible ? <CountUp end={metric.number} suffix={metric.suffix} /> : "0"}
                 </div>
 
-                <h3 className={`text-xl font-bold mb-2 text-primary`}>{metric.label}</h3>
-                <p className="text-foreground text-sm leading-relaxed">{metric.description}</p>
+                <h3 className={`text-xl font-bold mb-2 text-white`}>{metric.label}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{metric.description}</p>
               </CardContent>
             </Card>
           ))}
