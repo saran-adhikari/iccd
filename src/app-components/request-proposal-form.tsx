@@ -409,7 +409,7 @@ export default function RequestProposalForm() {
                                     </label>
                                     <Select
                                         value={formData.duration}
-                                        onValueChange={(value) => updateFields({ duration: value as any })}
+                                        onValueChange={(value) => updateFields({ duration: value as FormData["duration"]})}
                                     >
                                         <SelectTrigger className="focus:ring-primary">
                                             <SelectValue placeholder="Select duration" />
