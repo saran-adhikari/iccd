@@ -25,7 +25,7 @@ export default function AboutPage() {
       
       {/* <LeadershipTeam /> */}
       {/* <ImpactNumbers/> */}
-      <Testimonials />
+      {/* <Testimonials /> */}
       {/* <IndustryTestimonials /> */}
       {/* <Accreditation /> */}
       

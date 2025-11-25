@@ -87,7 +87,9 @@ export function Header() {
 
           {/* CTA Button */}
           <div className="hidden md:flex">
-            <Button className="bg-secondary/20 border-secondary/40 hover:bg-secondary text-white cursor-pointer">REQUEST PROPOSAL</Button>
+            <Link href="/request-proposal">
+              <Button className="bg-secondary/20 border-secondary/40 hover:bg-secondary text-white cursor-pointer">REQUEST PROPOSAL</Button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -113,7 +115,9 @@ export function Header() {
                 </Link>
               ))}
               <div className="px-3 py-2">
-                <Button className="w-full bg-secondary/20 border-secondary/40 hover:bg-secondary text-white cursor-pointer"> REQUEST PROPOSAL</Button>
+                <Link href="/request-proposal" onClick={() => setIsMenuOpen(false)}>
+                  <Button className="w-full bg-secondary/20 border-secondary/40 hover:bg-secondary text-white cursor-pointer"> REQUEST PROPOSAL</Button>
+                </Link>
               </div>
             </div>
           </div>
