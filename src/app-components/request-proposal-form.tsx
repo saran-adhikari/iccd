@@ -163,7 +163,7 @@ export default function RequestProposalForm() {
                                 <Check className="w-10 h-10 text-secondary" />
                             </div>
                             <h2 className="text-4xl lg:text-5xl font-extrabold text-white mb-6 tracking-tight">
-                                Let's Build Your <br /> <span className="text-primary">Training Program</span>
+                                Let&apos;s Build Your <br /> <span className="text-primary">Training Program</span>
                             </h2>
                             <p className="text-xl text-muted-foreground mb-10 max-w-lg mx-auto leading-relaxed">
                                 Tell us a little about your team so we can build the best training program for you.
@@ -391,7 +391,7 @@ export default function RequestProposalForm() {
                                         {["In-person", "Virtual", "Hybrid"].map((fmt) => (
                                             <div
                                                 key={fmt}
-                                                onClick={() => updateFields({ format: fmt as any })}
+                                                onClick={() => updateFields({ format: fmt as FormData["format"] })}
                                                 className={`cursor-pointer border rounded-xl p-4 text-center transition-all duration-200 ${formData.format === fmt
                                                     ? "border-secondary/20 bg-secondary/20 text-white font-bold shadow-md shadow-primary/10"
                                                     : "border-primary/20 hover:border-primary/50 hover:bg-primary hover:text-white text-muted-foreground"
@@ -577,7 +577,7 @@ export default function RequestProposalForm() {
                                                 onChange={() => updateFields({ proposalType: "call" })}
                                                 className="text-secondary focus:ring-secondary accent-secondary"
                                             />
-                                            <span className="text-sm text-muted-foreground group-hover:text-secondary transition-colors">I'd like a call to discuss the proposal</span>
+                                            <span className="text-sm text-muted-foreground group-hover:text-secondary transition-colors">I&apos;d like a call to discuss the proposal</span>
                                         </label>
                                         <label className="flex items-center space-x-2 cursor-pointer group">
                                             <input
