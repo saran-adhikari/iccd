@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import { Header } from "@/app-components/header"
 import { ProgramDetailHero } from "@/app-components/program-detail-hero"
 import { CTAStrip } from "@/app-components/cta-strip"
+import { MorePrograms } from "@/app-components/more-programs"
 import { Footer } from "@/app-components/footer"
 import {
   Card,
@@ -109,7 +110,7 @@ export default async function ProgramDetailPage({
                       <BookOpen className="h-8 w-8 text-primary" />
                       <CardTitle className="text-2xl text-primary">Program Overview</CardTitle>
                     </div>
-                    
+
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
@@ -227,6 +228,7 @@ export default async function ProgramDetailPage({
         </div>
       </section>
 
+      <MorePrograms currentSlug={normalized} />
       <CTAStrip />
       <Footer />
     </main>

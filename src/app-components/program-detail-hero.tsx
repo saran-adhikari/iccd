@@ -39,7 +39,7 @@ export function ProgramDetailHero({ program }: ProgramDetailHeroProps) {
             Programs
           </Link>
           <ChevronRight className="w-4 h-4 text-border" />
-          <span className="text-secondary cursor-pointer font-medium ">{program.title}</span>
+          <span className="text-primary cursor-pointer font-medium ">{program.title}</span>
         </nav>
 
         {/* Content */}
