@@ -2,11 +2,13 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Button } from "@/app-components/ui/button"
 import { Menu, X } from "lucide-react"
 import Image from "next/image"
 
 export function Header() {
+  const pathname = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isVisible, setIsVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
@@ -78,7 +80,7 @@ export function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-foreground hover:text-secondary transition-colors duration-200 font-medium"
+                className={`${pathname === item.href ? "text-secondary" : "text-foreground"} hover:text-secondary transition-colors duration-200 font-medium`}
               >
                 {item.name}
               </Link>
@@ -108,7 +110,7 @@ export function Header() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="block px-3 py-2 text-foreground hover:text-secondary transition-colors duration-200"
+                  className={`block px-3 py-2 ${pathname === item.href ? "text-secondary" : "text-foreground"} hover:text-secondary transition-colors duration-200`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
