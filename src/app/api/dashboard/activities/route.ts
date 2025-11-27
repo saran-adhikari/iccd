@@ -39,7 +39,14 @@ export async function GET() {
         ])
 
         // Combine and format activities
-        const activities = []
+        interface Activity {
+            type: 'program' | 'testimonial' | 'partner' | 'impact' | 'legal'
+            action: 'created' | 'updated'
+            title: string
+            timestamp: Date
+        }
+
+        const activities: Activity[] = []
 
         // Add program activities
         recentPrograms.forEach(program => {
