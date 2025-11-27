@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { Card, CardContent } from "@/app-components/ui/card"
-import { TrendingUp, Shield, Users, Award, Globe, Target, BarChart, FileCheck, MessageSquare, BookOpen } from "lucide-react"
+import { TrendingUp, Shield, Users, Award, Globe, Target, BarChart, FileCheck, MessageSquare, BookOpen, type LucideIcon } from "lucide-react"
 
 interface ImpactMetric {
   id: string
@@ -14,7 +14,7 @@ interface ImpactMetric {
   order: number
 }
 
-const iconMap: Record<string, any> = {
+const iconMap: Record<string, LucideIcon> = {
   Users,
   Shield,
   Globe,
@@ -87,7 +87,9 @@ export function ImpactMetrics() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 align-center justify-center">
           {metrics.map((metric) => {
-            const IconComponent = metric.icon ? iconMap[metric.icon] || Users : Users
+            const IconComponent: LucideIcon = metric.icon
+              ? iconMap[metric.icon] ?? Users
+              : Users
             const numericValue = parseInt(metric.value) || 0
 
             return (
