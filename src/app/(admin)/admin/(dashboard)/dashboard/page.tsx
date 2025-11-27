@@ -25,8 +25,9 @@ interface Activity {
 }
 
 interface ChartData {
-    name: string
-    value: number
+  name: string
+  value: number
+  [key: string]: string | number   // add index signature
 }
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8', '#82CA9D']
