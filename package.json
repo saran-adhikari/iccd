@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "generate": "prisma generate --schema=prisma/schema.prisma",
+    "build": "npm run generate && next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint"  
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
