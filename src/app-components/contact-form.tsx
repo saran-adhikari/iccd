@@ -7,7 +7,6 @@ import { Button } from "@/app-components/ui/button"
 import { Input } from "@/app-components/ui/input"
 import { Textarea } from "@/app-components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/app-components/ui/select"
-import emailjs from "@emailjs/browser"
 import { toast, ToastContainer } from "react-toastify"
 
 export function ContactForm() {
@@ -51,13 +50,15 @@ export function ContactForm() {
     setLoading(true)
 
     try {
-      await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-        { name, email, org, role, interest, message },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
-      )
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, org, role, interest, message }),
+      })
 
+      if (!response.ok) {
+        throw new Error("Failed to send message")
+      }
 
       // Reset form fields
       setName("")
@@ -71,7 +72,7 @@ export function ContactForm() {
       toast.success("Message sent successfully! We'll reply soon.")
 
     } catch (err) {
-      console.error("EmailJS Error:", err)
+      console.error("Submission Error:", err)
       toast.error("Something went wrong. Please try again later.")
     } finally {
       setLoading(false)

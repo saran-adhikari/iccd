@@ -1,19 +1,15 @@
 "use client"
 
-import Image from "next/image"
 import { motion } from "framer-motion"
 
-export function TrustedPartners() {
-  const partners = [
-    { name: "Mahalaxmi Bank", logo: "/Images/Partners/mahalaxmi.jpg" },
-    { name: "Nepal Investment Mega Bank", logo: "/Images/Partners/nimb.jpg" },
-    { name: "Citizens Bank", logo: "/Images/Partners/citizensbank.jpg" },
-    { name: "Kumari Bank", logo: "/Images/Partners/kbl.jpg" },
-    { name: "Prime Bank", logo: "/Images/Partners/pbl.jpg" },
-    { name: "Himalayan Bank", logo: "/Images/Partners/hbl.jpg" },
-    { name: "Siddhartha Capital Ltd.", logo: "/Images/Partners/sbl.jpg" },
-    { name: "Machapucchre Bank Ltd.", logo: "/Images/Partners/mbl.jpg" },
-  ]
+interface Partner {
+  id: string
+  name: string
+  logo: string
+  website: string | null
+}
+
+export function TrustedPartners({ partners }: { partners: Partner[] }) {
 
   return (
     <section className="py-8 md:py-6">
@@ -31,7 +27,7 @@ export function TrustedPartners() {
           <h2 className="text-xl sm:text-2 xl font-light text-gray mt-2" >
             Trusted by Leading Financial Institutions
           </h2>
-          
+
         </motion.div>
 
         {/* Compact marquee container */}
@@ -64,7 +60,7 @@ export function TrustedPartners() {
             </div>
           </div>
         </motion.div> */}
-         {/* Compact marquee container with text */}
+        {/* Compact marquee container with text */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}

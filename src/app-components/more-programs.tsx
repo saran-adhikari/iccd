@@ -6,15 +6,16 @@ import { ArrowRight } from 'lucide-react'
 import { Card, CardContent } from '@/app-components/ui/card'
 import { Badge } from '@/app-components/ui/badge'
 import { Button } from '@/app-components/ui/button'
-import { programData } from '@/lib/programs'
+import { type Program } from '@/lib/programs'
 
 interface MoreProgramsProps {
     currentSlug: string
+    programs: Program[]
 }
 
-export function MorePrograms({ currentSlug }: MoreProgramsProps) {
+export function MorePrograms({ currentSlug, programs }: MoreProgramsProps) {
     // Filter out the current program
-    const otherPrograms = programData.filter((p) => p.slug !== currentSlug)
+    const otherPrograms = programs.filter((p) => p.slug !== currentSlug)
 
     if (otherPrograms.length === 0) return null
 
@@ -90,7 +91,7 @@ export function MorePrograms({ currentSlug }: MoreProgramsProps) {
                         ))}
                     </div>
 
-                    
+
                 </div>
             </div>
         </section>

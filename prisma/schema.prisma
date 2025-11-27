@@ -1,0 +1,119 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String @id @default(cuid())
+  email    String @unique
+  password String
+  name     String?
+  role     String @default("admin")
+}
+
+model Program {
+  id               String   @id @default(cuid())
+  slug             String   @unique
+  title            String
+  category         String
+  summary          String
+  keyPoints        String[]
+  durationDays     Int
+  level            String
+  maxParticipants  Int
+  certification    String
+  audience         String[]
+  instructorName   String
+  instructorExpertise String[]
+  learningOutcomes String[]
+  location         String
+  lastUpdated      String
+  tags             String[]
+  imageCover       String
+  imageIcon        String?
+  language         String
+  longDescription  String
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  quote     String
+  author    String?
+  role      String?
+  company   String?
+  rating    Int      @default(5)
+  image     String?
+  createdAt DateTime @default(now())
+}
+
+model ProposalRequest {
+  id              String   @id @default(cuid())
+  institutionName String
+  size            String?
+  department      String?
+  location        String?
+  country         String?
+  programs        String[]
+  programDetails  Json?    // Stores count and roles per program
+  timing          String?
+  format          String?
+  duration        String?
+  goals           String?
+  budget          Int?
+  name            String
+  email           String
+  phone           String?
+  position        String?
+  proposalType    String?
+  createdAt       DateTime @default(now())
+  status          String   @default("pending") // pending, reviewed, contacted
+}
+
+model ContactRequest {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  org       String?
+  role      String?
+  interest  String?
+  message   String
+  createdAt DateTime @default(now())
+  status    String   @default("new") // new, read, replied
+}
+
+model Partner {
+  id        String   @id @default(cuid())
+  name      String
+  logo      String
+  website   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ImpactMetric {
+  id          String   @id @default(cuid())
+  label       String
+  value       String
+  suffix      String?
+  description String?
+  icon        String?  // Lucide icon name
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model LegalDocument {
+  id        String   @id @default(cuid())
+  title     String
+  slug      String   @unique
+  fileUrl   String   // Path to uploaded PDF
+  type      String   @default("policy") // policy, terms, etc.
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

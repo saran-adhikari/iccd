@@ -15,7 +15,7 @@ import {
   Handshake,
   ArrowRight,
 } from 'lucide-react'
-import { programData, type Program } from '../lib/programs'
+import type { Program } from '../lib/programs'
 
 type MinimalProgram = {
   id: string
@@ -48,14 +48,14 @@ function getDirection(prev: number, next: number, len: number) {
   return fwd <= back ? 1 : -1
 }
 
-export default function FeaturedProgram() {
+export default function FeaturedProgram({ programs: rawPrograms }: { programs: Program[] }) {
   const [index, _setIndex] = useState(0)
   const prevIndexRef = useRef(0)
   const [direction, setDirection] = useState<1 | -1>(1)
 
   const programs = useMemo<MinimalProgram[]>(
     () =>
-      programData.map((p: Program) => ({
+      rawPrograms.map((p: Program) => ({
         id: p.id,
         slug: p.slug,
         title: p.title,
@@ -67,7 +67,7 @@ export default function FeaturedProgram() {
         cover: p.images.cover,
         outcomes: (p.learningOutcomes ?? []).slice(0, 3),
       })),
-    []
+    [rawPrograms]
   )
 
   const len = programs.length

@@ -12,15 +12,16 @@ import {
   CardTitle,
 } from "@/app-components/ui/card"
 import { Badge } from "@/app-components/ui/badge"
-import { CheckCircle, Users, Target, BookOpen } from "lucide-react"
+import { CheckCircle, BookOpen } from "lucide-react"
 
 
 import {
   getProgramBySlug,
   getAllProgramSlugs,
+  getPrograms,
   toSlug,
-} from "../../../lib/programs"
-import type { Program } from "../../../lib/programs"
+} from "@/lib/programs"
+import type { Program } from "@/lib/programs"
 
 type CurriculumDay = {
   day: string
@@ -74,7 +75,7 @@ export default async function ProgramDetailPage({
 
   // normalize just in case a non-normalized slug ever lands here
   const normalized = toSlug(slug)
-  const jsonProgram = getProgramBySlug(normalized)
+  const jsonProgram = await getProgramBySlug(normalized)
   if (!jsonProgram) return notFound()
 
   const program: ProgramView = toProgramView(jsonProgram)
@@ -196,46 +197,20 @@ export default async function ProgramDetailPage({
                   </CardContent>
                 </Card>
               )}
-
-              {/* {(program.price || program.nextSession) && (
-                <Card className="bg-accent/5 border-accent/20">
-                  <CardHeader>
-                    <CardTitle className="text-xl text-primary">Program Information</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    {program.price && (
-                      <div>
-                        <div className="text-sm text-muted-foreground">Investment</div>
-                        <div className="text-2xl font-bold text-accent">{program.price}</div>
-                        <div className="text-sm text-muted-foreground">per participant</div>
-                      </div>
-                    )}
-                    {program.nextSession && (
-                      <div>
-                        <div className="text-sm text-muted-foreground">Next Session</div>
-                        <div className="font-semibold text-primary">{program.nextSession}</div>
-                      </div>
-                    )}
-                    <div>
-                      <div className="text-sm text-muted-foreground">Certificate</div>
-                      <div className="font-semibold text-primary">ICCD Completion Certificate</div>
-                    </div>
-                  </CardContent>
-                </Card>
-              )} */}
             </div>
           </div>
         </div>
       </section>
 
-      <MorePrograms currentSlug={normalized} />
+      <MorePrograms currentSlug={normalized} programs={await getPrograms()} />
       <CTAStrip />
       <Footer />
     </main>
   )
 }
 
-export function generateStaticParams() {
-  return getAllProgramSlugs().map((slug) => ({ slug }))
+export async function generateStaticParams() {
+  const slugs = await getAllProgramSlugs()
+  return slugs.map((slug) => ({ slug }))
 }
 

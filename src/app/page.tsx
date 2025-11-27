@@ -5,29 +5,40 @@ import { CoreValues } from "@/app-components/core-values"
 import { WhoWeAre } from "@/app-components/who-we-are"
 import { ImpactNumbers } from "@/app-components/impact-numbers"
 import FeaturedProgram from "@/app-components/featured-program"
-import  {CTAStrip}  from "@/app-components/cta-strip"
+import { CTAStrip } from "@/app-components/cta-strip"
 import { Footer } from "@/app-components/footer"
 import WhyICCD from "@/app-components/why-iccd"
 import HeroTrainMyTeam from "@/app-components/herotrainmyteam"
 import CompanyInfo from "@/app-components/company-info"
 import ECLCalculator from "@/app-components/ECLCalculator"
-import { IndustryTestimonials } from "@/app-components/industry-testimonials"
 import { Testimonials } from "@/app-components/testimonials"
+import { getPrograms } from "@/lib/programs"
 
-export default function HomePage() {
+import { PrismaClient } from "@prisma/client"
+
+const prisma = new PrismaClient()
+
+export default async function HomePage() {
+  const [programs, partners, impactMetrics, testimonials] = await Promise.all([
+    getPrograms(),
+    prisma.partner.findMany({ orderBy: { createdAt: 'desc' } }),
+    prisma.impactMetric.findMany({ orderBy: { order: 'asc' } }),
+    prisma.testimonial.findMany({ orderBy: { createdAt: 'desc' }, take: 6 })
+  ])
+
   return (
     <main className="min-h-screen">
       <Header />
       <HeroSection />
-      <TrustedPartners />
+      <TrustedPartners partners={partners} />
       <CoreValues />
       <WhoWeAre />
-      <ImpactNumbers />
+      <ImpactNumbers metrics={impactMetrics} />
       {/* <WhyICCD/> */}
       {/* <CompanyInfo/> */}
-      <FeaturedProgram />
+      <FeaturedProgram programs={programs} />
       <ECLCalculator />
-      <Testimonials />
+      <Testimonials testimonials={testimonials} />
       {/* <IndustryTestimonials /> */}
       <HeroTrainMyTeam />
       {/* <CTAStrip /> */}

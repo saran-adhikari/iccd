@@ -123,6 +123,26 @@ export default function RequestProposalForm() {
     const currentProgressStep = Math.max(0, Math.min(currentStep - 1, totalProgressSteps));
     const progressPercentage = (currentProgressStep / totalProgressSteps) * 100;
 
+    const handleSubmit = async () => {
+        try {
+            const response = await fetch("/api/proposals", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData),
+            })
+
+            if (!response.ok) {
+                throw new Error("Failed to submit proposal")
+            }
+
+            // Move to success step
+            setCurrentStep(6)
+        } catch (error) {
+            console.error("Error submitting proposal:", error)
+            alert("Failed to submit proposal. Please try again.")
+        }
+    }
+
     return (
         <div className="w-[80%] mx-auto p-8 bg-background backdrop-blur-sm rounded-2xl shadow-2xl border border-white/20 my-10 relative overflow-hidden">
             {/* Decorative top border */}
@@ -409,7 +429,7 @@ export default function RequestProposalForm() {
                                     </label>
                                     <Select
                                         value={formData.duration}
-                                        onValueChange={(value) => updateFields({ duration: value as FormData["duration"]})}
+                                        onValueChange={(value) => updateFields({ duration: value as FormData["duration"] })}
                                     >
                                         <SelectTrigger className="focus:ring-primary">
                                             <SelectValue placeholder="Select duration" />
@@ -611,7 +631,7 @@ export default function RequestProposalForm() {
                                     <ChevronLeft className="mr-2 w-4 h-4" /> Back
                                 </Button>
                                 <Button
-                                    onClick={nextStep}
+                                    onClick={handleSubmit}
                                     disabled={!formData.name || !formData.email || !formData.consent}
                                     className="bg-secondary/20 hover:bg-secondary/90 text-white px-8 shadow-lg shadow-secondary/20 cursor-pointer"
                                 >
