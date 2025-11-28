@@ -60,34 +60,34 @@ export function TestimonialForm({ initialData }: { initialData?: TestimonialData
     }
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-8 max-w-2xl bg-white p-8 rounded-xl shadow-sm border">
+        <form onSubmit={handleSubmit} className="space-y-8 max-w-2xl bg-background backdrop-blur-sm p-8 rounded-xl shadow-2xl border border-secondary/20 text-white">
             <div className="space-y-2">
-                <Label>Quote</Label>
-                <Textarea value={formData.quote} onChange={(e) => handleChange("quote", e.target.value)} required />
+                <Label className="text-gray-200">Quote</Label>
+                <Textarea className="bg-secondary/5 border-secondary/20 text-white placeholder:text-gray-500 focus-visible:ring-primary/50 mt-2" value={formData.quote} onChange={(e) => handleChange("quote", e.target.value)} required />
             </div>
 
             <div className="grid gap-6 md:grid-cols-2">
                 <div className="space-y-2">
-                    <Label>Author Name (Optional)</Label>
-                    <Input value={formData.author} onChange={(e) => handleChange("author", e.target.value)} />
+                    <Label className="text-gray-200">Author Name (Optional)</Label>
+                    <Input className="bg-secondary/5 border-secondary/20 text-white placeholder:text-gray-500 focus-visible:ring-primary/50 mt-2" value={formData.author} onChange={(e) => handleChange("author", e.target.value)} />
                 </div>
                 <div className="space-y-2">
-                    <Label>Role (Optional)</Label>
-                    <Input value={formData.role} onChange={(e) => handleChange("role", e.target.value)} />
+                    <Label className="text-gray-200">Role (Optional)</Label>
+                    <Input className="bg-secondary/5 border-secondary/20 text-white placeholder:text-gray-500 focus-visible:ring-primary/50 mt-2" value={formData.role} onChange={(e) => handleChange("role", e.target.value)} />
                 </div>
                 <div className="space-y-2">
-                    <Label>Company (Optional)</Label>
-                    <Input value={formData.company} onChange={(e) => handleChange("company", e.target.value)} />
+                    <Label className="text-gray-200">Company (Optional)</Label>
+                    <Input className="bg-secondary/5 border-secondary/20 text-white placeholder:text-gray-500 focus-visible:ring-primary/50 mt-2" value={formData.company} onChange={(e) => handleChange("company", e.target.value)} />
                 </div>
                 <div className="space-y-2">
-                    <Label>Rating (1-5)</Label>
-                    <Input type="number" min="1" max="5" value={formData.rating} onChange={(e) => handleChange("rating", parseInt(e.target.value))} required />
+                    <Label className="text-gray-200">Rating (1-5)</Label>
+                    <Input className="bg-secondary/5 border-secondary/20 text-white placeholder:text-gray-500 focus-visible:ring-primary/50 mt-2" type="number" min="1" max="5" value={formData.rating} onChange={(e) => handleChange("rating", parseInt(e.target.value))} required />
                 </div>
             </div>
 
             <div className="flex justify-end gap-4">
-                <Button type="button" variant="outline" onClick={() => router.back()}>Cancel</Button>
-                <Button type="submit" disabled={loading}>
+                <Button type="button" variant="outline" onClick={() => router.back()} className="border-white/10 text-white hover:bg-white/10 hover:text-white">Cancel</Button>
+                <Button type="submit" disabled={loading} className="bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer">
                     {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                     Save Testimonial
                 </Button>

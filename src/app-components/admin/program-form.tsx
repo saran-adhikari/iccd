@@ -106,93 +106,93 @@ export function ProgramForm({ initialData }: { initialData?: ProgramData }) {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-8 max-w-4xl bg-white p-8 rounded-xl shadow-sm border">
+        <form onSubmit={handleSubmit} className="space-y-8 max-w-4xl bg-background backdrop-blur-sm p-8 rounded-xl shadow-2xl border border-primary/10 text-white">
             <div className="grid gap-6 md:grid-cols-2">
                 <div className="space-y-2">
-                    <Label>Title</Label>
-                    <Input value={formData.title} onChange={(e) => handleChange("title", e.target.value)} required />
+                    <Label className="text-gray-200">Title</Label>
+                    <Input className="bg-secondary/5 border-secondary/20 text-white placeholder:text-gray-500 focus-visible:ring-primary/50 mt-2" value={formData.title} onChange={(e) => handleChange("title", e.target.value)} required />
                 </div>
                 <div className="space-y-2">
-                    <Label>Slug (URL)</Label>
-                    <Input value={formData.slug} onChange={(e) => handleChange("slug", e.target.value)} required />
+                    <Label className="text-gray-200">Slug (URL)</Label>
+                    <Input className="bg-secondary/5 border-secondary/20 text-white placeholder:text-gray-500 focus-visible:ring-primary/50 mt-2" value={formData.slug} onChange={(e) => handleChange("slug", e.target.value)} required />
                 </div>
                 <div className="space-y-2">
-                    <Label>Category</Label>
-                    <Input value={formData.category} onChange={(e) => handleChange("category", e.target.value)} required />
+                    <Label className="text-gray-200">Category</Label>
+                    <Input className="bg-secondary/5 border-secondary/20 text-white placeholder:text-gray-500 focus-visible:ring-primary/50 mt-2" value={formData.category} onChange={(e) => handleChange("category", e.target.value)} required />
                 </div>
                 <div className="space-y-2">
-                    <Label>Duration (Days)</Label>
-                    <Input type="number" value={formData.durationDays} onChange={(e) => handleChange("durationDays", parseInt(e.target.value))} required />
+                    <Label className="text-gray-200">Duration (Days)</Label>
+                    <Input className="bg-secondary/5 border-secondary/20 text-white placeholder:text-gray-500 focus-visible:ring-primary/50 mt-2" type="number" value={formData.durationDays} onChange={(e) => handleChange("durationDays", parseInt(e.target.value))} required />
                 </div>
                 <div className="space-y-2">
-                    <Label>Level</Label>
+                    <Label className="text-gray-200">Level</Label>
                     <Select value={formData.level} onValueChange={(val) => handleChange("level", val)}>
-                        <SelectTrigger>
+                        <SelectTrigger className="bg-secondary/5 border-secondary/20 text-white focus:ring-primary/50 mt-2">
                             <SelectValue placeholder="Select Level" />
                         </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="Foundation">Foundation</SelectItem>
-                            <SelectItem value="Intermediate">Intermediate</SelectItem>
-                            <SelectItem value="Advanced">Advanced</SelectItem>
+                        <SelectContent className="bg-slate-900 border-secondary/20 text-white">
+                            <SelectItem value="Foundation" className="focus:bg-secondary/20 focus:text-white">Foundation</SelectItem>
+                            <SelectItem value="Intermediate" className="focus:bg-secondary/20 focus:text-white">Intermediate</SelectItem>
+                            <SelectItem value="Advanced" className="focus:bg-secondary/20 focus:text-white">Advanced</SelectItem>
                         </SelectContent>
                     </Select>
                 </div>
                 <div className="space-y-2">
-                    <Label>Max Participants</Label>
-                    <Input type="number" value={formData.maxParticipants} onChange={(e) => handleChange("maxParticipants", parseInt(e.target.value))} required />
+                    <Label className="text-gray-200">Max Participants</Label>
+                    <Input className="bg-secondary/5 border-secondary/20 text-white placeholder:text-gray-500 focus-visible:ring-primary/50 mt-2" type="number" value={formData.maxParticipants} onChange={(e) => handleChange("maxParticipants", parseInt(e.target.value))} required />
                 </div>
             </div>
 
             <div className="space-y-2">
-                <Label>Summary</Label>
-                <Textarea value={formData.summary} onChange={(e) => handleChange("summary", e.target.value)} required />
+                <Label className="text-gray-200">Summary</Label>
+                <Textarea className="bg-secondary/5 border-secondary/20 text-white placeholder:text-gray-500 focus-visible:ring-primary/50 mt-2" value={formData.summary} onChange={(e) => handleChange("summary", e.target.value)} required />
             </div>
 
             <div className="space-y-2">
-                <Label>Long Description</Label>
-                <Textarea className="min-h-[200px]" value={formData.longDescription} onChange={(e) => handleChange("longDescription", e.target.value)} required />
+                <Label className="text-gray-200">Long Description</Label>
+                <Textarea className="min-h-[200px] bg-secondary/5 border-secondary/20 text-white placeholder:text-gray-500 focus-visible:ring-primary/50 mt-2" value={formData.longDescription} onChange={(e) => handleChange("longDescription", e.target.value)} required />
             </div>
 
             {/* Array Fields */}
             {["keyPoints", "audience", "learningOutcomes", "tags"].map((field) => (
                 <div key={field} className="space-y-2">
-                    <Label className="capitalize">{field.replace(/([A-Z])/g, ' $1').trim()}</Label>
+                    <Label className="capitalize text-gray-200">{field.replace(/([A-Z])/g, ' $1').trim()}</Label>
                     {(formData[field as keyof ProgramData] as string[]).map((item, index) => (
                         <div key={index} className="flex gap-2">
-                            <Input value={item} onChange={(e) => handleArrayChange(field as keyof ProgramData, index, e.target.value)} />
-                            <Button type="button" variant="ghost" size="icon" onClick={() => removeArrayItem(field as keyof ProgramData, index)}>
+                            <Input className="bg-secondary/5 border-secondary/20 text-white placeholder:text-gray-500 focus-visible:ring-primary/50 mt-2" value={item} onChange={(e) => handleArrayChange(field as keyof ProgramData, index, e.target.value)} />
+                            <Button type="button" variant="ghost" size="icon" onClick={() => removeArrayItem(field as keyof ProgramData, index)} className="text-gray-400 hover:text-white hover:bg-white/10">
                                 <X className="h-4 w-4" />
                             </Button>
                         </div>
                     ))}
-                    <Button type="button" variant="outline" size="sm" onClick={() => addArrayItem(field as keyof ProgramData)}>
-                        <Plus className="mr-2 h-4 w-4" /> Add Item
+                    <Button type="button" variant="outline" size="sm" onClick={() => addArrayItem(field as keyof ProgramData)} className="border-secondary/20 text-secondary hover:bg-secondary/10 hover:text-secondary-foreground">
+                        <Plus className="mr-1 h-4 w-4" /> Add Item
                     </Button>
                 </div>
             ))}
 
             <div className="grid gap-6 md:grid-cols-2">
                 <div className="space-y-2">
-                    <Label>Instructor Name</Label>
-                    <Input value={formData.instructorName} onChange={(e) => handleChange("instructorName", e.target.value)} required />
+                    <Label className="text-gray-200">Instructor Name</Label>
+                    <Input className="bg-secondary/5 border-secondary/20 text-white placeholder:text-gray-500 focus-visible:ring-primary/50 mt-2" value={formData.instructorName} onChange={(e) => handleChange("instructorName", e.target.value)} required />
                 </div>
                 <div className="space-y-2">
-                    <Label>Location</Label>
-                    <Input value={formData.location} onChange={(e) => handleChange("location", e.target.value)} required />
+                    <Label className="text-gray-200">Location</Label>
+                    <Input className="bg-secondary/5 border-secondary/20 text-white placeholder:text-gray-500 focus-visible:ring-primary/50 mt-2" value={formData.location} onChange={(e) => handleChange("location", e.target.value)} required />
                 </div>
                 <div className="space-y-2">
-                    <Label>Cover Image URL</Label>
-                    <Input value={formData.imageCover} onChange={(e) => handleChange("imageCover", e.target.value)} required />
+                    <Label className="text-gray-200">Cover Image URL</Label>
+                    <Input className="bg-secondary/5 border-secondary/20 text-white placeholder:text-gray-500 focus-visible:ring-primary/50 mt-2" value={formData.imageCover} onChange={(e) => handleChange("imageCover", e.target.value)} required />
                 </div>
                 <div className="space-y-2">
-                    <Label>Icon Name (Lucide)</Label>
-                    <Input value={formData.imageIcon} onChange={(e) => handleChange("imageIcon", e.target.value)} />
+                    <Label className="text-gray-200">Icon Name (Lucide)</Label>
+                    <Input className="bg-secondary/5 border-secondary/20 text-white placeholder:text-gray-500 focus-visible:ring-primary/50 mt-2" value={formData.imageIcon} onChange={(e) => handleChange("imageIcon", e.target.value)} />
                 </div>
             </div>
 
             <div className="flex justify-end gap-4">
-                <Button type="button" variant="outline" onClick={() => router.back()}>Cancel</Button>
-                <Button type="submit" disabled={loading}>
+                <Button type="button" variant="outline" onClick={() => router.back()} className="border-white/10 text-white hover:bg-white/10 hover:text-white">Cancel</Button>
+                <Button type="submit" disabled={loading} className="bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer">
                     {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                     Save Program
                 </Button>
