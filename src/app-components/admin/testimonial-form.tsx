@@ -84,7 +84,7 @@ export function TestimonialForm({ initialData }: { initialData?: TestimonialData
                     <Input className="bg-secondary/5 border-secondary/20 text-white placeholder:text-gray-500 focus-visible:ring-primary/50 mt-2" type="number" min="1" max="5" value={formData.rating} onChange={(e) => handleChange("rating", parseInt(e.target.value))} required />
                 </div>
             </div>
-
+            {/* Save Testimonials */}
             <div className="flex justify-end gap-4">
                 <Button type="button" variant="outline" onClick={() => router.back()} className="border-white/10 text-white hover:bg-white/10 hover:text-white">Cancel</Button>
                 <Button type="submit" disabled={loading} className="bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer">
