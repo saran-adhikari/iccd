@@ -6,6 +6,10 @@ import { revalidatePath } from "next/cache"
 
 const prisma = new PrismaClient()
 
+// Force dynamic rendering and disable caching
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 export default async function TestimonialsPage() {
     const testimonials = await prisma.testimonial.findMany({
         orderBy: { createdAt: 'desc' }

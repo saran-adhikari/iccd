@@ -16,6 +16,10 @@ export async function POST(req: Request) {
             data,
         })
 
+        // Revalidate the testimonials list page
+        const { revalidatePath } = await import('next/cache')
+        revalidatePath('/admin/testimonials')
+
         return NextResponse.json(testimonial)
     } catch (error) {
         console.error(error)
@@ -35,6 +39,10 @@ export async function PUT(req: Request) {
             where: { id },
             data,
         })
+
+        // Revalidate the testimonials list page
+        const { revalidatePath } = await import('next/cache')
+        revalidatePath('/admin/testimonials')
 
         return NextResponse.json(testimonial)
     } catch (error) {
