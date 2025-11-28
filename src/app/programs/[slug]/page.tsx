@@ -209,8 +209,7 @@ export default async function ProgramDetailPage({
   )
 }
 
-export async function generateStaticParams() {
-  const slugs = await getAllProgramSlugs()
-  return slugs.map((slug) => ({ slug }))
-}
+// Force dynamic rendering for real-time updates
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
 

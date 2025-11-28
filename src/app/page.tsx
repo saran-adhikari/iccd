@@ -18,6 +18,10 @@ import { PrismaClient } from "@prisma/client"
 
 const prisma = new PrismaClient()
 
+// Force dynamic rendering for real-time updates
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 export default async function HomePage() {
   const [programs, partners, impactMetrics, testimonials] = await Promise.all([
     getPrograms(),

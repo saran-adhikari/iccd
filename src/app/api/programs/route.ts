@@ -23,9 +23,11 @@ export async function POST(req: Request) {
             data,
         })
 
-        // Revalidate the programs list page
+        // Revalidate admin and public pages
         const { revalidatePath } = await import('next/cache')
         revalidatePath('/admin/programs')
+        revalidatePath('/programs')
+        revalidatePath('/')
 
         return NextResponse.json(program)
     } catch (error) {
@@ -47,9 +49,11 @@ export async function PUT(req: Request) {
             data,
         })
 
-        // Revalidate the programs list page
+        // Revalidate admin and public pages
         const { revalidatePath } = await import('next/cache')
         revalidatePath('/admin/programs')
+        revalidatePath('/programs')
+        revalidatePath('/')
 
         return NextResponse.json(program)
     } catch (error) {

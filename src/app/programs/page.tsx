@@ -5,6 +5,10 @@ import { Footer } from "@/app-components/footer"
 import { getPrograms } from "@/lib/programs"
 import { ProgramsList } from "@/app-components/programs-list"
 
+// Force dynamic rendering for real-time updates
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 export default async function ProgramsPage() {
   const programs = await getPrograms()
 
