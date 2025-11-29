@@ -25,6 +25,7 @@ model Program {
   durationDays     Int
   level            String
   maxParticipants  Int
+  format           String   @default("On-site")
   certification    String
   audience         String[]
   instructorName   String

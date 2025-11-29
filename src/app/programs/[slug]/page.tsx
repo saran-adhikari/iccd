@@ -35,6 +35,7 @@ interface ProgramView {
   category?: string
   duration?: string
   format?: string
+  certification?: string
   maxParticipants?: number
   level?: string
   price?: string
@@ -53,7 +54,8 @@ function toProgramView(program: Program): ProgramView {
     description: program.summary,
     category: program.category,
     duration: program.durationDays ? `${program.durationDays} Days` : undefined,
-    format: "In-person / Virtual",
+    format: (program as any).format,
+    certification: program.certification,
     maxParticipants: program.maxParticipants,
     level: program.level,
     price: "Request a quote",
@@ -92,6 +94,7 @@ export default async function ProgramDetailPage({
           category: program.category ?? "",
           duration: program.duration ?? "",
           format: program.format ?? "",
+          certification: program.certification ?? "",
           maxParticipants: program.maxParticipants ?? 0,
           level: program.level ?? "",
           price: program.price ?? "",

@@ -10,6 +10,7 @@ interface ProgramDetailHeroProps {
     category: string
     duration: string
     format: string
+    certification?: string
     maxParticipants: number
     level: string
     price: string
@@ -88,7 +89,7 @@ export function ProgramDetailHero({ program }: ProgramDetailHeroProps) {
                 </div>
                 <div>
                   <div className="text-sm font-medium text-muted-foreground mb-0.5">Certification</div>
-                  <div className="font-semibold text-foreground">Included</div>
+                  <div className="font-semibold text-foreground">{program.certification || "Included"}</div>
                 </div>
               </div>
             </div>

@@ -20,6 +20,7 @@ type ProgramData = {
     durationDays: number
     level: string
     maxParticipants: number
+    format: string
     certification: string
     audience: string[]
     instructorName: string
@@ -47,6 +48,7 @@ export function ProgramForm({ initialData }: { initialData?: ProgramData }) {
             durationDays: 1,
             level: "Intermediate",
             maxParticipants: 20,
+            format: "On-site",
             certification: "Certificate of Completion",
             audience: [""],
             instructorName: "",
@@ -140,6 +142,26 @@ export function ProgramForm({ initialData }: { initialData?: ProgramData }) {
                 <div className="space-y-2">
                     <Label className="text-gray-200">Max Participants</Label>
                     <Input className="bg-secondary/5 border-secondary/20 text-white placeholder:text-gray-500 focus-visible:ring-primary/50 mt-2" type="number" value={formData.maxParticipants} onChange={(e) => handleChange("maxParticipants", parseInt(e.target.value))} required />
+                </div>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2">
+                <div className="space-y-2">
+                    <Label className="text-gray-200">Format</Label>
+                    <Select value={formData.format} onValueChange={(val) => handleChange("format", val)}>
+                        <SelectTrigger className="bg-secondary/5 border-secondary/20 text-white focus:ring-primary/50 mt-2">
+                            <SelectValue placeholder="Select Format" />
+                        </SelectTrigger>
+                        <SelectContent className="bg-slate-900 border-secondary/20 text-white">
+                            <SelectItem value="On-site" className="focus:bg-secondary/20 focus:text-white">On-site</SelectItem>
+                            <SelectItem value="Online" className="focus:bg-secondary/20 focus:text-white">Online</SelectItem>
+                            <SelectItem value="Blended" className="focus:bg-secondary/20 focus:text-white">Blended</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
+                <div className="space-y-2">
+                    <Label className="text-gray-200">Certification</Label>
+                    <Input className="bg-secondary/5 border-secondary/20 text-white placeholder:text-gray-500 focus-visible:ring-primary/50 mt-2" value={formData.certification} onChange={(e) => handleChange("certification", e.target.value)} required />
                 </div>
             </div>
 
