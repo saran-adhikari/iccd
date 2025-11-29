@@ -49,10 +49,10 @@ export default async function LegalListPage() {
                     <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-secondary transition-colors" />
                   </div>
                   <h1 className="text-xl text-muted-foreground mb-1 truncate font-mono group-hover:text-secondary transition-colors">
-                    {doc.fileUrl.split('/').pop().replace(/\.[^/.]+$/, "")}
+                    {doc.fileUrl.split('/').pop()?.replace(/\.[^/.]+$/, "") ?? "Document"}
                   </h1>
                   <p className="text-md font-semibold mb-2 transition-colors">{doc.title}</p>
-                   
+
                 </CardContent>
               </Card>
             </Link>

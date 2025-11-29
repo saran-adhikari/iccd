@@ -12,6 +12,7 @@ export type Program = {
   durationDays: number
   level: string
   maxParticipants: number
+  format: string
   certification: string
   audience: string[]
   instructor: {

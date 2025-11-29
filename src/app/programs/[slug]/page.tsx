@@ -17,7 +17,6 @@ import { CheckCircle, BookOpen } from "lucide-react"
 
 import {
   getProgramBySlug,
-  getAllProgramSlugs,
   getPrograms,
   toSlug,
 } from "@/lib/programs"
@@ -54,7 +53,7 @@ function toProgramView(program: Program): ProgramView {
     description: program.summary,
     category: program.category,
     duration: program.durationDays ? `${program.durationDays} Days` : undefined,
-    format: (program as any).format,
+    format: program.format,
     certification: program.certification,
     maxParticipants: program.maxParticipants,
     level: program.level,
