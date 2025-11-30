@@ -1,90 +1,151 @@
 "use client"
 
 import { GalleryImage } from "@prisma/client"
-import { motion } from "framer-motion"
 import Image from "next/image"
-import { useState } from "react"
-import { X } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
+import { useState, useEffect } from "react"
+import { ArrowLeft, ArrowRight, X } from "lucide-react"
 
 export function ImgGallery({ images }: { images: GalleryImage[] }) {
-    const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null)
+    const [index, setIndex] = useState(0)
+    const [selected, setSelected] = useState<GalleryImage | null>(null)
 
-    if (!images || images.length === 0) return null
+    if (!images || images.length < 3) return null
+
+    const next = () => setIndex((prev) => (prev + 1) % images.length)
+    const prev = () => setIndex((prev) => (prev - 1 + images.length) % images.length)
+
+    // Auto slide every 3s
+    useEffect(() => {
+        const timer = setInterval(next, 3000)
+        return () => clearInterval(timer)
+    }, [])
+
+    // group the 8 images into a looping gallery view
+    const getSlice = (start: number) => {
+        const arr = []
+        for (let i = 0; i < 5; i++) arr.push(images[(start + i) % images.length])
+        return arr
+    }
+
+    const group = getSlice(index)
 
     return (
-        <section className="py-20 bg-background mx-auto relative overflow-hidden w-[80%]">
-            
+        <section className="py-24 bg-background overflow-hidden">
 
-            <div className="container mx-auto px-4 relative z-10">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-center mb-12"
-                >
-                    <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-white">Life at ICCD</h2>
-                    <p className="max-w-2xl mx-auto text-lg text-muted-foreground">
-                        Glimpses of our training sessions, workshops, and community events.
-                    </p>
-                </motion.div>
+            {/* Title and Navigation */}
+            <div className="flex justify-between items-center mb-12 w-[90%] max-w-6xl mx-auto">
+                <h2 className="text-4xl lg:text-5xl font-bold text-white text-center">Our Canvas</h2>
+                
+                {/* Navigation Arrows */}
+                <div className="flex gap-3">
+                    {/* <button 
+                        onClick={prev} 
+                        className="w-10 h-10 bg-none rounded-full border border-secondary/20 flex items-center justify-center hover:bg-secondary transition-colors"
+                    >
+                        <ArrowLeft className="w-4 h-4 text-white" />
+                    </button> */}
+                    <button 
+                        onClick={next} 
+                        className="w-10 h-10 bg-secondary/20 rounded-full border border-secondary/20 flex items-center justify-center hover:bg-secondary transition-colors"
+                    >
+                        <ArrowRight className="w-4 h-4 text-white" />
+                    </button>
+                </div>
+            </div>
 
-                <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
-                    {images.map((image, index) => (
-                        <motion.div
-                            key={image.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            className="break-inside-avoid relative group cursor-pointer rounded-xl overflow-hidden"
-                            onClick={() => setSelectedImage(image)}
+            {/* Gallery */}
+            <div className="relative w-[90%] max-w-6xl mx-auto">
+
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        initial={{ opacity: 0, x: 100 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -100 }}
+                        transition={{ duration: 0.5, ease: "easeInOut" }}
+                        key={index}
+                        className="grid grid-cols-4 gap-2 h-[450px]"
+                    >
+                        {/* Left Large */}
+                        <div
+                            className="relative col-span-1 h-full rounded-md overflow-hidden cursor-pointer"
+                            onClick={() => setSelected(group[0])}
                         >
-                            <Image
-                                src={image.imageUrl}
-                                alt={image.alt}
-                                width={800}
-                                height={600}
-                                className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-110"
-                            />
-                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-                        </motion.div>
+                            <Image src={group[0].imageUrl} alt="" fill className="object-cover" />
+                        </div>
+
+                        {/* Middle Top */}
+                        <div
+                            className="relative col-span-1 h-full rounded-md overflow-hidden cursor-pointer"
+                            onClick={() => setSelected(group[1])}
+                        >
+                            <Image src={group[1].imageUrl} alt="" fill className="object-cover" />
+                        </div>
+
+                        {/* Middle Bottom - 2 stacked */}
+                        <div className="col-span-1 flex flex-col gap-2 h-full">
+                            <div
+                                className="relative flex-1 rounded-md overflow-hidden cursor-pointer"
+                                onClick={() => setSelected(group[2])}
+                            >
+                                <Image src={group[2].imageUrl} alt="" fill className="object-cover" />
+                            </div>
+                            <div
+                                className="relative flex-1 rounded-md overflow-hidden cursor-pointer"
+                                onClick={() => setSelected(group[3])}
+                            >
+                                <Image src={group[3].imageUrl} alt="" fill className="object-cover" />
+                            </div>
+                        </div>
+
+                        {/* Right Large */}
+                        <div
+                            className="relative col-span-1 h-full rounded-md overflow-hidden cursor-pointer"
+                            onClick={() => setSelected(group[4])}
+                        >
+                            <Image src={group[4].imageUrl} alt="" fill className="object-cover" />
+                        </div>
+                    </motion.div>
+                </AnimatePresence>
+
+                {/* Pagination Dots */}
+                <div className="flex justify-center gap-2 mt-8">
+                    {images.map((_, i) => (
+                        <div 
+                            key={i}
+                            onClick={() => setIndex(i)}
+                            className={`h-2 rounded-full transition-all cursor-pointer
+                            ${i === index ? "w-8 bg-secondary" : "w-2 bg-secondary/20"}`}
+                        />
                     ))}
                 </div>
             </div>
 
-            {/* Lightbox */}
-            {selectedImage && (
+            {/* Lightbox View */}
+            {selected && (
                 <motion.div
-                    initial={{ opacity: 0 }}
+                    initial={{ opacity: 0 }} 
                     animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
-                    onClick={() => setSelectedImage(null)}
+                    className="fixed inset-0 bg-black/90 flex items-center justify-center z-50"
+                    onClick={() => setSelected(null)}
                 >
-                    <button
-                        className="absolute top-4 right-4 text-white hover:text-primary transition-colors"
-                        onClick={() => setSelectedImage(null)}
-                    >
-                        <X className="w-8 h-8" />
-                    </button>
                     <motion.div
-                        initial={{ scale: 0.9 }}
+                        initial={{ scale: 0.9 }} 
                         animate={{ scale: 1 }}
-                        className="relative max-w-5xl max-h-[90vh] w-full h-full flex items-center justify-center"
+                        className="relative w-[85vw] h-[85vh]"
                         onClick={(e) => e.stopPropagation()}
                     >
-                        <Image
-                            src={selectedImage.imageUrl}
-                            alt={selectedImage.alt}
-                            fill
-                            className="object-contain"
-                        />
-                        <div className="absolute bottom-4 left-0 right-0 text-center text-white/80 bg-black/50 p-2 rounded-lg backdrop-blur-sm mx-auto max-w-md">
-                            {selectedImage.alt}
-                        </div>
+                        <Image src={selected.imageUrl} alt="" fill className="object-contain" />
+                        <button
+                            onClick={() => setSelected(null)}
+                            className="absolute top-6 right-6 text-white hover:text-red-400"
+                        >
+                            <X className="w-10 h-10" />
+                        </button>
                     </motion.div>
                 </motion.div>
             )}
+
         </section>
     )
 }
