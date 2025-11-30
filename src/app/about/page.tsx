@@ -7,6 +7,7 @@ import WhyICCD_Toggle from "@/app-components/why-iccd"
 import CompanyInfo from "@/app-components/company-info"
 import { ImgGallery } from "@/app-components/img-gallery"
 import { getGalleryImages } from "@/actions/gallery-actions"
+import MoreAboutUs from "@/app-components/more-about-us"
 
 export default async function AboutPage() {
   const { data: images } = await getGalleryImages()
@@ -15,9 +16,12 @@ export default async function AboutPage() {
     <main className="min-h-screen">
       <Header />
       <AboutHero />
+      
       {/* <AboutStory /> */}
       <MissionVision />
+      <MoreAboutUs />
       <CompanyInfo />
+      
       <WhyICCD_Toggle />
       <ImgGallery images={images || []} />
 
