@@ -5,8 +5,12 @@ import { CTAStrip } from "@/app-components/cta-strip"
 import { Footer } from "@/app-components/footer"
 import WhyICCD_Toggle from "@/app-components/why-iccd"
 import CompanyInfo from "@/app-components/company-info"
+import { ImgGallery } from "@/app-components/img-gallery"
+import { getGalleryImages } from "@/actions/gallery-actions"
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const { data: images } = await getGalleryImages()
+
   return (
     <main className="min-h-screen">
       <Header />
@@ -15,6 +19,7 @@ export default function AboutPage() {
       <MissionVision />
       <CompanyInfo />
       <WhyICCD_Toggle />
+      <ImgGallery images={images || []} />
 
       {/* <LeadershipTeam /> */}
       {/* <ImpactNumbers/> */}

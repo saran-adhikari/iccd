@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { LayoutDashboard, BookOpen, MessageSquare, Mail, LogOut, Users, BarChart, FileText, HelpCircle } from "lucide-react"
+import { LayoutDashboard, BookOpen, MessageSquare, Mail, LogOut, Users, BarChart, FileText, HelpCircle, Image as ImageIcon } from "lucide-react"
 import { SignOutButton } from "@/app-components/admin/sign-out-button"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -38,6 +38,10 @@ export default function AdminLayout({
                         <BarChart className="w-5 h-5" />
                         Impact Metrics
                     </Link>
+                    <Link href="/admin/gallery" className="flex items-center gap-3 px-4 py-3 text-muted-foreground hover:bg-secondary/10 hover:text-secondary rounded-lg transition-colors">
+                        <ImageIcon className="w-5 h-5" />
+                        Gallery
+                    </Link>
                     <Link href="/admin/legal" className="flex items-center gap-3 px-4 py-3 text-muted-foreground hover:bg-secondary/10 hover:text-secondary rounded-lg transition-colors">
                         <FileText className="w-5 h-5" />
                         Legal Docs
@@ -50,6 +54,7 @@ export default function AdminLayout({
                         <HelpCircle className="w-5 h-5" />
                         Contact Messages
                     </Link>
+                    
                 </nav>
 
                 <div className="p-4 border-t border-border">
