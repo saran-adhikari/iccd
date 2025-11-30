@@ -31,7 +31,7 @@ export default async function LegalListPage() {
 
           <h1 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-white">Legal Documents</h1>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Transparency and trust are at the core of our operations. Below you can find our legal policies and terms.
+            Transparency and trust are at the core of our operations. Below you can find legal acts and policies provided by Nepal Rastra Bank.
           </p>
         </div>
       </div>

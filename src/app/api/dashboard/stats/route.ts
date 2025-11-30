@@ -1,8 +1,6 @@
-import { PrismaClient } from "@prisma/client"
 import { NextResponse } from "next/server"
 import { auth } from "@/auth"
-
-const prisma = new PrismaClient()
+import { prisma } from "@/lib/prisma"
 
 export async function GET() {
     const session = await auth()
@@ -18,7 +16,8 @@ export async function GET() {
             impactMetricCount,
             legalDocCount,
             recentProposals,
-            recentContacts
+            recentContacts,
+            galleryCount
         ] = await Promise.all([
             prisma.program.count(),
             prisma.testimonial.count(),
@@ -40,7 +39,8 @@ export async function GET() {
                         gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000) // Last 7 days
                     }
                 }
-            })
+            }),
+            prisma.galleryImage.count()
         ])
 
         return NextResponse.json({
@@ -52,7 +52,8 @@ export async function GET() {
             impactMetricCount,
             legalDocCount,
             recentProposals,
-            recentContacts
+            recentContacts,
+            galleryCount
         })
     } catch (error) {
         console.error(error)

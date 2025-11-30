@@ -1,7 +1,7 @@
 "use client"
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/app-components/ui/card"
-import { BookOpen, MessageSquare, FileText, Mail, Users, BarChart, FileCheck, TrendingUp } from "lucide-react"
+import { BookOpen, MessageSquare, FileText, Mail, Users, BarChart, FileCheck, TrendingUp, Image as ImageIcon } from "lucide-react"
 import { BarChart as RechartsBarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend } from 'recharts'
 import { useEffect, useState } from "react"
 
@@ -15,22 +15,23 @@ interface DashboardStats {
     legalDocCount: number
     recentProposals: number
     recentContacts: number
+    galleryCount: number
 }
 
 interface Activity {
-    type: 'program' | 'testimonial' | 'partner' | 'impact' | 'legal'
+    type: 'program' | 'testimonial' | 'partner' | 'impact' | 'legal' | 'gallery'
     action: 'created' | 'updated'
     title: string
     timestamp: string
 }
 
 interface ChartData {
-  name: string
-  value: number
-  [key: string]: string | number   // add index signature
+    name: string
+    value: number
+    [key: string]: string | number   // add index signature
 }
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8', '#82CA9D']
+const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8', '#82CA9D', '#FF6384']
 
 export default function DashboardPage() {
     const [stats, setStats] = useState<DashboardStats>({
@@ -42,7 +43,8 @@ export default function DashboardPage() {
         impactMetricCount: 0,
         legalDocCount: 0,
         recentProposals: 0,
-        recentContacts: 0
+        recentContacts: 0,
+        galleryCount: 0
     })
     const [activities, setActivities] = useState<Activity[]>([])
     const [loading, setLoading] = useState(true)
@@ -80,12 +82,13 @@ export default function DashboardPage() {
             case 'partner': return { icon: Users, color: 'green-500' }
             case 'impact': return { icon: BarChart, color: 'orange-500' }
             case 'legal': return { icon: FileCheck, color: 'blue-500' }
+            case 'gallery': return { icon: ImageIcon, color: 'pink-500' }
         }
     }
 
     const getActivityText = (activity: Activity) => {
         const actionText = activity.action === 'created' ? 'Created' : 'Updated'
-        const typeText = activity.type === 'impact' ? 'impact metric' : activity.type
+        const typeText = activity.type === 'impact' ? 'impact metric' : activity.type === 'gallery' ? 'gallery image' : activity.type
         return {
             action: `${actionText} ${typeText}`,
             description: activity.title
@@ -98,6 +101,7 @@ export default function DashboardPage() {
         { name: 'Partners', value: stats.partnerCount },
         { name: 'Impact Metrics', value: stats.impactMetricCount },
         { name: 'Legal Docs', value: stats.legalDocCount },
+        { name: 'Gallery', value: stats.galleryCount },
     ]
 
     const submissionsData: ChartData[] = [
@@ -120,7 +124,7 @@ export default function DashboardPage() {
         <div className="space-y-8">
             <div>
                 <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
-                <p className="text-muted-foreground">Overview of your content and submissions.</p>
+                <p className="text-muted-foreground">Overview of contents and submissions.</p>
             </div>
 
             {/* Stats Cards */}
@@ -168,7 +172,7 @@ export default function DashboardPage() {
             </div>
 
             {/* Additional Stats Cards */}
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-4 md:grid-cols-4">
                 <Card className="hover:bg-secondary/5 transition-colors">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                         <CardTitle className="text-sm font-medium">Partners</CardTitle>
@@ -197,6 +201,16 @@ export default function DashboardPage() {
                     <CardContent>
                         <div className="text-2xl font-bold">{stats.legalDocCount}</div>
                         <p className="text-xs text-muted-foreground mt-1">Policy documents</p>
+                    </CardContent>
+                </Card>
+                <Card className="hover:bg-secondary/5 transition-colors">
+                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                        <CardTitle className="text-sm font-medium">Gallery Images</CardTitle>
+                        <ImageIcon className="h-4 w-4 text-muted-foreground" />
+                    </CardHeader>
+                    <CardContent>
+                        <div className="text-2xl font-bold">{stats.galleryCount}</div>
+                        <p className="text-xs text-muted-foreground mt-1">Images in gallery</p>
                     </CardContent>
                 </Card>
             </div>

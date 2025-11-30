@@ -1,8 +1,6 @@
-import { PrismaClient } from "@prisma/client"
 import { NextResponse } from "next/server"
 import { auth } from "@/auth"
-
-const prisma = new PrismaClient()
+import { prisma } from "@/lib/prisma"
 
 export async function GET() {
     const session = await auth()
@@ -10,7 +8,7 @@ export async function GET() {
 
     try {
         // Fetch recent activities from different tables
-        const [recentPrograms, recentTestimonials, recentPartners, recentImpactMetrics, recentLegalDocs] = await Promise.all([
+        const [recentPrograms, recentTestimonials, recentPartners, recentImpactMetrics, recentLegalDocs, recentGalleryImages] = await Promise.all([
             prisma.program.findMany({
                 orderBy: { updatedAt: 'desc' },
                 take: 2,
@@ -35,12 +33,17 @@ export async function GET() {
                 orderBy: { updatedAt: 'desc' },
                 take: 1,
                 select: { title: true, updatedAt: true, createdAt: true }
+            }),
+            prisma.galleryImage.findMany({
+                orderBy: { createdAt: 'desc' },
+                take: 2,
+                select: { alt: true, updatedAt: true, createdAt: true }
             })
         ])
 
         // Combine and format activities
         interface Activity {
-            type: 'program' | 'testimonial' | 'partner' | 'impact' | 'legal'
+            type: 'program' | 'testimonial' | 'partner' | 'impact' | 'legal' | 'gallery'
             action: 'created' | 'updated'
             title: string
             timestamp: Date
@@ -100,6 +103,16 @@ export async function GET() {
                 action: isNew ? 'created' : 'updated',
                 title: doc.title,
                 timestamp: doc.updatedAt
+            })
+        })
+
+        // Add gallery activities
+        recentGalleryImages.forEach(image => {
+            activities.push({
+                type: 'gallery',
+                action: 'created',
+                title: image.alt,
+                timestamp: image.createdAt
             })
         })
 
