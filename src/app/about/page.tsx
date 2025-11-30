@@ -16,11 +16,11 @@ export default async function AboutPage() {
     <main className="min-h-screen">
       <Header />
       <AboutHero />
-      
+      <MoreAboutUs />
       {/* <AboutStory /> */}
       <MissionVision />
-      <MoreAboutUs />
-      <CompanyInfo />
+      
+      {/* <CompanyInfo /> */}
       
       <WhyICCD_Toggle />
       <ImgGallery images={images || []} />

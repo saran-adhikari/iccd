@@ -104,8 +104,9 @@ function AccordionCard({
         className="flex w-full items-center justify-between gap-4 p-6 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded-2xl cursor-pointer"
       >
         <span className="flex items-center gap-3">
-          <span className="inline-flex items-center justify-center rounded-xl ring-1 ring-border/70 bg-muted/40 p-3 text-secondary">
-            <Icon className="h-6 w-6" />
+         
+          <span className="w-12 h-12 rounded-xl bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center shadow-lg shadow-secondary/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+            <Icon className="h-6 w-6 text-white" />
           </span>
           <span className="text-lg font-semibold">{item.title}</span>
         </span>

@@ -69,7 +69,7 @@ export function CoreValues({ items = defaultItems }: { items?: ValueItem[] }) {
                     visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
                   }}
                   whileHover={{ scale: 1.03 }}
-                  className={`flex items-start gap-6 p-4 rounded-xl cursor-pointer transition-all duration-200 hover:bg-secondary/5 ${
+                  className={`group flex items-start gap-6 p-4 rounded-xl cursor-pointer transition-all duration-200 hover:bg-secondary/5  ${
                     dim ? "opacity-60" : "opacity-100"
                   }`}
                 >
@@ -89,7 +89,10 @@ export function CoreValues({ items = defaultItems }: { items?: ValueItem[] }) {
                       boxShadow: "0px 6px 15px rgba(0,0,0,0.12)",
                     }}
                   >
-                    <Icon className="h-7 w-7 text-secondary" />
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center shadow-lg shadow-secondary/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                      <Icon className="h-7 w-7 text-white" />
+                    </div>
+                    
                   </motion.div>
 
                   <div className="group">

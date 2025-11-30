@@ -129,8 +129,8 @@ export function MissionVision() {
                   className={[
                     'group inline-flex items-center justify-center h-11 w-11 rounded-full  transition focus:outline-none focus:ring-2',
                     active
-                      ? 'bg-emerald-600 text-white border-emerald-600 ring-emerald-300'
-                      : 'bg-white/70 text-slate-700 border-slate-200 hover:bg-white cursor-pointer',
+                      ? 'bg-primary/70 text-white border-emerald-600 ring-primary/40'
+                      : 'bg-secondary/20 text-white border-emerald-600 hover:bg-secondary/70 cursor-pointer',
                   ].join(' ')}
                   initial={{ y: 8, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}

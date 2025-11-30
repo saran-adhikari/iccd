@@ -4,22 +4,24 @@ import { GalleryImage } from "@prisma/client"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { useState, useEffect } from "react"
-import { ArrowLeft, ArrowRight, X } from "lucide-react"
+import { ArrowRight, X } from "lucide-react"
 
 export function ImgGallery({ images }: { images: GalleryImage[] }) {
     const [index, setIndex] = useState(0)
     const [selected, setSelected] = useState<GalleryImage | null>(null)
 
+    // Auto slide every 3s
+    useEffect(() => {
+        if (!images || images.length < 3) return
+        const timer = setInterval(() => {
+            setIndex((prev) => (prev + 1) % images.length)
+        }, 3000)
+        return () => clearInterval(timer)
+    }, [images])
+
     if (!images || images.length < 3) return null
 
     const next = () => setIndex((prev) => (prev + 1) % images.length)
-    const prev = () => setIndex((prev) => (prev - 1 + images.length) % images.length)
-
-    // Auto slide every 3s
-    useEffect(() => {
-        const timer = setInterval(next, 3000)
-        return () => clearInterval(timer)
-    }, [])
 
     // group the 8 images into a looping gallery view
     const getSlice = (start: number) => {
@@ -36,18 +38,12 @@ export function ImgGallery({ images }: { images: GalleryImage[] }) {
             {/* Title and Navigation */}
             <div className="flex justify-between items-center mb-12 w-[90%] max-w-6xl mx-auto">
                 <h2 className="text-4xl lg:text-5xl font-bold text-white text-center">Our Canvas</h2>
-                
+
                 {/* Navigation Arrows */}
                 <div className="flex gap-3">
-                    {/* <button 
-                        onClick={prev} 
-                        className="w-10 h-10 bg-none rounded-full border border-secondary/20 flex items-center justify-center hover:bg-secondary transition-colors"
-                    >
-                        <ArrowLeft className="w-4 h-4 text-white" />
-                    </button> */}
-                    <button 
-                        onClick={next} 
-                        className="w-10 h-10 bg-secondary/20 rounded-full border border-secondary/20 flex items-center justify-center hover:bg-secondary transition-colors"
+                    <button
+                        onClick={next}
+                        className="w-12 h-12 rounded-full bg-secondary/20 border border-secondary/30 flex items-center justify-center hover:bg-gradient-to-br from-secondary/80 to-secondary  transition-all duration-300 cursor-pointer"
                     >
                         <ArrowRight className="w-4 h-4 text-white" />
                     </button>
@@ -111,7 +107,7 @@ export function ImgGallery({ images }: { images: GalleryImage[] }) {
                 {/* Pagination Dots */}
                 <div className="flex justify-center gap-2 mt-8">
                     {images.map((_, i) => (
-                        <div 
+                        <div
                             key={i}
                             onClick={() => setIndex(i)}
                             className={`h-2 rounded-full transition-all cursor-pointer
@@ -124,13 +120,13 @@ export function ImgGallery({ images }: { images: GalleryImage[] }) {
             {/* Lightbox View */}
             {selected && (
                 <motion.div
-                    initial={{ opacity: 0 }} 
+                    initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     className="fixed inset-0 bg-black/90 flex items-center justify-center z-50"
                     onClick={() => setSelected(null)}
                 >
                     <motion.div
-                        initial={{ scale: 0.9 }} 
+                        initial={{ scale: 0.9 }}
                         animate={{ scale: 1 }}
                         className="relative w-[85vw] h-[85vh]"
                         onClick={(e) => e.stopPropagation()}
