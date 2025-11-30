@@ -198,24 +198,38 @@ export default function LegalDocs() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.05, duration: 0.4 }}
             onClick={() => openPreview(file.path)}
-            className="group relative p-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl cursor-pointer hover:bg-white/10 hover:border-secondary/90 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/10"
+            className="relative p-6 rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700/50 hover:border-primary/50 transition-all duration-500 group overflow-hidden cursor-pointer"
           >
-            <div className="flex items-start gap-4">
-              <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-secondary group-hover:text-white transition-colors duration-300">
-                <FileText className="w-6 h-6" />
+            {/* Animated background gradient on hover */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+            {/* Decorative corner accent */}
+            <div className="absolute top-0 right-0 w-20 h-20 bg-primary/10 rounded-bl-[3rem] transition-all duration-500 group-hover:w-24 group-hover:h-24" />
+
+            <div className="relative z-10">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-lg shadow-primary/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shrink-0">
+                  <FileText className="w-7 h-7 text-white" />
+                </div>
+                <span className="text-5xl font-bold text-white/5 group-hover:text-white/10 transition-colors duration-500">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
               </div>
-              <div className="flex-1">
-                <h2 className="text-lg font-bold text-white group-hover:text-secondary transition-colors mb-2 leading-snug">
-                  {file.np}
-                </h2>
-                <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors font-medium">
-                  {file.en}
-                </p>
-              </div>
+
+              <h2 className="text-lg font-bold mb-2 text-white group-hover:text-primary transition-colors duration-300 leading-snug">
+                {file.np}
+              </h2>
+              <p className="text-sm text-gray-400 leading-relaxed">
+                {file.en}
+              </p>
             </div>
 
-            <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-x-2 group-hover:translate-x-0">
-              <ChevronRight className="w-5 h-5 text-secondary" />
+            {/* Bottom accent line */}
+            <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-primary to-primary/50 group-hover:w-full transition-all duration-500" />
+
+            {/* Arrow indicator */}
+            <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <ChevronRight className="w-5 h-5 text-primary" />
             </div>
           </motion.div>
         ))}
