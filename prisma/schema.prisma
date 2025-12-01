@@ -73,7 +73,7 @@ model ProposalRequest {
   position        String?
   proposalType    String?
   createdAt       DateTime @default(now())
-  status          String   @default("pending") // pending, reviewed, contacted
+  status          String   @default("pending") // pending, received, sent_quotation
 }
 
 model ContactRequest {

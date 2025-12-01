@@ -11,7 +11,7 @@ export function HeroSection() {
   return (
     <section
       className="relative py-20 lg:py-30"
-      
+
     >
       <div
         className="absolute inset-0 -z-10 bg-cover bg-center"
