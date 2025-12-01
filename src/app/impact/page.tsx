@@ -15,8 +15,7 @@ const prisma = new PrismaClient()
 
 export default async function ImpactPage() {
     const testimonials = await prisma.testimonial.findMany({
-        orderBy: { createdAt: 'desc' },
-        take: 6
+        orderBy: { createdAt: 'desc' }
     })
 
     return (

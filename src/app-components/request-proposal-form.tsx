@@ -324,25 +324,27 @@ export default function RequestProposalForm() {
                                     </div>
                                 </div>
 
-                                <div className="border-t border-white/10 pt-6">
-                                    <h3 className="text-xl font-bold text-white mb-4">Timing & Format</h3>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <div className="space-y-2">
-                                            <label className="text-sm font-medium text-muted-foreground">Preferred Date</label>
+                                <div className="border-t border-white/10 pt-8 mt-8">
+                                    <h3 className="text-xl font-bold text-white mb-6">Timing & Format</h3>
+                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                        <div className="space-y-3">
+                                            <label className="text-sm font-medium text-muted-foreground block">Preferred Date</label>
                                             <div className="relative">
                                                 <Input
                                                     type="date"
                                                     value={formData.timing}
                                                     onChange={(e) => updateFields({ timing: e.target.value })}
-                                                    className="focus:ring-primary pl-10 text-white bg-secondary/10 border-secondary/20"
+                                                    className="focus:ring-primary pl-10 cursor-pointer h-11"
                                                 />
-                                                <Calendar className="absolute left-3 top-2.5 w-4 h-4 text-secondary" />
+                                                <Calendar className="absolute left-3 top-3 w-5 h-5 text-secondary pointer-events-none" />
                                             </div>
                                         </div>
-                                        <div className="space-y-2">
-                                            <label className="text-sm font-medium text-muted-foreground">Duration</label>
+                                        <div className="space-y-3">
+                                            <label className="text-sm font-medium text-muted-foreground block">Duration</label>
                                             <Select value={formData.duration} onValueChange={(value) => updateFields({ duration: value as FormData["duration"] })}>
-                                                <SelectTrigger className="focus:ring-primary"><SelectValue placeholder="Select duration" /></SelectTrigger>
+                                                <SelectTrigger className="focus:ring-primary h-11">
+                                                    <SelectValue placeholder="Select duration" />
+                                                </SelectTrigger>
                                                 <SelectContent>
                                                     <SelectItem value="One-day">One-day</SelectItem>
                                                     <SelectItem value="Multi-day">Multi-day</SelectItem>
@@ -351,11 +353,14 @@ export default function RequestProposalForm() {
                                                 </SelectContent>
                                             </Select>
                                         </div>
-                                    </div>
-                                    <div className="mt-4">
-                                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/20 text-primary border border-primary/20">
-                                            In-person Delivery Only
-                                        </span>
+                                        <div className="space-y-3">
+                                            <label className="text-sm font-medium text-muted-foreground block">Format</label>
+                                            <div className="flex items-center h-11">
+                                                <span className="inline-flex items-center px-4 py-2 rounded-full text-xs font-medium bg-primary/20 text-primary border border-primary/20">
+                                                    In-person Only
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

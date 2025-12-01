@@ -9,6 +9,19 @@ interface StatusSelectProps {
     currentStatus: string
 }
 
+const getStatusColor = (status: string) => {
+    switch (status) {
+        case "pending":
+            return "bg-yellow-500/20 text-yellow-600 border-yellow-500/40 hover:bg-yellow-500/30"
+        case "received":
+            return "bg-blue-500/20 text-blue-600 border-blue-500/40 hover:bg-blue-500/30"
+        case "sent_quotation":
+            return "bg-green-500/20 text-green-600 border-green-500/40 hover:bg-green-500/30"
+        default:
+            return "bg-background"
+    }
+}
+
 export default function StatusSelect({ id, currentStatus }: StatusSelectProps) {
     const [status, setStatus] = useState(currentStatus)
     const [loading, setLoading] = useState(false)
@@ -39,7 +52,7 @@ export default function StatusSelect({ id, currentStatus }: StatusSelectProps) {
 
     return (
         <Select value={status} onValueChange={handleStatusChange} disabled={loading}>
-            <SelectTrigger className="w-[180px] h-8 text-xs bg-background">
+            <SelectTrigger className={`w-[180px] h-8 text-xs font-medium ${getStatusColor(status)}`}>
                 <SelectValue placeholder="Status" />
             </SelectTrigger>
             <SelectContent>

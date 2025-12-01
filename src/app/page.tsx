@@ -27,7 +27,7 @@ export default async function HomePage() {
     getPrograms(),
     prisma.partner.findMany({ orderBy: { createdAt: 'desc' } }),
     prisma.impactMetric.findMany({ orderBy: { order: 'asc' } }),
-    prisma.testimonial.findMany({ orderBy: { createdAt: 'desc' }, take: 6 })
+    prisma.testimonial.findMany({ orderBy: { createdAt: 'desc' }, take: 3 })
   ])
 
   return (
