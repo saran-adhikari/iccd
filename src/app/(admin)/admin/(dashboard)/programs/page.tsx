@@ -28,7 +28,7 @@ export default async function ProgramsPage() {
                 <h2 className="text-3xl font-bold tracking-tight">Programs</h2>
                 <Link href="/admin/programs/new">
                     <Button>
-                        <Plus className="mr-2 h-4 w-4" /> Add Program
+                        <Plus className="h-4 w-4" /> Add Program
                     </Button>
                 </Link>
             </div>
@@ -57,7 +57,7 @@ export default async function ProgramsPage() {
                                     </Link>
                                     <form action={deleteProgram}>
                                         <input type="hidden" name="id" value={program.id} />
-                                        <Button variant="destructive" size="sm" type="submit" className="h-8 w-8 p-0">
+                                        <Button variant="destructive" size="sm" type="submit" className="h-8 w-8 p-0 rounded-xl">
                                             <Trash2 className="h-4 w-4" />
                                         </Button>
                                     </form>

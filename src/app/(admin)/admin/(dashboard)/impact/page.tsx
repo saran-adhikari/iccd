@@ -17,7 +17,7 @@ export default async function ImpactPage() {
                 <h1 className="text-3xl font-bold text-foreground">Impact Metrics</h1>
                 <Link href="/admin/impact/new">
                     <Button>
-                        <Plus className="w-4 h-4 mr-2" />
+                        <Plus className="w-4 h-4 mr-2 " />
                         Add Metric
                     </Button>
                 </Link>
