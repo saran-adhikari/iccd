@@ -165,7 +165,7 @@ export default function RequestProposalForm() {
                 <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black/90" />
 
                 <div className="relative z-10">
-                    <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center mb-6">
+                    <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mb-6">
                         <Check className="w-6 h-6 text-primary" />
                     </div>
                     <h1 className="text-4xl font-extrabold text-white mb-4 leading-tight">
@@ -463,7 +463,7 @@ export default function RequestProposalForm() {
                                 variant="ghost"
                                 onClick={prevStep}
                                 disabled={currentStep === 0}
-                                className={`text-muted-foreground hover:text-white hover:bg-white/5 ${currentStep === 0 ? 'invisible' : ''}`}
+                                className={`text-muted-foreground hover:text-white hover:bg-white/5 hover:rounded-full ${currentStep === 0 ? 'invisible' : ''}`}
                             >
                                 <ChevronLeft className="mr-2 w-4 h-4" /> Back
                             </Button>
@@ -479,7 +479,7 @@ export default function RequestProposalForm() {
                             ) : (
                                 <Button
                                     onClick={nextStep}
-                                    className="bg-primary hover:bg-primary/90 text-white px-8"
+                                    className="bg-primary hover:bg-primary/90 text-white px-8 rounded-full"
                                 >
                                     Next <ChevronRight className="ml-2 w-4 h-4" />
                                 </Button>

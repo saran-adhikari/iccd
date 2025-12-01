@@ -89,7 +89,7 @@ export function CoreValues({ items = defaultItems }: { items?: ValueItem[] }) {
                       boxShadow: "0px 6px 15px rgba(0,0,0,0.12)",
                     }}
                   >
-                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center shadow-lg shadow-secondary/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center shadow-lg shadow-secondary/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                       <Icon className="h-7 w-7 text-white" />
                     </div>
                     

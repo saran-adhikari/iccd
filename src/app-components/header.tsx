@@ -90,7 +90,7 @@ export function Header() {
           {/* CTA Button */}
           <div className="hidden md:flex">
             <Link href="/request-proposal">
-              <Button className="bg-secondary/20 border-secondary/40 hover:bg-secondary text-white cursor-pointer">REQUEST PROPOSAL</Button>
+              <Button className="bg-secondary/20 border-secondary/40 hover:bg-secondary text-white cursor-pointer rounded-full">REQUEST PROPOSAL</Button>
             </Link>
           </div>
 

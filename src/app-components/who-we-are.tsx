@@ -92,7 +92,7 @@ export function WhoWeAre() {
               <motion.div whileHover={{ y: -1 }} whileTap={{ scale: 0.98 }}>
                 <Button
                   variant="outline"
-                  className="border-2 border-white text-white hover:bg-secondary hover:text-white hover:border-secondary transition-all duration-300 group-hover:shadow-lg group-hover:shadow-secondary/25 cursor-pointer"
+                  className="border-2 border-white text-white hover:bg-secondary hover:text-white hover:border-secondary transition-all duration-300 group-hover:shadow-lg group-hover:shadow-secondary/25 cursor-pointer rounded-full"
                 >
                    READ MORE
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />

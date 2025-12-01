@@ -74,12 +74,11 @@ const MoreAboutUs = () => {
                                 {/* Animated background gradient on hover */}
                                 <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 via-transparent to-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                                {/* Decorative corner accent */}
-                                <div className="absolute top-0 right-0 w-20 h-20 bg-secondary/10 rounded-bl-[3rem] transition-all duration-500 group-hover:w-24 group-hover:h-24" />
+                                
 
                                 <div className="relative z-10">
                                     <div className="flex items-start justify-between mb-4">
-                                        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center shadow-lg shadow-secondary/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                                        <div className="w-14 h-14 rounded-full bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center shadow-lg shadow-secondary/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                                             <item.icon className="w-7 h-7 text-white" />
                                         </div>
                                         <span className="text-6xl font-bold text-white/5 group-hover:text-white/10 transition-colors duration-500">
@@ -115,12 +114,11 @@ const MoreAboutUs = () => {
                                 {/* Animated background gradient on hover */}
                                 <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 via-transparent to-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                                {/* Decorative corner accent */}
-                                <div className="absolute top-0 right-0 w-20 h-20 bg-secondary/10 rounded-bl-[3rem] transition-all duration-500 group-hover:w-24 group-hover:h-24" />
+                                
 
                                 <div className="relative z-10">
                                     <div className="flex items-start justify-between mb-4">
-                                        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center shadow-lg shadow-secondary/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                                        <div className="w-14 h-14 rounded-full bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center shadow-lg shadow-secondary/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                                             <item.icon className="w-7 h-7 text-white" />
                                         </div>
                                         <span className="text-6xl font-bold text-white/5 group-hover:text-white/10 transition-colors duration-500">

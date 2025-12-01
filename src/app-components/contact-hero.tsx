@@ -13,7 +13,7 @@ export function ContactHero() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-black/70 via-black/40 to-primary/30" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-4xl mx-auto">
-          <Badge className="mb-6 bg-white/10 text-white border-white/20">Contact Us</Badge>
+          <Badge className="mb-6 bg-white/10 text-white border-white/20 rounded-full">Contact Us</Badge>
           <h1 className="text-4xl lg:text-6xl font-bold text-balance text-white leading-tight mb-6">
             <span className="text-white">Ready to Transform</span> Your{" "}
             <span className="text-white">Compliance Framework?</span>

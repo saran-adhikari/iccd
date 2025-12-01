@@ -105,7 +105,7 @@ function AccordionCard({
       >
         <span className="flex items-center gap-3">
          
-          <span className="w-12 h-12 rounded-xl bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center shadow-lg shadow-secondary/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+          <span className="w-12 h-12 rounded-full bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center shadow-lg shadow-secondary/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
             <Icon className="h-6 w-6 text-white" />
           </span>
           <span className="text-lg font-semibold">{item.title}</span>

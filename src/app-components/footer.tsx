@@ -83,7 +83,7 @@ export async function Footer() {
                     href="https://mail.google.com/mail/?view=cm&fs=1&to=iccdnepal@gmail.com&su=Stay%20Connected%20with%20ICCD&body=Hello%20ICCD%20Team,"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center bg-secondary/20 hover:bg-primary text-white border border-secondary/20 rounded-md px-6 py-1 uppercase"
+                    className="flex items-center justify-center bg-secondary/20 hover:bg-primary text-white border border-secondary/20 rounded-full px-6 py-1 uppercase"
                   >
                     Send Email
                   </a>

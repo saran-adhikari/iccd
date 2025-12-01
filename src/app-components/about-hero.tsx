@@ -14,7 +14,7 @@ export function AboutHero() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center max-w-4xl mx-auto">
-          <Badge className="mb-6 bg-white/10 text-white border-white/20">
+          <Badge className="mb-6 bg-white/10 text-white border-white/20 rounded-full">
             About ICCD
           </Badge>
           <h1 className="text-4xl lg:text-6xl font-bold text-balance leading-tight mb-6 text-white">

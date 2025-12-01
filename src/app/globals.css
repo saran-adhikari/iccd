@@ -3,53 +3,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-:root {
-  /* Bank Institute Color System */
-  --background: oklch(1 0 0); /* White */
-  --foreground: oklch(0.2 0.03 30); /* Neutral dark gray */
-
-  --card: oklch(0.98 0.01 30);
-  --card-foreground: oklch(0.2 0.03 30);
-
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.2 0.03 30);
-
-  --primary: #009689  ; /* Deep Institutional Teal */
-  --primary-foreground: #ffffff;
-
-  --secondary: #E05536;
-  --secondary-foreground: #ffffff;
-
-  --muted: oklch(0.95 0.01 30);
-  --muted-foreground: oklch(0.45 0.02 30);
-
-  --accent: #4FB9AF ; /* Subtle teal accent */
-  --accent-foreground: #ffffff;
-
-  --destructive: #B9472C; /* Professional muted red */
-  --destructive-foreground: #ffffff;
-
-  --border: oklch(0.88 0.01 30);
-  --input: oklch(0.96 0.01 30);
-  --ring: #004047;
-
-  --chart-1: #004047;
-  --chart-2: #556B73;
-  --chart-3: #7AA5A9;
-  --chart-4: #99B9BC;
-  --chart-5: #2C5D63;
-
-  --radius: 0.625rem;
-
-  --sidebar: oklch(0.98 0.01 30);
-  --sidebar-foreground: oklch(0.2 0.03 30);
-  --sidebar-primary: #004047;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #7AA5A9;
-  --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: oklch(0.88 0.01 30);
-  --sidebar-ring: #004047;
-}
 
 :root {
   --background: oklch(0.16 0.02 240); /* Deep neutral charcoal */
@@ -143,6 +96,7 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-roboto), sans-serif;
   }
 }
 

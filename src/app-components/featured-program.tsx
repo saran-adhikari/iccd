@@ -299,7 +299,7 @@ export default function FeaturedProgram({ programs: rawPrograms }: { programs: P
                     animate="visible"
                     custom={4}
                   >
-                    <Button asChild size="sm" className="w-full sm:w-auto">
+                    <Button asChild size="sm" className="w-full sm:w-auto rounded-2xl">
                       <Link href={`/programs/${current.slug}`} className='border border-secondary/40 bg-secondary/20 text-primary hover:bg-secondary hover:text-white transition-all duration-300 group cursor-pointer flex items-center justify-center gap-2'>
                         View Program Details
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

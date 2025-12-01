@@ -12,7 +12,7 @@ export function ImpactHero() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-4xl mx-auto">
-          <Badge className="mb-6 bg-white/10 text-white border-white/20">Our Impact</Badge>
+          <Badge className="mb-6 bg-white/10 text-white border-white/20 rounded-full">Our Impact</Badge>
           <h1 className="text-4xl lg:text-6xl font-bold text-balance leading-tight mb-6 text-white">
             <span className="text-white">Measurable Results</span> That{" "}
             <span className="text-white">Transform Organizations</span>
