@@ -4,11 +4,12 @@ import { GalleryImage } from "@prisma/client"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { useState, useEffect } from "react"
-import { ArrowRight, X } from "lucide-react"
+import { ArrowRight, X, ChevronLeft, ChevronRight } from "lucide-react"
 
 export function ImgGallery({ images }: { images: GalleryImage[] }) {
     const [index, setIndex] = useState(0)
     const [selected, setSelected] = useState<GalleryImage | null>(null)
+    const [selectedIndex, setSelectedIndex] = useState(0)
 
     // Auto slide every 3s
     useEffect(() => {
@@ -18,6 +19,24 @@ export function ImgGallery({ images }: { images: GalleryImage[] }) {
         }, 3000)
         return () => clearInterval(timer)
     }, [images])
+
+    // Keyboard navigation for lightbox
+    useEffect(() => {
+        if (!selected) return
+
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "ArrowLeft") {
+                navigatePrevious()
+            } else if (e.key === "ArrowRight") {
+                navigateNext()
+            } else if (e.key === "Escape") {
+                setSelected(null)
+            }
+        }
+
+        window.addEventListener("keydown", handleKeyDown)
+        return () => window.removeEventListener("keydown", handleKeyDown)
+    }, [selected, selectedIndex, images])
 
     if (!images || images.length < 3) return null
 
@@ -31,6 +50,24 @@ export function ImgGallery({ images }: { images: GalleryImage[] }) {
     }
 
     const group = getSlice(index)
+
+    // Lightbox navigation functions
+    const navigateNext = () => {
+        const nextIndex = (selectedIndex + 1) % images.length
+        setSelectedIndex(nextIndex)
+        setSelected(images[nextIndex])
+    }
+
+    const navigatePrevious = () => {
+        const prevIndex = (selectedIndex - 1 + images.length) % images.length
+        setSelectedIndex(prevIndex)
+        setSelected(images[prevIndex])
+    }
+
+    const openLightbox = (image: GalleryImage, imgIndex: number) => {
+        setSelected(image)
+        setSelectedIndex(imgIndex)
+    }
 
     return (
         <section className="py-24 bg-background overflow-hidden">
@@ -65,7 +102,7 @@ export function ImgGallery({ images }: { images: GalleryImage[] }) {
                         {/* Left Large */}
                         <div
                             className="relative col-span-1 h-full rounded-md overflow-hidden cursor-pointer"
-                            onClick={() => setSelected(group[0])}
+                            onClick={() => openLightbox(group[0], (index + 0) % images.length)}
                         >
                             <Image src={group[0].imageUrl} alt="" fill className="object-cover" />
                         </div>
@@ -73,7 +110,7 @@ export function ImgGallery({ images }: { images: GalleryImage[] }) {
                         {/* Middle Top */}
                         <div
                             className="relative col-span-1 h-full rounded-md overflow-hidden cursor-pointer"
-                            onClick={() => setSelected(group[1])}
+                            onClick={() => openLightbox(group[1], (index + 1) % images.length)}
                         >
                             <Image src={group[1].imageUrl} alt="" fill className="object-cover" />
                         </div>
@@ -82,13 +119,13 @@ export function ImgGallery({ images }: { images: GalleryImage[] }) {
                         <div className="col-span-1 flex flex-col gap-2 h-full">
                             <div
                                 className="relative flex-1 rounded-md overflow-hidden cursor-pointer"
-                                onClick={() => setSelected(group[2])}
+                                onClick={() => openLightbox(group[2], (index + 2) % images.length)}
                             >
                                 <Image src={group[2].imageUrl} alt="" fill className="object-cover" />
                             </div>
                             <div
                                 className="relative flex-1 rounded-md overflow-hidden cursor-pointer"
-                                onClick={() => setSelected(group[3])}
+                                onClick={() => openLightbox(group[3], (index + 3) % images.length)}
                             >
                                 <Image src={group[3].imageUrl} alt="" fill className="object-cover" />
                             </div>
@@ -97,7 +134,7 @@ export function ImgGallery({ images }: { images: GalleryImage[] }) {
                         {/* Right Large */}
                         <div
                             className="relative col-span-1 h-full rounded-md overflow-hidden cursor-pointer"
-                            onClick={() => setSelected(group[4])}
+                            onClick={() => openLightbox(group[4], (index + 4) % images.length)}
                         >
                             <Image src={group[4].imageUrl} alt="" fill className="object-cover" />
                         </div>
@@ -132,12 +169,35 @@ export function ImgGallery({ images }: { images: GalleryImage[] }) {
                         onClick={(e) => e.stopPropagation()}
                     >
                         <Image src={selected.imageUrl} alt="" fill className="object-contain" />
+
+                        {/* Close Button */}
                         <button
                             onClick={() => setSelected(null)}
-                            className="absolute top-6 right-6 text-white hover:text-red-400"
+                            className="absolute top-6 right-6 text-white hover:text-red-400 transition-colors"
                         >
                             <X className="w-10 h-10" />
                         </button>
+
+                        {/* Previous Button */}
+                        <button
+                            onClick={navigatePrevious}
+                            className="absolute left-6 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-white/20 transition-all duration-300"
+                        >
+                            <ChevronLeft className="w-8 h-8 text-white" />
+                        </button>
+
+                        {/* Next Button */}
+                        <button
+                            onClick={navigateNext}
+                            className="absolute right-6 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-white/20 transition-all duration-300"
+                        >
+                            <ChevronRight className="w-8 h-8 text-white" />
+                        </button>
+
+                        {/* Image Counter */}
+                        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full bg-black/50 backdrop-blur-sm text-white text-sm">
+                            {selectedIndex + 1} / {images.length}
+                        </div>
                     </motion.div>
                 </motion.div>
             )}

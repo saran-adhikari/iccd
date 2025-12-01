@@ -24,7 +24,7 @@ export function AboutHero() {
 
           </h1>
           <p className="text-xl text-gray-200 text-pretty leading-relaxed">
-            With a commitment to excellence and forward-thinking learning, ICCD aims to be a trusted partner in developing stronger, smarter, and more resilient financial institutions across Nepal and beyond.
+            With a commitment to excellence and forward-looking approach to learning, ICCD aims to be a trusted partner in developing stronger, smarter, and more resilient financial institutions across Nepal and beyond.
           </p>
         </div>
       </div>

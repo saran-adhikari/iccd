@@ -2,11 +2,12 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Card, CardContent } from '@/app-components/ui/card'
 import { Badge } from '@/app-components/ui/badge'
 import { Button } from '@/app-components/ui/button'
 import { type Program } from '@/lib/programs'
+import { useRef, useState, useEffect } from 'react'
 
 interface MoreProgramsProps {
     currentSlug: string
@@ -14,8 +15,45 @@ interface MoreProgramsProps {
 }
 
 export function MorePrograms({ currentSlug, programs }: MoreProgramsProps) {
+    const scrollContainerRef = useRef<HTMLDivElement>(null)
+    const [canScrollLeft, setCanScrollLeft] = useState(false)
+    const [canScrollRight, setCanScrollRight] = useState(false)
+
     // Filter out the current program
     const otherPrograms = programs.filter((p) => p.slug !== currentSlug)
+
+    // Check scroll position to enable/disable buttons
+    const checkScroll = () => {
+        if (scrollContainerRef.current) {
+            const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current
+            setCanScrollLeft(scrollLeft > 0)
+            setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10)
+        }
+    }
+
+    useEffect(() => {
+        checkScroll()
+        const container = scrollContainerRef.current
+        if (container) {
+            container.addEventListener('scroll', checkScroll)
+            window.addEventListener('resize', checkScroll)
+            return () => {
+                container.removeEventListener('scroll', checkScroll)
+                window.removeEventListener('resize', checkScroll)
+            }
+        }
+    }, [otherPrograms])
+
+    const scroll = (direction: 'left' | 'right') => {
+        if (scrollContainerRef.current) {
+            const scrollAmount = 400
+            const newScrollLeft = scrollContainerRef.current.scrollLeft + (direction === 'left' ? -scrollAmount : scrollAmount)
+            scrollContainerRef.current.scrollTo({
+                left: newScrollLeft,
+                behavior: 'smooth'
+            })
+        }
+    }
 
     if (otherPrograms.length === 0) return null
 
@@ -23,7 +61,7 @@ export function MorePrograms({ currentSlug, programs }: MoreProgramsProps) {
         <section className="w-[90%] mx-auto py-24 border-t border-border/40 relative overflow-hidden">
             <div className="container mx-auto px-4 md:px-6 relative z-10">
 
-                <div className="flex flex-col items-center text-center justify-center mb-12 gap-6">
+                <div className="flex flex-col md:flex-row items-center md:items-start text-center md:text-left justify-between mb-12 gap-6">
                     <div className="space-y-4 max-w-2xl">
                         <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-white">
                             Explore More Programs
@@ -32,11 +70,32 @@ export function MorePrograms({ currentSlug, programs }: MoreProgramsProps) {
                             Continue your professional development with our other specialized training programs designed for banking excellence.
                         </p>
                     </div>
+
+                    {/* Navigation Buttons */}
+                    <div className="flex gap-3 shrink-0">
+                        <button
+                            onClick={() => scroll('left')}
+                            disabled={!canScrollLeft}
+                            className="w-12 h-12 rounded-full bg-secondary/20 border border-secondary/30 flex items-center justify-center hover:bg-gradient-to-br from-secondary/80 to-secondary transition-all duration-300 cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-secondary/20"
+                        >
+                            <ChevronLeft className="w-5 h-5 text-white" />
+                        </button>
+                        <button
+                            onClick={() => scroll('right')}
+                            disabled={!canScrollRight}
+                            className="w-12 h-12 rounded-full bg-secondary/20 border border-secondary/30 flex items-center justify-center hover:bg-gradient-to-br from-secondary/80 to-secondary transition-all duration-300 cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-secondary/20"
+                        >
+                            <ChevronRight className="w-5 h-5 text-white" />
+                        </button>
+                    </div>
                 </div>
 
                 <div className="relative">
                     {/* Horizontal Scroll Container */}
-                    <div className="flex overflow-x-auto pb-12 -mx-4 px-4 gap-6 snap-x snap-mandatory hide-scrollbar pt-4">
+                    <div
+                        ref={scrollContainerRef}
+                        className="flex overflow-x-auto pb-12 -mx-4 px-4 gap-6 snap-x snap-mandatory hide-scrollbar pt-4"
+                    >
                         {otherPrograms.map((program, index) => (
                             <motion.div
                                 key={program.id}

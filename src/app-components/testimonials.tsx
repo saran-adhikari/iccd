@@ -13,7 +13,7 @@ export function Testimonials({ testimonials }: { testimonials: Testimonial[] }) 
     <section className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-white">What Our Partners Say</h2>
+          <h2 className="text-2xl lg:text-3xl font-extrabold mb-6 leading-tight text-white">Participant Reviews</h2>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">

@@ -18,7 +18,7 @@ export default async function ContactPage() {
       <Header />
       <ContactHero />
       <ContactForm />
-      <Testimonials testimonials={testimonials} />
+      {/* <Testimonials testimonials={testimonials} /> */}
       {/* <ContactMap /> */}
       <Footer />
     </main>
