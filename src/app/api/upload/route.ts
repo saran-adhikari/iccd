@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 import { auth } from "@/auth"
-import { uploadToCloudinary } from "@/lib/cloudinary"
+import { uploadToSupabase } from "@/lib/supabase"
 
 export async function POST(req: Request) {
     const session = await auth()
@@ -17,8 +17,12 @@ export async function POST(req: Request) {
         const bytes = await file.arrayBuffer()
         const buffer = Buffer.from(bytes)
 
-        // Upload to Cloudinary
-        const fileUrl = await uploadToCloudinary(buffer, "legal", "raw")
+        // Create unique filename
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+        const filename = file.name.replace(/\.[^/.]+$/, "") + '-' + uniqueSuffix + '.pdf'
+
+        // Upload to Supabase Storage
+        const fileUrl = await uploadToSupabase(buffer, "legal", filename)
 
         return NextResponse.json({ fileUrl })
 
