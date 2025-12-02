@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client"
 import { NextResponse } from "next/server"
 import { auth } from "@/auth"
+import { revalidatePath } from "next/cache" // Add this import at the top
 
 const prisma = new PrismaClient()
 
@@ -10,6 +11,7 @@ export async function POST(req: Request) {
 
     try {
         const body = await req.json()
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { id, ...data } = body
 
         const testimonial = await prisma.testimonial.create({
@@ -17,7 +19,6 @@ export async function POST(req: Request) {
         })
 
         // Revalidate admin and public pages
-        const { revalidatePath } = await import('next/cache')
         revalidatePath('/admin/testimonials')
         revalidatePath('/')
 
@@ -42,7 +43,6 @@ export async function PUT(req: Request) {
         })
 
         // Revalidate admin and public pages
-        const { revalidatePath } = await import('next/cache')
         revalidatePath('/admin/testimonials')
         revalidatePath('/')
 

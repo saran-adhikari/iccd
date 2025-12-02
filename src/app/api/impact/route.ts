@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client"
 import { NextResponse } from "next/server"
 import { auth } from "@/auth"
+import { revalidatePath } from "next/cache" // Add this import
 
 const prisma = new PrismaClient()
 
@@ -35,6 +36,9 @@ export async function POST(req: Request) {
             }
         })
 
+        revalidatePath('/admin/impact') // Add this
+        revalidatePath('/') // Add this
+
         return NextResponse.json(metric)
     } catch (error) {
         console.error(error)
@@ -57,6 +61,9 @@ export async function PUT(req: Request) {
             data
         })
 
+        revalidatePath('/admin/impact') // Add this
+        revalidatePath('/') // Add this
+
         return NextResponse.json(metric)
     } catch (error) {
         console.error(error)
@@ -77,6 +84,9 @@ export async function DELETE(req: Request) {
         await prisma.impactMetric.delete({
             where: { id }
         })
+
+        revalidatePath('/admin/impact') // Add this
+        revalidatePath('/') // Add this
 
         return new NextResponse("Deleted", { status: 200 })
     } catch (error) {

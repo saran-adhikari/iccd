@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client"
 import { NextResponse } from "next/server"
 import { auth } from "@/auth"
+import { revalidatePath } from "next/cache"
 
 const prisma = new PrismaClient()
 
@@ -32,6 +33,9 @@ export async function POST(req: Request) {
             }
         })
 
+        // Revalidate the admin partners page
+        revalidatePath('/admin/partners')
+
         return NextResponse.json(partner)
     } catch (error) {
         console.error(error)
@@ -51,6 +55,9 @@ export async function PUT(req: Request) {
             where: { id },
             data
         })
+
+        // Revalidate the admin partners page
+        revalidatePath('/admin/partners')
 
         return NextResponse.json(partner)
     } catch (error) {
@@ -72,6 +79,9 @@ export async function DELETE(req: Request) {
         await prisma.partner.delete({
             where: { id }
         })
+
+        // Revalidate the admin partners page
+        revalidatePath('/admin/partners')
 
         return new NextResponse("Deleted", { status: 200 })
     } catch (error) {

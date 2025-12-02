@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client"
 import { NextResponse } from "next/server"
 import { auth } from "@/auth"
+import { revalidatePath } from "next/cache" // Add this import
 
 const prisma = new PrismaClient()
 
@@ -33,6 +34,10 @@ export async function POST(req: Request) {
             }
         })
 
+        revalidatePath('/admin/legal') // Add this
+        revalidatePath('/legal') // Add this
+        revalidatePath('/') // Add this
+
         return NextResponse.json(doc)
     } catch (error) {
         console.error(error)
@@ -52,6 +57,10 @@ export async function PUT(req: Request) {
             where: { id },
             data
         })
+
+        revalidatePath('/admin/legal') // Add this
+        revalidatePath('/legal') // Add this
+        revalidatePath('/') // Add this
 
         return NextResponse.json(doc)
     } catch (error) {
@@ -73,6 +82,10 @@ export async function DELETE(req: Request) {
         await prisma.legalDocument.delete({
             where: { id }
         })
+
+        revalidatePath('/admin/legal') // Add this
+        revalidatePath('/legal') // Add this
+        revalidatePath('/') // Add this
 
         return new NextResponse("Deleted", { status: 200 })
     } catch (error) {

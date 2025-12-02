@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client"
 import { NextResponse } from "next/server"
+import { revalidatePath } from "next/cache" // Add this import
 import nodemailer from "nodemailer"
 
 const prisma = new PrismaClient()
@@ -40,6 +41,10 @@ export async function POST(req: Request) {
                 status: "received", // Initial status
             },
         })
+
+        // Revalidate admin pages that might show proposals
+        revalidatePath('/admin/proposals')
+        revalidatePath('/admin')
 
         // 2. Send Automated Email
         // Only attempt if credentials exist to avoid crashing in dev without env vars

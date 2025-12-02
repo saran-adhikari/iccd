@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
 import { auth } from "@/auth"
+import { revalidatePath } from "next/cache" // Add this import
 import { uploadToSupabase } from "@/lib/supabase"
 
 export async function POST(req: Request) {
@@ -24,6 +25,11 @@ export async function POST(req: Request) {
 
         // Upload to Supabase Storage
         const fileUrl = await uploadToSupabase(buffer, "gallery", filename)
+
+        // Revalidate pages that might display gallery images
+        revalidatePath('/admin/gallery')
+        revalidatePath('/gallery')
+        revalidatePath('/')
 
         return NextResponse.json({ fileUrl })
 
