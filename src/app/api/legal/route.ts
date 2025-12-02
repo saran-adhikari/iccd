@@ -22,13 +22,14 @@ export async function POST(req: Request) {
 
     try {
         const body = await req.json()
-        const { title, slug, fileUrl } = body
+        const { title, slug, fileUrl, type } = body
 
         const doc = await prisma.legalDocument.create({
             data: {
                 title,
                 slug,
-                fileUrl
+                fileUrl,
+                type
             }
         })
 

@@ -5,9 +5,15 @@ import { useRouter } from 'next/navigation'
 import { Button } from '@/app-components/ui/button'
 import { Input } from '@/app-components/ui/input'
 import { Label } from '@/app-components/ui/label'
-import { Textarea } from '@/app-components/ui/textarea'
 import { Loader2 } from 'lucide-react'
 import { toast } from 'react-toastify'
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/app-components/ui/select"
 
 interface LegalDocument {
     id: string
@@ -21,6 +27,16 @@ export function LegalDocumentForm({ initialData }: { initialData?: LegalDocument
     const router = useRouter()
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [uploading, setUploading] = useState(false)
+    const [type, setType] = useState(initialData?.type || 'Act')
+    const [customType, setCustomType] = useState('')
+
+    // Initialize custom type if initialData has a type that is not Act or Rule
+    useState(() => {
+        if (initialData?.type && !['Act', 'Rule'].includes(initialData.type)) {
+            setType('Other')
+            setCustomType(initialData.type)
+        }
+    })
 
     async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
@@ -50,11 +66,14 @@ export function LegalDocumentForm({ initialData }: { initialData?: LegalDocument
 
             if (!fileUrl) throw new Error('File is required')
 
+            const finalType = type === 'Other' ? customType : type
+
             const data = {
                 id: initialData?.id,
                 title: formData.get('title'),
                 slug: formData.get('slug'),
                 fileUrl,
+                type: finalType,
             }
 
             const res = await fetch('/api/legal', {
@@ -102,6 +121,33 @@ export function LegalDocumentForm({ initialData }: { initialData?: LegalDocument
                 </div>
             </div>
 
+            <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                    <Label>Category</Label>
+                    <Select value={type} onValueChange={setType}>
+                        <SelectTrigger>
+                            <SelectValue placeholder="Select category" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="Act">Act</SelectItem>
+                            <SelectItem value="Rule">Rule</SelectItem>
+                            <SelectItem value="Other">Other</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
+                {type === 'Other' && (
+                    <div className="space-y-2">
+                        <Label htmlFor="customType">Custom Category</Label>
+                        <Input
+                            id="customType"
+                            value={customType}
+                            onChange={(e) => setCustomType(e.target.value)}
+                            required
+                            placeholder="e.g. Policy"
+                        />
+                    </div>
+                )}
+            </div>
 
             <div className="space-y-2">
                 <Label htmlFor="file">PDF File</Label>
