@@ -1,7 +1,5 @@
-
 import Link from "next/link"
 import { Facebook, Twitter, Linkedin, Youtube, Mail } from "lucide-react"
-import { getPrograms } from "@/lib/programs"
 import { ScrollToTop } from "@/app-components/scroll-to-top"
 
 export async function Footer() {
@@ -13,20 +11,14 @@ export async function Footer() {
     { name: "Contact", href: "/contact" },
   ]
 
-  const programs = await getPrograms()
-  const footerPrograms = programs.slice(0, 4).map((p) => ({
-    name: p.title,
-    href: `/programs/${p.slug}`,
-  }))
-
   return (
     <footer className="bg-black text-primary-foreground">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
-        <div className="py-16">
-          <div className="grid lg:grid-cols-4 gap-8">
+        <div className="py-12">
+          <div className="grid lg:grid-cols-8 gap-8">
             {/* Company Info */}
-            <div className="lg:col-span-1">
+            <div className="lg:col-span-2">
               <div className="flex items-center mb-6">
                 <div>
                   <div className="text-3xl font-bold">ICCD</div>
@@ -37,10 +29,13 @@ export async function Footer() {
               </div>
             </div>
 
+            {/* Spacer */}
+            <div className="lg:col-span-1"></div>
+
             {/* Quick Links */}
-            <div>
+            <div className="lg:col-span-3">
               <h4 className="text-lg font-semibold mb-6 text-primary">Quick Links</h4>
-              <ul className="space-y-3">
+              <ul className="grid grid-cols-2 gap-x-8 gap-y-3">
                 {quickLinks.map((link) => (
                   <li key={link.name}>
                     <Link
@@ -54,25 +49,8 @@ export async function Footer() {
               </ul>
             </div>
 
-            {/* Programs */}
-            <div>
-              <h4 className="text-lg font-semibold mb-6 text-primary">Training Programs</h4>
-              <ul className="space-y-3">
-                {footerPrograms.map((program) => (
-                  <li key={program.href}>
-                    <Link
-                      href={program.href}
-                      className="text-primary-foreground/80 hover:text-secondary transition-colors text-sm"
-                    >
-                      {program.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
             {/* Stay Connected */}
-            <div>
+            <div className="lg:col-span-2">
               <h4 className="text-lg font-semibold mb-6 text-primary">Stay Connected</h4>
               <p className="text-primary-foreground/80 text-sm mb-4">
                 Send us an email and stay connected with ICCD for insights and updates.
@@ -98,7 +76,7 @@ export async function Footer() {
         </div>
 
         {/* Bottom Footer */}
-        <div className="border-t border-primary-foreground/20 py-8">
+        <div className="border-t border-primary-foreground/20 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-sm text-primary-foreground/80">
               © ICCD - International Centre for Capacity Development,  {new Date().getFullYear()}.
