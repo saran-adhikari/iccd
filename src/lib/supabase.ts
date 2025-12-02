@@ -25,6 +25,33 @@ function ensureSupabaseConfigured() {
 }
 
 /**
+ * Sanitize filename to remove Unicode characters and special characters
+ * Supabase Storage only accepts ASCII characters in filenames
+ */
+function sanitizeFilename(filename: string): string {
+    // Remove file extension
+    const ext = filename.substring(filename.lastIndexOf('.'))
+    const nameWithoutExt = filename.substring(0, filename.lastIndexOf('.'))
+
+    // Convert to ASCII by removing non-ASCII characters
+    // Replace spaces and special chars with hyphens
+    const sanitized = nameWithoutExt
+        .normalize('NFD') // Decompose Unicode characters
+        .replace(/[\u0300-\u036f]/g, '') // Remove diacritics
+        .replace(/[^\x00-\x7F]/g, '') // Remove non-ASCII characters
+        .replace(/[^a-zA-Z0-9-_]/g, '-') // Replace special chars with hyphens
+        .replace(/-+/g, '-') // Replace multiple hyphens with single
+        .replace(/^-|-$/g, '') // Remove leading/trailing hyphens
+        .toLowerCase()
+
+    // If sanitized name is empty, use a default
+    const finalName = sanitized || 'file'
+
+    return finalName + ext
+}
+
+
+/**
  * Upload a file to Supabase Storage
  * @param buffer - File buffer
  * @param bucket - Storage bucket name (e.g., 'legal', 'gallery')
@@ -38,10 +65,13 @@ export async function uploadToSupabase(
 ): Promise<string> {
     const client = ensureSupabaseConfigured()
 
+    // Sanitize filename to remove Unicode characters
+    const sanitizedFilename = sanitizeFilename(filename)
+
     // Upload file to Supabase Storage
     const { data, error } = await client.storage
         .from(bucket)
-        .upload(filename, buffer, {
+        .upload(sanitizedFilename, buffer, {
             contentType: 'auto',
             upsert: false
         })
