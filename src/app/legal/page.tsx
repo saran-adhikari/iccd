@@ -18,7 +18,7 @@ export default async function LegalListPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-white">Legal Documents</h1>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Transparency and trust are at the core of our operations. Below you can find legal acts and policies provided by Nepal Rastra Bank.
+            Transparency and accountability guide our operations. Below is a compilation of legal acts along with other laws enacted by the Parliament of Nepal and policies issued by Nepal Rastra Bank .
           </p>
         </div>
       </div>
