@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server"
 import { auth } from "@/auth"
-import { writeFile, mkdir } from "fs/promises"
-import { join } from "path"
+import { uploadToCloudinary } from "@/lib/cloudinary"
 
 export async function POST(req: Request) {
     const session = await auth()
@@ -18,20 +17,9 @@ export async function POST(req: Request) {
         const bytes = await file.arrayBuffer()
         const buffer = Buffer.from(bytes)
 
-        // Ensure directory exists
-        const uploadDir = join(process.cwd(), "public", "uploads", "legal")
-        await mkdir(uploadDir, { recursive: true })
+        // Upload to Cloudinary
+        const fileUrl = await uploadToCloudinary(buffer, "legal", "raw")
 
-        // Create unique filename
-        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-        const filename = file.name.replace(/\.[^/.]+$/, "") + '-' + uniqueSuffix + '.pdf'
-        const filepath = join(uploadDir, filename)
-
-        // Write file
-        await writeFile(filepath, buffer)
-
-        // Return public URL
-        const fileUrl = `/uploads/legal/${filename}`
         return NextResponse.json({ fileUrl })
 
     } catch (error) {
