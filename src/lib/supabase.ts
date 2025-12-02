@@ -1,15 +1,28 @@
 import { createClient } from '@supabase/supabase-js'
 
-// Initialize Supabase client with service role key for admin operations
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!
+// Get environment variables
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || ''
 
-export const supabase = createClient(supabaseUrl, supabaseServiceKey, {
-    auth: {
-        autoRefreshToken: false,
-        persistSession: false
+// Initialize Supabase client (will be validated at runtime)
+export const supabase = supabaseUrl && supabaseServiceKey
+    ? createClient(supabaseUrl, supabaseServiceKey, {
+        auth: {
+            autoRefreshToken: false,
+            persistSession: false
+        }
+    })
+    : null
+
+// Helper to ensure Supabase is configured
+function ensureSupabaseConfigured() {
+    if (!supabase) {
+        throw new Error(
+            'Supabase is not configured. Please add NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY to your environment variables.'
+        )
     }
-})
+    return supabase
+}
 
 /**
  * Upload a file to Supabase Storage
@@ -23,8 +36,10 @@ export async function uploadToSupabase(
     bucket: string,
     filename: string
 ): Promise<string> {
+    const client = ensureSupabaseConfigured()
+
     // Upload file to Supabase Storage
-    const { data, error } = await supabase.storage
+    const { data, error } = await client.storage
         .from(bucket)
         .upload(filename, buffer, {
             contentType: 'auto',
@@ -37,9 +52,10 @@ export async function uploadToSupabase(
     }
 
     // Get public URL
-    const { data: { publicUrl } } = supabase.storage
+    const { data: { publicUrl } } = client.storage
         .from(bucket)
         .getPublicUrl(data.path)
 
     return publicUrl
 }
+
