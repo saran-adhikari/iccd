@@ -156,7 +156,7 @@ export default function DashboardPage() {
                     </CardHeader>
                     <CardContent>
                         <div className="text-2xl font-bold">{stats.proposalCount}</div>
-                        <p className="text-xs text-muted-foreground mt-1">Pending requests</p>
+                        <p className="text-xs text-muted-foreground mt-1">Requests </p>
                     </CardContent>
                 </Card>
                 <Card className="hover:bg-secondary/5 transition-colors">

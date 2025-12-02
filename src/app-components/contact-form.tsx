@@ -164,7 +164,7 @@ export function ContactForm() {
                         <SelectItem value="esg">ESG & Sustainability</SelectItem>
                         <SelectItem value="risk">Risk Management</SelectItem>
                         <SelectItem value="service">Customer Service</SelectItem>
-                        <SelectItem value="leadership">Leadership & Soft Skills</SelectItem>
+                        <SelectItem value="securebanking">Secure Banking</SelectItem>
                         <SelectItem value="custom">Custom Program</SelectItem>
                       </SelectContent>
                     </Select>
