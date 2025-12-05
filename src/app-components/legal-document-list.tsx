@@ -51,13 +51,13 @@ export function LegalDocumentList({ initialDocs }: { initialDocs: LegalDocument[
                     ))}
                 </div>
 
-                <div className="relative w-full md:w-72">
-                    <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
+                <div className="relative w-full md:w-140">
+                    <Search className="absolute left-2 top-2.5 h-5 w-5 text-muted-foreground" />
                     <Input
                         placeholder="Search documents..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="pl-8 bg-background/50 border-primary/20 focus-visible:ring-primary/50"
+                        className="pl-8 h-10 bg-background/50 border-primary/40 focus-visible:ring-primary/50"
                     />
                 </div>
             </div>
