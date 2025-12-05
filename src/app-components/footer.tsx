@@ -1,6 +1,5 @@
 "use client"
 import Link from "next/link"
-import { useNepaliNews } from "@/app-components/news/useNepaliNews"
 import { ScrollToTop } from "@/app-components/scroll-to-top"
 
 export function Footer() {

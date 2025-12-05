@@ -15,7 +15,7 @@ import { Testimonials } from "@/app-components/testimonials"
 import { getPrograms } from "@/lib/programs"
 
 import { PrismaClient } from "@prisma/client"
-import CardGrid from "@/app-components/news/CardGrid"
+
 
 const prisma = new PrismaClient()
 
@@ -47,7 +47,7 @@ export default async function HomePage() {
       
       {/* <IndustryTestimonials /> */}
       <HeroTrainMyTeam />
-      {/* <CardGrid /> */}
+
       {/* <CTAStrip /> */}
       <Footer />
     </main>
