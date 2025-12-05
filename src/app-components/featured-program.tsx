@@ -25,7 +25,7 @@ type MinimalProgram = {
   category: string
   durationDays: number
   maxParticipants: number
-  certification: string
+  certification?: string | null
   cover: string
   outcomes: string[]
 }

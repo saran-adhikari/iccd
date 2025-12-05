@@ -54,7 +54,7 @@ function toProgramView(program: Program): ProgramView {
     category: program.category,
     duration: program.durationDays ? `${program.durationDays} Days` : undefined,
     format: program.format,
-    certification: program.certification,
+    certification: program.certification || undefined,
     maxParticipants: program.maxParticipants,
     level: program.level,
     price: "Request a quote",

@@ -16,6 +16,7 @@ export default async function ProgramEditPage({ params }: { params: Promise<{ id
     const formattedProgram = program ? {
         ...program,
         imageIcon: program.imageIcon || "",
+        certification: program.certification || undefined,
         level: program.level as string,
         keyPoints: program.keyPoints as string[],
         audience: program.audience as string[],

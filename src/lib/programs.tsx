@@ -13,7 +13,7 @@ export type Program = {
   level: string
   maxParticipants: number
   format: string
-  certification: string
+  certification?: string | null
   audience: string[]
   instructor: {
     name: string

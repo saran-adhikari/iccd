@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 interface Partner {
   id: string
   name: string
-  logo: string
+  logo: string | null
   website: string | null
 }
 
