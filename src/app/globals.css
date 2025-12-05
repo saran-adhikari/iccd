@@ -5,8 +5,10 @@
 
 
 :root {
-  --background: oklch(0.16 0.02 240); /* Deep neutral charcoal */
-  --foreground: oklch(0.92 0.02 30); /* Light gray text for readability */
+  --background: oklch(0.16 0.02 240);
+  /* Deep neutral charcoal */
+  --foreground: oklch(0.92 0.02 30);
+  /* Light gray text for readability */
 
   --card: oklch(0.18 0.02 240);
   --card-foreground: oklch(0.92 0.02 30);
@@ -14,16 +16,19 @@
   --popover: oklch(0.18 0.02 240);
   --popover-foreground: oklch(0.92 0.02 30);
 
-  --primary: #00A99D; /* Brightened teal for dark bg */
+  --primary: #00A99D;
+  /* Brightened teal for dark bg */
   --primary-foreground: #ffffff;
 
-  --secondary: #FF7A59; /* Softer orange for dark mode */
+  --secondary: #FF7A59;
+  /* Softer orange for dark mode */
   --secondary-foreground: #ffffff;
 
   --muted: oklch(0.26 0.015 240);
   --muted-foreground: oklch(0.75 0.02 30);
 
-  --accent: #5FCAC0; /* Slightly brighter for dark mode */
+  --accent: #5FCAC0;
+  /* Slightly brighter for dark mode */
   --accent-foreground: #0E0E0E;
 
   --destructive: #D35A41;
@@ -94,6 +99,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-roboto), sans-serif;
@@ -101,8 +107,13 @@
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-30%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-30%);
+  }
 }
 
 .animate-marquee {
@@ -112,14 +123,55 @@
 }
 
 @keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
+
 .animate-spin-slow {
   animation: spin-slow 20s linear infinite;
 }
 
 /* globals.css */
-.hide-scrollbar { -ms-overflow-style:none; scrollbar-width:none; }
-.hide-scrollbar::-webkit-scrollbar { display:none; }
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom scrollbar styles */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 169, 157, 0.5) rgba(0, 169, 157, 0.1);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 169, 157, 0.1);
+  border-radius: 10px;
+  margin: 4px 0;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 169, 157, 0.5);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 169, 157, 0.7);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
