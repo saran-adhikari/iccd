@@ -18,8 +18,7 @@ export function ImpactHero() {
             <span className="text-white">Transform Organizations</span>
           </h1>
           <p className="text-xl text-gray-200 text-pretty leading-relaxed">
-            Discover how ICCD&apos;s training programs have strengthened compliance frameworks, reduced risks, and elevated
-            professional capabilities across leading financial institutions worldwide.
+            Our programs strengthen governance, reduce risk, enhance customer trust, and build long-term institutional resilience.
           </p>
         </div>
       </div>

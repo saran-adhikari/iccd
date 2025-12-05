@@ -23,7 +23,7 @@ export default async function ImpactPage() {
             <Header />
             <ImpactHero />
             <ImpactMetrics />
-            <ECLCalculator />
+            {/* <ECLCalculator /> */}
             {/* <ImpactNumbers/> */}
             {/* <IndustryTestimonials /> */}
             {/* <HeroTrainMyTeam /> */}
