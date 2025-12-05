@@ -42,8 +42,9 @@ export default async function HomePage() {
       {/* <WhyICCD/> */}
       {/* <CompanyInfo/> */}
       <FeaturedProgram programs={programs} />
-      <ECLCalculator />
       <Testimonials testimonials={testimonials} />
+      <ECLCalculator />
+      
       {/* <IndustryTestimonials /> */}
       <HeroTrainMyTeam />
       {/* <CardGrid /> */}

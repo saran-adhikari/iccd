@@ -12,7 +12,7 @@ export function Footer() {
     { name: "Contact", href: "/contact" },
   ]
 
-  const { news, loading, refresh } = useNepaliNews({ refreshInterval: 300000 })
+  // const { news, loading, refresh } = useNepaliNews({ refreshInterval: 300000 })
 
   return (
     <footer className="bg-black text-primary-foreground">
