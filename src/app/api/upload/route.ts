@@ -23,7 +23,7 @@ export async function POST(req: Request) {
         const filename = `document-${uniqueSuffix}.pdf`
 
         // Upload to Supabase Storage
-        const fileUrl = await uploadToSupabase(buffer, "legal", filename)
+        const fileUrl = await uploadToSupabase(buffer, "legal", filename, file.type || 'application/pdf')
 
         // Revalidate pages that might display legal documents
         revalidatePath('/admin/legal')

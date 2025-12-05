@@ -61,7 +61,8 @@ function sanitizeFilename(filename: string): string {
 export async function uploadToSupabase(
     buffer: Buffer,
     bucket: string,
-    filename: string
+    filename: string,
+    contentType: string = 'auto'
 ): Promise<string> {
     const client = ensureSupabaseConfigured()
 
@@ -72,7 +73,7 @@ export async function uploadToSupabase(
     const { data, error } = await client.storage
         .from(bucket)
         .upload(sanitizedFilename, buffer, {
-            contentType: 'auto',
+            contentType,
             upsert: false
         })
 

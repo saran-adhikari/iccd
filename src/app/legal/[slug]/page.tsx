@@ -28,7 +28,10 @@ export default async function LegalDetailPage({ params }: { params: Promise<{ sl
                     </Link>
                     <div className="flex justify-between items-start mb-4">
                         <div>
-                            <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">{doc.title}</h1>
+                            <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">{doc.titleNe || doc.title}</h1>
+                            {doc.titleNe && (
+                                <p className="text-xl text-muted-foreground mb-4">{doc.title}</p>
+                            )}
                             <div className="flex items-center gap-4 text-sm text-muted-foreground">
                                 <span className="flex items-center">
                                     <Calendar className="w-4 h-4 mr-2" />
@@ -53,14 +56,14 @@ export default async function LegalDetailPage({ params }: { params: Promise<{ sl
                 <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
                     <div className="aspect-[3/4] md:aspect-[4/3] w-full">
                         <iframe
-                            src={doc.fileUrl}
+                            src={`${doc.fileUrl}#toolbar=0`}
                             className="w-full h-full"
-                            title={doc.title}
+                            title={doc.titleNe || doc.title}
                         />
                     </div>
                 </div>
             </div>
-            <CTAStrip/>
+            <CTAStrip />
             <Footer />
         </main>
     )
