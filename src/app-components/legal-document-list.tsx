@@ -30,6 +30,15 @@ export function LegalDocumentList({ initialDocs }: { initialDocs: LegalDocument[
         return matchesType && matchesSearch
     })
 
+    const pluralize = (word: string) => {
+    if (word === "All") return "All Documents"
+
+    // Very basic plural rules
+    if (word.endsWith("y")) return word.slice(0, -1) + "ies"  // Policy -> Policies
+    if (word.endsWith("s")) return word                     // Already plural
+    return word + "s"                                       // Act -> Acts
+    }
+
     return (
         <div className="space-y-8">
             {/* Search and Filter */}
@@ -46,7 +55,7 @@ export function LegalDocumentList({ initialDocs }: { initialDocs: LegalDocument[
                                     : "bg-none border border-primary text-primary hover:bg-primary hover:text-white cursor-pointer hover:scale-105"
                             )}
                         >
-                            {type === 'All' ? 'All Documents' : type}
+                            {pluralize(type)}
                         </button>
                     ))}
                 </div>

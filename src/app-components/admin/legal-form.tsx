@@ -140,8 +140,8 @@ export function LegalDocumentForm({ initialData }: { initialData?: LegalDocument
                             <SelectValue placeholder="Select category" />
                         </SelectTrigger>
                         <SelectContent>
-                            <SelectItem value="Acts">Acts</SelectItem>
-                            <SelectItem value="Rules">Rules</SelectItem>
+                            <SelectItem value="Act">Acts</SelectItem>
+                            <SelectItem value="Rule">Rules</SelectItem>
                             <SelectItem value="Other">Other</SelectItem>
                         </SelectContent>
                     </Select>
