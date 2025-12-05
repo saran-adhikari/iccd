@@ -19,8 +19,7 @@ export function ProgramsHero() {
             <span className="text-white">Modern Financial Institutions</span>
           </h1>
           <p className="text-xl text-gray-200 text-pretty leading-relaxed">
-            Discover our extensive range of specialized training programs designed to meet the evolving needs of
-            compliance professionals, risk managers, and financial leaders worldwide.
+            Explore industry-leading training programs designed to strengthen skills, enhance compliance, and equip financial professionals for the challenges of tomorrow.
           </p>
         </div>
       </div>
