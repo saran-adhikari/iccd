@@ -1,8 +1,8 @@
 import { PrismaClient } from "@prisma/client"
 import Link from "next/link"
 import { Button } from "@/app-components/ui/button"
-import { Plus, Pencil, Trash2 } from "lucide-react"
-import { revalidatePath } from "next/cache"
+import { Plus } from "lucide-react"
+import { ProgramItem } from "@/app-components/admin/program-item"
 
 const prisma = new PrismaClient()
 
@@ -15,12 +15,7 @@ export default async function ProgramsPage() {
         orderBy: { createdAt: 'desc' }
     })
 
-    async function deleteProgram(formData: FormData) {
-        "use server"
-        const id = formData.get("id") as string
-        await prisma.program.delete({ where: { id } })
-        revalidatePath("/admin/programs")
-    }
+
 
     return (
         <div className="space-y-6">
@@ -45,24 +40,7 @@ export default async function ProgramsPage() {
                     </thead>
                     <tbody className="divide-y divide-border">
                         {programs.map((program) => (
-                            <tr key={program.id} className="hover:bg-muted/50 transition-colors">
-                                <td className="px-6 py-4 font-medium text-foreground">{program.title}</td>
-                                <td className="px-6 py-4 text-muted-foreground">{program.category}</td>
-                                <td className="px-6 py-4 text-muted-foreground">{program.level}</td>
-                                <td className="px-6 py-4 text-right flex justify-end gap-2">
-                                    <Link href={`/admin/programs/${program.id}`}>
-                                        <Button variant="outline" size="sm" className="h-8 w-8 p-0">
-                                            <Pencil className="h-4 w-4" />
-                                        </Button>
-                                    </Link>
-                                    <form action={deleteProgram}>
-                                        <input type="hidden" name="id" value={program.id} />
-                                        <Button variant="destructive" size="sm" type="submit" className="h-8 w-8 p-0 rounded-xl">
-                                            <Trash2 className="h-4 w-4" />
-                                        </Button>
-                                    </form>
-                                </td>
-                            </tr>
+                            <ProgramItem key={program.id} program={program} />
                         ))}
                         {programs.length === 0 && (
                             <tr>

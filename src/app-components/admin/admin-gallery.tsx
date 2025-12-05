@@ -9,6 +9,7 @@ import { Label } from "@/app-components/ui/label"
 import { Trash2, Plus, Loader2, Image as ImageIcon, Upload } from "lucide-react"
 import { toast } from "react-toastify"
 import Image from "next/image"
+import { DeleteConfirmDialog } from "./delete-confirm-dialog"
 
 export function AdminGallery({ initialImages }: { initialImages: GalleryImage[] }) {
     const [images, setImages] = useState(initialImages)
@@ -64,8 +65,6 @@ export function AdminGallery({ initialImages }: { initialImages: GalleryImage[] 
     }
 
     const handleDelete = async (id: string) => {
-        if (!confirm("Are you sure you want to delete this image?")) return
-
         startTransition(async () => {
             const result = await deleteGalleryImage(id)
             if (result.success) {
@@ -122,14 +121,15 @@ export function AdminGallery({ initialImages }: { initialImages: GalleryImage[] 
                             className="object-cover transition-transform group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
-                            <Button
-                                variant="destructive"
-                                size="icon"
-                                onClick={() => handleDelete(image.id)}
-                                disabled={isPending}
-                            >
-                                <Trash2 className="w-4 h-4" />
-                            </Button>
+                            <DeleteConfirmDialog onConfirm={() => handleDelete(image.id)} title="Delete Image?">
+                                <Button
+                                    variant="destructive"
+                                    size="icon"
+                                    disabled={isPending}
+                                >
+                                    <Trash2 className="w-4 h-4" />
+                                </Button>
+                            </DeleteConfirmDialog>
                         </div>
                         <div className="absolute bottom-0 left-0 right-0 p-2 bg-black/50 text-white text-xs truncate">
                             {image.alt}
