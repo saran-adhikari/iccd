@@ -21,7 +21,7 @@ type ProgramData = {
     level: string
     maxParticipants: number
     format: string
-    certification: string
+    certification?: string
     audience: string[]
     instructorName: string
     instructorExpertise: string[]
@@ -49,7 +49,7 @@ export function ProgramForm({ initialData }: { initialData?: ProgramData }) {
             level: "Intermediate",
             maxParticipants: 20,
             format: "On-site",
-            certification: "Certificate of Completion",
+            certification: "",
             audience: [""],
             instructorName: "",
             instructorExpertise: [""],
@@ -160,8 +160,8 @@ export function ProgramForm({ initialData }: { initialData?: ProgramData }) {
                     </Select>
                 </div>
                 <div className="space-y-2">
-                    <Label className="text-gray-200">Certification</Label>
-                    <Input className="bg-secondary/5 border-secondary/20 text-white placeholder:text-gray-500 focus-visible:ring-primary/50 mt-2" value={formData.certification} onChange={(e) => handleChange("certification", e.target.value)} required />
+                    <Label className="text-gray-200">Certification (Optional)</Label>
+                    <Input className="bg-secondary/5 border-secondary/20 text-white placeholder:text-gray-500 focus-visible:ring-primary/50 mt-2" value={formData.certification} onChange={(e) => handleChange("certification", e.target.value)} />
                 </div>
             </div>
 

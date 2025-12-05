@@ -7,10 +7,10 @@ import { Slider } from "@/app-components/ui/Slider";
 export default function ECLCalculator() {
   const [pd, setPd] = useState(5);
   const [lgd, setLgd] = useState(45);
-  const [ead, setEad] = useState(100000);
+  const [ead, setEad] = useState<string | number>(100000); // Allow string for empty input
   const [eir, setEir] = useState(8);
 
-  const ecl = ((pd / 100) * (lgd / 100) * ead) / (1 + eir / 100);
+  const ecl = ((pd / 100) * (lgd / 100) * (Number(ead) || 0)) / (1 + eir / 100);
   const riskPercent = Math.min((pd * lgd) / 100, 100);
 
   const getColor = () => {
@@ -61,7 +61,7 @@ export default function ECLCalculator() {
             <input
               type="number"
               value={ead}
-              onChange={(e) => setEad(Number(e.target.value))}
+              onChange={(e) => setEad(e.target.value === "" ? "" : Number(e.target.value))}
               className="w-full border rounded-lg p-2 focus:ring-2 focus:ring-[#49b6b9] outline-none"
             />
           </div>

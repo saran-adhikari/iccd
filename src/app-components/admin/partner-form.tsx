@@ -11,7 +11,7 @@ import { toast } from 'react-toastify'
 interface Partner {
     id: string
     name: string
-    logo: string
+    logo: string | null
     website: string | null
 }
 
@@ -65,12 +65,11 @@ export function PartnerForm({ initialData }: { initialData?: Partner }) {
             </div>
 
             <div className="space-y-2">
-                <Label htmlFor="logo">Logo URL</Label>
+                <Label htmlFor="logo">Logo URL (Optional)</Label>
                 <Input
                     id="logo"
                     name="logo"
-                    defaultValue={initialData?.logo}
-                    required
+                    defaultValue={initialData?.logo || ''}
                     placeholder="https://..."
                 />
                 <p className="text-xs text-muted-foreground">

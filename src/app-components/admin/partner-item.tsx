@@ -11,7 +11,7 @@ import { toast } from "react-toastify"
 interface Partner {
     id: string
     name: string
-    logo: string
+    logo: string | null
     website?: string | null
 }
 
@@ -33,13 +33,17 @@ export function PartnerItem({ partner }: { partner: Partner }) {
 
     return (
         <Card className="overflow-hidden">
-            <div className="h-32 bg-secondary/5 flex items-center justify-center p-6">
+            <div className="h-32 bg-secondary/5 flex items-center justify-center p-6 text-center">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                    src={partner.logo}
-                    alt={partner.name}
-                    className="max-h-full max-w-full object-contain"
-                />
+                {partner.logo ? (
+                    <img
+                        src={partner.logo}
+                        alt={partner.name}
+                        className="max-h-full max-w-full object-contain"
+                    />
+                ) : (
+                    <span className="text-xl font-bold text-muted-foreground">{partner.name}</span>
+                )}
             </div>
             <CardContent className="p-6">
                 <div className="flex justify-between items-start mb-4">

@@ -4,6 +4,8 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { FileText } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { Input } from '@/app-components/ui/input'
+import { Search } from 'lucide-react'
 
 interface LegalDocument {
     id: string
@@ -20,29 +22,44 @@ export function LegalDocumentList({ initialDocs }: { initialDocs: LegalDocument[
 
     // Extract unique types and sort them
     const types = ['All', ...Array.from(new Set(initialDocs.map(doc => doc.type))).sort()]
+    const [searchQuery, setSearchQuery] = useState('')
 
-    const filteredDocs = filter === 'All'
-        ? initialDocs
-        : initialDocs.filter(doc => doc.type === filter)
+    const filteredDocs = initialDocs.filter(doc => {
+        const matchesType = filter === 'All' || doc.type === filter
+        const matchesSearch = (doc.title + (doc.titleNe || "")).toLowerCase().includes(searchQuery.toLowerCase())
+        return matchesType && matchesSearch
+    })
 
     return (
         <div className="space-y-8">
-            {/* Filter Tabs */}
-            <div className="flex flex-wrap justify-left gap-2">
-                {types.map((type) => (
-                    <button
-                        key={type}
-                        onClick={() => setFilter(type)}
-                        className={cn(
-                            "px-4 py-2 rounded-none text-sm font-medium transition-all duration-300",
-                            filter === type
-                                ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25 scale-105"
-                                : "bg-none border border-primary text-primary hover:bg-primary hover:text-white cursor-pointer hover:scale-105"
-                        )}
-                    >
-                        {type === 'All' ? 'All Documents' : type}
-                    </button>
-                ))}
+            {/* Search and Filter */}
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div className="flex flex-wrap justify-left gap-2">
+                    {types.map((type) => (
+                        <button
+                            key={type}
+                            onClick={() => setFilter(type)}
+                            className={cn(
+                                "px-4 py-2 rounded-none text-sm font-medium transition-all duration-300",
+                                filter === type
+                                    ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25 scale-105"
+                                    : "bg-none border border-primary text-primary hover:bg-primary hover:text-white cursor-pointer hover:scale-105"
+                            )}
+                        >
+                            {type === 'All' ? 'All Documents' : type}
+                        </button>
+                    ))}
+                </div>
+
+                <div className="relative w-full md:w-72">
+                    <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
+                    <Input
+                        placeholder="Search documents..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="pl-8 bg-background/50 border-primary/20 focus-visible:ring-primary/50"
+                    />
+                </div>
             </div>
 
             {/* Document Grid */}
