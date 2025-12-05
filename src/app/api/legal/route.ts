@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client"
 import { NextResponse } from "next/server"
 import { auth } from "@/auth"
-import { revalidatePath } from "next/cache" // Add this import
+import { revalidatePath } from "next/cache"
 
 const prisma = new PrismaClient()
 
@@ -23,20 +23,21 @@ export async function POST(req: Request) {
 
     try {
         const body = await req.json()
-        const { title, slug, fileUrl, type } = body
+        const { title, titleNe, slug, fileUrl, type } = body
 
         const doc = await prisma.legalDocument.create({
             data: {
                 title,
+                titleNe,
                 slug,
                 fileUrl,
                 type
             }
         })
 
-        revalidatePath('/admin/legal') // Add this
-        revalidatePath('/legal') // Add this
-        revalidatePath('/') // Add this
+        revalidatePath('/admin/legal')
+        revalidatePath('/legal')
+        revalidatePath('/')
 
         return NextResponse.json(doc)
     } catch (error) {
@@ -58,9 +59,9 @@ export async function PUT(req: Request) {
             data
         })
 
-        revalidatePath('/admin/legal') // Add this
-        revalidatePath('/legal') // Add this
-        revalidatePath('/') // Add this
+        revalidatePath('/admin/legal')
+        revalidatePath('/legal')
+        revalidatePath('/')
 
         return NextResponse.json(doc)
     } catch (error) {
@@ -83,9 +84,9 @@ export async function DELETE(req: Request) {
             where: { id }
         })
 
-        revalidatePath('/admin/legal') // Add this
-        revalidatePath('/legal') // Add this
-        revalidatePath('/') // Add this
+        revalidatePath('/admin/legal')
+        revalidatePath('/legal')
+        revalidatePath('/')
 
         return new NextResponse("Deleted", { status: 200 })
     } catch (error) {

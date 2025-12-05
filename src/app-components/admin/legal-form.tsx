@@ -18,6 +18,7 @@ import {
 interface LegalDocument {
     id: string
     title: string
+    titleNe?: string | null
     slug: string
     fileUrl: string
     type: string
@@ -71,6 +72,7 @@ export function LegalDocumentForm({ initialData }: { initialData?: LegalDocument
             const data = {
                 id: initialData?.id,
                 title: formData.get('title'),
+                titleNe: formData.get('titleNe'),
                 slug: formData.get('slug'),
                 fileUrl,
                 type: finalType,
@@ -107,6 +109,15 @@ export function LegalDocumentForm({ initialData }: { initialData?: LegalDocument
                         defaultValue={initialData?.title}
                         required
                         placeholder="e.g. Privacy Policy"
+                    />
+                </div>
+                <div className="space-y-2">
+                    <Label htmlFor="titleNe">Nepali Title (Optional)</Label>
+                    <Input
+                        id="titleNe"
+                        name="titleNe"
+                        defaultValue={initialData?.titleNe || ''}
+                        placeholder="e.g. गोपनीयता नीति"
                     />
                 </div>
                 <div className="space-y-2">

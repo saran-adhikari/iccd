@@ -7,7 +7,9 @@ import { cn } from '@/lib/utils'
 
 interface LegalDocument {
     id: string
+
     title: string
+    titleNe?: string | null
     slug: string
     fileUrl: string
     type: string
@@ -55,7 +57,7 @@ export function LegalDocumentList({ initialDocs }: { initialDocs: LegalDocument[
                             .split('#')[0]           // remove hash params
                             .replace(/\.[^/.]+$/, "") // remove extension
                             .replace(/-\d+(?:-\d+)*$/, "") // remove version number
-                            || "Document"
+                        || "Document"
 
                     return (
                         <Link key={doc.id} href={`/legal/${doc.slug}`} className="block">
@@ -83,15 +85,20 @@ export function LegalDocumentList({ initialDocs }: { initialDocs: LegalDocument[
                                         </div>
                                     </div>
 
-                                    {/* Cleaned Filename */}
-                                    <p className="text-lg text-gray-400 leading-relaxed font-bold truncate">
+                                    {/* Cleaned Filename - Hidden or Simplified */}
+                                    {/* <p className="text-lg text-gray-400 leading-relaxed font-bold truncate">
                                         {fileName}
-                                    </p>
+                                    </p> */}
 
                                     {/* Title */}
-                                    <h2 className="text-sm font-light mb-2 text-white group-hover:text-primary transition-colors duration-300 leading-snug">
-                                        {doc.title}
+                                    <h2 className="text-lg font-bold mb-1 text-white group-hover:text-primary transition-colors duration-300 leading-snug">
+                                        {doc.titleNe || doc.title}
                                     </h2>
+                                    {doc.titleNe && (
+                                        <p className="text-sm text-gray-400 font-light">
+                                            {doc.title}
+                                        </p>
+                                    )}
                                 </div>
 
                                 {/* Bottom accent line */}

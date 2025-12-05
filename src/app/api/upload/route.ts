@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 import { auth } from "@/auth"
-import { revalidatePath } from "next/cache" // Add this import
+import { revalidatePath } from "next/cache"
 import { uploadToSupabase } from "@/lib/supabase"
 
 export async function POST(req: Request) {
@@ -18,9 +18,9 @@ export async function POST(req: Request) {
         const bytes = await file.arrayBuffer()
         const buffer = Buffer.from(bytes)
 
-        // Create unique filename
+        // Create unique safe filename for storage
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-        const filename = file.name.replace(/\.[^/.]+$/, "") + '-' + uniqueSuffix + '.pdf'
+        const filename = `document-${uniqueSuffix}.pdf`
 
         // Upload to Supabase Storage
         const fileUrl = await uploadToSupabase(buffer, "legal", filename)

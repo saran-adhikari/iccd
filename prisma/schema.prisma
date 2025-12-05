@@ -112,6 +112,7 @@ model ImpactMetric {
 model LegalDocument {
   id        String   @id @default(cuid())
   title     String
+  titleNe   String?  // Nepali Title
   slug      String   @unique
   fileUrl   String   // Path to uploaded PDF
   type      String   @default("policy") // policy, terms, etc.
