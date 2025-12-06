@@ -83,15 +83,17 @@ export function ProgramDetailHero({ program }: ProgramDetailHeroProps) {
                   <div className="font-semibold text-foreground">{program.format}</div>
                 </div>
               </div>
-              <div className="flex items-start gap-4">
-                <div className="p-2 rounded-lg bg-secondary/10 text-secondary">
-                  <Award className="h-5 w-5 text-secondary" />
+              {program.certification && (
+                <div className="flex items-start gap-4">
+                  <div className="p-2 rounded-lg bg-secondary/10 text-secondary">
+                    <Award className="h-5 w-5 text-secondary" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-medium text-muted-foreground mb-0.5">Certification</div>
+                    <div className="font-semibold text-foreground">{program.certification}</div>
+                  </div>
                 </div>
-                <div>
-                  <div className="text-sm font-medium text-muted-foreground mb-0.5">Certification</div>
-                  <div className="font-semibold text-foreground">{program.certification || "Included"}</div>
-                </div>
-              </div>
+              )}
             </div>
 
             {/* Tags/Badges */}
