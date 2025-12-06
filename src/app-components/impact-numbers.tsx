@@ -32,9 +32,10 @@ export function ImpactNumbers({ metrics }: { metrics: ImpactMetric[] }) {
 
   return (
     <section
-      ref={sectionRef}
-      className="py-24 relative overflow-hidden"
-    >
+  ref={sectionRef}
+  className="py-24 relative overflow-hidden bg-gradient-to-b from-[#0A2E52]/20 via-[#0A2E52]/10 to-transparent"
+>
+
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
 

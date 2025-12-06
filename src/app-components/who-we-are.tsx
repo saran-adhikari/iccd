@@ -102,6 +102,9 @@ export function WhoWeAre() {
           </motion.div>
         </div>
       </div>
+      {/* Bottom fade divider */}
+<div className="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-primary/20 to-transparent pointer-events-none" />
+
     </motion.section>
   )
 }
