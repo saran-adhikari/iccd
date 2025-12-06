@@ -32,32 +32,30 @@ export function ImpactNumbers({ metrics }: { metrics: ImpactMetric[] }) {
 
   return (
     <section
-  ref={sectionRef}
-  className="py-24 relative overflow-hidden bg-gradient-to-b from-[#0A2E52]/20 via-[#0A2E52]/10 to-transparent"
->
-
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
-
-
-        <div className="text-center mb-20">
+      ref={sectionRef}
+      className="py-24 relative overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-white">
             Our <span className="text-white">Impact</span>
           </h2>
-
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {metrics.slice(0, 3).map((stat) => (
-            <div key={stat.id} className="text-center">
-              <div className="text-6xl lg:text-7xl font-extrabold mb-4 text-primary">
+            <div 
+              key={stat.id} 
+              className="bg-gradient-to-br from-[#0A2E52]/30 via-[#0A2E52]/20 to-[#0A2E52]/10 rounded-2xl shadow-xl border border-white/10 backdrop-blur-sm p-8 lg:p-10 text-center hover:shadow-2xl hover:scale-105 transition-all duration-300"
+            >
+              <div className="text-5xl lg:text-6xl font-extrabold mb-4 text-primary">
                 {isVisible ? (
                   <CountUp end={parseInt(stat.value)} suffix={stat.suffix || ""} />
                 ) : (
                   "0"
                 )}
               </div>
-              <div className="text-lg lg:text-xl text-muted-foreground/70 text-center">
+              <div className="text-lg lg:text-xl text-muted-foreground/70">
                 {stat.label}
               </div>
             </div>
