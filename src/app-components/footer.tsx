@@ -2,6 +2,7 @@
 import Link from "next/link"
 import { ScrollToTop } from "@/app-components/scroll-to-top"
 import { Mail, Phone } from "lucide-react"
+import { Linkedin } from "lucide-react";
 
 export function Footer() {
   const quickLinks = [
@@ -27,6 +28,9 @@ export function Footer() {
                 <div className="text-xs text-primary-foreground/80">
                   International Center for Capacity<br /> Development Pvt. Ltd.
                 </div>
+                <Link href="https://www.linkedin.com/company/iccd-nepal/" target="_blank" className="text-white hover:text-secondary transition-colors text-sm">
+                  <Linkedin className="h-5 w-5 mt-5" />
+                </Link>
               </div>
             </div>
 
