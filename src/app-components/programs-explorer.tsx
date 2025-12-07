@@ -110,106 +110,97 @@ export function ProgramsExplorer({ programs }: { programs: Program[] }) {
         router.replace(`/programs?id=${p.slug}`, { scroll: false })
     }
 
-    const onRailKey = (e: KeyboardEvent<HTMLDivElement>) => {
-        if (e.key === 'ArrowDown') { e.preventDefault(); setIndex((index + 1) % programs.length) }
-        else if (e.key === 'ArrowUp') { e.preventDefault(); setIndex((index - 1 + programs.length) % programs.length) }
-    }
-
     const current = programs[index]
     const view = current ? toProgramView(current) : null
-
-    const formatColors = {
-        "In-Person": "bg-primary/10 text-primary border-primary/20",
-        Online: "bg-accent/10 text-accent border-accent/20",
-        Blended: "bg-orange-100 text-secondary border-secondary/20",
-    }
 
     if (!current || !view) return null
 
     return (
-        <div className="w-full flex flex-col md:flex-row min-h-screen bg-background">
+        <div className="w-full min-h-screen bg-background flex flex-col">
 
-            {/* LEFT SIDEBAR - List - Sticky on Desktop */}
-            <div
-                className="w-full md:w-[320px] lg:w-[380px] shrink-0 border-r border-white/10 bg-slate-900/50 flex flex-col md:sticky md:top-20 md:h-[calc(100vh-5rem)]"
-            >
-                <div className="p-6 border-b border-white/10">
-                    <h2 className="text-xl font-bold text-white">All Programs</h2>
-                    <p className="text-sm text-slate-400 mt-1">Select a program to view details</p>
-                </div>
+            {/* NAVIGATION HEADER - Compact Split Layout */}
+            {/* NAVIGATION HEADER – COMPACT WITH RIGHT-SIDE PROGRAM LIST */}
+<section className="border-b border-secondary/20 py-6 px-6 relative overflow-hidden">
+    
+    {/* Soft background accents */}
+    <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-secondary/5 to-transparent pointer-events-none" />
+    <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-                <div
-                    className="flex-1 overflow-y-auto p-4 space-y-2 hide-scrollbar"
-                    role="tablist"
-                    onKeyDown={onRailKey}
-                    tabIndex={0}
-                >
-                    {programs.map((p, i) => {
-                        const Icon = iconForProgram(p.category, i)
-                        const active = i === index
-                        return (
-                            <button
-                                key={p.id}
-                                role="tab"
-                                aria-selected={active}
-                                onClick={() => setIndex(i)}
-                                className={`w-full text-left transition-all duration-200 rounded-xl p-3 group border border-transparent ${active
-                                        ? 'bg-secondary/10 border-secondary/20'
-                                        : 'hover:bg-white/5 hover:border-white/5'
-                                    }`}
-                            >
-                                <div className="flex items-start gap-3">
-                                    <div className={`p-2 rounded-lg shrink-0 transition-colors ${active ? 'bg-secondary text-white' : 'bg-secondary/10 text-secondary group-hover:bg-secondary group-hover:text-white'
-                                        }`}>
-                                        <Icon className="w-4 h-4" />
-                                    </div>
-                                    <div>
-                                        <h3 className={`font-semibold text-sm leading-snug mb-1 ${active ? 'text-white' : 'text-slate-300 group-hover:text-white'}`}>
-                                            {p.title}
-                                        </h3>
-                                        <Badge variant="outline" className={`text-[10px] h-5 px-1.5 ${active ? 'text-secondary border-secondary/30' : 'text-slate-500 border-slate-700'
-                                            }`}>
-                                            {p.category}
-                                        </Badge>
-                                    </div>
-                                </div>
-                            </button>
-                        )
-                    })}
-                </div>
-            </div>
+    <div className="max-w-7xl mx-auto w-full flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
 
-            {/* RIGHT PANEL - Detail View - Grows with content */}
-            <div className="flex-1 bg-background relative">
+        {/* LEFT — Title + intro (smaller & cleaner) */}
+        <div className="space-y-2">
+            <h1 className="text-2xl lg:text-4xl text-white tracking-tight">
+                Our <span className="text-white">Programs</span>
+            </h1>
+            
+        </div>
+
+        {/* RIGHT — Program list pushed completely to the right side */}
+        <div className="flex flex-col space-y-4 w-full lg:w-1/3 items-end">
+
+            {programs.map((p, i) => {
+                const active = i === index
+                return (
+                    <button
+                        key={p.id}
+                        onClick={() => setIndex(i)}
+                        className={`group flex items-center gap-2 w-fit transition-all
+                            ${active ? 'opacity-100 translate-x-1' : 'opacity-60 hover:opacity-90'}
+                        `}
+                    >
+                        <span className={`text-right text-sm lg:text-base font-medium 
+                            ${active ? 'text-white' : 'text-slate-300'}
+                        `}>
+                            {p.title}
+                        </span>
+
+                        {active && (
+                            <motion.div
+                                layoutId="active-nav-dot"
+                                className="h-1.5 w-1.5 rounded-full bg-secondary"
+                            />
+                        )}
+                    </button>
+                )
+            })}
+
+        </div>
+    </div>
+</section>
+
+
+            {/* MAIN CONTENT - Detail View (Restored to Original Design) */}
+            <div className="flex-1 bg-background relative pb-20">
                 <AnimatePresence mode="wait" initial={false}>
                     <motion.div
                         key={current.id}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.3, ease: "easeOut" }}
-                        className="min-h-full pb-20"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="min-h-full"
                     >
-                        {/* Hero Section embedded */}
-                        <div className="relative w-full h-[300px] lg:h-[400px]">
+                        {/* Original Hero Design */}
+                        <div className="relative w-full h-[300px] lg:h-[300px]">
                             <div className="absolute inset-0">
                                 <img src={view.image} alt={view.title} className="w-full h-full object-cover" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
                             </div>
-                            <div className="absolute bottom-0 left-0 w-full p-8 lg:p-12">
-                                <div className="max-w-4xl">
+                            <div className="absolute bottom-0 left-0 w-full p-4 lg:p-4">
+                                <div className="w-[90%] mx-auto">
                                     <div className="flex flex-wrap gap-3 mb-4">
-                                        <Badge className="bg-secondary text-white hover:bg-secondary/90 border-none">
+                                        <Badge className="bg-secondary text-white hover:bg-secondary/90 rounded-full border-none">
                                             {view.category}
                                         </Badge>
-                                        <Badge variant="outline" className={`bg-black/20 text-white border-white/20 backdrop-blur-sm`}>
+                                        <Badge variant="outline" className={`bg-black/20 text-white rounded-full border-white/20 backdrop-blur-sm`}>
                                             {view.level}
                                         </Badge>
                                     </div>
                                     <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
                                         {view.title}
                                     </h1>
-                                    <p className="text-lg text-slate-200 max-w-2xl line-clamp-2">
+                                    <p className="text-lg text-slate-200 max-w-3xl line-clamp-2">
                                         {view.description}
                                     </p>
                                 </div>
@@ -217,14 +208,13 @@ export function ProgramsExplorer({ programs }: { programs: Program[] }) {
                         </div>
 
                         {/* Content Body */}
-                        <div className="px-6 py-8 lg:px-12 lg:py-12 max-w-6xl">
-
-                            {/* Quick Stats Grid */}
+                        <div className="max-w-[90%] mx-auto px-6 lg:px-4 py-8">
+                            {/* Quick Stats Grid (Restored) */}
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12 p-6 rounded-2xl bg-white/5 border border-white/10">
                                 <div className="space-y-1">
                                     <div className="flex items-start gap-3">
-                                        <div className="p-2 rounded-lg bg-secondary/10 text-secondary">
-                                            <Clock className="w-4 h-4" />
+                                        <div className="p-2 rounded-full bg-secondary/10 text-secondary">
+                                            <Clock className="w-7 h-7" />
                                         </div>
                                         <div>
                                             <div className="text-xs text-slate-400 mb-0.5">Duration</div>
@@ -234,19 +224,19 @@ export function ProgramsExplorer({ programs }: { programs: Program[] }) {
                                 </div>
                                 <div className="space-y-1">
                                     <div className="flex items-start gap-3">
-                                        <div className="p-2 rounded-lg bg-secondary/10 text-secondary">
-                                            <Users className="w-4 h-4" />
+                                        <div className="p-2 rounded-full bg-secondary/10 text-secondary">
+                                            <Users className="w-7 h-7" />
                                         </div>
                                         <div>
                                             <div className="text-xs text-slate-400 mb-0.5">Max Participants</div>
-                                            <div className="font-semibold text-white">{view.maxParticipants}</div>
+                                            <div className="font-semibold text-white">{view.maxParticipants} Max</div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="space-y-1">
                                     <div className="flex items-start gap-3">
-                                        <div className="p-2 rounded-lg bg-secondary/10 text-secondary">
-                                            <MapPin className="w-4 h-4" />
+                                        <div className="p-2 rounded-full bg-secondary/10 text-secondary">
+                                            <MapPin className="w-7 h-7" />
                                         </div>
                                         <div>
                                             <div className="text-xs text-slate-400 mb-0.5">Format</div>
@@ -254,11 +244,11 @@ export function ProgramsExplorer({ programs }: { programs: Program[] }) {
                                         </div>
                                     </div>
                                 </div>
-                                {view.certification ? (
+                                {view.certification && (
                                     <div className="space-y-1">
                                         <div className="flex items-start gap-3">
-                                            <div className="p-2 rounded-lg bg-secondary/10 text-secondary">
-                                                <Award className="w-4 h-4" />
+                                            <div className="p-2 rounded-full bg-secondary/10 text-secondary">
+                                                <Award className="w-7 h-7" />
                                             </div>
                                             <div>
                                                 <div className="text-xs text-slate-400 mb-0.5">Certification</div>
@@ -266,8 +256,6 @@ export function ProgramsExplorer({ programs }: { programs: Program[] }) {
                                             </div>
                                         </div>
                                     </div>
-                                ) : (
-                                    <div className="space-y-1 hidden md:block" />
                                 )}
                             </div>
 
@@ -275,7 +263,7 @@ export function ProgramsExplorer({ programs }: { programs: Program[] }) {
                                 {/* Main Content Info */}
                                 <div className="lg:col-span-2 space-y-8">
                                     {/* Long Description */}
-                                    <Card className="bg-slate-900/50 border-white/10">
+                                    <Card className="bg-slate-900/50 border-white/10 rounded-2xl">
                                         <CardHeader>
                                             <div className="flex items-center gap-3">
                                                 <BookOpen className="h-6 w-6 text-primary" />
@@ -291,7 +279,7 @@ export function ProgramsExplorer({ programs }: { programs: Program[] }) {
 
                                     {/* Key Points (fallback if no outcomes) */}
                                     {view.keyPoints.length > 0 && view.learningOutcomes.length === 0 && (
-                                        <Card className="bg-slate-900/50 border-white/10">
+                                        <Card className="bg-slate-900/50 border-white/10 rounded-2xl">
                                             <CardHeader>
                                                 <CardTitle className="text-xl text-primary">Key Highlights</CardTitle>
                                             </CardHeader>
@@ -313,7 +301,7 @@ export function ProgramsExplorer({ programs }: { programs: Program[] }) {
                                 <div className="space-y-6">
                                     {/* Who Should Attend */}
                                     {view.whoShouldAttend.length > 0 && (
-                                        <Card className="bg-slate-900/50 border-white/10">
+                                        <Card className="bg-slate-900/50 border-white/10 rounded-2xl">
                                             <CardHeader>
                                                 <CardTitle className="text-lg text-primary">Who Should Attend</CardTitle>
                                             </CardHeader>
@@ -332,7 +320,7 @@ export function ProgramsExplorer({ programs }: { programs: Program[] }) {
 
                                     {/* Learning Outcomes */}
                                     {view.learningOutcomes.length > 0 && (
-                                        <Card className="bg-slate-900/50 border-white/10">
+                                        <Card className="bg-slate-900/50 border-white/10 rounded-2xl">
                                             <CardHeader>
                                                 <CardTitle className="text-lg text-primary">Learning Outcomes</CardTitle>
                                             </CardHeader>
