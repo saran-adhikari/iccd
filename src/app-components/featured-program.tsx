@@ -36,7 +36,7 @@ export default function FeaturedProgram({ programs }: { programs: Program[] }) {
 
   return (
     <section className="py-20 bg-background overflow-hidden">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[80%] mx-auto">
 
         {/* ---------- Heading + Button Row ---------- */}
         <div className="flex items-center justify-between mb-12">
