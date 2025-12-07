@@ -88,32 +88,32 @@ export default function FeaturedProgram({ programs }: { programs: Program[] }) {
             </div>
           </div>
             {/* Left / Right Buttons */}
-<button
-  onClick={() => setCurrentIndex(prev => 
-    prev === 0 ? programs.length - 1 : prev - 1
-  )}
-  className="absolute left-0 top-1/2 -translate-y-1/2 
-             bg-secondary/20 hover:bg-secondary/40 
-             backdrop-blur-md rounded-full p-3 
-             text-white transition z-30"
-  aria-label="Previous Program"
->
-  <ChevronLeft className="w-6 h-6" />
-</button>
+            <button
+              onClick={() => setCurrentIndex(prev => 
+                prev === 0 ? programs.length - 1 : prev - 1
+              )}
+              className="absolute left-0 top-1/2 -translate-y-1/2 
+                        bg-secondary/20 hover:bg-secondary/40 
+                        backdrop-blur-md rounded-full p-3 
+                        text-white transition z-30"
+              aria-label="Previous Program"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
 
-<button
-  onClick={() => handleNext()}
-  className="absolute right-0 top-1/2 -translate-y-1/2 
-             bg-secondary/20 hover:bg-secondary/40 
-             backdrop-blur-md rounded-full p-3 
-             text-white transition z-30"
-  aria-label="Next Program"
->
-  <ChevronRight className="w-6 h-6" />
-</button>
+            <button
+              onClick={() => handleNext()}
+              className="absolute right-0 top-1/2 -translate-y-1/2 
+                        bg-secondary/20 hover:bg-secondary/40 
+                        backdrop-blur-md rounded-full p-3 
+                        text-white transition z-30"
+              aria-label="Next Program"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
 
           {/* Dots */}
-          <div className="flex justify-center gap-2 mt-8">
+          {/* <div className="flex justify-center gap-2 mt-8">
             {programs.map((_, index) => (
               <button
                 key={index}
@@ -123,7 +123,7 @@ export default function FeaturedProgram({ programs }: { programs: Program[] }) {
                 aria-label={`Go to program ${index + 1}`}
               />
             ))}
-          </div>
+          </div> */}
 
           <div className="mt-12 text-center">
             <Button asChild size="lg" className="rounded-full bg-secondary hover:bg-secondary/90 text-white font-semibold px-8">
