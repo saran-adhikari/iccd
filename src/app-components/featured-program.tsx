@@ -36,11 +36,12 @@ export default function FeaturedProgram({ programs }: { programs: Program[] }) {
 
   return (
     <section className="py-20 bg-background overflow-hidden">
+      
       <div className="max-w-[80%] mx-auto">
 
         {/* ---------- Heading + Button Row ---------- */}
         <div className="flex items-center justify-between mb-12">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-white">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl leading-tight text-white">
             Our <span className="text-white"> Featured Programs</span>
           </h2>
 

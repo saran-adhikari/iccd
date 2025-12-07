@@ -36,7 +36,7 @@ export function ImpactNumbers({ metrics }: { metrics: ImpactMetric[] }) {
       className="py-24 relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-left mb-16">
+        <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-white">
             Our <span className="text-white">Impact</span>
           </h2>
@@ -62,6 +62,7 @@ export function ImpactNumbers({ metrics }: { metrics: ImpactMetric[] }) {
           ))}
         </div>
       </div>
+      <div className="absolute bottom-0 left-0 w-full h-10 bg-gradient-to-t from-transparent to-primary/20 pointer-events-none" />
     </section>
   )
 }
@@ -96,9 +97,14 @@ function CountUp({ end, suffix = "" }: { end: number; suffix?: string }) {
   }, [end])
 
   return (
+    <>
+    
+    
     <span>
       {count}
       {suffix}
     </span>
+    
+    </>
   )
 }
