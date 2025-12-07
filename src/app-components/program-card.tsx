@@ -31,10 +31,10 @@ export function ProgramCard({ program, index = 0 }: ProgramCardProps) {
                 <CardContent className="relative z-20 flex flex-col justify-end h-full p-6 text-white">
                     <div className="transform transition-transform duration-300 group-hover:-translate-y-2">
                         <div className="flex flex-wrap gap-2 mb-3">
-                            <Badge className="bg-secondary/20 hover:bg-white/30 text-white backdrop-blur-md border-none">
+                            <Badge className="bg-secondary/20 hover:bg-white/30 text-white backdrop-blur-md border-none rounded-full">
                                 {program.level}
                             </Badge>
-                            <Badge variant="secondary" className="bg-primary/80 hover:bg-primary text-white border-none">
+                            <Badge variant="secondary" className="bg-primary/80 hover:bg-primary text-white border-none rounded-full">
                                 {program.category}
                             </Badge>
                         </div>
