@@ -157,7 +157,7 @@ export function ProgramsExplorer({ programs }: { programs: Program[] }) {
                 {/* HEADER SECTION (Refined Sizing + Sticky Nav) */}
                 <section className="relative px-6 z-40">
                     {/* Background lines */}
-                    <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent lg:top-auto lg:bottom-10" />
+                    <div className="absolute bottom-0 left-0 w-full h-px lg:top-auto lg:bottom-10" />
 
                     <div className="max-w-[90%] mx-auto w-full flex flex-col lg:flex-row justify-between items-start gap-8 py-10 lg:pt-32 lg:pb-24">
 
