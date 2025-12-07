@@ -11,7 +11,8 @@ const scaleUp = { hidden: { opacity: 0, scale: 0.9 }, visible: { opacity: 1, sca
 export function CTAStrip() {
   return (
     <section className="py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div className="max-w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center"
           initial="hidden"
