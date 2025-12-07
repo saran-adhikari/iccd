@@ -7,6 +7,7 @@ import type { Program } from "../lib/programs"
 import { Button } from "@/app-components/ui/button"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 
 export default function FeaturedProgram({ programs }: { programs: Program[] }) {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -51,7 +52,7 @@ export default function FeaturedProgram({ programs }: { programs: Program[] }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: 'easeOut', delay: 0.05 }}
           >
-            Our <span className="text-secondary"> Featured Programs</span>
+            Our <span className="text-white"> Featured Programs</span>
           </motion.h2>
           <p className="text-slate-400 max-w-2xl mx-auto text-lg">
             Discover our most comprehensive and popular training programs designed for modern financial professionals.
@@ -86,6 +87,30 @@ export default function FeaturedProgram({ programs }: { programs: Program[] }) {
               })}
             </div>
           </div>
+            {/* Left / Right Buttons */}
+<button
+  onClick={() => setCurrentIndex(prev => 
+    prev === 0 ? programs.length - 1 : prev - 1
+  )}
+  className="absolute left-0 top-1/2 -translate-y-1/2 
+             bg-secondary/20 hover:bg-secondary/40 
+             backdrop-blur-md rounded-full p-3 
+             text-white transition z-30"
+  aria-label="Previous Program"
+>
+  <ChevronLeft className="w-6 h-6" />
+</button>
+
+<button
+  onClick={() => handleNext()}
+  className="absolute right-0 top-1/2 -translate-y-1/2 
+             bg-secondary/20 hover:bg-secondary/40 
+             backdrop-blur-md rounded-full p-3 
+             text-white transition z-30"
+  aria-label="Next Program"
+>
+  <ChevronRight className="w-6 h-6" />
+</button>
 
           {/* Dots */}
           <div className="flex justify-center gap-2 mt-8">
