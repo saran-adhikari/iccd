@@ -97,11 +97,95 @@ export default function FeaturedProgram({ programs }: { programs: Program[] }) {
     <section className="py-20 bg-background">
       <div className="max-w-[80%] mx-auto">
         {/* Header */}
-        <div className="flex items-center justify-between mb-12">
+        <div className="flex items-center justify-center mb-5">
           <h2 className="text-3xl md:text-4xl lg:text-5xl leading-tight text-white">
             Our <span className="text-white"> Featured Programs</span>
           </h2>
+        </div>
 
+        {/* Carousel Container with Side Navigation */}
+        <div className="relative">
+          {/* Left Navigation Button */}
+          <button
+            onClick={prev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 z-10 bg-secondary/20 hover:bg-secondary/40 p-3 rounded-full transition-all"
+            aria-label="Previous programs"
+          >
+            <ChevronLeft className="w-6 h-6 text-white" />
+          </button>
+
+          {/* Slider viewport (overflow hidden) */}
+          <div
+            ref={containerRef}
+            className="py-10 overflow-hidden"
+            style={{ width: '100%' }}
+          >
+            {/* Track: the scrolling element */}
+            <div
+              ref={trackRef}
+              className="flex items-stretch gap-5 overflow-x-auto scroll-smooth touch-pan-x"
+              style={{
+                // hide native scrollbar visually but keep scroll capability
+                scrollbarWidth: 'none' /* firefox */,
+                msOverflowStyle: 'none' /* IE 10+ */,
+                scrollSnapType: 'x mandatory',
+              }}
+            // optional: pointer events for dragging if you want (kept default)
+            >
+              {/* hide scrollbar for webkit browsers */}
+              <style>{`
+                /* hide scrollbar for webkit */
+                .track-hide-scroll::-webkit-scrollbar { display: none; }
+              `}</style>
+
+              {programs.map((program, idx) => {
+                // ensure width for each card is exact px measured
+                // when programs.length < visibleCards, make each fill proportionally
+                const effectiveVisible = Math.min(visibleCards, programs.length)
+                const widthPx = effectiveVisible < visibleCards
+                  ? Math.floor((pagePx - (6 * (effectiveVisible - 1))) / effectiveVisible)
+                  : cardPx
+
+                return (
+                  <div
+                    key={program.id}
+                    className="track-hide-scroll"
+                    style={{
+                      flex: `0 0 ${widthPx}px`,
+                      scrollSnapAlign: 'start',
+                    }}
+                  >
+                    <ProgramCard program={program} />
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Right Navigation Button */}
+          <button
+            onClick={next}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 z-10 bg-secondary/20 hover:bg-secondary/40 p-3 rounded-full transition-all"
+            aria-label="Next programs"
+          >
+            <ChevronRight className="w-6 h-6 text-white" />
+          </button>
+        </div>
+
+        {/* Page Indicators - Centered Below Carousel */}
+        {/* <div className="flex items-center justify-center gap-2 mt-8">
+          {Array.from({ length: pagesCount }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goToPage(i)}
+              className={`w-2 h-2 rounded-full ${i === pageIndex ? 'bg-secondary' : 'bg-white/30'}`}
+              aria-label={`Go to page ${i + 1}`}
+            />
+          ))}
+        </div> */}
+
+        {/* View All Programs Button - Bottom Center */}
+        <div className="flex items-center justify-center mt-4">
           <Button
             asChild
             size="lg"
@@ -113,86 +197,8 @@ export default function FeaturedProgram({ programs }: { programs: Program[] }) {
             </Link>
           </Button>
         </div>
-
-        {/* Slider viewport (overflow hidden) */}
-        <div
-          ref={containerRef}
-          className="py-10 overflow-hidden"
-          style={{ width: '100%' }}
-        >
-          {/* Track: the scrolling element */}
-          <div
-            ref={trackRef}
-            className="flex items-stretch gap-6 overflow-x-auto scroll-smooth touch-pan-x"
-            style={{
-              // hide native scrollbar visually but keep scroll capability
-              scrollbarWidth: 'none' /* firefox */,
-              msOverflowStyle: 'none' /* IE 10+ */,
-              scrollSnapType: 'x mandatory',
-            }}
-            // optional: pointer events for dragging if you want (kept default)
-          >
-            {/* hide scrollbar for webkit browsers */}
-            <style>{`
-              /* hide scrollbar for webkit */
-              .track-hide-scroll::-webkit-scrollbar { display: none; }
-            `}</style>
-
-            {programs.map((program, idx) => {
-              // ensure width for each card is exact px measured
-              // when programs.length < visibleCards, make each fill proportionally
-              const effectiveVisible = Math.min(visibleCards, programs.length)
-              const widthPx = effectiveVisible < visibleCards
-                ? Math.floor((pagePx - (6 * (effectiveVisible - 1))) / effectiveVisible)
-                : cardPx
-
-              return (
-                <div
-                  key={program.id}
-                  className="track-hide-scroll"
-                  style={{
-                    flex: `0 0 ${widthPx}px`,
-                    scrollSnapAlign: 'start',
-                  }}
-                >
-                  <ProgramCard program={program} />
-                </div>
-              )
-            })}
-          </div>
-        </div>
-
-        {/* Navigation */}
-        <div className="flex items-center justify-center gap-4 mt-8">
-          <button
-            onClick={prev}
-            className="bg-secondary/20 hover:bg-secondary/40 p-3 rounded-full"
-            aria-label="Previous programs"
-          >
-            <ChevronLeft className="w-6 h-6 text-white" />
-          </button>
-
-          <div className="flex gap-2 items-center">
-            {/* page indicators */}
-            {Array.from({ length: pagesCount }).map((_, i) => (
-              <button
-                key={i}
-                onClick={() => goToPage(i)}
-                className={`w-2 h-2 rounded-full ${i === pageIndex ? 'bg-secondary' : 'bg-white/30'}`}
-                aria-label={`Go to page ${i + 1}`}
-              />
-            ))}
-          </div>
-
-          <button
-            onClick={next}
-            className="bg-secondary/20 hover:bg-secondary/40 p-3 rounded-full"
-            aria-label="Next programs"
-          >
-            <ChevronRight className="w-6 h-6 text-white" />
-          </button>
-        </div>
       </div>
+
     </section>
   )
 }
