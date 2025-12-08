@@ -163,7 +163,7 @@ export function ProgramsExplorer({ programs }: { programs: Program[] }) {
 
     return (
         <>
-            <div className="w-full min-h-screen bg-secondary/5 flex flex-col">
+            <div className="w-full min-h-screen bg-background flex flex-col">
 
                 {/* HEADER SECTION */}
                 <section className="relative px-4 z-40">
