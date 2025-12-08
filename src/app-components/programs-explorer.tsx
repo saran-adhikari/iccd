@@ -22,6 +22,10 @@ import {
     BookOpen,
     CheckCircle,
     ChevronDown,
+    Menu,
+    X,
+    Bookmark,
+    Wallet,
 } from 'lucide-react'
 import type { Program } from '../lib/programs'
 import {
@@ -95,11 +99,15 @@ export function ProgramsExplorer({ programs }: { programs: Program[] }) {
     const initialSlug = searchParams.get('id')
     const detailViewRef = useRef<HTMLDivElement>(null)
     const [isScrolled, setIsScrolled] = useState(false)
+    const [isNavExpanded, setIsNavExpanded] = useState(false)
 
     // Scroll listener for sticky nav styling
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50)
+            // Collapse nav if user scrolls down and it was open? optional.
+            // For now just toggle layout mode.
+            setIsScrolled(window.scrollY > 150)
+            if (window.scrollY <= 150) setIsNavExpanded(false)
         }
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
@@ -132,6 +140,9 @@ export function ProgramsExplorer({ programs }: { programs: Program[] }) {
                 window.scrollTo({ top: y, behavior: 'smooth' });
             }
         }
+
+        // Auto-close overlay if open
+        setIsNavExpanded(false)
     }
 
     const onRailKey = (e: KeyboardEvent<HTMLDivElement>) => {
@@ -152,71 +163,149 @@ export function ProgramsExplorer({ programs }: { programs: Program[] }) {
 
     return (
         <>
-            <div className="w-full min-h-screen bg-background flex flex-col pt-32 lg:pt-0">
+            <div className="w-full min-h-screen bg-secondary/5 flex flex-col">
 
-                {/* HEADER SECTION (Refined Sizing + Sticky Nav) */}
-                <section className="relative px-6 z-40">
+                {/* HEADER SECTION */}
+                <section className="relative px-4 z-40">
                     {/* Background lines */}
                     <div className="absolute bottom-0 left-0 w-full h-px lg:top-auto lg:bottom-10" />
 
-                    <div className="max-w-[90%] mx-auto w-full flex flex-col lg:flex-row justify-between items-start gap-8 py-10 lg:pt-32 lg:pb-24">
+                    <div className="max-w-[90%] mx-auto w-full flex flex-col lg:flex-row justify-between items-center gap-8 py-10">
 
-                        {/* LEFT — Title (Refined size: 5xl) */}
-                        <div className="space-y-4 lg:max-w-lg">
-                            <h1 className="text-3xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
+                        {/* LEFT — Title */}
+                        <div className="space-y-4  flex items-center">
+                            <h1 className="text-3xl lg:text-5xl text-white tracking-tight leading-tight">
                                 Our <span className="text-white">Programs</span>
                             </h1>
                         </div>
 
-                        {/* RIGHT — Sticky/Fixed Navigation (Refined Sizes: text-base) */}
-                        <div
-                            className={`
-                            flex flex-col items-end space-y-2 w-full lg:w-auto
-                            lg:fixed lg:top-0 lg:right-0 lg:h-auto lg:p-8 lg:z-50
-                            transition-all duration-300
-                            ${isScrolled
-                                    ? 'lg:bg-slate-900/95 lg:backdrop-blur-md lg:border-l lg:border-b lg:border-white/10 lg:pl-10 lg:rounded-bl-[2.5rem] lg:shadow-2xl lg:translate-x-0'
-                                    : 'lg:bg-transparent lg:border-transparent lg:pl-0 lg:pt-28'
-                                }
-                        `}
-                            role="tablist"
-                            tabIndex={0}
-                            onKeyDown={onRailKey}
-                        >
+                        {/* RIGHT — Adaptive Navigation */}
+                        <div className="w-full lg:w-auto flex flex-col items-end">
 
-                            {programs.map((p, i) => {
-                                const active = i === index
-                                return (
-                                    <button
-                                        key={p.id}
-                                        role="tab"
-                                        aria-selected={active}
-                                        onClick={() => setIndex(i)}
-                                        // Adjusted padding and font size
-                                        className={`group relative flex items-center justify-end gap-3 w-fit transition-all outline-none py-1
-                                        ${active ? 'opacity-100' : 'opacity-60 hover:opacity-90'}
-                                    `}
+                            {/* 
+                            STATE 1: Full List (Not Scrolled) 
+                            Only visible when NOT scrolled. Fade out when scrolled.
+                        */}
+                            <div className={`transition-opacity duration-300 ${isScrolled ? 'opacity-0 pointer-events-none hidden lg:block' : 'opacity-100'} hidden lg:block`}>
+                                <div className="flex flex-col items-end space-y-2">
+                                    {programs.map((p, i) => {
+                                        const active = i === index
+                                        return (
+                                            <button
+                                                key={p.id}
+                                                onClick={() => setIndex(i)}
+                                                className={`group relative flex items-center justify-end gap-3 w-fit transition-all outline-none py-1
+                                                ${active ? 'opacity-100' : 'opacity-60 hover:opacity-90'}
+                                            `}
+                                            >
+                                                <span className={`text-right text-base font-medium transition-colors duration-300 ${active ? 'text-white' : 'text-slate-300'}`}>
+                                                    {p.title}
+                                                </span>
+                                                <div className="relative flex items-center justify-center w-4 h-4">
+                                                    {active && (
+                                                        <motion.div
+                                                            layoutId="active-indicator-static"
+                                                            className="absolute inset-0 bg-secondary rounded-full"
+                                                            transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                                                        />
+                                                    )}
+                                                    {active && <div className="absolute w-1.5 h-1.5 bg-white rounded-full z-10" />}
+                                                </div>
+                                            </button>
+                                        )
+                                    })}
+                                </div>
+                            </div>
+
+                            {/* 
+                            STATE 2: Bookmark/Toggle Bar (Scrolled)
+                            Fixed to top right when scrolled.
+                       */}
+                            <AnimatePresence>
+                                {isScrolled && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: -20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: -20 }}
+                                        className="fixed top-6 right-6 lg:right-12 z-50 flex items-center gap-4"
                                     >
-                                        <span className={`text-right text-sm lg:text-base font-medium transition-colors duration-300
-                                        ${active ? 'text-white' : 'text-slate-300'}
-                                    `}>
-                                            {p.title}
-                                        </span>
+                                        {/* Current Program Label (Optional context) */}
+                                        {!isNavExpanded && (
+                                            <motion.div
+                                                initial={{ opacity: 0, x: 20 }}
+                                                animate={{ opacity: 1, x: 0 }}
+                                                className="hidden lg:block px-4 py-2 rounded-full bg-slate-900/80 backdrop-blur border border-white/10 text-sm text-slate-300"
+                                            >
+                                                <span className="text-secondary mr-2">Viewing:</span> {current.title}
+                                            </motion.div>
+                                        )}
 
-                                        {/* Active Pill Indicator */}
-                                        <div className="relative flex items-center justify-center w-4 h-4">
-                                            {active && (
-                                                <motion.div
-                                                    layoutId="active-indicator"
-                                                    className="absolute inset-0 bg-secondary rounded-full"
-                                                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                                                />
-                                            )}
-                                            {active && <div className="absolute w-1.5 h-1.5 bg-white rounded-full z-10" />}
+                                        {/* Bookmark Toggle Button */}
+                                        <button
+                                            onClick={() => setIsNavExpanded(!isNavExpanded)}
+                                            className="h-12 w-12 rounded-full bg-secondary text-white flex items-center justify-center shadow-lg hover:bg-secondary/90 transition-colors focus:outline-none focus:ring-2 focus:ring-white/20"
+                                        >
+                                            {isNavExpanded ? <X className="w-5 h-5" /> : <div className="flex flex-col items-center gap-0.5"><Wallet className="w-5 h-5" /></div>}
+                                        </button>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+
+                            {/* 
+                            STATE 3: Expanded Overlay List (When Toggled)
+                            This mimics the "original" sticky list but displayed on demand.
+                        */}
+                            <AnimatePresence>
+                                {isScrolled && isNavExpanded && (
+                                    <motion.div
+                                        initial={{ opacity: 0, scale: 0.95, x: 20 }}
+                                        animate={{ opacity: 1, scale: 1, x: 0 }}
+                                        exit={{ opacity: 0, scale: 0.95, x: 20 }}
+                                        className="fixed top-24 right-6 lg:right-12 z-40 max-h-[80vh] overflow-y-auto"
+                                    >
+                                        <div
+                                            className="bg-slate-900/95 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-2xl flex flex-col items-end space-y-2 min-w-[250px]"
+                                            role="tablist"
+                                            tabIndex={0}
+                                            onKeyDown={onRailKey}
+                                        >
+                                            <div className="text-xs font-semibold text-secondary uppercase tracking-wider mb-2 w-full text-right border-b border-white/5 pb-2">Select Program</div>
+                                            {programs.map((p, i) => {
+                                                const active = i === index
+                                                return (
+                                                    <button
+                                                        key={p.id}
+                                                        role="tab"
+                                                        aria-selected={active}
+                                                        onClick={() => setIndex(i)}
+                                                        className={`group relative flex items-center justify-end gap-3 w-full transition-all outline-none py-2 px-2 rounded-lg
+                                                        ${active ? 'bg-white/5' : 'hover:bg-white/5'}
+                                                    `}
+                                                    >
+                                                        <span className={`text-right text-sm lg:text-base font-medium transition-colors duration-300
+                                                        ${active ? 'text-white' : 'text-slate-300'}
+                                                    `}>
+                                                            {p.title}
+                                                        </span>
+
+                                                        {/* Active Pill Indicator */}
+                                                        <div className="relative flex items-center justify-center w-4 h-4 shrink-0">
+                                                            {active && (
+                                                                <motion.div
+                                                                    layoutId="active-indicator-overlay"
+                                                                    className="absolute inset-0 bg-secondary rounded-full"
+                                                                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                                                                />
+                                                            )}
+                                                            {active && <div className="absolute w-1.5 h-1.5 bg-white rounded-full z-10" />}
+                                                        </div>
+                                                    </button>
+                                                )
+                                            })}
                                         </div>
-                                    </button>
-                                )
-                            })}
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
 
                         </div>
                     </div>
