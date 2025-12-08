@@ -167,6 +167,17 @@ export function ProgramsExplorer({ programs }: { programs: Program[] }) {
 
                 {/* HEADER SECTION */}
                 <section className="relative px-4 z-40">
+                    {/* Subtle background grid + glow blobs */}
+                    <div className="absolute inset-0 -z-10 pointer-events-none">
+                        {/* Grid pattern */}
+                        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:32px_32px]" />
+
+                        {/* Soft glow top left */}
+                        <div className="absolute -top-20 -left-20 w-72 h-72 bg-primary/20 rounded-full blur-[100px]" />
+
+                        {/* Soft glow bottom right */}
+                        <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary/20 rounded-full blur-[130px]" />
+                    </div>
                     {/* Background lines */}
                     <div className="absolute bottom-0 left-0 w-full h-px lg:top-auto lg:bottom-10" />
 
@@ -174,7 +185,7 @@ export function ProgramsExplorer({ programs }: { programs: Program[] }) {
 
                         {/* LEFT — Title */}
                         <div className="space-y-4  flex items-center">
-                            <h1 className="text-3xl lg:text-5xl text-white tracking-tight leading-tight">
+                            <h1 className="text-3xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
                                 Our <span className="text-white">Programs</span>
                             </h1>
                         </div>
@@ -313,7 +324,7 @@ export function ProgramsExplorer({ programs }: { programs: Program[] }) {
 
 
                 {/* MAIN CONTENT - Detail View */}
-                <div className="flex-1 bg-background relative pb-20 mt-8" ref={detailViewRef}>
+                <div className="flex-1 bg-background relative pb-20 mt-2" ref={detailViewRef}>
                     <AnimatePresence mode="wait" initial={false}>
                         <motion.div
                             key={current.id}
@@ -324,7 +335,7 @@ export function ProgramsExplorer({ programs }: { programs: Program[] }) {
                             className="min-h-full"
                         >
                             {/* Original Hero Design */}
-                            <div className="relative w-full h-[300px] lg:h-[300px]">
+                            <div className="relative w-full h-[300px] lg:h-[350px]">
                                 <div className="absolute inset-0">
                                     <img src={view.image} alt={view.title} className="w-full h-full object-cover" />
                                     <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
