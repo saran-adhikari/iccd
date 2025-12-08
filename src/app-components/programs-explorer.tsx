@@ -353,7 +353,7 @@ export function ProgramsExplorer({ programs }: { programs: Program[] }) {
                                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
                                             {view.title}
                                         </h1>
-                                        <p className="text-lg text-slate-200 max-w-3xl line-clamp-2">
+                                        <p className="text-lg text-slate-200 max-w-3xl">
                                             {view.description}
                                         </p>
                                     </div>
