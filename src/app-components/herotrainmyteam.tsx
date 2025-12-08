@@ -25,7 +25,7 @@ export default function HeroTrainMyTeam() {
         <div className="text-left max-w-2xl">
           <Badge
             variant="secondary"
-            className="bg-white/10 text-white border-white/20 hover:bg-white/20 mb-3"
+            className="bg-white/10 text-white rounded-full border-white/20 hover:bg-white/20 mb-3"
           >
             For HR leaders
           </Badge>
