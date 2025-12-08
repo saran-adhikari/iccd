@@ -44,10 +44,8 @@ export default async function HomePage() {
       <FeaturedProgram programs={programs} />
       <Testimonials testimonials={testimonials} />
       <ECLCalculator />
-      
       {/* <IndustryTestimonials /> */}
       <HeroTrainMyTeam />
-
       {/* <CTAStrip /> */}
       <Footer />
     </main>

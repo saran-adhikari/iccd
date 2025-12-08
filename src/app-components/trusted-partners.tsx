@@ -28,7 +28,7 @@ export function TrustedPartners({ partners }: { partners: Partner[] }) {
           transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
           className="text-center mb-0"
         >
-          <h2 className="text-xl sm:text-2xl font-light text-gray mt-2">
+          <h2 className={`${raleway.className} text-xl sm:text-2xl font-light text-gray mt-2`}>
             Trusted by Leading Financial Institutions
           </h2>
         </motion.div>
@@ -48,7 +48,7 @@ export function TrustedPartners({ partners }: { partners: Partner[] }) {
                   className="flex items-center justify-center px-6 flex-shrink-0"
                 >
                   <span
-                    className={`${raleway.className} text-xl sm:text-2xl md:text-2xl font-light text-white-600 hover:text-white-900 tracking-wide hover:scale-110 transition-all duration-300 cursor-pointer whitespace-nowrap`}
+                    className={`${raleway.className} text-xl sm:text-2xl md:text-2xl font-light text-white-600 hover:text-white-900 tracking-wide hover:scale-110 transition-all duration-300 cursor-pointer whitespace-nowrap uppercase`}
                   >
                     {partner.name}
                   </span>
